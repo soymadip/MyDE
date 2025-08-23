@@ -1,0 +1,123 @@
+@import "colors/mocha.css";
+
+
+* {
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 14.5px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+}
+
+#workspaces {
+  border-radius: .87rem;
+  margin: 0px .87rem;
+  background-color: @surface0;
+}
+
+#workspaces button {
+  color: @lavender;
+  border-radius: .87rem;
+  padding: 0.3rem 0rem;
+}
+
+#workspaces button.active {
+  color: @maroon;
+  border-radius: .87rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: .87rem;
+}
+
+#custom-music,
+#tray,
+#bluetooth,
+#network.status,
+#backlight,
+#clock,
+#battery,
+#wireplumber.mic,
+#wireplumber.speaker,
+#custom-lock,
+#custom-power {
+  background-color: @surface0;
+  padding: 0.5rem 0.7rem;
+  /* margin: 1px 0; */
+}
+
+#clock {
+  color: @blue;
+  border-radius: .87rem .87rem .87rem .87rem;
+}
+
+#tray {
+  margin-right: .87rem;
+  border-radius: .87rem;
+}
+
+#bluetooth {
+  color: @lavender;
+  border-radius: .87rem 0px 0px .87rem;
+  margin-right: -.38rem;
+
+}
+
+#network.status {
+  color: @teal;
+  border-radius: 0px .87rem .87rem 0px;
+}
+
+#wireplumber.mic {
+  color: @maroon;
+  border-radius: .87rem 0px 0px .87rem;
+  margin-left: .87rem;
+  margin-right: -.50rem;
+}
+
+#wireplumber.speaker {
+  color: @maroon;
+  margin-right: .87rem;
+  border-radius: 0px .87rem .87rem 0px;
+}
+
+#backlight {
+  color: @yellow;
+  border-radius: 0;
+  margin-right: -.38rem;
+  border-radius: .87rem 0px 0px .87rem;
+}
+
+#battery {
+  color: @green;
+  margin-right: .9rem;
+  border-radius: 0px .87rem .87rem 0px;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: .87rem;
+}
+
+#custom-lock {
+    border-radius: .87rem 0px 0px .87rem;
+    color: @lavender;
+}
+
+#custom-power {
+    margin-right: .87rem;
+    border-radius: 0px .87rem .87rem 0px;
+    color: @red;
+}

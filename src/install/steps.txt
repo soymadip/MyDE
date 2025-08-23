@@ -1,0 +1,21 @@
+Welcome
+
+setup kire kit
+
+install 3rd party repo
+install packages
+
+setup catppuccin frapppe lavender cursors
+
+change papirus folders color
+set cursor size to 32
+
+set sddm theme
+
+change wallpaper
+
+change icons
+
+set flatpak overrides:
+sudo flatpak override --filesystem=xdg-config/gtk-3.0 && sudo flatpak override --filesystem=xdg-config/gtk-4.0
+
