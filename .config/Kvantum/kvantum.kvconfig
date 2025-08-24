@@ -1,0 +1,5 @@
+[General]
+theme=catppuccin-macchiato-maroon
+
+[Applications]
+catppuccin-latte-maroon=kasts

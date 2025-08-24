@@ -182,7 +182,7 @@ hypr_core_pckgs=(
 )
 
 user_pckgs=(
-
+  "nmgui"
   "vorta"
   "vorta-root"
 
@@ -234,7 +234,7 @@ user_pckgs=(
 
 opt_pckgs=(
   "junction"            # application chooser
-  "flatsea"             # flatpak permission manager
+  "flatseal"            # flatpak permission manager
   "xwaylandvideobridge" # Enable video share with xwayland apps
   "webcord"             # Discord client reinpimentation
   "smassh"

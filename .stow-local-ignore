@@ -1,0 +1,13 @@
+README.md
+^/LICENCE.*
+^/COPYING
+/.git 
+/.gitignore
+/.gitmodules
+/.prettierignore
+/.directory
+/install
+/init-install.log
+/src
+/.librewolf
+/*.out

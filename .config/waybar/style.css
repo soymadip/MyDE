@@ -76,7 +76,7 @@
   color: @maroon;
   border-radius: .87rem 0px 0px .87rem;
   margin-left: .87rem;
-  margin-right: -.50rem;
+  margin-right: -1.1rem;
 }
 
 #wireplumber.speaker {
@@ -88,7 +88,7 @@
 #backlight {
   color: @yellow;
   border-radius: 0;
-  margin-right: -.38rem;
+  margin-right: -.68rem;
   border-radius: .87rem 0px 0px .87rem;
 }
 

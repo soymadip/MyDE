@@ -28,7 +28,7 @@
         "custom/power"
     ],
 
-
+    // TODO: ADD RIGHT CLICK TO ON/OFF SERVICE
 
     // ------------ Left Modules ------------------
 
@@ -50,7 +50,7 @@
         "tooltip": false,
         "exec": "playerctl metadata --format='{{ title }}'",
         "on-click": "playerctl play-pause",
-        "max-length": 45
+        "max-length": 35
     },
 
 
@@ -89,7 +89,7 @@
 
     "network#status": {
         "tooltip": true,
-        "on-click": "wezterm -e nmtui-connect",
+        "on-click": "nmgui || wezterm -e nmtui-connect",
         "max-length": 40,
         "interval": 30,
 
@@ -118,15 +118,17 @@
 
     "wireplumber#mic": {
         "node-type": "Audio/Source",
-        "format": " {volume}% ",
-        "format-muted": "󰍭",
+        "on-click": "pavucontrol-qt -t 4 || pavucontrol -t 4",
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
         "scroll-step": 5,
+
+        "format": " {volume}% ",
+        "format-muted": "󰍭"
     },
 
     "wireplumber#speaker": {
         "scroll-step": 2,
-        "on-click": "pavucontrol",
+        "on-click": "pavucontrol-qt -t 3 || pavucontrol -t 3",
         "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 
         "format": "{icon} {volume}%",
@@ -143,6 +145,7 @@
 
     "backlight": {
         "device": "intel_backlight",
+        "on-click": "ddcui",
         "format": "{icon} {percent}%",
         "format-icons": [
             "󰃞",

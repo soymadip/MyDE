@@ -1,0 +1,10 @@
+[Appearance]
+ColorScheme=Catppuccin Macchiato Maroon
+showTrayIcon=true
+trayIconType=Light
+
+[Playback Settings]
+mediabackend=Vlc
+
+[UiSettings]
+ColorScheme=Catppuccin Macchiato Maroon

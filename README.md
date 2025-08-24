@@ -64,7 +64,7 @@
  Packages: 1051(pacman), 11(nix), 2 (flatpaks)
  Shell: zsh
  WM: Hyprland
- Theme: Catppuccin Macchiato-lavender [QT],[GTK3/4]
+ Theme: Catppuccin Macchiato-maroon [QT],[GTK3/4]
  Icons: Papirus-Dark [QT],[GTK3/4]
  Terminal: Kitty
  Terminal Font: JetbrainsMono Nerd Font 12
@@ -332,8 +332,9 @@ I try to stick to some basic rules for my binds:-
 
 <h2 align="center">-----: 🙏 Thanks to :-----</h2>
 
-- Jas-SinghFSU for making [Hyprpanel][hprpnll].
-- Aylur for making [ags][agsl].
+<!-- - Jas-SinghFSU for making [Hyprpanel][hprpnll]. -->
+<!-- - Aylur for making [ags][agsl]. -->
+- Alexays for [waybar][waybar]
 - adil090x for [rofi themes][rfil].
 - Keyitdev for [sddm][kdv] theme.
 - soymadip for [KireiSakura-Kit][kskt]. :)
@@ -406,3 +407,4 @@ I try to stick to some basic rules for my binds:-
 [zen]: .zen/
 [zsh]: .congig/zsh
 [zthra]: .config/zathura/zathurarc
+[waybar]:https://github.com/Alexays/Waybar
