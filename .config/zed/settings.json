@@ -1,0 +1,160 @@
+{
+  // ====== CORE EDITOR SETTINGS ======
+
+  "tab_bar": {
+    "show": true
+  },
+  "theme": "Catppuccin Macchiato (maroon)",
+  "icon_theme": "Catppuccin Macchiato",
+  "vim_mode": true,
+  "auto_update": false,
+  "autosave": "on_focus_change",
+  "use_smartcase_search": true,
+  "show_whitespaces": "boundary",
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
+  "load_direnv": "shell_hook",
+  "multi_cursor_modifier": "cmd_or_ctrl",
+
+  // ====== FONTS & TYPOGRAPHY ======
+  "ui_font_family": "Ubuntu Nerd Font Propo",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_weight": 300,
+  "buffer_line_height": "standard",
+  "buffer_font_size": 14.5,
+
+  // ====== UI LAYOUT & PANELS ======
+  "project_panel": {
+    "dock": "right",
+    "entry_spacing": "standard",
+    "indent_size": 22
+  },
+  "git_panel": {
+    "sort_by_path": true,
+    "dock": "right"
+  },
+  "debugger": {
+    "dock": "bottom"
+  },
+  "active_pane_modifiers": {
+    "inactive_opacity": 0.9
+  },
+
+  // ====== TABS & NAVIGATION ======
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+    "activate_on_close": "neighbour",
+    "show_diagnostics": "errors"
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": true,
+    "selections_menu": true,
+    "agent_review": true,
+    "code_actions": true
+  },
+  "title_bar": {
+    "show_branch_icon": true
+  },
+
+  // ====== CODE EDITING FEATURES ======
+  "inlay_hints": {
+    "enabled": true,
+    "show_value_hints": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": false,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50,
+    "toggle_on_modifiers_press": {
+      "control": false,
+      "alt": false,
+      "shift": false,
+      "platform": false,
+      "function": false
+    }
+  },
+  "indent_guides": {
+    "coloring": "indent_aware"
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+
+  // ====== AI ASSISTANT & AGENT ======
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
+    "play_sound_when_agent_done": true,
+    "always_allow_tool_actions": true,
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    }
+  },
+
+  // ====== CONTEXT SERVERS & INTEGRATIONS ======
+  "context_servers": {
+    "mcp-server-github": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {}
+    }
+  },
+
+  // ====== EXTENSIONS ======
+  "auto_install_extensions": {
+    "basher": true,
+    "dockerfile": true,
+    "emmet": true,
+    "git-firefly": true,
+    "harper": true,
+    "html": true,
+    "hyprlang": true,
+    "ini": true,
+    "lua": true,
+    "marksman": true,
+    "make": true,
+    "mcp-server-github": true,
+    "nix": true,
+    "php": true,
+    "scheme": true,
+    "sql": true,
+    "toml": true
+  },
+
+  // ====== FILE TYPES & ASSOCIATIONS ======
+  "file_types": {
+    "Hyprlang": ["**/hypr/**/*conf"]
+  },
+
+  // ====== TERMINAL ======
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font"
+  },
+
+  // ====== IMAGE VIEWER ======
+  "image_viewer": {
+    "unit": "decimal"
+  },
+
+  // ====== PRIVACY & TELEMETRY ======
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+
+  // ====== LANGUAGE SERVERS =======
+  "lsp": {
+    "clangd": {
+      "binary": {
+        // "arguments": ["--experimental-modules-support"]
+      }
+    }
+  }
+}

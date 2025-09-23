@@ -1,0 +1,10 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+  {
+    "label": "Run C/C++ code.",
+    "command": "gcc $ZED_FILENAME -o $ZED_STEM && ./$ZED_STEM && rm $ZED_STEM",
+    "shell": "system"
+  }
+]
