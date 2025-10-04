@@ -1,0 +1,130 @@
+@import "colors/mocha.css";
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 14.5px;
+    min-height: 0;
+}
+
+#waybar {
+    background: transparent;
+    color: @text;
+}
+
+#submap,
+#custom-power,
+#custom-music,
+#tray,
+#bluetooth,
+#network.status,
+#backlight,
+#clock,
+#battery,
+#wireplumber.mic,
+#wireplumber.speaker,
+#custom-notification {
+    background-color: @surface0;
+    padding: 0.5rem 0.7rem;
+    /* margin: 1px 0; */
+}
+
+#custom-power {
+    margin: 0px 0.87rem;
+    padding-right: 12px;
+    border-radius: 0.87rem;
+    color: @red;
+}
+
+#workspaces {
+    border-radius: 0.87rem;
+    margin-right: 0.87rem;
+    background-color: @surface0;
+}
+
+#workspaces button {
+    color: @lavender;
+    border-radius: 0.87rem;
+    padding: 0.3rem 0rem;
+}
+
+#workspaces button.active {
+    color: @maroon;
+    border-radius: 0.87rem;
+}
+
+#workspaces button:hover {
+    color: @sapphire;
+    border-radius: 0.87rem;
+}
+
+#submap {
+    color: @red;
+    background-color: @crust;
+    border-radius: 0.87rem;
+}
+
+#custom-music {
+    color: @mauve;
+    border-radius: 0.87rem;
+}
+
+#clock {
+    color: @blue;
+    border-radius: 0.87rem 0.87rem 0.87rem 0.87rem;
+}
+
+#tray {
+    margin-right: 0.87rem;
+    border-radius: 0.87rem;
+}
+
+#bluetooth {
+    color: @lavender;
+    border-radius: 0.87rem 0px 0px 0.87rem;
+    margin-right: -0.5rem;
+}
+
+#network.status {
+    color: @teal;
+    border-radius: 0px 0.87rem 0.87rem 0px;
+}
+
+#wireplumber.mic {
+    color: @maroon;
+    border-radius: 0.87rem 0px 0px 0.87rem;
+    margin-left: 0.87rem;
+    margin-right: -1.1rem;
+}
+
+#wireplumber.speaker {
+    color: @maroon;
+    margin-right: 0.87rem;
+    border-radius: 0px 0.87rem 0.87rem 0px;
+}
+
+#backlight {
+    color: @yellow;
+    border-radius: 0;
+    margin-right: -0.68rem;
+    border-radius: 0.87rem 0px 0px 0.87rem;
+}
+
+#battery {
+    color: @green;
+    border-radius: 0px 0.87rem 0.87rem 0px;
+}
+
+#battery.charging {
+    color: @green;
+}
+
+#battery.warning:not(.charging) {
+    color: @red;
+}
+
+#custom-notification {
+    border-radius: 0.87rem;
+    color: @yellow;
+    margin: 0px 0.87rem;
+    padding-right: 9px;
+}

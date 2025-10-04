@@ -1,0 +1,18 @@
+MenuBar=Disabled
+StatusBar=Disabled
+
+[ExtractDialog]
+1536x864 screen: Window-Maximized=true
+1920x1080 screen: Window-Maximized=true
+DirHistory[$e]=$HOME/Downloads/
+
+[General]
+LockSidebar=true
+ShowSidebar=true
+
+[MainWindow]
+StatusBar=Disabled
+splitterSizes=843,104
+
+[Viewer]
+StatusBar=Disabled

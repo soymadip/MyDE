@@ -1,0 +1,10 @@
+{
+  "name": "com.persepolis.pdmchromewrapper",
+  "type": "stdio",
+  "path": "/home/soymadip/.config/persepolis_download_manager/persepolis_run_shell",
+  "description": "Integrate Persepolis with firefox using WebExtensions",
+  "allowed_extensions": [
+    "com.persepolis.pdmchromewrapper@persepolisdm.github.io",
+    "com.persepolis.pdmchromewrapper.offline@persepolisdm.github.io"
+  ]
+}

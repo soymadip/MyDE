@@ -1,0 +1,18 @@
+[Appearance]
+ColorScheme=Catppuccin Macchiato Maroon
+showTrayIcon=true
+trayIconType=Light
+
+[General]
+autoFeedUpdateInterval=12
+autoQueue=false
+refreshOnStartup=true
+
+[Network]
+allowMeteredFeedUpdates=true
+
+[Playback Settings]
+mediabackend=Vlc
+
+[UiSettings]
+ColorScheme=Catppuccin Macchiato Maroon

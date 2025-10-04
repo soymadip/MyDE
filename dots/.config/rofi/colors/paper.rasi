@@ -1,0 +1,55 @@
+/**
+ * Paper Theme
+ * A clean light theme with minimal design elements
+ * https://github.com/NicoHood/paper-gtk-theme
+ */
+
+* {
+  /* Paper Color Palette */
+  bg: #f1f1f1;
+  bg-alt: #e0e0e0;
+  bg-light: #ffffff;
+  bg-dark: #d0d0d0;
+  fg: #252525;
+  fg-dark: #757575;
+  fg-light: #000000;
+  accent: #008ec4;
+  accent-dark: #0277bd;
+  accent-light: #29b6f6;
+  warning: #f57c00;
+  error: #c30771;
+  success: #388e3c;
+  info: #0288d1;
+
+
+  /* Basic color aliases */
+  red:            @error;        /* Red color */
+  green:          @success;      /* Green color */
+  blue:           @accent;       /* Blue color */
+  yellow:         @warning;      /* Yellow color */
+  orange:         @warning;      /* Orange color */
+  purple:         @accent-dark;  /* Purple color */
+  cyan:           @info;         /* Cyan color */
+  white:          @bg-light;     /* White color */
+  black:          @fg-light;     /* Black color */
+  gray:           @fg-dark;      /* Gray color */
+
+
+  /* Theme Variables */
+  transparent:    #00000000;     /* Transparent color */
+
+  background:     @bg;           /* Background Color */
+  background-alt: @bg-alt;       /* Alt Background Color */
+
+  foreground:     @fg;           /* Primary text - highest contrast */
+  foreground-alt: @fg-dark;      /* Secondary text */
+
+  active:         @accent;       /* Active Item */
+  active-alt:     @accent-light; /* Alt Active Item */
+  disabled:       @fg-dark;      /* Disabled/inactive items */
+
+  urgent:         @error;        /* Urgent Item */
+  success:        @success;      /* Success Item */
+
+  separator:      @bg-dark;      /* Separator lines */
+}

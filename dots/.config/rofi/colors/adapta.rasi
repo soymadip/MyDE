@@ -1,0 +1,55 @@
+/**
+ * Adapta Theme
+ * A flat, clean design with subtle gradients
+ * https://github.com/adapta-project/adapta-gtk-theme
+ */
+
+* {
+  /* Adapta Color Palette */
+  bg: #222d32;
+  bg-alt: #29353b;
+  bg-light: #324148;
+  bg-dark: #1a252a;
+  fg: #b8c2c6;
+  fg-dark: #9aa6aa;
+  fg-light: #cfd8dc;
+  accent: #00bcd4;
+  accent-dark: #00acc1;
+  accent-light: #26c6da;
+  warning: #ff9800;
+  error: #ff4b60;
+  success: #4caf50;
+  info: #03a9f4;
+
+
+  /* Basic color aliases */
+  red:            @error;        /* Red color */
+  green:          @success;      /* Green color */
+  blue:           @info;         /* Blue color */
+  yellow:         @warning;      /* Yellow color */
+  orange:         @warning;      /* Orange color */
+  purple:         @accent-dark;  /* Purple color */
+  cyan:           @accent;       /* Cyan color */
+  white:          @fg-light;     /* White color */
+  black:          @bg-dark;      /* Black color */
+  gray:           @fg-dark;      /* Gray color */
+
+
+  /* Theme Variables */
+  transparent:    #00000000;     /* Transparent color */
+
+  background:     @bg;           /* Background Color */
+  background-alt: @bg-alt;       /* Alt Background Color */
+
+  foreground:     @fg;           /* Primary text - highest contrast */
+  foreground-alt: @fg-dark;      /* Secondary text */
+
+  active:         @accent;       /* Active Item */
+  active-alt:     @accent-light; /* Alt Active Item */
+  disabled:       @fg-dark;      /* Disabled/inactive items */
+
+  urgent:         @error;        /* Urgent Item */
+  success:        @success;      /* Success Item */
+
+  separator:      @bg-light;     /* Separator lines */
+}

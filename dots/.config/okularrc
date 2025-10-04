@@ -1,0 +1,68 @@
+1920x1080 screen: Height=1052
+1920x1080 screen: Width=1916
+1920x1080 screen: Window-Maximized=true
+1920x1080 screen: XPosition=2
+1920x1080 screen: YPosition=26
+MenuBar=Disabled
+
+[Desktop Entry]
+FullScreen=false
+shouldShowMenuBarComingFromFullScreen=false
+shouldShowToolBarComingFromFullScreen=true
+
+[FileDialogSize]
+1920x1080 screen: Height=441
+1920x1080 screen: Width=945
+
+[General]
+LockSidebar=true
+ShowSidebar=false
+
+[MainWindow]
+1920x1080 screen: Height=700
+1920x1080 screen: Width=1276
+1920x1080 screen: Window-Maximized=true
+1920x1080 screen: XPosition=289
+1920x1080 screen: YPosition=189
+MenuBar=Disabled
+RestorePositionForNextInstance=false
+
+[MainWindow][Toolbar annotationToolBar]
+IconSize=16
+
+[MainWindow][Toolbar quickAnnotationToolBar]
+IconSize=16
+
+[Notification Messages]
+ShowTabWarning=true
+
+[Recent Files]
+File1[$e]=$HOME/MF/Study/OOPS using JAVA -Unit 1 & 2 Full Revision (EduTech).pdf
+File10[$e]=$HOME/Downloads/C Notes.pdf
+File2[$e]=$HOME/MF/Study/SE (assignment-4).pdf
+File3[$e]=$HOME/Downloads/Application_Details.pdf
+File4[$e]=$HOME/Downloads/story book.pdf
+File5[$e]=$HOME/Documents/Obsidian Vault/Welcome.md
+File6[$e]=$HOME/Downloads/Chapter 1/Chapter 1 Code.pdf
+File7[$e]=$HOME/Downloads/0dabe12c96ebe70b7b0ebc24c1261f18760e187ee7f1b19b02d7fac2dcc041a4_encrypt_signedFinal.pdf
+File8[$e]=$HOME/Downloads/Object Oriented Programming.pdf
+File9[$e]=$HOME/Downloads/pan apply.pdf
+Name1[$e]=OOPS using JAVA -Unit 1 & 2 Full Revision (EduTech).pdf
+Name10[$e]=C Notes.pdf
+Name2[$e]=SE (assignment-4).pdf
+Name3[$e]=Application_Details.pdf
+Name4[$e]=story book.pdf
+Name5[$e]=Welcome.md
+Name6[$e]=Chapter 1 Code.pdf
+Name7[$e]=0dabe12c96ebe70b7b0ebc24c1261f18760e187ee7f1b19b02d7fac2dcc041a4_encrypt_signedFinal.pdf
+Name8[$e]=Object Oriented Programming.pdf
+Name9[$e]=pan apply.pdf
+
+[Toolbar annotationToolBar]
+IconSize=16
+
+[Toolbar quickAnnotationToolBar]
+IconSize=16
+
+[UiSettings]
+ColorScheme=Catppuccin Macchiato Maroon

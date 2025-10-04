@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+#    __  __       ____  _____
+#   |  \/  |_   _|  _ \| ____|
+#   | |\/| | | | | | | |  _|
+#   | |  | | |_| | |_| | |___
+#   |_|  |_|\__,/|____/|_____|
+#          |___/
+#
+#  MyDE Controller program - Control various functions of MyDE
+
+
+# ======================== Config ===========================
+
+KEYBINDS_FILE="$HOME/MyDE/src/keybinds.md"
+
+ROFI_BIN_DIR="$HOME/.config/rofi/bin"
+
+LIB_DIR="$HOME/.local/lib/myde"
+
+# ==================== Helper Functions ======================
+
+help_menu() {
+    local command="$1"
+
+    if [ -n "$command" ]; then
+        echo
+        echo "MyDE Controller - '$command' command Help"
+        echo
+        echo "Usage: myde $command <subcommand>"
+        echo ""
+    fi
+
+    case "$command" in
+        show)
+            echo "Available subcommands:"
+            echo "    help         Show this help message"
+            echo "    keybinds     Show keybinds in rofi"
+            echo "    powermenu    Show power menu in rofi"
+            echo ""
+            echo "Examples:"
+            echo "    myde show keybinds   # Display keybinds in rofi"
+            echo "    myde show help       # Show show command help"
+            ;;
+        reload)
+            echo "Description:"
+            echo "    Reloads the MyDE Configuration"
+            echo ""
+            echo "Examples:"
+            echo "    myde reload          # Reload MyDE config"
+            ;;
+        set)
+            echo "Available subcommands:"
+            echo "    help      Show this help message"
+            echo ""
+            echo "Examples:"
+            echo "    myde set <option>    # Set a specific option (not yet implemented)"
+            echo "    myde set help        # Show set command help"
+            ;;
+        *)
+            echo
+            echo "MyDE Controller - Control various functions of MyDE"
+            echo ""
+            echo "Usage: myde <command|flags> [subcommand]"
+            echo ""
+            echo "Available commands:"
+            echo "    show      Show information"
+            echo "    reload    Reload MyDE configuration"
+            echo "    set       Set configuration options (not yet implemented)"
+            echo ""
+            echo "Examples:"
+            echo "    myde show keybinds    # Show keybinds menu"
+            echo "    myde show powermenu   # Show power menu"
+            echo "    myde reload           # Reload MyDE config"
+            echo ""
+            echo "Use 'myde <command> help' for command-specific help."
+            ;;
+    esac
+}
+
+import_lib() {
+    local lib_filename="$1"
+    local lib_path="${2:-$LIB_DIR}"
+
+    if [ -f "${lib_path}/${lib_filename}" ]; then
+        # shellcheck disable=SC1090
+        source "${lib_path}/${lib_filename}"
+    else
+        echo "Error: Library file '${lib_path}/${lib_filename}' not found." >&2
+        exit 1
+    fi
+}
+
+run_script() {
+    local script_path="$1"
+
+    shift  # Shift to skip the 1st argument (script path)
+
+    if [ -x "$script_path" ]; then
+        "$script_path" "$@"
+    else
+        echo "Error: Script '$script_path' not found or not executable." >&2
+        exit 1
+    fi
+}
+
+
+#========================== Main Logic =========================
+
+[[ "$#" -eq 0 ]] && {
+    help_menu
+    exit 1
+}
+
+case "$1" in
+    show)
+        shift
+        case "$1" in
+            keybinds)
+                run_script "${ROFI_BIN_DIR}/keybinds.sh" "$KEYBINDS_FILE"
+                ;;
+            powermenu)
+                run_script "${ROFI_BIN_DIR}/power-menu.sh"
+                ;;
+            help|*)
+                help_menu "show"
+                ;;
+        esac
+        ;;
+
+    reload)
+        shift
+        case "$1" in
+            help)
+                help_menu "reload"
+                ;;
+            *)
+                hyprctl reload > /dev/null
+                echo "MyDE configuration reloaded."
+                ;;
+        esac
+        ;;
+
+    set)
+        shift
+        case "$1" in
+            help)
+                help_menu "set"
+                ;;
+            *)
+                echo "Not yet Implemented" >&2
+                ;;
+        esac
+        ;;
+
+    -h|--help)
+        help_menu
+        ;;
+
+    *)
+        echo "MyDE: Unknown command '$1'." >&2
+        help_menu
+        ;;
+esac

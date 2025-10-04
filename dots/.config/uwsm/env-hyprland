@@ -1,0 +1,51 @@
+#                         _
+#     ___ _ ____   __    | |__  _   _ _ __  _ __
+#    / _ \ '_ \ \ / /____| '_ \| | | | '_ \| '__|
+#   |  __/ | | \ V /_____| | | | |_| | |_) | |
+#    \___|_| |_|\_/      |_| |_|\__, | .__/|_|
+#                               |___/|_|
+#
+# Environment vars for Hyprland Session (ONLY POSIX SHELLS).
+#
+
+export LANG=en_US.UTF-8
+export TERMINAL=wezterm
+
+export EDITOR="$(command -v nvim &> /dev/null && echo nvim || echo nano)"
+export VISUAL="$(command -v zeditor &> /dev/null && echo zeditor || command -v codium &> /dev/null && echo codium || command -v code &> /dev/null && echo code || echo pluma)"
+
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship/starship.log"
+
+export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore --exclude .git'
+
+
+# ---------- Hyprland -------------
+
+export HYPRLAND_CONFIG="$XDG_CONFIG_HOME/hypr/modules/hyprland.conf"
+
+
+# ---------- Cursor ---------------
+
+CURSOR_SIZE="$(hypr-gtkconf get cursor-size)"
+
+export HYPRCURSOR_SIZE="$CURSOR_SIZE"
+export XCURSOR_SIZE="$CURSOR_SIZE"
+export QT_CURSOR_SIZE="$CURSOR_SIZE"
+
+
+# -------- GTK settings -----------
+export GDK_BACKEND=wayland,x11,*
+
+
+# -------- QT settings -----------
+export QT_QPA_PLATFORM=wayland;xcb
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_QPA_PLATFORMTHEME=qt6ct
+
+export SDL_VIDEODRIVER=wayland
+export CLUTTER_BACKEND=wayland
+
+
+# ----- Electron enable wayland -------
+export ELECTRON_OZONE_PLATFORM_HINT=auto

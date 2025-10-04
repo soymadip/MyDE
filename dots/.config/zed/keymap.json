@@ -1,0 +1,79 @@
+[
+  {
+    "context": "vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space c a": "editor::ToggleCodeActions"
+    }
+  },
+  //
+  // Format file - SPACE + cf
+  {
+    "context": "(Editor && vim_mode == normal)",
+    "bindings": {
+      "space c f": "editor::Format"
+    }
+  },
+  //
+  // Toggle Terminal -> SPACE + t
+  {
+    "context": "(Editor &&  vim_mode ==  normal)",
+    "bindings": {
+      "space t": "terminal_panel::Toggle"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "space t": "terminal_panel::Toggle"
+    }
+  },
+  //
+  // Toggle file tree (Project tree) -> SPACE + e
+  {
+    "context": "vim_mode == normal",
+    "bindings": {
+      "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "space e": "workspace::ToggleRightDock",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Trash",
+      "a": "project_panel::NewFile",
+      "alt-d": "project_panel::NewDirectory",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
+      "y": "project_panel::Copy",
+      "shift-k": "menu::SelectPrevious",
+      "shift-j": "menu::SelectNext",
+      "o": "project_panel::OpenPermanent",
+      "-": "project_panel::OpenSplitHorizontal",
+      "|": "project_panel::OpenSplitVertical"
+    }
+  },
+  //
+  // File Finder Split open actions
+  {
+    "context": "FileFinder > Picker > Editor",
+    "bindings": {
+      "ctrl-o": "file_finder::ToggleSplitMenu"
+    }
+  },
+  {
+    "context": "(FileFinder > Picker > menu)",
+    "bindings": {
+      "k": "pane::SplitUp",
+      "h": "pane::SplitLeft",
+      "j": "pane::SplitDown",
+      "l": "pane::SplitRight"
+    }
+  }
+]

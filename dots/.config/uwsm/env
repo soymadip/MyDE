@@ -1,0 +1,43 @@
+#
+#    ___ _ ____   __
+#   / _ \ '_ \ \ / /
+#  |  __/ | | \ V /
+#   \___|_| |_|\_/
+#
+# Environment vars for ALL Sessions (ONLY POSIX SHELLS)
+#
+
+
+# ------------ XDG Base Directories ------------
+
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+
+# ------------ ZSH config dir ---------------
+export ZDOTDIR="$HOME/.config/zsh"
+
+
+# ----------- Cleanup home dir --------------
+#
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
+export DOTNET_CLI_HOME="$XDG_DATA_HOME"/dotnet
+export SQLITE_HISTORY="$XDG_CACHE_HOME"/sqlite_history
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+# export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+
+# ------------- Expand $PATH ---------------
+export PATH="$XDG_DATA_HOME/KireiSakura-Kit/bin:$XDG_CONFIG_HOME/hypr/bin:$HOME/.local/bin:$PATH"
+
+# Allow Nix Unfree pckgs
+export NIXPKGS_ALLOW_UNFREE=1

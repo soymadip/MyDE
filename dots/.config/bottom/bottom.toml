@@ -1,0 +1,47 @@
+[styles.tables]
+headers = {color = "#f4dbd6"}
+[styles.cpu]
+all_entry_color = "#f4dbd6"
+avg_entry_color = "#ee99a0"
+cpu_core_colors = ["#ed8796","#f5a97f","#eed49f","#a6da95","#7dc4e4","#c6a0f6"]
+[styles.memory]
+ram_color = "#a6da95"
+swap_color = "#f5a97f"
+gpu_colors = ["#7dc4e4","#c6a0f6","#ed8796","#f5a97f","#eed49f","#a6da95"]
+arc_color = "#91d7e3"
+[styles.network]
+rx_color = "#a6da95"
+tx_color = "#ed8796"
+[styles.widgets]
+widget_title = {color = "#f0c6c6"}
+border_color = "#5b6078"
+selected_border_color = "#e78284"
+text = {color = "#cad3f5"}
+selected_text = {color = "#181926", bg_color = "#ea999c"}
+[styles.graphs]
+graph_color = "#a5adcb"
+[styles.battery]
+high_battery_color = "#a6da95"
+medium_battery_color = "#eed49f"
+low_battery_color = "#ed8796"
+
+
+[flags]
+# put cpu chart to left
+left_legend= false
+# battery widget show
+battery= true
+# refresh rate
+rate = "5s"
+# Temperature unit
+temperature_type= "c"
+# default widget
+# default_widget_type=
+# Enable collecting and displaying cache and buffer memory
+enable_cache_memory= true
+# show memory processes as value
+mem_as_value= true
+# show process tree
+tree= false
+# Shows the scroll position tracker in table widgets.
+show_table_scroll_position= true

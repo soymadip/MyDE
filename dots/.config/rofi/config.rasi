@@ -1,0 +1,9 @@
+
+@import "~/.config/rofi/colors/catppuccin-macchiato.rasi"
+
+* {
+    font: "FiraCode Nerd Font 11.2";
+    font-bold: "JetBrainsMono Nerd Font ExtraBold 11.2";
+
+    border-radius: 6px;
+}

@@ -1,0 +1,47 @@
+/**
+ * Dracula Theme
+ * A dark theme inspired by the famous Dracula color scheme
+ * https://draculatheme.com/
+ */
+
+* {
+  /* Dracula Color Palette */
+  background: #282a36;
+  current-line: #44475a;
+  selection: #44475a;
+  foreground: #f8f8f2;
+  comment: #6272a4;
+  cyan: #8be9fd;
+  green: #50fa7b;
+  orange: #ffb86c;
+  pink: #ff79c6;
+  purple: #bd93f9;
+  red: #ff5555;
+  yellow: #f1fa8c;
+
+
+  /* Basic color aliases */
+  blue:           @cyan;         /* Blue color */
+  white:          @foreground;   /* White color */
+  black:          @background;   /* Black color */
+  gray:           @comment;      /* Gray color */
+
+
+  /* Theme Variables */
+  transparent:    #00000000;     /* Transparent color */
+
+  background:     @background;   /* Background Color */
+  background-alt: @current-line; /* Alt Background Color */
+
+  foreground:     @foreground;   /* Primary text - highest contrast */
+  foreground-alt: @comment;      /* Secondary text */
+
+  active:         @purple;       /* Active Item */
+  active-alt:     @pink;         /* Alt Active Item */
+  disabled:       @comment;      /* Disabled/inactive items */
+
+  urgent:         @red;          /* Urgent Item */
+  success:        @green;        /* Success Item */
+
+  separator:      @selection;    /* Separator lines */
+}

@@ -1,0 +1,55 @@
+/**
+ * Arc Theme
+ * A flat theme with transparent elements and a modern design
+ * https://github.com/horst3180/arc-theme
+ */
+
+* {
+  /* Arc Color Palette */
+  bg: #2f343f;
+  bg-alt: #383c4a;
+  bg-light: #404552;
+  bg-dark: #262932;
+  fg: #bac5d0;
+  fg-dark: #8a959e;
+  fg-light: #d3dae3;
+  accent: #5294e2;
+  accent-dark: #4084d6;
+  accent-light: #7eafe9;
+  warning: #f27835;
+  error: #e06b74;
+  success: #5cb85c;
+  info: #5bc0de;
+
+
+  /* Basic color aliases */
+  red:            @error;        /* Red color */
+  green:          @success;      /* Green color */
+  blue:           @accent;       /* Blue color */
+  yellow:         @warning;      /* Yellow color */
+  orange:         @warning;      /* Orange color */
+  purple:         @accent-dark;  /* Purple color */
+  cyan:           @info;         /* Cyan color */
+  white:          @fg-light;     /* White color */
+  black:          @bg-dark;      /* Black color */
+  gray:           @fg-dark;      /* Gray color */
+
+
+  /* Theme Variables */
+  transparent:    #00000000;     /* Transparent color */
+
+  background:     @bg;           /* Background Color */
+  background-alt: @bg-alt;       /* Alt Background Color */
+
+  foreground:     @fg;           /* Primary text - highest contrast */
+  foreground-alt: @fg-dark;      /* Secondary text */
+
+  active:         @accent;       /* Active Item */
+  active-alt:     @accent-light; /* Alt Active Item */
+  disabled:       @fg-dark;      /* Disabled/inactive items */
+
+  urgent:         @error;        /* Urgent Item */
+  success:        @success;      /* Success Item */
+
+  separator:      @bg-light;     /* Separator lines */
+}

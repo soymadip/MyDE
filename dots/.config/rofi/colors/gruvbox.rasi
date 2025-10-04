@@ -1,0 +1,53 @@
+/**
+ * Gruvbox Theme
+ * A retro groove color scheme with warm earthy tones
+ * https://github.com/morhetz/gruvbox
+ */
+
+* {
+  /* Gruvbox Color Palette */
+  bg0: #282828;
+  bg1: #3c3836;
+  bg2: #504945;
+  bg3: #665c54;
+  bg4: #7c6f64;
+  fg0: #fbf1c7;
+  fg1: #ebdbb2;
+  fg2: #d5c4a1;
+  fg3: #bdae93;
+  fg4: #a89984;
+  red: #fb4934;
+  green: #b8bb26;
+  yellow: #fabd2f;
+  blue: #83a598;
+  purple: #d3869b;
+  aqua: #8ec07c;
+  orange: #fe8019;
+  gray: #928374;
+
+
+  /* Basic color aliases */
+  cyan:           @aqua;         /* Cyan color */
+  white:          @fg0;          /* White color */
+  black:          @bg0;          /* Black color */
+  gray:           @gray;         /* Gray color */
+
+
+  /* Theme Variables */
+  transparent:    #00000000;     /* Transparent color */
+
+  background:     @bg0;          /* Background Color */
+  background-alt: @bg1;          /* Alt Background Color */
+
+  foreground:     @fg1;          /* Primary text - highest contrast */
+  foreground-alt: @fg3;          /* Secondary text */
+
+  active:         @orange;         /* Active Item */
+  active-alt:     @yellow;         /* Alt Active Item */
+  disabled:       @bg3;          /* Disabled/inactive items */
+
+  urgent:         @red;          /* Urgent Item */
+  success:        @green;        /* Success Item */
+
+  separator:      @bg2;          /* Separator lines */
+}

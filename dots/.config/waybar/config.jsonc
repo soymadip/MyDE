@@ -1,0 +1,191 @@
+{
+  "layer": "top",
+  "position": "top",
+  "gtk-layer-shell": true,
+
+  "margin-top": 4,
+  "margin-bottom": 0,
+
+  // ========== Modules ===========
+
+  "modules-left": [
+    "custom/power",
+    "hyprland/workspaces",
+    "hyprland/submap",
+    "custom/music",
+  ],
+
+  "modules-center": ["clock"],
+
+  "modules-right": [
+    "tray",
+    "bluetooth",
+    "network#status",
+    "wireplumber#mic",
+    "wireplumber#speaker",
+    "backlight",
+    "battery",
+    "custom/notification",
+  ],
+
+  // ============= Module Configs =============
+
+  // TODO: ADD RIGHT CLICK TO ON/OFF SERVICE
+
+  // ------------ Left Modules ------------------
+
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout &",
+    "format": "⏻",
+  },
+
+  "hyprland/workspaces": {
+    "show-special": true,
+    "persistent-workspaces": { "*": 3 },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format": " {icon}",
+    "format-icons": {
+      "default": " ",
+    },
+  },
+
+  "hyprland/submap": {
+    "format": " {}",
+    "max-length": 50,
+    "tooltip": false,
+  },
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 35,
+  },
+
+  //-------------- Center Module ---------------
+
+  "clock": {
+    "timezone": "Asia/Kolkata",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "󰥔 {:%I:%M %p}",
+    "format-alt": "  {:%d/%m/%Y}",
+  },
+
+  //-------------- Right Modules ----------------
+
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10,
+  },
+
+  "bluetooth": {
+    "on-click": "blueman-manager",
+    "on-click-middle": "~/.config/waybar/scripts/bluetooth-toggle.sh",
+
+    "format-off": "󰂲\u2005{status}",
+    "format-connected": "󰂱\u2004{status}\u200A({num_connections})",
+    "format-on": "󰂯\u2005{status}",
+    "format-disabled": "󰂲\u2005Disabled",
+
+    "tooltip": true,
+    "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}",
+    "tooltip-format-connected": "Controller: {controller_alias}\nDevices:\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "• {device_alias} ({device_address})",
+    "tooltip-format-enumerate-connected-battery": "• {device_alias}- {device_battery_percentage}%",
+  },
+
+  "network#status": {
+    "tooltip": true,
+    "on-click": "nmgui || wezterm -e nmtui-connect",
+    "max-length": 40,
+    "interval": 30,
+
+    // "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "format-wifi": "{icon}{essid}\u200A({signalStrength}%)",
+    "format-ethernet": "  {ifname}",
+    "format-linked": "󰛵 {ifname} (No IP)",
+    "format-disconnected": "󰤮  Disconnected",
+    "format-disabled": "󰤮  Off",
+
+    "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nNetmask: {netmask}",
+    "tooltip-format-wifi": "Network: {essid}\nSignal: {signalStrength}%\nFrequency: {frequency}MHz\nIP: {ipaddr}\nGateway: {gwaddr}",
+    "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}",
+    "tooltip-format-disconnected": "Network disconnected",
+
+    "format-icons": {
+      "wifi": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+    },
+  },
+
+  "wireplumber#mic": {
+    "node-type": "Audio/Source",
+    "on-click": "pavucontrol-qt -t 4 || pavucontrol -t 4",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "scroll-step": 5,
+
+    "format": "<b></b>\u2005{volume}% ",
+    "format-muted": "󰍭",
+  },
+
+  "wireplumber#speaker": {
+    "scroll-step": 2,
+    "on-click": "pavucontrol-qt -t 3 || pavucontrol -t 3",
+    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+
+    "format": "{icon}\u2009{volume}%",
+    "format-muted": "  muted",
+    "format-bluetooth": " {volume}%",
+    "format-icons": {
+      "default": ["", "", " "],
+    },
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "on-click": "ddcui",
+    "format": "{icon}\u2002{percent}%",
+    "format-icons": ["󰃞", "󰃟", "󰃠"],
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 12,
+    },
+    "interval": 10,
+
+    "format": "{icon}\u2009{capacity}%",
+    "format-charging": "{icon}\u2002{capacity}%",
+    "format-plugged": "󱊣\u2009{capacity}%",
+    "format-icons": {
+      "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋"],
+    },
+  },
+
+  "custom/notification": {
+    "tooltip": true,
+    "escape": true,
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+
+    "format": "{icon} {text}",
+    "format-icons": {
+      "none": "",
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-notification": " <span foreground='red'><sup></sup></span>",
+      "dnd-none": "󰂛",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "󰂛<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": "󰂛",
+    },
+  },
+}
