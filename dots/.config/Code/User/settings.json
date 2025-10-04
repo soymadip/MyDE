@@ -1,0 +1,34 @@
+{
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
+  "chat.mcp.autostart": "newAndOutdated",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "workbench.layoutControl.enabled": false,
+  "editor.minimap.enabled": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "workbench.colorTheme": "Catppuccin Macchiato",
+  "catppuccin.accentColor": "maroon",
+  "workbench.sideBar.location": "right",
+  "workbench.navigationControl.enabled": false,
+  "git.autofetch": true,
+  "files.autoSave": "onFocusChange",
+  "editor.defaultFormatter": "GitHub.copilot",
+  "editor.formatOnPaste": true,
+  "editor.autoIndentOnPaste": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "terminal.integrated.confirmOnExit": "hasChildProcesses",
+  "telemetry.editStats.enabled": false,
+  "telemetry.feedback.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "window.commandCenter": false,
+  "window.menuBarVisibility": "toggle",
+  "chat.commandCenter.enabled": false,
+  "window.titleBarStyle": "native",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "git.confirmSync": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "none"
+}

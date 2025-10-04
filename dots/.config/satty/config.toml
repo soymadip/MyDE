@@ -1,0 +1,8 @@
+[general]
+copy-command = "wl-copy" # Copy Command
+save-after-copy = false  # Save file after copy
+actions-on-enter = [     # Enter button actions
+    "save-to-file",
+    "save-to-clipboard",
+    "exit"
+]

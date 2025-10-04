@@ -177,6 +177,10 @@ dots/.config/vlc/vlc-qt-interface.conf
 dots/.config/bunkus.org/mkvtoolnix-gui/*
 !dots/.config/bunkus.org/mkvtoolnix-gui/mkvtoolnix-gui.ini
 
+# Neovim
+dots/.config/nvim/.neoconf.json
+
+
 # OBS Studio
 dots/.config/obs-studio/basic/profiles/*/phld
 dots/.config/obs-studio/basic/scenes/*.json
@@ -220,11 +224,13 @@ dots/.config/YouTube Music/*
 !dots/.config/YouTube Music/config.json
 !dots/.config/YouTube Music/Preferences
 
+#xfce4
+dots/.config/xfce4/help.rc
+
 # Yazi
 dots/.config/yazi/plugins
 
 # ZSH
-dots/.config/zsh/------OLD------
 dots/.config/zsh/zinit
 dots/.config/zsh/*history*
 
@@ -232,6 +238,8 @@ dots/.config/zsh/*history*
 
 #------ Bin ------
 dots/.local/bin/*
+!dots/.local/bin/myde
+!dots/.local/bin/run-code
 !dots/.local/bin/kireisakura
 
 #------ Share ------
@@ -286,4 +294,4 @@ dots/.local/share/konsole/konsolestaterc
 dots/.local/state
 
 # ------- Misc -----
-dots/.config/nvim/.neoconf.json
+dots/.config/Ladybird/BrowserContentFilters.txt

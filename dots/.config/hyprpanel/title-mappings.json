@@ -1,0 +1,10 @@
+[
+  ["kitty", "󰄛", "Kitty Terminal"],
+  ["firefox", "󰈹", "Firefox"],
+  ["microsoft-edge.*", "󰇩", "Edge"],
+  ["discord", "", "Discord"],
+  ["org.kde.dolphin", "", "Dolphin"],
+  ["zen", "󰈹", "Zen-Browser"],
+  ["kasts", "󱝉", "Kasts"],
+  ["hyprpanel-settings", "", "Hyprpanel Settings"]
+]

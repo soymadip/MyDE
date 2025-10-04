@@ -1,0 +1,39 @@
+
+theme= Catppuccin Macchiato
+
+window-decoration    = false
+window-theme         = ghostty
+gtk-tabs-location    = top
+
+font-size= 11
+font-family = JetBrainsMono Nerd Font
+font-family-bold = JetBrainsMono NF Bold
+font-family-italic = JetBrainsMono NF Italic
+font-family-bold-italic = JetBrainsMono NF Bold Italic
+
+
+selection-background = #CF8E99
+selection-foreground = #25283A
+split-divider-color  = #D88D95
+
+background-opacity = 0.75
+background-blur    = 10
+
+cursor-color = #D88D95
+
+mouse-hide-while-typing = true
+
+
+link-url = true
+link-previews = true
+
+window-new-tab-position = current
+focus-follows-mouse = true
+
+clipboard-paste-protection = true
+
+
+focus-follows-mouse = true
+quick-terminal-position = center
+gtk-quick-terminal-layer = overlay
+shell-integration = detect
