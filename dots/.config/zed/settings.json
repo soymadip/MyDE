@@ -89,15 +89,6 @@
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true
   },
-  // ====== CONTEXT SERVERS & INTEGRATIONS ======
-  "context_servers": {
-    "mcp-server-github": {
-      "source": "extension",
-      "enabled": true,
-      "settings": {
-      }
-    }
-  },
   // ====== EXTENSIONS ======
   "auto_install_extensions": {
     "awk": true,

@@ -1,0 +1,169 @@
+#!/usr/bin/env bash
+
+# Color codes for output formatting
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+WHITE='\033[1;37m'
+NC='\033[0m' # No Color
+
+# Parse command line arguments
+file_name=""
+compiler_flags=""
+flag_mode="combine"
+do_clear=true
+
+# Check if no arguments provided
+if [[ $# -eq 0 ]]; then
+  echo -e "${RED}Usage:${NC} run-code <filename> [options]"
+  echo -e "Use ${YELLOW}--help${NC} for more information"
+  exit 1
+fi
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+  -nc | --no-clear)
+    do_clear=false
+    shift
+    ;;
+  -f=* | --flags=*)
+    compiler_flags="${1#*=}"
+    flag_mode="combine"
+    shift
+    ;;
+  -fo=* | --flags-only=*)
+    compiler_flags="${1#*=}"
+    flag_mode="override"
+    shift
+    ;;
+  -h | --help)
+    echo -e "${WHITE}Usage:${NC} ${CYAN}run-code${NC} ${GREEN}<filename>${NC} ${YELLOW}[options]${NC}"
+    echo -e "\n${WHITE}Options:${NC}"
+    echo -e "  ${YELLOW}-f=${NC}${GREEN}\"<flags>\"${NC}, ${YELLOW}--flags=${NC}${GREEN}\"<flags>\"${NC}       Combine with config flags ${GREEN}(default)${NC}"
+    echo -e "  ${YELLOW}--flags-only=${NC}${GREEN}\"<flags>\"${NC}                Override config flags with command line flags"
+    echo -e "  ${YELLOW}-h${NC}, ${YELLOW}--help${NC}                            Show this help message"
+    echo ""
+    echo -e "${WHITE}Examples:${NC}"
+    echo -e "  ${CYAN}run-code${NC} ${GREEN}main.cpp${NC} ${YELLOW}-f=${NC}${GREEN}\"-O2\"${NC}                    ${BLUE}# Adds -O2 to config flags${NC}"
+    echo -e "  ${CYAN}run-code${NC} ${GREEN}main.cpp${NC} ${YELLOW}--flags-only=${NC}${GREEN}\"-std=c++20 -O3\"${NC}  ${BLUE}# Uses only these flags${NC}"
+    echo -e "  ${CYAN}run-code${NC} ${GREEN}Hello.java${NC} ${YELLOW}-f=${NC}${GREEN}\"-Xlint:all\"${NC}"
+    echo ""
+    echo -e "${WHITE}Config file:${NC} ${PURPLE}.run-coderc${NC}"
+    echo -e "    ${BLUE}Set flags:${NC} ${CYAN}_<file_ext_in_cap>_FLAGS${NC} "
+    echo -e "               ${BLUE}Like:${NC} ${GREEN}_CPP_FLAGS=\"-std=c++17 -Wall\"${NC}"
+    echo ""
+    echo -e "    ${BLUE}Custom commands with templates:${NC}"
+    echo -e "               ${GREEN}_JAVA_CMD=\"javac {{FLAGS}} {{FILE_NAME}} && java {{BASE_NAME}}\"${NC}"
+    echo -e "    ${BLUE}Templates:${NC} ${CYAN}{{FLAGS}}${NC}, ${CYAN}{{FILE_NAME}}${NC}, ${CYAN}{{BASE_NAME}}${NC}, ${CYAN}{{EXTENSION}}${NC}"
+    exit 0
+    ;;
+  -*)
+    echo -e "${RED}Unknown option${NC} $1"
+    exit 1
+    ;;
+  *)
+    if [[ -z "$file_name" ]]; then
+      file_name="$1"
+    else
+      echo "Multiple files not supported"
+      exit 1
+    fi
+    shift
+    ;;
+  esac
+done
+
+# Check if a filename was provided
+if [[ -z "$file_name" ]]; then
+  echo -e "${RED}Error:${NC} No filename provided"
+  echo -e "Use ${YELLOW}--help${NC} for more information"
+  exit 1
+fi
+
+extension="${file_name##*.}"
+name_without_ext="${file_name%.*}"
+
+# Function to expand command template
+expand() {
+  local cmd_var_name="$1"
+  local cmd="${!cmd_var_name}"
+  local lang_flags=""
+  local final_flags=""
+
+  # Extract language from command variable name (e.g., _CPP_CMD -> CPP -> _CPP_FLAGS)
+  if [[ "$cmd_var_name" =~ ^_([A-Z]+)_CMD$ ]]; then
+    local lang="${BASH_REMATCH[1]}"
+    local flags_var="_${lang}_FLAGS"
+    lang_flags="${!flags_var}"
+  fi
+
+  # Determine final flags based on mode
+  if [[ "$flag_mode" == "override" && -n "$compiler_flags" ]]; then
+    final_flags="$compiler_flags"
+  else
+    final_flags="$lang_flags $compiler_flags"
+  fi
+
+  # Replace template variables
+  cmd="${cmd//\{\{FLAGS\}\}/$final_flags}"
+  cmd="${cmd//\{\{FILE_NAME\}\}/$file_name}"
+  cmd="${cmd//\{\{BASE_NAME\}\}/$name_without_ext}"
+  cmd="${cmd//\{\{EXTENSION\}\}/$extension}"
+
+  echo "$cmd"
+}
+
+# Default commands (can be overridden in .run-coderc)
+_PY_CMD="$(command -v uv &>/dev/null && echo uv run || echo python3) {{FILE_NAME}}"
+_JS_CMD="node {{FILE_NAME}}"
+_RB_CMD="ruby {{FILE_NAME}}"
+_GO_CMD="go run {{FILE_NAME}}"
+_JAVA_CMD="javac {{FLAGS}} {{FILE_NAME}} && java {{BASE_NAME}}; [ -f {{BASE_NAME}} ] &&  rm {{BASE_NAME}}.class"
+_C_CMD="gcc      {{FLAGS}} {{FILE_NAME}} -o {{BASE_NAME}} && ./{{BASE_NAME}}; [ -f {{BASE_NAME}} ] && rm {{BASE_NAME}}"
+_CPP_CMD="g++    {{FLAGS}} {{FILE_NAME}} -o {{BASE_NAME}} && ./{{BASE_NAME}}; [ -f {{BASE_NAME}} ] && rm {{BASE_NAME}}"
+_RS_CMD="rustc   {{FLAGS}} {{FILE_NAME}} -o {{BASE_NAME}} && ./{{BASE_NAME}}; [ -f {{BASE_NAME}} ] && rm {{BASE_NAME}}"
+
+# =========== Include Local Config ============
+
+[ -f "$XDG_CONFIG_HOME/run-code/config" ] && source "$XDG_CONFIG_HOME/run-code/config"
+[ -f ".run-coderc" ] && source ".run-coderc"
+
+# =============== Run Code ================
+
+if $do_clear; then
+  clear
+fi
+
+case "$extension" in
+"py")
+  eval "$(expand "_PY_CMD")"
+  ;;
+"js")
+  eval "$(expand "_JS_CMD")"
+  ;;
+"java")
+  eval "$(expand "_JAVA_CMD")"
+  ;;
+"c")
+  eval "$(expand "_C_CMD")"
+  ;;
+"cpp")
+  eval "$(expand "_CPP_CMD")"
+  ;;
+"rb")
+  eval "$(expand "_RB_CMD")"
+  ;;
+"go")
+  eval "$(expand "_GO_CMD")"
+  ;;
+"rs")
+  eval "$(expand "_RS_CMD")"
+  ;;
+*)
+  echo -e "${RED}Unsupported language.${NC}"
+  exit 1
+  ;;
+esac
