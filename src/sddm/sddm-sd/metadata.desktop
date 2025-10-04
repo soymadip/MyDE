@@ -1,0 +1,15 @@
+[SddmGreeterTheme]
+Name=sddm-sd
+Description=sddm-sd-theme
+Author=soymadip
+Website=https://github.com/soymadip/Dotfiles
+License=GPL-3.0-or-later
+Type=sddm-theme
+Version=1.1
+ConfigFile=Themes/theme1.conf
+Screenshot=Previews/preview1.png
+MainScript=Main.qml
+TranslationsDirectory=translations
+Theme-Id=sddm-sd
+Theme-API=2.0
+QtVersion=6

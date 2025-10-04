@@ -4,7 +4,7 @@
 #  | (_| | | |_| | (_| | | | | (_) | | |  __/
 # (_)__, |_|\__|_|\__, |_| |_|\___/|_|  \___|
 #   |___/         |___/
-
+#
 # As we need to filter out any sensitive/unnecessary information
 # form posting in our dotfiles repo.
 
@@ -38,250 +38,252 @@ nohup.*
 #___________ Home Directory ($HOME) ____________
 
 # Firefox and Forks
-/.librewolf/*/*
-!/.librewolf/*/chrome
-!/.librewolf/*/addons.json
-!/.librewolf/*/containers.json
-!/.librewolf/*/extension*.json
-!/.librewolf/*/handlesr.json
-!/.librewolf/*/prefs.js
-!/.librewolf/*/shield-preference-experiments.json
-!/.librewolf/*/xulstore.json
-!/.librewolf/*/handlers.json
+dots/.librewolf/*/*
+!dots/.librewolf/*/chrome
+!dots/.librewolf/*/addons.json
+!dots/.librewolf/*/containers.json
+!dots/.librewolf/*/extension*.json
+!dots/.librewolf/*/handlesr.json
+!dots/.librewolf/*/prefs.js
+!dots/.librewolf/*/shield-preference-experiments.json
+!dots/.librewolf/*/xulstore.json
+!dots/.librewolf/*/handlers.json
 
-/.mozilla/firefox/*
+dots/.mozilla/firefox/*
 
 # Icons
-/.icons/default
+dots/.icons/default
 
 # Pictures
-/Pictures/*
-!/Pictures/Wallpaper
+dots/Pictures
 
 # Zen Browser
-/.zen/*/*
-!/.zen/*/chrome
-!/.zen/*/chrome/zen-themes.css
-!/.zen/*/addons.json
-!/.zen/*/containers.json
-!/.zen/*/extension*.json
-!/.zen/*/handlers.json
-!/.zen/*/prefs.js
-!/.zen/*/shield-preference-experiments.json
-!/.zen/*/xulstore.json
-!/.zen/*/zen-themes.json
-!/.zen/*/zen-keyboard-shortcuts.json
-!/.zen/*/zen-workspaces
+dots/.zen/*/*
+!dots/.zen/*/chrome
+!dots/.zen/*/chrome/zen-themes.css
+!dots/.zen/*/addons.json
+!dots/.zen/*/containers.json
+!dots/.zen/*/extension*.json
+!dots/.zen/*/handlers.json
+!dots/.zen/*/prefs.js
+!dots/.zen/*/shield-preference-experiments.json
+!dots/.zen/*/xulstore.json
+!dots/.zen/*/zen-themes.json
+!dots/.zen/*/zen-keyboard-shortcuts.json
+!dots/.zen/*/zen-workspaces
 
 #___________ .cache Directory ____________
 
 # AGS Cache
-!/.cache
-/.cache/*
-!/.cache/ags
-!/.cache/.placeholder
-/.cache/ags/*
-!/.cache/ags/hyprpanel
+!dots/.cache
+dots/.cache/*
+!dots/.cache/ags
+!dots/.cache/.placeholder
+dots/.cache/ags/*
+!dots/.cache/ags/hyprpanel
 
 #___________ .config Directory ____________
 
 # Standalone files
-/.config/*partrc
-/.config/baloofileinformationrc
-/.config/kactivitymanagerdrc
-/.config/knfsshare
-/.config/ktorrent_infowidgetrc
-/.config/QtProject.conf
-/.config/user-dirs.locale
+dots/.config/*partrc
+dots/.config/baloofileinformationrc
+dots/.config/kactivitymanagerdrc
+dots/.config/knfsshare
+dots/.config/ktorrent_infowidgetrc
+dots/.config/QtProject.conf
+dots/.config/user-dirs.locale
 
 # Brave Browser
-/.config/BraveSoftware/Brave-Browser/*
-!/.config/BraveSoftware/Brave-Browser/Default/Preferences
-!/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts
+dots/.config/BraveSoftware/Brave-Browser/*
+!dots/.config/BraveSoftware/Brave-Browser/Default/Preferences
+!dots/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts
 
 # Chromium
-/.config/chromium/
+dots/.config/chromium/
 
 # CopyQ
-/.config/copyq/*
-!/.config/copyq/copyq.conf
-!/.config/copyq/copyq*.ini
+dots/.config/copyq/*
+!dots/.config/copyq/copyq.conf
+!dots/.config/copyq/copyq-commands.ini
 
 # Dconf
-/.config/dconf
+dots/.config/dconf
 
 # Discord canary
-/.config/discordcanary
+dots/.config/discordcanary
 
 # Enchant
-/.config/enchant
+dots/.config/enchant
 
 # Geany
-/.config/geany/
+dots/.config/geany/
 
 # GitHub CLI (gh)
-/.config/gh/*
-!/.config/gh/config.yml
+dots/.config/gh/*
+!dots/.config/gh/config.yml
 
 # HandBrake (ghb)
-/.config/ghb/*
-!/.config/ghb/preferences.json
-!/.config/ghb/presets.json
+dots/.config/ghb/*
+!dots/.config/ghb/preferences.json
+!dots/.config/ghb/presets.json
 
 # gimp
-/.config/GIMP/2.10/*
-!/.config/GIMP/**/themes
-!/.config/GIMP/**/*rc
+dots/.config/GIMP/**/backups
+dots/.config/GIMP/**/CrashLog
+dots/.config/GIMP/**/internal-data
+dots/.config/GIMP/**/fonts
+dots/.config/GIMP/**/action-history
+dots/.config/GIMP/**/sessionrc
+dots/.config/GIMP/**/unitrc
+dots/.config/GIMP/**/pluginrc
+dots/.config/GIMP/**/parasiterc
+dots/.config/GIMP/**/dockrc
 
 # Github Copilot
-/.config/GitHub Desktop/*
-!/.config/GitHub Desktop/.title-bar-config
-!/.config/GitHub Desktop/Preferences
+dots/.config/GitHub Desktop/*
+!dots/.config/GitHub Desktop/.title-bar-config
+!dots/.config/GitHub Desktop/Preferences
 
 # Github Copilot
-/.config/github-copilot
+dots/.config/github-copilot
 
 # GNOME
-/.config/gnome-boxes
+dots/.config/gnome-boxes
 
 # Go
-/.config/go
-
-# Hypr
-/.config/HyprPanel
+dots/.config/go
 
 # KDE
-/.config/KDE/UserFeedback*
-/.config/kde*/UserFeedback*
-/.config/kdeconnect
+dots/.config/KDE/UserFeedback*
+dots/.config/kde*/UserFeedback*
+dots/.config/kdeconnect
 
 # LibreOffice
-/.config/libaccounts-glib
-/.config/libvirt
-/.config/libreoffice/4/*
-!/.config/libreoffice/4/user
-/.config/libreoffice/4/user/*
-!/.config/libreoffice/4/user/pack
-/.config/libreoffice/4/user/pack/registrymodifications.pack
-!/.config/libreoffice/4/user/registrymodifications.xcu
+dots/.config/libaccounts-glib
+dots/.config/libvirt
+dots/.config/libreoffice/4/*
+!dots/.config/libreoffice/4/user
+dots/.config/libreoffice/4/user/*
+!dots/.config/libreoffice/4/user/pack
+dots/.config/libreoffice/4/user/pack/registrymodifications.pack
+!dots/.config/libreoffice/4/user/registrymodifications.xcu
 
 # Media Players
-/.config/mpv/playlists
-/.config/mpv/watch_later
-/.config/vlc/vlc-qt-interface.conf
+dots/.config/mpv/playlists
+dots/.config/mpv/watch_later
+dots/.config/vlc/vlc-qt-interface.conf
 
 # MKVToolNix
-/.config/bunkus.org/mkvtoolnix-gui/*
-!/.config/bunkus.org/mkvtoolnix-gui/mkvtoolnix-gui.ini
+dots/.config/bunkus.org/mkvtoolnix-gui/*
+!dots/.config/bunkus.org/mkvtoolnix-gui/mkvtoolnix-gui.ini
 
 # OBS Studio
-/.config/obs-studio/basic/profiles/*/phld
-/.config/obs-studio/basic/scenes/*.json
-/.config/obs-studio/plugin_config
-/.config/obs-studio/profiler_data
-/.config/obs-studio/basic/scenes/Untitled.json.bak
+dots/.config/obs-studio/basic/profiles/*/phld
+dots/.config/obs-studio/basic/scenes/*.json
+dots/.config/obs-studio/plugin_config
+dots/.config/obs-studio/profiler_data
+dots/.config/obs-studio/basic/scenes/Untitled.json.bak
 
 # Obsidian
-/.config/obsidian/*
+dots/.config/obsidian/*
 
 # Spicetify
-/.config/spicetify/CustomApps
-/.config/spicetify/Extracted
+dots/.config/spicetify/CustomApps
+dots/.config/spicetify/Extracted
 
 # VirtualBox
-/.config/VirtualBox/*
-!/.config/VirtualBox/VirtualBox.xml
+dots/.config/VirtualBox/*
+!dots/.config/VirtualBox/VirtualBox.xml
 
 # VS Code and Forks
-/.config/Code/*
-/.config/Code/User/*
-!/.config/Code/Preferences
-!/.config/Code/User
-!/.config/Code/User/keybindings.json
-!/.config/Code/User/settings.json
-!/.config/Code/User/snippets
+dots/.config/Code/*
+dots/.config/Code/User/*
+!dots/.config/Code/Preferences
+!dots/.config/Code/User
+!dots/.config/Code/User/keybindings.json
+!dots/.config/Code/User/settings.json
+!dots/.config/Code/User/snippets
 
-/.config/VSCodium/*
-/.config/VSCodium/User/*
-!/.config/VSCodium/Preferences
-!/.config/VSCodium/User
-!/.config/VSCodium/User/keybindings.json
-!/.config/VSCodium/User/settings.json
-!/.config/VSCodium/User/snippets
+dots/.config/VSCodium/*
+dots/.config/VSCodium/User/*
+!dots/.config/VSCodium/Preferences
+!dots/.config/VSCodium/User
+!dots/.config/VSCodium/User/keybindings.json
+!dots/.config/VSCodium/User/settings.json
+!dots/.config/VSCodium/User/snippets
 
 # WebCord
-/.config/WebCord/*
+dots/.config/WebCord/*
 
 # Youtube Music
-/.config/YouTube Music/*
-!/.config/YouTube Music/config.json
-!/.config/YouTube Music/Preferences
+dots/.config/YouTube Music/*
+!dots/.config/YouTube Music/config.json
+!dots/.config/YouTube Music/Preferences
 
 # Yazi
-/.config/yazi/plugins
+dots/.config/yazi/plugins
 
 # ZSH
-/.config/zsh/------OLD------
-/.config/zsh/zinit
-/.config/zsh/*history*
+dots/.config/zsh/------OLD------
+dots/.config/zsh/zinit
+dots/.config/zsh/*history*
 
 #___________ .local Directory ____________
 
 #------ Bin ------
-/.local/bin/*
-!/.local/bin/kireisakura
+dots/.local/bin/*
+!dots/.local/bin/kireisakura
 
 #------ Share ------
-/.local/share/*
+dots/.local/share/*
 
-!/.local/share/applications
-!/.local/share/firefoxpwa
-!/.local/share/konsole
-!/.local/share/media-downloader
-!/.local/share/nwg-look
-!/.local/share/onboard
-!/.local/share/ss
-!/.local/share/templates
-!/.local/share/color-schemes
+!dots/.local/share/applications
+!dots/.local/share/firefoxpwa
+!dots/.local/share/konsole
+!dots/.local/share/media-downloader
+!dots/.local/share/nwg-look
+!dots/.local/share/onboard
+!dots/.local/share/ss
+!dots/.local/share/templates
+!dots/.local/share/color-schemes
 
 # Qalculate
-!/.local/share/qalculate
-.config/qalculate/*.history
+!dots/.local/share/qalculate
+dots/.config/qalculate/*.history
 
 # 64Gram
-/.local/share/64Gram/logs*
-/.local/share/64Gram/tdata/*
-!/.local/share/64Gram/tdata/enhanced-settings-custom.json
-!/.local/share/64Gram/tdata/shortcuts-custom.json
+dots/.local/share/64Gram/logs*
+dots/.local/share/64Gram/tdata/*
+!dots/.local/share/64Gram/tdata/enhanced-settings-custom.json
+!dots/.local/share/64Gram/tdata/shortcuts-custom.json
 
 # Dolphin and KDE apps
-/.local/share/dolphin/kuserfeedback
-/.local/share/dolphin/bookmarks.xml
-/.local/share/konsole/bookmarks.xml
+dots/.local/share/dolphin/kuserfeedback
+dots/.local/share/dolphin/bookmarks.xml
+dots/.local/share/konsole/bookmarks.xml
 
 # Flatpak
-/.local/share/flatpak/*
-!/.local/share/flatpak/overrides
+dots/.local/share/flatpak/*
+!dots/.local/share/flatpak/overrides
 
 # Media Downloader
-/.local/share/media-downloader/bin
-/.local/share/media-downloader/data
-/.local/share/media-downloader/engines.v1
+dots/.local/share/media-downloader/bin
+dots/.local/share/media-downloader/data
+dots/.local/share/media-downloader/engines.v1
 
 # Plasma Desktop
-/.local/share/plasma/containmentpreviews
-/.local/share/plasma/plasmoids
-/.local/share/plasma/desktoptheme/Colloid-dark-nord
-/.local/share/plasma/desktoptheme/N-Plasma-Theme
-/.local/share/plasma/desktoptheme/Nordic-round
-/.local/share/plasma/desktoptheme/Nordic-Solid
-/.local/share/plasma/desktoptheme/Wings-Dark-Plasma
-/.local/share/plasma/look-and-feel
-/.local/share/konsole/konsolestaterc
+dots/.local/share/plasma/containmentpreviews
+dots/.local/share/plasma/plasmoids
+dots/.local/share/plasma/desktoptheme/Colloid-dark-nord
+dots/.local/share/plasma/desktoptheme/N-Plasma-Theme
+dots/.local/share/plasma/desktoptheme/Nordic-round
+dots/.local/share/plasma/desktoptheme/Nordic-Solid
+dots/.local/share/plasma/desktoptheme/Wings-Dark-Plasma
+dots/.local/share/plasma/look-and-feel
+dots/.local/share/konsole/konsolestaterc
 
 # ------ state -----
-/.local/state
+dots/.local/state
 
 # ------- Misc -----
-.config/copyq/copyq_no_session.ini
-.config/nvim/.neoconf.json
+dots/.config/nvim/.neoconf.json

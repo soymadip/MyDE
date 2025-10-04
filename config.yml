@@ -1,0 +1,8 @@
+# KireiSakura Kit Config File
+# Should be renamed to ksconfig.yml
+
+Project:
+  name: "MyDE"
+  owner: soymadip
+  repo_url: https://github.com/soymadip/MyDE
+

@@ -1,7 +1,8 @@
 README.md
-^/LICENCE.*
-^/COPYING
-/.git 
+/nohup.out
+/LICENSE
+/COPYING
+/.git
 /.gitignore
 /.gitmodules
 /.prettierignore
@@ -10,4 +11,5 @@ README.md
 /init-install.log
 /src
 /.librewolf
-/*.out
+/.zed
+/keybinds.md
