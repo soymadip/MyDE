@@ -36,7 +36,7 @@ jobs:
       - name: Compile docs
         run: |
           echo "Compiling documentation..."
-          cd docs
+          cd doc
           uv run mkdocs build --site-dir ../build
           echo "Documentation compiled successfully."
 
