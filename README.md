@@ -2,6 +2,7 @@
 
 <div align="center">
   <br>
+    <img src="./src/img/icon.png"  style="height:125px">
   <h1 style="color:#f594a0">
     ⚙️ MyDE 🔧
   </h1>
