@@ -1,0 +1,54 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    paths:
+      - ".github/workflows/doploy-docs.yml"
+      - "docs/**"
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install UV
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "docs/pyproject.toml"
+
+      - name: Install Dependencies
+        run: |
+          echo "Installing dependencies..."
+          uv pip install -r docs/pyproject.toml --system
+          echo "Dependencies installed successfully."
+
+      - name: Compile docs
+        run: |
+          echo "Compiling documentation..."
+          cd docs
+          uv run mkdocs build --site-dir ../build
+          echo "Documentation compiled successfully."
+
+      - name: Create .nojekyll & README file
+        run: |
+          touch build/.nojekyll
+          echo '<h1 align="center">THIS BRANCH IS AUTO-GENERATED</h1>' > build/README.md
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build
+          branch: docs

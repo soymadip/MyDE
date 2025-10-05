@@ -11,7 +11,7 @@
 
 # ======================== Config ===========================
 
-KEYBINDS_FILE="$HOME/MyDE/src/keybinds.md"
+KEYBINDS_FILE="$HOME/MyDE/doc/docs/keybinds.md"
 
 ROFI_BIN_DIR="$HOME/.config/rofi/bin"
 
@@ -36,10 +36,12 @@ help_menu() {
             echo "    help         Show this help message"
             echo "    keybinds     Show keybinds in rofi"
             echo "    powermenu    Show power menu in rofi"
+            echo "    performance  Show power profile selector in rofi"
             echo ""
             echo "Examples:"
-            echo "    myde show keybinds   # Display keybinds in rofi"
-            echo "    myde show help       # Show show command help"
+            echo "    myde show keybinds     # Display keybinds in rofi"
+            echo "    myde show performance  # Show power profile selector"
+            echo "    myde show help         # Show show command help"
             ;;
         reload)
             echo "Description:"
@@ -56,6 +58,27 @@ help_menu() {
             echo "    myde set <option>    # Set a specific option (not yet implemented)"
             echo "    myde set help        # Show set command help"
             ;;
+        performance)
+            echo "Available subcommands:"
+            echo "    list           List all available power profiles"
+            echo "    get            Get current active power profile"
+            echo "    status         Get current profile with formatted output"
+            echo "    set <profile>  Set power profile (performance|balanced|power-saver)"
+            echo "    toggle         Toggle between power profiles"
+            echo "    selector       Show interactive profile selector (requires rofi)"
+            echo "    animations     Reapply current profile animations"
+            echo "    minimal        Switch to minimal animations (ultra power-saving)"
+            echo "    help           Show this help message"
+            echo ""
+            echo "Examples:"
+            echo "    myde performance get                     # Show current profile"
+            echo "    myde performance set performance        # Set to performance mode"
+            echo "    myde performance toggle                 # Toggle to next profile"
+            echo "    myde performance selector               # Show rofi selector"
+            echo "    myde performance minimal                # Ultra power-saving mode"
+            echo ""
+            echo "Note: Animations automatically sync with power profiles for visual feedback"
+            ;;
         *)
             echo
             echo "MyDE Controller - Control various functions of MyDE"
@@ -63,14 +86,17 @@ help_menu() {
             echo "Usage: myde <command|flags> [subcommand]"
             echo ""
             echo "Available commands:"
-            echo "    show      Show information"
-            echo "    reload    Reload MyDE configuration"
-            echo "    set       Set configuration options (not yet implemented)"
+            echo "    show         Show information"
+            echo "    reload       Reload MyDE configuration"
+            echo "    performance  Manage power profiles with dynamic animations"
+            echo "    set          Set configuration options (not yet implemented)"
             echo ""
             echo "Examples:"
-            echo "    myde show keybinds    # Show keybinds menu"
-            echo "    myde show powermenu   # Show power menu"
-            echo "    myde reload           # Reload MyDE config"
+            echo "    myde show keybinds          # Show keybinds menu"
+            echo "    myde show powermenu         # Show power menu"
+            echo "    myde reload                 # Reload MyDE config"
+            echo "    myde performance toggle     # Toggle power profile (animations sync)"
+            echo "    myde performance selector   # Show power profile selector"
             echo ""
             echo "Use 'myde <command> help' for command-specific help."
             ;;
@@ -121,6 +147,9 @@ case "$1" in
             powermenu)
                 run_script "${ROFI_BIN_DIR}/power-menu.sh"
                 ;;
+            performance)
+                run_script "${ROFI_BIN_DIR}/performance.sh"
+                ;;
             help|*)
                 help_menu "show"
                 ;;
@@ -150,6 +179,12 @@ case "$1" in
                 echo "Not yet Implemented" >&2
                 ;;
         esac
+        ;;
+
+    performance)
+        shift
+        import_lib "performance.sh"
+        performance_main "$@"
         ;;
 
     -h|--help)

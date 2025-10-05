@@ -1,7 +1,13 @@
+---
+title: KeyBinds
+description: Available Keyboard Shortcuts
+icon: material/keyboard
+---
+
 <h1><center>Available Keybinds in HyprDE</center></h1>
 <br>
 
-## 1. Most Important Keybinds
+## Most Important Keybinds
 
 | Keybind         | Action               |
 | :-------------- | :------------------- |
@@ -12,7 +18,7 @@
 
 ---
 
-## 2. Default Apps
+## Default Apps
 
 | Keybind                     | Action                          |
 | :-------------------------- | :------------------------------ |
@@ -27,7 +33,7 @@
 
 ---
 
-## 3. ScreenShot
+## ScreenShot
 
 | Keys                       | Action                      |
 | :------------------------- | :-------------------------- |
@@ -37,7 +43,7 @@
 
 ---
 
-## 4. Window Management
+## Window Management
 
 | Keys             | Action                                  |
 | :--------------- | :-------------------------------------- |
@@ -48,7 +54,7 @@
 
 ---
 
-## 5. Window Grouping
+## Window Grouping
 
 | Keys                      | Action                         |
 | :------------------------ | :----------------------------- |
@@ -58,7 +64,7 @@
 
 ---
 
-## 6. Window Focus
+## Window Focus
 
 | Keys          | Action                         |
 | :------------ | :----------------------------- |
@@ -69,7 +75,7 @@
 
 ---
 
-## 7. Move Windows
+## Move Windows
 
 | Keys                          | Action                                                 |
 | :---------------------------- | :----------------------------------------------------- |
@@ -86,7 +92,7 @@
 
 ---
 
-## 8. Resize Windows
+## Resize Windows
 
 | Keys                           | Action                      |
 | :----------------------------- | :-------------------------- |
@@ -96,9 +102,7 @@
 | `Super` + `Ctrl` + `H`         | Resize window **left**      |
 | `Super` + `Ctrl` + `L`         | Resize window **right**     |
 
-<br>
-
-## 8.5 With Resize Mode
+### With Resize Mode
 
 | Keys                | Action                      |
 | :------------------ | :-------------------------- |
@@ -111,7 +115,7 @@
 
 ---
 
-## 9. Workspace Management
+## Workspace Management
 
 | Keys                          | Action                           |
 | :---------------------------- | :------------------------------- |
@@ -124,7 +128,7 @@
 
 ---
 
-## 10. Audio & Media Controls
+## Audio & Media Controls
 
 | Keys            | Action                 |
 | :-------------- | :--------------------- |
@@ -137,7 +141,7 @@
 
 ---
 
-## 11. Screen Brightness
+## Screen Brightness
 
 | Keys              | Action                 |
 | :---------------- | :--------------------- |
@@ -146,7 +150,7 @@
 
 ---
 
-## 12. Performance Profile Management
+## Performance Profile Management
 
 | Keys           | Action                                  |
 | :------------- | :-------------------------------------- |

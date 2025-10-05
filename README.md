@@ -145,7 +145,7 @@ I try to stick to some basic rules for my binds :-
 **For List of all keybinds** :-
 
 1. Press `Super + /` in a MyDE installation.
-2. You can find written list [here](./src/keybinds.md).
+2. A written list can be found [here](https://soymadip.github.io/MyDE/keybinds/).
 
 </br>
 
