@@ -123,7 +123,7 @@
 
   "wireplumber#mic": {
     "node-type": "Audio/Source",
-    "on-click": "pavucontrol-qt -t 4 || pavucontrol -t 4",
+    "on-click": "pavucontrol-qt -t 4",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
     "scroll-step": 5,
 
@@ -133,10 +133,10 @@
 
   "wireplumber#speaker": {
     "scroll-step": 2,
-    "on-click": "pavucontrol-qt -t 3 || pavucontrol -t 3",
+    "on-click": "pavucontrol-qt -t 3",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
 
-    "format": "{icon}\u2009{volume}%",
+    "format": "{icon}\u2004{volume}%",
     "format-muted": "  muted",
     "format-bluetooth": " {volume}%",
     "format-icons": {

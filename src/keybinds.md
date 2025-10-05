@@ -145,3 +145,11 @@
 | `Brightness Down` | Decrease brightness 5% |
 
 ---
+
+## 12. Performance Profile Management
+
+| Keys           | Action                                  |
+| :------------- | :-------------------------------------- |
+| `Super` + `F3` | Show performance profile selector (WIP) |
+
+---

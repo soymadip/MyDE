@@ -1,15 +1,21 @@
 [Appearance]
 ColorScheme=Catppuccin Macchiato Maroon
+articleFontUseSystem=false
 showTrayIcon=true
 trayIconType=Light
 
 [General]
-autoFeedUpdateInterval=12
+articleFontSize=12
+autoFeedUpdateInterval=24
 autoQueue=false
+prioritizeStreaming=true
 refreshOnStartup=true
 
 [Network]
+allowMeteredEpisodeDownloads=true
 allowMeteredFeedUpdates=true
+allowMeteredImageDownloads=true
+allowMeteredStreaming=true
 
 [Playback Settings]
 mediabackend=Vlc

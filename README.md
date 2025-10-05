@@ -14,7 +14,7 @@
 
 <div align="center">
   <div>
-    <img src="./src/img/desktop.png" alt="1" width="45%" >  
+    <img src="./src/img/desktop.png" alt="1" width="45%" >
   </div>
   <div>
     <img src="./src/img/kitty.png" alt="1"  width="45%">
@@ -57,7 +57,6 @@
 <details>
   <summary>GUI Apps</summary>
 
-  
 - **WezTerm --** Default _Terminal_ App.
 - **Dolphin --** _File Manager_.
 - **Okular --** Document Viewer.
@@ -93,7 +92,7 @@
 - **Nu Shell --** The modern Shell
 - **yazi --** Terminal file manager.
 - **zathura --** lightweight document viewer.
-- **NeoVim --** [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor)) with lua support.
+- **NeoVim --** [Vim](<https://en.wikipedia.org/wiki/Vim_(text_editor)>) with lua support.
 - **Stow --** Utlity to easily symlink configs.
 - **Yt-dlp --** Download video from [1000+](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md) websites.
 - **eza --** Rewrite of GNU `ls` with lots of added features like colors, icons etc.
@@ -108,7 +107,7 @@
 
 </details>
 
-<details> 
+<details>
   <summary>Hyprland Utils</summary>
 
 - **Hyprpicker --** Wayland color picker that does not suck.
@@ -152,6 +151,8 @@ I try to stick to some basic rules for my binds :-
 
 <h2 align="center">-----: ⚠️ :-----</h2>
 
+- Various functions of MyDE depends on various scripts, utils. Removing any of them may break some functionality.<br>
+  So DO NOT TRY TO CHANGE THINGS MANUALLY unless you know what you are doing.
 - Install script is not yet totally ready, I am working on it's [dependency library](https://soymadip.github.io/KireiSakura-Kit) which is pretty close to being workable.
 
 </br>
