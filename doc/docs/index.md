@@ -16,16 +16,15 @@ search:
 </div>
 <br>
 
-<!--## :material-lightning-bolt-outline: **Features**
+## :material-lightning-bolt-outline: **Features**
 
-- **Written in bash**, can be used in POSIX[^1] shell scripts.
-- **Config file support**, customize your kit your way.
-- **Vast built-in methods**, no need to write from scratch.
-- **Log support**, with various levels.
-- **Mudular**, import only stuff you need.
-- **Packages**, extend functionality by installing from internet.
-- Various **UI elements**, more coming.
-- See [Roadmap](./roadmap.md) for upcoming features.
--->
+- **Dynamic Tiling** - Modern Wayland compositor with dynamic tiling
+- **Easy Customization** - Built-in Theme switcher
+- **Keyboard Centric** - Extensive key bindings for efficient navigation
+- **Beautiful Themes** - Consistent theming across GTK/QT applications
+- **Comprehensive App Suite** - Browsers, terminals, file managers, and productivity tools
+- **Development Ready** - Zed, Neovim, VS Code, & Git integration
+- **Security & Privacy** - Password management and privacy-focused defaults
+- **System Optimization** - Performance tuning and hardware acceleration
 
 <br><br>

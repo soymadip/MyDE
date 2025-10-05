@@ -5,7 +5,9 @@ icon: material/keyboard
 ---
 
 <h1><center>Available Keybinds in HyprDE</center></h1>
-<br>
+
+!!! info
+    Keybinds Hint can be accessed by pressing `Super + /`.
 
 ## Most Important Keybinds
 
