@@ -151,7 +151,8 @@ I try to stick to some basic rules for my binds :-
 
 <h2 align="center">-----: ⚠️ :-----</h2>
 
-- Various functions of MyDE depends on various scripts, utils. Removing any of them may break some functionality.<br>
+- Various functions of MyDE depends on various scripts, utils.<br>
+  Removing/tinkering any of them may break some other functionality.<br>
   So DO NOT TRY TO CHANGE THINGS MANUALLY unless you know what you are doing.
 - Install script is not yet totally ready, I am working on it's [dependency library](https://soymadip.github.io/KireiSakura-Kit) which is pretty close to being workable.
 
