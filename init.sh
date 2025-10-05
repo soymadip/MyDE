@@ -5,7 +5,10 @@
 
 current_dir=$(basename "$(pwd)")
 
-[ "$current_dir" != "MyDE" ] && echo "Please Run Installer within the MyDE dir root." && exit 1
+[ "$current_dir" != "MyDE" ] && {
+    echo "Please Run Installer within the MyDE dir root.";
+    exit 1
+}
 
 ln -s src/.directory .directory
 

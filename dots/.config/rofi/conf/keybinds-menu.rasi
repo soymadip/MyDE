@@ -80,7 +80,7 @@ listview {
 }
 
 element {
-    background-color: @background;
+    background-color: inherit;
     text-color: @foreground;
     padding: 4.5px 16px;
     border-radius: 1px;

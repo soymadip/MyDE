@@ -105,7 +105,7 @@
     "lua": true,
     "marksman": true,
     "make": true,
-    "mcp-server-github": true,
+    // "mcp-server-github": true,
     "nix": true,
     "php": true,
     "scheme": true,

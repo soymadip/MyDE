@@ -32,14 +32,14 @@ _CONFIG_PATH="$_CONFIG_DIR/config.rasi"
 
 cat > "${_CONFIG_PATH}" << EOF
 
-@import "~/.config/rofi/colors/${_THEME_NAME}.rasi"
-
 * {
     font: "${_FONT_NAME} ${_FONT_SIZE}";
     font-bold: "${_BOLD_FONT_NAME} ${_FONT_SIZE}";
 
     border-radius: 6px;
 }
+
+@import "~/.config/rofi/colors/${_THEME_NAME}.rasi"
 EOF
 
 echo "Theme configuration written to ${_CONFIG_PATH}"
