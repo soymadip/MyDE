@@ -137,5 +137,10 @@
         // "arguments": ["--experimental-modules-support"]
       }
     }
+  },
+  "languages": {
+    "Markdown": {
+      "formatter": "language_server"
+    }
   }
 }
