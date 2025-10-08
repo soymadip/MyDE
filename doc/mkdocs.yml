@@ -5,12 +5,14 @@ site_url: &SITE_URL https://soymadip.github.io/MyDE
 
 repo_url: &REPO_URL https://gitHub.com/soymadip/MyDE
 repo_name: soymadip/MyDE
-edit_uri: edit/main/docs/docs
+edit_uri: edit/main/doc/docs
 
 nav:
   - Home: index.md
-  - Configuration: init.md
-  - keybinds.md
+  - init.md
+  - Configuration:
+      - config/index.md
+      - config/keybinds.md
   - faq.md
   - roadmap.md
   - contributing.md

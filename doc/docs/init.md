@@ -1,5 +1,5 @@
 ---
-title: Initialization
+title: Installation
 icon: material/rocket-launch
-description: Install MyDE
+description: Install MyDE in you System
 ---
