@@ -23,7 +23,6 @@
 *Storage*
 *database*
 *.log
-*log*
 *tmp
 *.tmp*
 *LICENSE*
