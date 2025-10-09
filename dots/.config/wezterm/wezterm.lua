@@ -19,7 +19,7 @@ local conf = {
 		"sleep",
 	},
 
-	enable_scroll_bar = false, -- doesn't have option to show only if needed.
+	enable_scroll_bar = true,
 	scrollback_lines = 10000,
 
 	window_padding = {

@@ -11,12 +11,14 @@
   "use_system_prompts": false,
   "load_direnv": "shell_hook",
   "multi_cursor_modifier": "cmd_or_ctrl",
+
   // ====== FONTS & TYPOGRAPHY ======
   "ui_font_family": "Ubuntu Nerd Font Propo",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_weight": 300,
   "buffer_line_height": "standard",
   "buffer_font_size": 14.5,
+
   // ====== UI LAYOUT & PANELS ======
   "project_panel": {
     "dock": "right",
@@ -33,6 +35,7 @@
   "active_pane_modifiers": {
     "inactive_opacity": 0.9
   },
+
   // ====== TABS & NAVIGATION ======
   "tabs": {
     "file_icons": true,
@@ -83,8 +86,8 @@
       "model": "claude-sonnet-4"
     },
     "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "provider": "zed.dev",
+      "model": "gpt-5"
     },
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true
@@ -93,7 +96,7 @@
   "auto_install_extensions": {
     "awk": true,
     "basher": true,
-    "dockerfile": true,
+    "dockerfile": false,
     "emmet": true,
     "env": true,
     "git-firefly": true,
@@ -114,8 +117,10 @@
   },
   // ====== FILE TYPES & ASSOCIATIONS ======
   "file_types": {
-    "Hyprlang": ["**/hypr/**/*conf"],
-    "CSS": ["**/rofi/**/*rasi"]
+    "Hyprlang": ["**/hypr/**/*conf", "**/myde/**/*conf"],
+    "CSS": ["**/rofi/**/*rasi"],
+    "Shell Script": ["**/uwsm/**"],
+    "ini": ["**mime**"]
   },
   // ====== TERMINAL ======
   "terminal": {
@@ -140,7 +145,7 @@
   },
   "languages": {
     "Markdown": {
-      "formatter": "language_server"
+      "remove_trailing_whitespace_on_save": false
     }
   }
 }

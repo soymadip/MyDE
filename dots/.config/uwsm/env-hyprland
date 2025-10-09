@@ -20,11 +20,6 @@ export STARSHIP_CACHE="$XDG_CACHE_HOME/starship/starship.log"
 export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore --exclude .git'
 
 
-# ---------- Hyprland -------------
-
-export HYPRLAND_CONFIG="$XDG_CONFIG_HOME/hypr/modules/hyprland.conf"
-
-
 # ---------- Cursor ---------------
 
 CURSOR_SIZE="$(hypr-gtkconf get cursor-size)"
@@ -35,7 +30,7 @@ export QT_CURSOR_SIZE="$CURSOR_SIZE"
 
 
 # -------- GTK settings -----------
-export GDK_BACKEND=wayland,x11,*
+export GDK_BACKEND="wayland,x11,*"
 
 
 # -------- QT settings -----------
@@ -46,6 +41,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export SDL_VIDEODRIVER=wayland
 export CLUTTER_BACKEND=wayland
 
+export XDG_MENU_PREFIX="arch-"
 
 # ----- Electron enable wayland -------
 export ELECTRON_OZONE_PLATFORM_HINT=auto

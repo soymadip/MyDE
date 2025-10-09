@@ -1,6 +1,10 @@
 MenuBar=Disabled
 
 [General]
+AutoExpandFolders=true
+DynamicView=true
+GlobalViewProps=false
+ShowFullPath=true
 Version=202
 ViewPropsTimestamp=2025,8,21,0,35,3.296
 
@@ -12,4 +16,4 @@ Places Icons Static Size=22
 MenuBar=Disabled
 
 [PreviewSettings]
-Plugins=ffmpegthumbs,appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,directorythumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,opendocumentthumbnail,svgthumbnail,windowsexethumbnail,windowsimagethumbnail,fontthumbnail,gdk-pixbuf-thumbnailer,librsvg,jxl,ffmpegthumbnailer,gsf-office
+Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,librsvg,svgthumbnail,ffmpegthumbs,gsf-office

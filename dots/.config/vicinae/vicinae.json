@@ -5,6 +5,8 @@
         "size": 10
     },
     "keybinding": "emacs",
+    "keybinds": {
+    },
     "popToRootOnClose": true,
     "rootSearch": {
         "searchFiles": true
