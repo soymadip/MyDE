@@ -2,7 +2,7 @@
 
 #echo pass1
 if [[ -z "$1" ]]; then
-  hypr-notify -c "Hypr-restart" "<b>Error</b>: No process name provided!"
+  log.critical "No process name provided" -n
   exit 1
 fi
 
@@ -16,19 +16,19 @@ if ! pgrep -x "$1"; then
   #echo pass3.5
   if ! eval "$1 &"; then
     echo pass4
-    hypr-notify -c "Hypr-restart" "<b>Failed to start</b>: $1"
+    log.critical "Failed to start: $1" -n
     exit 1
   fi
   #echo pass5
 else
   if killall "$1" 2>/dev/null; then
     if ! eval "$1 &"; then
-      hypr-notify -c "Hypr-restart" "<b>Failed to restart</b>: $1"
+      log.critical "Failed to restart: $1" -n
       exit 1
     fi
     restarted=1
   else
-    hypr-notify -c "Hypr-restart" "<b>Failed to terminate</b>: $1"
+    log.critical "Failed to terminate: $1" -n
     exit 1
   fi
 fi
@@ -43,7 +43,7 @@ case "$1" in
 esac
 
 if [[ "$restarted" -eq 1 ]]; then
-  hypr-notify -n "Hypr-restart" "<b>Restarted</b>: $1"
+  log.success "Restarted: $1" -n
 else
-  hypr-notify -n "Hypr-restart" "<b>Started</b>: $1"
+  log.success "Started: $1" -n
 fi

@@ -5,7 +5,7 @@ gnome_schema="org.gnome.desktop.interface"
 
 # Exit if config file is missing
 if [ ! -f "$config" ]; then
-  notify-send -u critical "Hyprland" "\nGTK config file missing at $(dirname "$config")."
+  log.critical "GTK config file missing at $(dirname "$config")" -n
   exit 1
 fi
 
@@ -21,27 +21,27 @@ font_size="$(grep 'gtk-font-name' "$config" | sed 's/.* \([0-9]*\.[0-9]*\)$/\1/'
 missing_settings=0
 
 [ -z "$gtk_theme" ] && {
-  notify-send -u critical "Hyprland" "GTK theme setting is missing in the config file."
+  log.critical "GTK theme setting is missing in the config file" -n
   missing_settings=1
 }
 [ -z "$icon_theme" ] && {
-  notify-send -u critical "Hyprland" "Icon theme setting is missing in the config file."
+  log.critical "Icon theme setting is missing in the config file" -n
   missing_settings=1
 }
 [ -z "$cursor_theme" ] && {
-  notify-send -u critical "Hyprland" "Cursor theme setting is missing in the config file."
+  log.critical "Cursor theme setting is missing in the config file" -n
   missing_settings=1
 }
 [ -z "$cursor_size" ] && {
-  notify-send -u critical "Hyprland" "Cursor size setting is missing in the config file."
+  log.critical "Cursor size setting is missing in the config file" -n
   missing_settings=1
 }
 [ -z "$font_name" ] && {
-  notify-send -u critical "Hyprland" "Font name setting is missing in the config file."
+  log.critical "Font name setting is missing in the config file" -n
   missing_settings=1
 }
 [ -z "$font_size" ] && {
-  notify-send -u critical "Hyprland" "Font size setting is missing in the config file."
+  log.critical "Font size setting is missing in the config file" -n
   missing_settings=1
 }
 
@@ -68,7 +68,7 @@ get_setting() {
     echo "$font_size"
     ;;
   *)
-    notify-send -u critical "Hyprland" "Unknown setting '$1'. Skipping."
+    log.error "Unknown setting '$1'. Skipping."
     ;;
   esac
 }
@@ -78,38 +78,39 @@ set_setting() {
 
   case "$1" in
   gtk-theme)
-    echo "Setting GTK theme to '$gtk_theme'"
-    gsettings set "$gnome_schema" gtk-theme "$gtk_theme" || notify-send -u critical "Hyprland" "\nCouldn't set gtk-theme"
+    log.info "Setting GTK theme to '$gtk_theme'"
+    gsettings set "$gnome_schema" gtk-theme "$gtk_theme" || log.critical "Couldn't set gtk-theme" -n
     ;;
   icon-theme)
-    echo "Setting icon theme to '$icon_theme'"
-    gsettings set "$gnome_schema" icon-theme "$icon_theme" || notify-send -u critical "Hyprland" "\nCouldn't set icon-theme"
+    log.info "Setting icon theme to '$icon_theme'"
+    gsettings set "$gnome_schema" icon-theme "$icon_theme" || log.critical "Couldn't set icon-theme" -n
     ;;
   cursor-theme)
-    echo "Setting cursor theme to '$cursor_theme'"
-    gsettings set "$gnome_schema" cursor-theme "$cursor_theme" && hyprctl setcursor "$cursor_theme" "$cursor_size" || notify-send -u critical "Hyprland" "\nCouldn't set cursor-theme"
+    log.info "Setting cursor theme to '$cursor_theme'"
+    gsettings set "$gnome_schema" cursor-theme "$cursor_theme" && hyprctl setcursor "$cursor_theme" "$cursor_size" || log.critical "Couldn't set cursor-theme" -n
     ;;
   cursor-size)
-    echo "Setting cursor size to '$cursor_size'"
-    gsettings set "$gnome_schema" cursor-size "$cursor_size" || notify-send -u critical "Hyprland" "\nCouldn't set cursor-size"
+    log.info "Setting cursor size to '$cursor_size'"
+    gsettings set "$gnome_schema" cursor-size "$cursor_size" || log.critical "Couldn't set cursor-size" -n
     ;;
   font-name)
-    echo "Setting font name to '$font_name'"
-    gsettings set "$gnome_schema" font-name "$font_with_size" || notify-send -u critical "Hyprland" "\nCouldn't set font-name"
+    log.info "Setting font name to '$font_name'"
+    gsettings set "$gnome_schema" font-name "$font_with_size" || log.critical "Couldn't set font-name" -n
     ;;
   font-size)
-    echo "Setting font size to '$font_size'"
-    gsettings set "$gnome_schema" font-name "$font_with_size" || notify-send -u critical "Hyprland" "\nCouldn't set font-size"
+    log.info "Setting font size to '$font_size'"
+    gsettings set "$gnome_schema" font-name "$font_with_size" || log.critical "Couldn't set font-size" -n
     ;;
   *)
-    notify-send -u critical "Hyprland" "Unknown setting '$1'."
+    log.critical "Unknown setting '$1'" -n
     exit 1
     ;;
   esac
 }
 
 if [ "$#" -lt 2 ]; then
-  notify-send -u critical "Hyprland" "GTK-config input error.\nUsage:\n\t hypr-gtkconf {get|set} <setting>"
+  log.critical "GTK-config input error" -n
+  log.usage "hypr-gtkconf {get|set} <setting>"
   exit 1
 fi
 
@@ -124,7 +125,7 @@ set)
   set_setting "$setting"
   ;;
 *)
-  notify-send -u critical "Hyprand" "Unknown action '$action'.\nUse 'get' or 'set'."
+  log.critical "Unknown action '$action'. Use 'get' or 'set'" -n
   exit 1
   ;;
 esac

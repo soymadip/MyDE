@@ -41,7 +41,7 @@ nohup.*
 
 #________________ MyDE Dir _______________
 
-.dierctory
+/.directory
 doc/site
 
 #___________ Home Directory ($HOME) ____________

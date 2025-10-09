@@ -11,188 +11,158 @@
 
 # ======================== Config ===========================
 
-KEYBINDS_FILE="$HOME/MyDE/doc/docs/keybinds.md"
-
-ROFI_BIN_DIR="$HOME/.config/rofi/bin"
-
+MYDE_DIR="$HOME/MyDE"
 LIB_DIR="$HOME/.local/lib/myde"
-
-# ==================== Helper Functions ======================
-
-help_menu() {
-    local command="$1"
-
-    if [ -n "$command" ]; then
-        echo
-        echo "MyDE Controller - '$command' command Help"
-        echo
-        echo "Usage: myde $command <subcommand>"
-        echo ""
-    fi
-
-    case "$command" in
-        show)
-            echo "Available subcommands:"
-            echo "    help         Show this help message"
-            echo "    keybinds     Show keybinds in rofi"
-            echo "    powermenu    Show power menu in rofi"
-            echo "    performance  Show power profile selector in rofi"
-            echo ""
-            echo "Examples:"
-            echo "    myde show keybinds     # Display keybinds in rofi"
-            echo "    myde show performance  # Show power profile selector"
-            echo "    myde show help         # Show show command help"
-            ;;
-        reload)
-            echo "Description:"
-            echo "    Reloads the MyDE Configuration"
-            echo ""
-            echo "Examples:"
-            echo "    myde reload          # Reload MyDE config"
-            ;;
-        set)
-            echo "Available subcommands:"
-            echo "    help      Show this help message"
-            echo ""
-            echo "Examples:"
-            echo "    myde set <option>    # Set a specific option (not yet implemented)"
-            echo "    myde set help        # Show set command help"
-            ;;
-        performance)
-            echo "Available subcommands:"
-            echo "    list           List all available power profiles"
-            echo "    get            Get current active power profile"
-            echo "    status         Get current profile with formatted output"
-            echo "    set <profile>  Set power profile (performance|balanced|power-saver)"
-            echo "    toggle         Toggle between power profiles"
-            echo "    selector       Show interactive profile selector (requires rofi)"
-            echo "    animations     Reapply current profile animations"
-            echo "    minimal        Switch to minimal animations (ultra power-saving)"
-            echo "    help           Show this help message"
-            echo ""
-            echo "Examples:"
-            echo "    myde performance get                     # Show current profile"
-            echo "    myde performance set performance        # Set to performance mode"
-            echo "    myde performance toggle                 # Toggle to next profile"
-            echo "    myde performance selector               # Show rofi selector"
-            echo "    myde performance minimal                # Ultra power-saving mode"
-            echo ""
-            echo "Note: Animations automatically sync with power profiles for visual feedback"
-            ;;
-        *)
-            echo
-            echo "MyDE Controller - Control various functions of MyDE"
-            echo ""
-            echo "Usage: myde <command|flags> [subcommand]"
-            echo ""
-            echo "Available commands:"
-            echo "    show         Show information"
-            echo "    reload       Reload MyDE configuration"
-            echo "    performance  Manage power profiles with dynamic animations"
-            echo "    set          Set configuration options (not yet implemented)"
-            echo ""
-            echo "Examples:"
-            echo "    myde show keybinds          # Show keybinds menu"
-            echo "    myde show powermenu         # Show power menu"
-            echo "    myde reload                 # Reload MyDE config"
-            echo "    myde performance toggle     # Toggle power profile (animations sync)"
-            echo "    myde performance selector   # Show power profile selector"
-            echo ""
-            echo "Use 'myde <command> help' for command-specific help."
-            ;;
-    esac
-}
-
-import_lib() {
-    local lib_filename="$1"
-    local lib_path="${2:-$LIB_DIR}"
-
-    if [ -f "${lib_path}/${lib_filename}" ]; then
-        # shellcheck disable=SC1090
-        source "${lib_path}/${lib_filename}"
-    else
-        echo "Error: Library file '${lib_path}/${lib_filename}' not found." >&2
-        exit 1
-    fi
-}
-
-run_script() {
-    local script_path="$1"
-
-    shift  # Shift to skip the 1st argument (script path)
-
-    if [ -x "$script_path" ]; then
-        "$script_path" "$@"
-    else
-        echo "Error: Script '$script_path' not found or not executable." >&2
-        exit 1
-    fi
-}
-
+ROFI_CONF_DIR="$HOME/.config/rofi/conf"
+KEYBINDS_FILE="$MYDE_DIR/doc/docs/config/keybinds.md"
 
 #========================== Main Logic =========================
 
+THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
+
+# Dictionaries for SubCommands
+declare -A sub_cmds
+
+source "$LIB_DIR"/_utils.sh
+
+
 [[ "$#" -eq 0 ]] && {
-    help_menu
+    self help
     exit 1
 }
 
 case "$1" in
-    show)
-        shift
+
+    help|""|'-h'|--help)
+        sub_cmds=(
+            [cmd]="myde"
+            [set]="Set configuration options (not yet implemented)"
+            [show]="Show information in rofi menus"
+            [get]="Get desktop files and other information"
+            [reload]="Reload MyDE configuration"
+        )
+        help_menu
+        ;;
+
+    # ==================== Get ====================
+    get)
+        shift # $1 = arg2
         case "$1" in
-            keybinds)
-                run_script "${ROFI_BIN_DIR}/keybinds.sh" "$KEYBINDS_FILE"
+            help|"")
+                sub_cmds=(
+                    [cmd]="get"
+                    [desktop-file]="Get desktop file path of an application"
+                    [desktop-filename]="Get desktop file name of an application"
+                )
+                help_menu
                 ;;
-            powermenu)
-                run_script "${ROFI_BIN_DIR}/power-menu.sh"
+            desktop-file)
+                shift
+                import_lib "get-desktop-file.sh"
+                get-desktop-file "$1"
                 ;;
-            performance)
-                run_script "${ROFI_BIN_DIR}/performance.sh"
+            desktop-filename)
+                shift
+                import_lib "get-desktop-file.sh"
+                get-desktop-file -n "$1"
                 ;;
-            help|*)
-                help_menu "show"
+            *)
+                invld_cmd "$1" && self get help
+                exit 1
                 ;;
         esac
         ;;
 
+    # ==================== set ====================
+    set)
+        shift
+        case "$1" in
+            help|"")
+                sub_cmds=(
+                    [cmd]="set"
+                    [theme]="set theme for entire myde or specific components."
+                )
+                help_menu
+                ;;
+            theme)
+                shift # $1 = arg3
+                case "$1" in
+                    help|"")
+                        sub_cmds=(
+                            [cmd]="set theme"
+                            [rofi]="set rofi color theme."
+                        )
+                        help_menu
+                        ;;
+                    rofi)
+                        shift
+                        import_lib "rofi-utils.sh"
+                        set-rofi-theme "$1"
+                        ;;
+                    *)
+                        invld_cmd "$1" && self set theme help
+                        exit 1
+                        ;;
+                esac
+                ;;
+            *)
+                invld_cmd "$1" && self set help
+                exit 1
+                ;;
+        esac
+        ;;
+
+    # ==================== show ====================
+    show)
+        shift
+        case "$1" in
+            help|"")
+                sub_cmds=(
+                    [cmd]="show"
+                    [keybinds]="show keybinds hint window."
+                    [powermenu]="show power menu window."
+                )
+                help_menu
+                ;;
+            keybinds)
+                import_lib "keybinds-menu.sh"
+                show-keybinds-menu -kf "$keybinds_file" -t "$rofi_conf_dir/keybinds-menu.rasi"
+                ;;
+            powermenu)
+                import_lib "power-menu.sh"
+                show-power-menu -t "$rofi_conf_dir/power-menu.rasi"
+                ;;
+            *)
+                invld_cmd "$1" && self show help
+                exit 1
+                ;;
+        esac
+        ;;
+
+    # ==================== reload ====================
     reload)
         shift
         case "$1" in
             help)
-                help_menu "reload"
+                sub_cmds=(
+                    [cmd]="reload"
+                )
+                help_menu
                 ;;
-            *)
+            "")
                 hyprctl reload > /dev/null
-                echo "MyDE configuration reloaded."
-                ;;
-        esac
-        ;;
-
-    set)
-        shift
-        case "$1" in
-            help)
-                help_menu "set"
+                log.success "myde configuration reloaded."
                 ;;
             *)
-                echo "Not yet Implemented" >&2
+                invld_cmd "$1" && self help
+                exit 1
                 ;;
         esac
         ;;
 
-    performance)
-        shift
-        import_lib "performance.sh"
-        performance_main "$@"
-        ;;
-
-    -h|--help)
-        help_menu
-        ;;
-
+    # ==================== default ====================
     *)
-        echo "MyDE: Unknown command '$1'." >&2
-        help_menu
+        invld_cmd "$1" && self help
+        exit 1
         ;;
 esac
