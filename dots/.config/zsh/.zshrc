@@ -28,14 +28,13 @@ fastfetch -c ~/.config/fastfetch/small.jsonc
 
 #_______________________Shell Integrations_____________________________
 
-source $ZDOTDIR/modules/Init.zsh && import-mod --all
+source "$ZDOTDIR/modules/Init.zsh" && import-mod --all
 
 eval_fzf
 
 eval "$(zoxide init zsh --cmd cdz)"
 
-handlr set x-scheme-handler/terminal "$(get-desktop-file $TERMINAL)"
-
+handlr set x-scheme-handler/terminal "$(myde get desktop-filename $TERMINAL)" &> /dev/null
 
 #_____________________________Plugins____________________________________
 # zinit light zsh-users/zsh-syntax-highlighting
