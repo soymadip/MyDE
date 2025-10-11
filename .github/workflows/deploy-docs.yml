@@ -3,10 +3,12 @@ name: Deploy to GitHub Pages
 on:
   push:
     paths:
-      - ".github/workflows/doploy-docs.yml"
+      - ".github/workflows/"
       - "wiki/**"
     branches:
       - main
+
+  workflow_dispatch:
 
 jobs:
   build:
