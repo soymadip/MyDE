@@ -8,13 +8,13 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: write
   pages: write
   id-token: write
   actions: write
-
-  workflow_dispatch:
 
 jobs:
   build:
