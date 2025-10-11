@@ -8,6 +8,12 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: write
+
   workflow_dispatch:
 
 jobs:
@@ -49,6 +55,9 @@ jobs:
     permissions:
       pages: write
       id-token: write
+
+    environment:
+      name: myde-wiki
 
     runs-on: ubuntu-latest
     steps:
