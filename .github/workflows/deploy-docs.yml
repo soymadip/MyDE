@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     paths:
-      - ".github/workflows/"
+      - ".github/workflows/**"
       - "wiki/**"
     branches:
       - main
@@ -14,23 +14,27 @@ jobs:
   build:
     name: Compile Wiki
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./wiki
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - uses: actions/setup-node@v4
-        working-directory: wiki
         with:
           node-version: latest
           cache: npm
           cache-dependency-path: wiki/package-lock.json
 
       - name: Install dependencies
-        working-directory: wiki
+        working-directory: ./wiki
         run: npm ci
 
       - name: Build website
-        working-directory: wiki
+        working-directory: ./wiki
         run: npm run build
 
       - name: Upload Build Artifact
