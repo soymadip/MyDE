@@ -259,6 +259,9 @@ dots/.local/bin/*
 !dots/.local/bin/run-code
 !dots/.local/bin/kireisakura
 
+#------ Lib ------
+dots/.local/lib/myctl/.*
+
 #------ Share ------
 dots/.local/share/*
 
