@@ -17,7 +17,7 @@
 
 show-keybinds-menu() {
     # Default values
-    local keybinds_file="$MYDE_DIR/doc/docs/config/keybinds.md"
+    local keybinds_file="$MYCTL_DIR/wiki/docs/keybinds.md"
     local theme_file="$ROFI_CONF_DIR/conf/keybinds-menu.rasi"
     local awk_script_path="$LIB_DIR/src/parse-keybinds.awk"
     local prompt_text="Keybinds Help"
@@ -88,5 +88,5 @@ show-keybinds-menu() {
 # If executed directly Show Info
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     echo "This is part of MyDE controller program lib."
-    echo "Use 'myde help' for more info."
+    echo "Use 'myctl help' for more info."
 fi

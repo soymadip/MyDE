@@ -19,6 +19,7 @@ get-desktop-file() {
     #   Eg. zen.desktop has: Exec=zen-bin %U
     declare -A cmd_replacements=(
         ["zen-browser"]="zen-bin"
+        ["zeditor"]="zed-editor"
     )
 
     # Search directories in priority order
@@ -112,5 +113,5 @@ get-desktop-file() {
 # If executed directly Show Info
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     echo "This is part of MyDE controller program lib."
-    echo "Use 'myde help' for more info."
+    echo "Use 'myctl help' for more info."
 fi

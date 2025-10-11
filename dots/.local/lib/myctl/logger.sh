@@ -80,9 +80,9 @@ _log_detect_context() {
         else
             echo "lib:${filename}"
         fi
-    elif [[ "$filename" == "myde" ]]; then
-        # Main myde command
-        echo "myde"
+    elif [[ "$filename" == "myctl" ]]; then
+        # Main myctl command
+        echo "myctl"
     else
         # Other scripts
         echo "${filename}"
@@ -165,6 +165,7 @@ _log() {
     local message="$4" # The message is expected as a single argument here.
     local notify=false
     local custom_context=""
+    local formatted
 
     shift 4 # Shift past level_num, level_name, color, and message
 
@@ -192,7 +193,7 @@ _log() {
     local context="${custom_context:-$(_log_detect_context)}"
 
     # Format message
-    local formatted="$(_log_format "$level_name" "$context" "$message" "$color")"
+    formatted="$(_log_format "$level_name" "$context" "$message" "$color")"
 
     # Output to stderr for warnings and errors
     if [[ $level_num -ge 2 ]]; then
@@ -308,11 +309,13 @@ log.set_timestamp() {
 
 # Set log file
 log.set_log_file() {
-    LOG_FILE="$1"
+    LOG_FILE="${1:-$LOG_FILE}"
+    local log_dir
+
 
     # Create log directory if needed
     if [[ -n "$LOG_FILE" ]]; then
-        local log_dir=$(dirname "$LOG_FILE")
+        log_dir=$(dirname "$LOG_FILE")
         mkdir -p "$log_dir" 2>/dev/null
     fi
 }

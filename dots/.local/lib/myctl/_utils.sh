@@ -5,7 +5,9 @@ shopt -s expand_aliases
 
 # Exit if logger cannot be loaded - it's a critical dependency
 if ! declare -f log.error >/dev/null 2>&1; then
-    LOGGER_PATH="${LIB_DIR:-$HOME/.local/lib/myde}/logger.sh"
+
+    LOGGER_PATH="${LIB_DIR:-$HOME/.local/lib/myctl}/logger.sh"
+
     if [[ -f "$LOGGER_PATH" ]]; then
         source "$LOGGER_PATH"
     else
@@ -69,14 +71,14 @@ help_menu() {
     local command="${sub_cmds[cmd]}"
     echo ""
 
-    if [ "$command" == "myde" ]; then
+    if [ "$command" == "myctl" ]; then
         echo "MyDE Controller - Control Various Functions of MyDE"
         echo ""
-        echo "Usage: myde <command> [subcommand]"
+        echo "Usage: myctl <command> [subcommand]"
     else
         echo "MyDE Controller - '$command' command"
         echo ""
-        echo "Usage: myde $command [subcommand]"
+        echo "Usage: myctl $command [subcommand]"
     fi
     echo ""
 
@@ -123,6 +125,6 @@ _print_help_cmds() {
 
 # if executed directly,
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    echo "this is part of myde controller program lib."
-    echo "use 'myde help' for more info."
+    echo "this is part of myctl controller program lib."
+    echo "use 'myctl help' for more info."
 fi

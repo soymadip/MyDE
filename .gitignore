@@ -8,6 +8,7 @@
 # As we need to filter out any sensitive/unnecessary information
 # form posting in our dotfiles repo.
 
+
 #___________ Global Rules ____________
 *.bin
 *cache*
@@ -30,19 +31,23 @@
 *trash
 *runtime
 *LOG
-build/
 node_modules/
-.docusaurus/
 .DS_Store
 Trash
 KireiSakura-Kit
 nohup.*
 
 
-#________________ MyDE Dir _______________
+#_____________ MyDE Dir _______________
 
 /.directory
-doc/site
+
+#______________ Wiki Dir ______________
+build/
+wiki/.docusaurus/
+wiki/static/favicon/*
+wiki/static/img/icon-SiGoogledrive.svg
+wiki/static/img/icon-note.svg
 
 #___________ Home Directory ($HOME) ____________
 
@@ -91,7 +96,7 @@ dots/.cache/*
 dots/.cache/ags/*
 !dots/.cache/ags/hyprpanel
 
-#___________ .config Directory ____________
+#___________ dots Directory ____________
 
 # Standalone files
 dots/.config/*partrc
@@ -177,6 +182,9 @@ dots/.config/libreoffice/4/user/*
 dots/.config/libreoffice/4/user/pack/registrymodifications.pack
 !dots/.config/libreoffice/4/user/registrymodifications.xcu
 
+# LadyBird
+dots/.config/Ladybird/BrowserContentFilters.txt
+
 # Media Players
 dots/.config/mpv/playlists
 dots/.config/mpv/watch_later
@@ -247,7 +255,7 @@ dots/.config/zsh/*history*
 
 #------ Bin ------
 dots/.local/bin/*
-!dots/.local/bin/myde
+!dots/.local/bin/myctl
 !dots/.local/bin/run-code
 !dots/.local/bin/kireisakura
 
@@ -301,6 +309,3 @@ dots/.local/share/konsole/konsolestaterc
 
 # ------ state -----
 dots/.local/state
-
-# ------- Misc -----
-dots/.config/Ladybird/BrowserContentFilters.txt

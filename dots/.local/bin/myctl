@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-#    __  __       ____  _____
-#   |  \/  |_   _|  _ \| ____|
-#   | |\/| | | | | | | |  _|
-#   | |  | | |_| | |_| | |___
-#   |_|  |_|\__,/|____/|_____|
-#          |___/
+#   __  __        ____ _____ _
+#  |  \/  |_   _ / ___|_   _| |
+#  | |\/| | | | | |     | | | |
+#  | |  | | |_| | |___  | | | |___
+#  |_|  |_|\__, |\____| |_| |_____|
+#         |___/
 #
-#  MyDE Controller program - Control various functions of MyDE
+#  MyDE Controller - Control various functions of MyDE
 
 
 # ======================== Config ===========================
 
 MYDE_DIR="$HOME/MyDE"
-LIB_DIR="$HOME/.local/lib/myde"
+LIB_DIR="$HOME/.local/lib/myctl"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
-KEYBINDS_FILE="$MYDE_DIR/doc/docs/config/keybinds.md"
+KEYBINDS_FILE="$MYDE_DIR/wiki/docs/2.keybinds.md"
 
 #========================== Main Logic =========================
 
@@ -126,11 +126,11 @@ case "$1" in
                 ;;
             keybinds)
                 import_lib "keybinds-menu.sh"
-                show-keybinds-menu -kf "$keybinds_file" -t "$rofi_conf_dir/keybinds-menu.rasi"
+                show-keybinds-menu -kf "$KEYBINDS_FILE" -t "$ROFI_CONF_DIR/keybinds-menu.rasi"
                 ;;
             powermenu)
                 import_lib "power-menu.sh"
-                show-power-menu -t "$rofi_conf_dir/power-menu.rasi"
+                show-power-menu -t "$ROFI_CONF_DIR/power-menu.rasi"
                 ;;
             *)
                 invld_cmd "$1" && self show help
