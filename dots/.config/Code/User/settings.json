@@ -30,5 +30,6 @@
   },
   "git.confirmSync": false,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "terminal.integrated.shellIntegration.enabled": true,
 }

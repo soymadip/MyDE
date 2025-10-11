@@ -86,7 +86,7 @@
       "model": "claude-sonnet-4"
     },
     "inline_assistant_model": {
-      "provider": "zed.dev",
+      "provider": "copilot_chat",
       "model": "gpt-5"
     },
     "play_sound_when_agent_done": true,

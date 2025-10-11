@@ -34,7 +34,7 @@ eval_fzf
 
 eval "$(zoxide init zsh --cmd cdz)"
 
-handlr set x-scheme-handler/terminal "$(myde get desktop-filename $TERMINAL)" &> /dev/null
+handlr set x-scheme-handler/terminal "$(myctl get desktop-filename $TERMINAL)" &> /dev/null
 
 #_____________________________Plugins____________________________________
 # zinit light zsh-users/zsh-syntax-highlighting

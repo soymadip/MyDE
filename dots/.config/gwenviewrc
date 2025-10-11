@@ -33,7 +33,8 @@ Name9[$e]=ScreenShot-25-10-02_08:56:09.png
 
 [SideBar]
 InformationSplitterSizes=236,239
-SideBarSplitterSizes=197,1230
+IsVisible ViewMode=true
+SideBarSplitterSizes=197,750
 
 [ThumbnailView]
 WrapAfterLast=false
