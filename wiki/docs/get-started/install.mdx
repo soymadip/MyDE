@@ -1,0 +1,29 @@
+---
+title: Installation
+description: Getting started with MyDE
+sidebar_position: 1
+---
+import ProjectRepoUrl from "@site/src/components/ProjectRepoUrl";
+
+<div style={{ textAlign: "center" }}>
+  Welcome to <b>MyDE</b>! We're excited to have you here.<br />
+  <a href={<ProjectRepoUrl />} target="_blank" rel="noopener noreferrer">
+    View the MyDE Repository on GitHub
+  </a>
+</div>
+
+## Installation
+
+### Prerequisites
+
+- Make sure you have both `git` and `curl` installed on your system.
+
+### Installation Steps
+
+1. Ensure you are in your home directory.
+2. Confirm that the prerequisites are installed.
+3. Open your terminal (or TTY) and run:
+
+<pre>cd && git clone --depth=1 <ProjectRepoUrl/> && cd MyDE && bash .\/init</pre>
+
+This command will clone the MyDE repository to `~/MyDE`, install dependencies, and set up all configurations.

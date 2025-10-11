@@ -4,49 +4,48 @@ on:
   push:
     paths:
       - ".github/workflows/doploy-docs.yml"
-      - "doc/**"
+      - "wiki/**"
     branches:
       - main
 
-  workflow_dispatch:
-
-permissions:
-  contents: write
-
 jobs:
-  deploy:
+  build:
+    name: Build Docusaurus
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install UV
-        uses: astral-sh/setup-uv@v6
-
-      - name: Set up Python
-        run: cd doc && uv python install
-
-      - name: Install Dependencies
-        run: |
-          echo "Installing dependencies..."
-          cd doc && uv sync
-          echo "Dependencies installed successfully."
-
-      - name: Compile docs
-        run: |
-          echo "Compiling documentation..."
-          cd doc
-          uv run mkdocs build --site-dir ../build
-          echo "Documentation compiled successfully."
-
-      - name: Create .nojekyll & README file
-        run: |
-          touch build/.nojekyll
-          echo '<h1 align="center">THIS BRANCH IS AUTO-GENERATED</h1>' > build/README.md
-
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - uses: actions/checkout@v4
         with:
-          folder: build
-          branch: docs-compiled
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build website
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
