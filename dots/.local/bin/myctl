@@ -14,7 +14,7 @@
 MYDE_DIR="$HOME/MyDE"
 LIB_DIR="$HOME/.local/lib/myctl"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
-KEYBINDS_FILE="$MYDE_DIR/wiki/docs/2.keybinds.md"
+KEYBINDS_FILE="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
 
 #========================== Main Logic =========================
 
