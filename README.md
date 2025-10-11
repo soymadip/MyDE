@@ -3,10 +3,10 @@
 <div align="center">
   <br>
     <img src="./src/img/icon.png"  style="height:125px">
-  <h1 style="color:#f594a0">
+  <h1>
     ⚙️ MyDE 🔧
   </h1>
-  <p><em>A beautiful, customized Linux Desktop Environment featuring Hyprland as wm, & carefully curated set of services.</em></p>
+  <p><em>A beautiful, customized Linux Desktop Environment that just works<br> Featuring dynamic tiling, carefully curated utils</em></p>
 </div>
 
 <br>
@@ -22,34 +22,6 @@
     <img src="./src/img/tiling.png" alt="1"  width="45%">
   </div>
 </div>
-
-<br>
-
-<h2 align="center">-----: Setup Overview :-----</h2>
-
-```zsh
-> fastfetch
-```
-
-<img align="left" src="./src/img/neofetch.webp" width="158px" alt="fastfetch avatar"/>
-
-```yaml
- soymadip@DESKTOP-SD
- ---------------------
- OS: Arch Linux
- Kernel: 6.16.10-arch1-1
- Packages: 1051(pacman), 2 (flatpaks)
- Shell: zsh
- WM: Hyprland
- Theme: Catppuccin Macchiato-maroon [QT],[GTK3/4]
- Icons: Papirus-Dark [QT],[GTK3/4]
- Terminal: Kitty
- Terminal Font: JetbrainsMono Nerd Font 12
- CPU: 12th Gen Intel(R) Core(TM) i5-12500H (16) @ 4.50 GHz
- GPU1: Intel(R) UHD Graphics (128.00 MiB) [Integrated]
- GPU2: NVIDIA GeForce RTX 3050 (3.87 GiB) [Discrete]
- Memory: 2.40 GiB / 15.63 GiB
-```
 
 <br>
 
