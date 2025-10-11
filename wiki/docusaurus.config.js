@@ -17,8 +17,8 @@ const iconPic =
   "https://raw.githubusercontent.com/soymadip/MyDE/refs/heads/main/src/img/icon.png";
 const projectRepo = "https://github.com/soymadip/MyDE";
 
-const siteUrl = "https://soymadip.github.io";
-const sitePath = "/MyDE";
+const siteUrl = "https://myde.soymadip.me";
+const sitePath = "/";
 
 //========================= Docusaurus Config =========================//
 
