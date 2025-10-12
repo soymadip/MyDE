@@ -62,7 +62,13 @@ run_script() {
 invld_cmd() {
     local unknown_cmd="$1"
     echo ""
+
+    if [ "$unknown_cmd" == "" ]; then
+        echo "No command provided."
+    else
     echo "Unknown command: '$unknown_cmd'."
+    fi
+
 }
 
 #---------------
