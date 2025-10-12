@@ -66,7 +66,7 @@ invld_cmd() {
     if [ "$unknown_cmd" == "" ]; then
         echo "No command provided."
     else
-    echo "Unknown command: '$unknown_cmd'."
+        echo "Unknown command: '$unknown_cmd'."
     fi
 
 }
