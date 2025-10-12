@@ -73,7 +73,7 @@ _log_detect_context() {
     filename=$(basename "$caller_file" .sh)
 
     # Determine if it's a lib function or main command
-    if [[ "$caller_file" == *"/lib/myde/"* ]]; then
+    if [[ "$caller_file" == "${LIB_DIR}/"* ]]; then
         # Library function - use function name if available
         if [[ "$caller_func" != "main" && "$caller_func" != "source" ]]; then
             echo "lib:${caller_func}"
@@ -320,6 +320,10 @@ log.set_log_file() {
     fi
 }
 
+log.nyi() {
+    log.warn "Not yet Implemented"
+}
+
 # ==================== Export Functions ====================
 
 # Export internal helper functions for subshell compatibility
@@ -328,4 +332,4 @@ export -f _log_timestamp _log_detect_context _log_format _log_to_file _log_notif
 # Export all public functions for use in other scripts
 export -f log.debug log.info log.warn log.error log.critical log.success
 export -f log.with_context log.usage log.set_level log.set_color
-export -f log.set_timestamp log.set_log_file
+export -f log.set_timestamp log.set_log_file log.nyi
