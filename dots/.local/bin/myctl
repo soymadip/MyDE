@@ -37,7 +37,7 @@ case "$1" in
         sub_cmds=(
             [cmd]="myde"
             [set]="Set configuration options (not yet implemented)"
-            [show]="Show information in rofi menus"
+            [show]="Show various utility dialougs"
             [get]="Get desktop files and other information"
             [reload]="Reload MyDE configuration"
         )
