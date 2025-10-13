@@ -391,7 +391,7 @@
     color: var(--ifm-color-primary);
 }
 
-.stat-value-pending {
+.stat-value-planned {
     color: var(--ifm-color-warning);
 }
 
@@ -492,7 +492,7 @@
     color: var(--ifm-color-emphasis-700);
 }
 
-.badge-status-pending {
+.badge-status-planned {
     background-color: var(--ifm-color-emphasis-200);
     color: #fff;
 }
@@ -736,7 +736,7 @@
     opacity: 0.8;
 }
 
-.task-row:has(.badge-status-pending) .task-title {
+.task-row:has(.badge-status-planned) .task-title {
     color: var(--ifm-font-color-base);
 }
 

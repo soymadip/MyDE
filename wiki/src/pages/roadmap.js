@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Layout from "@theme/Layout";
-import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "../css/roadmap.css";
 import {
@@ -40,7 +39,7 @@ function TaskList({ filterStatus, taskList }) {
 
   // Sort tasks by status first (with completed tasks at bottom), then by priority
   const sortedTasks = [...filteredTasks].sort((a, b) => {
-    const statusOrder = { active: 1, pending: 2, completed: 3 };
+  const statusOrder = { active: 1, planned: 2, completed: 3 };
     const statusDiff = statusOrder[a.status] - statusOrder[b.status];
 
     if (statusDiff !== 0) return statusDiff;
@@ -77,7 +76,7 @@ function TaskList({ filterStatus, taskList }) {
                       <FaSyncAlt className="badge-icon spin" /> In Progress
                     </>
                   )}
-                  {task.status === "pending" && (
+                  {task.status === "planned" && (
                     <>
                       <FaClock className="badge-icon" /> Planned
                     </>
@@ -129,7 +128,7 @@ function TaskStats({ taskList }) {
     (task) => task.status === "completed",
   ).length;
   const active = taskList.filter((task) => task.status === "active").length;
-  const pending = taskList.filter((task) => task.status === "pending").length;
+  const planned = taskList.filter((task) => task.status === "planned").length;
   const percentComplete = total > 0 ? Math.round((completed / total) * 100) : 0;
 
   return (
@@ -146,9 +145,9 @@ function TaskStats({ taskList }) {
         <div className="stat-label">In Progress</div>
         <div className="stat-value stat-value-active">{active}</div>
       </div>
-      <div className="stat-box">
+        <div className="stat-box">
         <div className="stat-label">Planned</div>
-        <div className="stat-value stat-value-pending">{pending}</div>
+        <div className="stat-value stat-value-planned">{planned}</div>
       </div>
       <div className="stat-box">
         <div className="stat-label">Progress</div>
@@ -185,10 +184,10 @@ function TaskTabs({ taskList }) {
       count: taskList.filter((t) => t.status === "active").length,
     },
     {
-      id: "pending",
+      id: "planned",
       label: "Planned",
       icon: <FaClock />,
-      count: taskList.filter((t) => t.status === "pending").length,
+      count: taskList.filter((t) => t.status === "planned").length,
     },
     {
       id: "completed",
@@ -230,8 +229,8 @@ function TaskTabs({ taskList }) {
         {activeTab === "active" && (
           <TaskList taskList={taskList} filterStatus="active" />
         )}
-        {activeTab === "pending" && (
-          <TaskList taskList={taskList} filterStatus="pending" />
+        {activeTab === "planned" && (
+          <TaskList taskList={taskList} filterStatus="planned" />
         )}
         {activeTab === "completed" && (
           <TaskList taskList={taskList} filterStatus="completed" />
