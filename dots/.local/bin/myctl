@@ -11,12 +11,15 @@
 
 # ======================== Config ===========================
 
+LOG_LEVEL=1
 MYDE_DIR="$HOME/MyDE"
 LIB_DIR="$HOME/.local/lib/myctl"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
 KEYBINDS_FILE="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
 
 #========================== Main Logic =========================
+
+export MYDE_DIR LIB_DIR ROFI_CONF_DIR KEYBINDS_FILE LOG_LEVEL THIS_PATH
 
 THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
 
@@ -53,6 +56,7 @@ case "$1" in
                     [cmd]="get"
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
+                    [theme]="Get current theme of MyDE or specific components"
                 )
                 help_menu
                 ;;
@@ -65,6 +69,60 @@ case "$1" in
                 shift
                 import_lib "get-desktop-file.sh"
                 get-desktop-file -n "$1"
+                ;;
+            cursor)
+                shift
+                case "$1" in
+                    help)
+                        sub_cmds=(
+                            [cmd]="get cursor"
+                            [name]="get current cursor theme name."
+                            [size]="get current cursor size."
+                        )
+                        help_menu
+                        ;;
+                    name)
+                        import_lib "gtk-utils.sh"
+                        get-gtk-cursor-theme
+                        ;;
+                    size)
+                        import_lib "gtk-utils.sh"
+                        get-gtk-cursor-size
+                        ;;
+                    ""|*)
+                        invld_cmd "$1" && self get cursor help
+                        exit 1
+                        ;;
+                esac
+                ;;
+            theme)
+                shift
+                sub_cmds=(
+                    [cmd]="get theme"
+                    [rofi]="get current rofi color theme."
+                    [gtk]="get current gtk color theme."
+                    [qt]="get current qt color theme. (not yet implemented)"
+                )
+                case "$1" in
+                    help)
+                        help_menu
+                        ;;
+                    rofi)
+                        import_lib "rofi-utils.sh"
+                        get-rofi-theme
+                        ;;
+                    gtk)
+                        import_lib "gtk-utils.sh"
+                        get-gtk-theme
+                        ;;
+                    qt|kde)
+                        log.nyi   # TODO
+                        ;;
+                    ""|*)
+                        invld_cmd "$2" && self get theme help
+                        exit 1
+                        ;;
+                esac
                 ;;
             ""|*)
                 invld_cmd "$1" && self get help
@@ -91,6 +149,7 @@ case "$1" in
                         sub_cmds=(
                             [cmd]="set theme"
                             [rofi]="set rofi color theme."
+                            [gtk]="set gtk color theme."
                         )
                         help_menu
                         ;;
@@ -99,7 +158,12 @@ case "$1" in
                         import_lib "rofi-utils.sh"
                         set-rofi-theme "$1"
                         ;;
-                    *)
+                    gtk)
+                        shift
+                        import_lib "gtk-utils.sh"
+                        set-gtk-theme "$1"
+                        ;;
+                    ""|*)
                         invld_cmd "$1" && self set theme help
                         exit 1
                         ;;
