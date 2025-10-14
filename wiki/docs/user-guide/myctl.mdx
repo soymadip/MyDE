@@ -1,0 +1,183 @@
+---
+title: MyCTL
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+MyCTL is a utility for controlling various parts of MyDE from the terminal or a script. It's essentially an abstraction layer for various jobs.
+
+## Core Concepts
+
+A `myctl` query is organized into a hierarchical command structure. The basic syntax is:
+
+```shell
+myctl <command> <subcommand> [arguments...]
+```
+
+1.  **`command`**: A top-level category of actions (e.g., `get`, `set`, `show`).
+2.  **`subcommand`**: A specific action within that category (e.g., `theme`, `powermenu`).
+3.  **`arguments`**: Any additional values required by the subcommand.
+
+- To see all available commands, run `myctl help`.
+- To see the subcommands for a specific command, run `myctl <command> help`.
+
+---
+
+## Available Commands
+
+Below is a list of available commands and their usage.
+
+
+## `get`
+
+Retrieve info about the current system configuration.
+
+Usage: `myctl get <subcommand> [arguments...]`
+
+### `get desktop-file`
+
+Finds the full path of an application's `.desktop` file.
+
+Usage: `myctl get desktop-file <application_name>`
+
+**Example:**
+```shell
+myctl get desktop-file code
+```
+
+---
+
+### `get desktop-filename`
+
+Similar to `desktop-file`, but returns only the filename.
+
+Usage: `myctl get desktop-filename <application_name>`
+
+**Example:**
+```shell
+myctl get desktop-filename code
+```
+
+---
+
+### `get cursor`
+
+Retrieves information about the GTK cursor.
+
+<Tabs groupId="get-cursor">
+<TabItem value="theme" label="theme">
+
+Gets the current cursor theme name.
+
+Usage: `myctl get cursor theme`
+
+</TabItem>
+<TabItem value="size" label="size">
+
+Gets the current cursor size.
+
+Usage: `myctl get cursor size`
+
+</TabItem>
+</Tabs>
+
+---
+
+### `get theme`
+
+Retrieves the names of the current themes for different components.
+
+<Tabs groupId="get-theme">
+<TabItem value="gtk" label="gtk">
+
+Gets the current GTK theme name.
+
+Usage: `myctl get theme gtk`
+
+</TabItem>
+<TabItem value="rofi" label="rofi">
+
+Gets the current Rofi theme name.
+
+Usage: `myctl get theme rofi`
+
+</TabItem>
+<TabItem value="qt" label="qt/kde">
+
+Gets the current Qt/KDE theme name.
+**Note:** This command is not yet implemented.
+
+</TabItem>
+</Tabs>
+
+---
+---
+
+## `set`
+
+The `set` command modifies system configuration.
+
+Usage: `myctl set <subcommand> [arguments...]`
+
+### `set theme`
+
+Sets the theme for a specific component.
+
+<Tabs groupId="set-theme">
+<TabItem value="gtk" label="gtk">
+
+Sets the GTK theme.
+
+Usage: `myctl set theme gtk "<theme_name>"`
+
+**Example:**
+```shell
+myctl set theme gtk "Adwaita-dark"
+```
+
+</TabItem>
+<TabItem value="rofi" label="rofi">
+
+Sets the Rofi theme.
+
+Usage: `myctl set theme rofi "<theme_name>"`
+
+**Example:**
+```shell
+myctl set theme rofi "catppuccin-mocha"
+```
+
+</TabItem>
+</Tabs>
+
+---
+---
+
+## `show`
+
+The `show` command displays various utility menus and dialogs, typically using Rofi.
+
+Usage: `myctl show <subcommand>`
+
+### `show powermenu`
+
+Displays an interactive power menu.
+
+Usage: `myctl show powermenu`
+
+---
+
+### `show keybinds`
+
+Displays a searchable list of the keybindings defined in the MyDE documentation. This is a quick way to reference shortcuts without opening the full documentation.
+
+Usage: `myctl show keybinds`
+
+---
+---
+
+## `reload`
+
+The `reload` command reloads MyDE services. Currently, it reloads the Hyprland configuration.
+
+Usage: `myctl reload`

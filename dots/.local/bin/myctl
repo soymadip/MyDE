@@ -41,7 +41,7 @@ case "$1" in
             [cmd]="myde"
             [set]="Set configuration options (not yet implemented)"
             [show]="Show various utility dialougs"
-            [get]="Get desktop files and other information"
+            [get]="Retrieve info about current system config."
             [reload]="Reload MyDE configuration"
         )
         help_menu
@@ -81,7 +81,7 @@ case "$1" in
                         )
                         help_menu
                         ;;
-                    name)
+                    theme)
                         import_lib "gtk-utils.sh"
                         get-gtk-cursor-theme
                         ;;
@@ -119,7 +119,7 @@ case "$1" in
                         log.nyi   # TODO
                         ;;
                     ""|*)
-                        invld_cmd "$2" && self get theme help
+                        invld_cmd "$1" && self get theme help
                         exit 1
                         ;;
                 esac

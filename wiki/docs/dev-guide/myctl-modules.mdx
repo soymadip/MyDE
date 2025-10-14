@@ -1,0 +1,118 @@
+---
+title: Making MyCTL modules
+---
+
+The `myctl` script is a powerful, modular controller for MyDE. This guide explains its architecture and how to extend it with new commands and functionality.
+
+## Core Architecture
+
+`myctl` acts as a central dispatcher. It parses command-line arguments and sources functionality from a library of scripts located in `~/.local/lib/myctl/`.
+
+### Key Components
+
+- **`myctl`**: The main executable script. Its primary role is to parse the top-level commands (like `get`, `set`, `show`) and delegate to the appropriate library script.
+- **`~/.local/lib/myctl/`**: The directory containing all the logic.
+  - **`_utils.sh`**: Contains essential helper functions (`import_lib`, `help_menu`, `log.*`, etc.).
+  - **`logger.sh`**: A powerful logger for consistent, colored, and level-based output.
+  - **`*.sh`**: Individual files that implement specific features (e.g., `gtk-utils.sh`, `power-menu.sh`).
+
+### How It Works
+
+1.  A user runs `myctl <command> <subcommand> [args...]`.
+2.  The main `myctl` script uses a `case` statement to identify the top-level `<command>`.
+3.  It then uses `shift` to remove the first argument, so the subcommand becomes the new `$1`.
+4.  A nested `case` statement handles the `<subcommand>`.
+5.  The `import_lib "script.sh"` function is called to `source` the necessary script file from the library.
+6.  The function from the library is then called, processing any remaining arguments.
+
+---
+
+## Creating a New Command
+
+Let's add a new top-level command: `myctl hello`.
+
+### Step 1: Create the Library File
+
+First, create a new file in the library directory that will contain your logic.
+
+**File:** `~/.local/lib/myctl/hello.sh`
+```bash
+#!/usr/bin/env bash
+
+# ==> hello [name]
+#
+# DESCRIPTION:
+#   A simple example command that prints a greeting.
+#
+# ARGUMENTS:
+#   name    Optional name to greet (default: "World")
+
+hello() {
+    local name="${1:-World}"
+    log.success "Hello, ${name}!"
+}
+```
+:::tip
+Always include a comment block explaining your function's purpose and arguments. It's good practice and helps with maintenance.
+:::
+
+### Step 2: Integrate into `myctl`
+
+Now, edit the main `myctl` script to add the `hello` command.
+
+1.  **Add the main `case` entry:** Find the main `case "$1" in` block and add an entry for `hello`.
+2.  **Define the `help` subcommand:** Inside the `hello)` block, create a `case` for its own arguments. The first thing should always be the `help` option, which defines the `sub_cmds` array for the `help_menu`.
+3.  **Implement the command logic:** Add a case that calls your new function. Use `import_lib` to load your script first.
+4.  **Handle invalid subcommands:** Add a default case to show the help menu if an invalid subcommand is used.
+
+Here is the full code block to add to `myctl`:
+
+```bash
+    # ==================== Hello ====================
+    hello)
+        shift # $1 = arg2
+        case "$1" in
+            help)
+                sub_cmds=(
+                    [cmd]="hello"
+                    [world]="Greet the world."
+                    [user]="Greet the current user."
+                )
+                help_menu
+                ;;
+            world)
+                import_lib "hello.sh"
+                hello "World"
+                ;;
+            user)
+                import_lib "hello.sh"
+                hello "$USER"
+                ;;
+            ""|*)
+                invld_cmd "$1" && self hello help
+                exit 1
+                ;;
+        esac
+        ;;
+
+    # ==================== default ====================
+    ""|*)
+        # ... (existing default case)
+```
+
+Place this block before the final `""|*)` default case in `myctl`.
+
+---
+
+## Conventions and Best Practices
+
+- **Argument Parsing:** Always use `shift` after processing an argument. This makes scripts modular and easier to reason about.
+- **Output and Logging:** **Never use `echo`** for output. Use the provided logging functions from `logger.sh`:
+  - `log.success "Message"`: For successful operations (Green).
+  - `log.info "Message"`: For general information (Blue).
+  - `log.warn "Message"`: For warnings (Yellow).
+  - `log.error "Message"`: For errors (Red).
+  - `log.usage "Usage..."`: To print usage instructions.
+  - `log.nyi`: A shortcut for `log.warn "Not yet Implemented"`.
+- **Error Handling:** If your script requires an argument, check for it and exit gracefully using `log.error` and `return 1`.
+- **Helpers:** Use the helper functions in `_utils.sh` whenever possible, especially `self <command> help` for displaying help menus.
