@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 #
-#==> tui-app [flags] <cmd> [args...]
+#==> open-tui [flags] <cmd> [args...]
 #
 # DESCRIPTION:
 #   Open any TUI application in Default/specified terminal emulator.
@@ -14,15 +14,15 @@
 #   -h, --help     Show this help message
 #
 # Usage examples:
-#   tui-app htop
-#   tui-app "bash -c 'tmux new -A -s dev"
-#   tui-app -c MyClass -t alacritty -- bash -c 'tmux new -A -s dev'
-#   tui-app -c MyClass -t kitty -e htop ls
+#   open-tui htop
+#   open-tui "bash -c 'tmux new -A -s dev"
+#   open-tui -c MyClass -t alacritty -- bash -c 'tmux new -A -s dev'
+#   open-tui -c MyClass -t kitty -e htop ls
 #
 
 #-------------- Functions ------------------#
 
-# Entrypoint expected by myctl: `tui-app`
+# Entrypoint expected by myctl: `open-tui`
 open-tui() {
     local exec_cmd=""
     local term_class=""
