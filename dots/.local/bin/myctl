@@ -196,6 +196,18 @@ case "$1" in
                 import_lib "power-menu"
                 show-power-menu -t "$ROFI_CONF_DIR/power-menu.rasi"
                 ;;
+            tui)
+                shift
+                sub_cmds=(
+                    [cmd]="show tui"
+                    [-t, --task]="Command (task) to run inside the terminal"
+                    [-T, --term]="Terminal emulator to use (default: $TERMINAL)"
+                    [-c, --class]="Application class for the terminal window"
+                    [-e, --exec]="Command to run"
+                )
+                import_lib "tui-app"
+                open-tui "$@"
+                ;;
             ""|*)
                 invld_cmd "$1" && self show help
                 exit 1
