@@ -22,7 +22,7 @@ export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore --exclude .git'
 
 # ---------- Cursor ---------------
 
-CURSOR_SIZE="$(hypr-gtkconf get cursor-size)"
+CURSOR_SIZE="$(myctl get cursor size)"
 
 export HYPRCURSOR_SIZE="$CURSOR_SIZE"
 export XCURSOR_SIZE="$CURSOR_SIZE"
