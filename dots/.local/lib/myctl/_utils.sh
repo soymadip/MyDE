@@ -16,7 +16,8 @@ if ! declare -f log.error >/dev/null 2>&1; then
     fi
 fi
 
-alias require_arg='shift && [ -z "$1" ]'
+# shellcheck disable=SC2142
+alias require_arg='shift && [ -n "$1" ]'
 
 #---------------
 
@@ -28,18 +29,30 @@ self() {
 
 import_lib() {
     local lib_file="$1"
+    local target_paths=()
 
     [ -n "$lib_file" ] || {
         log.error "No library file specified to import."
         exit 1
     }
 
-    if [ -f "${LIB_DIR}/${lib_file}" ]; then
-        source "${LIB_DIR}/${lib_file}"
+    if [[ "$lib_file" == */* || "$lib_file" == /* ]]; then
+        target_paths+=("$lib_file")
+        [[ "$lib_file" != *.sh ]] && target_paths+=("${lib_file}.sh")
     else
-        log.error "Library file '${LIB_DIR}/${lib_file}' not found."
-        exit 1
+        target_paths+=("${LIB_DIR}/${lib_file}")
+        [[ "$lib_file" != *.sh ]] && target_paths+=("${LIB_DIR}/${lib_file}.sh")
     fi
+
+    for p in "${target_paths[@]}"; do
+        if [ -f "$p" ]; then
+            source "$p"
+            return 0
+        fi
+    done
+
+    log.error "Library file '${LIB_DIR}/${lib_file}' not found."
+    exit 1
 }
 
 #---------------

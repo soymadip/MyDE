@@ -38,7 +38,7 @@ case "$1" in
 
     help|'-h'|--help)
         sub_cmds=(
-            [cmd]="myde"
+            [cmd]="myctl"
             [set]="Set configuration options (not yet implemented)"
             [show]="Show various utility dialougs"
             [get]="Retrieve info about current system config."
@@ -62,12 +62,12 @@ case "$1" in
                 ;;
             desktop-file)
                 shift
-                import_lib "get-desktop-file.sh"
+                import_lib "get-desktop-file"
                 get-desktop-file "$1"
                 ;;
             desktop-filename)
                 shift
-                import_lib "get-desktop-file.sh"
+                import_lib "get-desktop-file"
                 get-desktop-file -n "$1"
                 ;;
             cursor)
@@ -82,11 +82,11 @@ case "$1" in
                         help_menu
                         ;;
                     theme)
-                        import_lib "gtk-utils.sh"
+                        import_lib "gtk-utils"
                         get-gtk-cursor-theme
                         ;;
                     size)
-                        import_lib "gtk-utils.sh"
+                        import_lib "gtk-utils"
                         get-gtk-cursor-size
                         ;;
                     ""|*)
@@ -108,11 +108,11 @@ case "$1" in
                         help_menu
                         ;;
                     rofi)
-                        import_lib "rofi-utils.sh"
+                        import_lib "rofi-utils"
                         get-rofi-theme
                         ;;
                     gtk)
-                        import_lib "gtk-utils.sh"
+                        import_lib "gtk-utils"
                         get-gtk-theme
                         ;;
                     qt|kde)
@@ -155,12 +155,12 @@ case "$1" in
                         ;;
                     rofi)
                         shift
-                        import_lib "rofi-utils.sh"
+                        import_lib "rofi-utils"
                         set-rofi-theme "$1"
                         ;;
                     gtk)
                         shift
-                        import_lib "gtk-utils.sh"
+                        import_lib "gtk-utils"
                         set-gtk-theme "$1"
                         ;;
                     ""|*)
@@ -189,11 +189,11 @@ case "$1" in
                 help_menu
                 ;;
             keybinds)
-                import_lib "keybinds-menu.sh"
+                import_lib "keybinds-menu"
                 show-keybinds-menu -kf "$KEYBINDS_FILE" -t "$ROFI_CONF_DIR/keybinds-menu.rasi"
                 ;;
             powermenu)
-                import_lib "power-menu.sh"
+                import_lib "power-menu"
                 show-power-menu -t "$ROFI_CONF_DIR/power-menu.rasi"
                 ;;
             ""|*)
