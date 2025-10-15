@@ -166,6 +166,7 @@ _log() {
     local notify=false
     local custom_context=""
     local formatted
+    local context=""
 
     shift 4 # Shift past level_num, level_name, color, and message
 
@@ -189,8 +190,15 @@ _log() {
     # Check log level threshold
     [[ $level_num -lt $LOG_LEVEL ]] && return 0
 
-    # Get context
-    local context="${custom_context:-$(_log_detect_context)}"
+    if [[ -n "$custom_context" ]]; then
+        context="$custom_context"
+    else
+        if [[ -n "${sub_cmds[cmd]}" ]]; then
+            context="${sub_cmds[cmd]}"
+        else
+            context="$(_log_detect_context)"
+        fi
+    fi
 
     # Format message
     formatted="$(_log_format "$level_name" "$context" "$message" "$color")"
