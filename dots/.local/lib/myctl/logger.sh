@@ -2,7 +2,7 @@
 
 # ==================== Configuration ====================
 
-# Default log level (0=debug, 1=info, 2=warn, 3=error, 4=critical)
+# Default log level (0=debug, 1=info, 2=warn, 3=error, 4=fatal)
 LOG_LEVEL="${LOG_LEVEL:-1}"
 
 # Enable/disable colored output
@@ -27,7 +27,7 @@ if [[ "$LOG_COLOR" == "true" ]]; then
     COLOR_INFO='\033[0;32m'     # Green
     COLOR_WARN='\033[1;33m'     # Yellow
     COLOR_ERROR='\033[0;31m'    # Red
-    COLOR_CRITICAL='\033[1;31m' # Bold Red
+    COLOR_FATAL='\033[1;31m'    # Bold Red
     COLOR_CONTEXT='\033[0;35m'  # Magenta
 else
     COLOR_RESET=''
@@ -35,7 +35,7 @@ else
     COLOR_INFO=''
     COLOR_WARN=''
     COLOR_ERROR=''
-    COLOR_CRITICAL=''
+    COLOR_FATAL=''
     COLOR_CONTEXT=''
 fi
 
@@ -73,7 +73,7 @@ _log_detect_context() {
     filename=$(basename "$caller_file" .sh)
 
     # Determine if it's a lib function or main command
-    if [[ "$caller_file" == "${LIB_DIR}/"* ]]; then
+    if [[ -n "${LIB_DIR}" && "$caller_file" == "${LIB_DIR}/"* ]]; then
         # Library function - use function name if available
         if [[ "$caller_func" != "main" && "$caller_func" != "source" ]]; then
             echo "lib:${caller_func}"
@@ -133,7 +133,7 @@ _log_notify() {
 
     # Set urgency and icon based on level
     case "$level" in
-        CRITICAL|ERROR)
+        FATAL|CRITICAL|ERROR)
             urgency="critical"
             icon="dialog-error"
             ;;
@@ -213,7 +213,7 @@ _log() {
     # Write to log file
     _log_to_file "$formatted"
 
-    # Send notification if requested or for critical errors
+    # Send notification if requested or for fatal errors
     if [[ "$notify" == "true" ]] || [[ $level_num -ge 4 ]]; then
         _log_notify "$level_name" "$message"
     fi
@@ -238,7 +238,7 @@ log.success() {
 
 # Show Usage message (info level)
 log.usage() {
-    _log 1 "USAGE" "$COLOR_INFO" "$message"
+    _log 1 "USAGE" "$COLOR_INFO" "$@"
 }
 
 # Warning level (2) - Warning messages
@@ -251,9 +251,9 @@ log.error() {
     _log 3 "ERROR" "$COLOR_ERROR" "$@"
 }
 
-# Critical level (4) - Critical errors (auto-notifies)
-log.critical() {
-    _log 4 "CRITICAL" "$COLOR_CRITICAL" "$@"
+# Fatal level (4) - Fatal errors (auto-notifies)
+log.fatal() {
+    _log 4 "FATAL" "$COLOR_FATAL" "$@"
 }
 
 
@@ -270,6 +270,7 @@ log.with_context() {
         info)     log.info -c "$context" "$@" ;;
         warn)     log.warn -c "$context" "$@" ;;
         error)    log.error -c "$context" "$@" ;;
+        fatal)    log.fatal -c "$context" "$@" ;;
         critical) log.critical -c "$context" "$@" ;;
         *)        log.info -c "$context" "$@" ;;
     esac
@@ -282,10 +283,10 @@ log.set_level() {
         info)     LOG_LEVEL=1 ;;
         warn)     LOG_LEVEL=2 ;;
         error)    LOG_LEVEL=3 ;;
-        critical) LOG_LEVEL=4 ;;
+        fatal)    LOG_LEVEL=4 ;;
         *)
             echo "Invalid log level: $1" >&2
-            echo "Valid levels: debug, info, warn, error, critical" >&2
+            echo "Valid levels: debug, info, warn, error, fatal" >&2
             return 1
             ;;
     esac
@@ -320,7 +321,6 @@ log.set_log_file() {
     LOG_FILE="${1:-$LOG_FILE}"
     local log_dir
 
-
     # Create log directory if needed
     if [[ -n "$LOG_FILE" ]]; then
         log_dir=$(dirname "$LOG_FILE")
@@ -338,6 +338,6 @@ log.nyi() {
 export -f _log_timestamp _log_detect_context _log_format _log_to_file _log_notify _log
 
 # Export all public functions for use in other scripts
-export -f log.debug log.info log.warn log.error log.critical log.success
+export -f log.debug log.info log.warn log.error log.fatal log.success
 export -f log.with_context log.usage log.set_level log.set_color
 export -f log.set_timestamp log.set_log_file log.nyi
