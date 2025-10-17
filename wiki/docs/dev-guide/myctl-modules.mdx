@@ -112,7 +112,11 @@ Place this block before the final `""|*)` default case in `myctl`.
   - `log.info "Message"`: For general information (Blue).
   - `log.warn "Message"`: For warnings (Yellow).
   - `log.error "Message"`: For errors (Red).
+  - `log.fatal "Message"`: For fatal/severe errors. This logs the message, sends a desktop notification & exits the current script. (Legacy `log.critical` is retained as a compatibility alias.)
   - `log.usage "Usage..."`: To print usage instructions.
   - `log.nyi`: A shortcut for `log.warn "Not yet Implemented"`.
-- **Error Handling:** If your script requires an argument, check for it and exit gracefully using `log.error` and `return 1`.
-- **Helpers:** Use the helper functions in `_utils.sh` whenever possible, especially `self <command> help` for displaying help menus.
+- **Error Handling:** If your script requires an argument, check for it and exit gracefully. Use `log.error` for recoverable or non-fatal errors (and `return 1` so callers can decide what to do). Use `log.fatal` when the condition is unrecoverable and you want the script to terminate immediately — for example, when required configuration is missing or an essential dependency failed to initialize. (Note: `log.critical` still exists as a backwards-compatible alias and will forward to `log.fatal`.)
+  - Example patterns:
+    - Recoverable: `log.error "Missing option" && return 1`
+    - Fatal: `log.fatal "Corrupt configuration, aborting"` (exits with code 1)
+- **Helpers:** Use the helper functions in `_utils.sh` whenever possible, especially `self <command> help` for displaying help menus. Keep logging and control-flow decisions explicit at the call site — logging reports the event; the caller should decide whether to `return` or let `log.critical` `exit` the process.
