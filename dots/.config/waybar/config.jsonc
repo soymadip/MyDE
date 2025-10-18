@@ -36,7 +36,7 @@
 
   "custom/power": {
     "tooltip": false,
-    "on-click": "wlogout &",
+    "on-click": "sleep 0.2 && myctl show powermenu",
     "format": "⏻",
   },
 
