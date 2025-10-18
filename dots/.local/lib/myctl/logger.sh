@@ -193,8 +193,8 @@ _log() {
     if [[ -n "$custom_context" ]]; then
         context="$custom_context"
     else
-        if [[ -n "${sub_cmds[cmd]}" ]]; then
-            context="${sub_cmds[cmd]}"
+        if [[ -n "${cmd_map[cmd]}" ]]; then
+            context="${cmd_map[cmd]}"
         else
             context="$(_log_detect_context)"
         fi

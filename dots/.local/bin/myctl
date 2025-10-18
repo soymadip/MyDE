@@ -24,7 +24,7 @@ export MYDE_DIR LIB_DIR ROFI_CONF_DIR KEYBINDS_FILE LOG_LEVEL THIS_PATH
 THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
 
 # Dictionaries for SubCommands
-declare -A sub_cmds
+declare -A cmd_map
 
 source "$LIB_DIR"/_utils.sh
 
@@ -37,7 +37,7 @@ source "$LIB_DIR"/_utils.sh
 case "$1" in
 
     help|'-h'|--help)
-        sub_cmds=(
+        cmd_map=(
             [cmd]="myctl"
             [set]="Set configuration options (not yet implemented)"
             [show]="Show various utility dialougs"
@@ -52,7 +52,7 @@ case "$1" in
         shift # $1 = arg2
         case "$1" in
             help)
-                sub_cmds=(
+                cmd_map=(
                     [cmd]="get"
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
@@ -74,7 +74,7 @@ case "$1" in
                 shift
                 case "$1" in
                     help)
-                        sub_cmds=(
+                        cmd_map=(
                             [cmd]="get cursor"
                             [name]="get current cursor theme name."
                             [size]="get current cursor size."
@@ -97,7 +97,7 @@ case "$1" in
                 ;;
             theme)
                 shift
-                sub_cmds=(
+                cmd_map=(
                     [cmd]="get theme"
                     [rofi]="get current rofi color theme."
                     [gtk]="get current gtk color theme."
@@ -116,7 +116,7 @@ case "$1" in
                         get-gtk-theme
                         ;;
                     qt|kde)
-                        log.nyi   # TODO
+                        log.nyi   #TODO
                         ;;
                     ""|*)
                         invld_cmd "$1" && self get theme help
@@ -136,7 +136,7 @@ case "$1" in
         shift
         case "$1" in
             help)
-                sub_cmds=(
+                cmd_map=(
                     [cmd]="set"
                     [theme]="set theme for entire myde or specific components."
                 )
@@ -146,7 +146,7 @@ case "$1" in
                 shift # $1 = arg3
                 case "$1" in
                     help)
-                        sub_cmds=(
+                        cmd_map=(
                             [cmd]="set theme"
                             [rofi]="set rofi color theme."
                             [gtk]="set gtk color theme."
@@ -181,7 +181,7 @@ case "$1" in
         shift
         case "$1" in
             help)
-                sub_cmds=(
+                cmd_map=(
                     [cmd]="show"
                     [keybinds]="show keybinds hint window."
                     [powermenu]="show power menu window."
@@ -198,8 +198,9 @@ case "$1" in
                 ;;
             tui)
                 shift
-                sub_cmds=(
+                cmd_map=(
                     [cmd]="show tui"
+                    [usage]="myctl show tui [-t <task>] [-T <terminal>] [-c <class>] [-e <exec>]"
                     [-t, --task]="Command (task) to run inside the terminal"
                     [-T, --term]="Terminal emulator to use (default: $TERMINAL)"
                     [-c, --class]="Application class for the terminal window"
@@ -220,7 +221,7 @@ case "$1" in
         shift
         case "$1" in
             help)
-                sub_cmds=(
+                cmd_map=(
                     [cmd]="reload"
                 )
                 help_menu
