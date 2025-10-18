@@ -87,58 +87,68 @@ invld_cmd() {
 #---------------
 
 help_menu() {
-    local command="${sub_cmds[cmd]}"
-    echo ""
+    local command="${cmd_map[cmd]}"
 
+    ! [ ${cmd_map[usage]+_} ] && {
+        if [ "$command" == "myctl" ]; then
+            cmd_map[usage]="${cmd_map[cmd]} <cmd> [subcommand]"
+        else
+            cmd_map[usage]="myctl ${cmd_map[cmd]} [subcommand]"
+        fi
+    }
+
+    echo ""
     if [ "$command" == "myctl" ]; then
         echo "MyDE Controller - Control Various Functions of MyDE"
         echo ""
-        echo "Usage: myctl <command> [subcommand]"
+        echo "Usage: ${cmd_map[usage]}"
     else
         echo "MyDE Controller - '$command' command"
         echo ""
-        echo "Usage: myctl $command [subcommand]"
+        echo "Usage: ${cmd_map[usage]}"
     fi
     echo ""
 
     echo "Commands: "
-    _print_help_cmds sub_cmds cmd
+    _print_help_cmds cmd_map
 }
 
 #---------------
 
-# _print_help_cmds <dict_name> [skip_key]
+# _print_help_cmds <dict_name>
 _print_help_cmds() {
     local -n arr="$1"
-    local skip_key="$2"
+    local -a skip_keys=(cmd usage)
+    local -a filtered_keys=()
     local max_len=0
-    local help_desc="Show this help Menu"
 
-    # Auto-add help if not present and not being skipped
-    if [[ -z "${arr[help]}" && "$skip_key" != "help" ]]; then
-        arr[help]="$help_desc"
-    fi
+    arr[help]="Show help menu"
+    skip_keys+=("help")
 
-    # Find maximum key length
+    # First loop: Find maximum key length and filter out skipped keys
     for key in "${!arr[@]}"; do
-        [[ -n "$skip_key" && "$key" == "$skip_key" ]] && continue
-        (( ${#key} > max_len )) && max_len=${#key}
+        local should_skip=0
+        for s_key in "${skip_keys[@]}"; do
+            if [[ "$key" == "$s_key" ]]; then
+                should_skip=1
+                break
+            fi
+        done
+        if [[ "$should_skip" -eq 0 ]]; then
+            filtered_keys+=("$key")
+            (( ${#key} > max_len )) && max_len=${#key}
+        fi
     done
 
-    # Print remaining commands first
-    for key in "${!arr[@]}"; do
-        [[ -n "$skip_key" && "$key" == "$skip_key" ]] && continue
-        [[ "$key" == "help" ]] && continue
+    # Print filtered commands
+    for key in "${filtered_keys[@]}"; do
         printf "   %-$((max_len + 4))s %s\n" "$key" "${arr[$key]}"
     done
 
-    # Print help last
-    if [[ -n "${arr[help]}" && "$skip_key" != "help" ]]; then
-        printf "   %-$((max_len + 4))s %s\n" "help" "${arr[help]}"
-    fi
+    # print help at last
+    printf "   %-$((max_len + 4))s %s\n" "help" "${arr[help]}"
+
 }
-
-
 
 #---------------------------------------------------------------------------
 
