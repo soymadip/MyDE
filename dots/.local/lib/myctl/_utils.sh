@@ -17,7 +17,7 @@ if ! declare -f log.error >/dev/null 2>&1; then
 fi
 
 # shellcheck disable=SC2142
-alias require_arg='shift && [ -n "$1" ]'
+alias shift_arg='shift && [ -n "$1" ]'
 
 #---------------
 

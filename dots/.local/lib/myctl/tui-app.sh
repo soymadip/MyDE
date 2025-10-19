@@ -37,15 +37,15 @@ open-tui() {
     while [[ $# -gt 0 ]]; do
         case "$1" in
             -t|--term)
-                require_arg || { log.error "No terminal name specified after '-t|--term'"; help_menu; return 1; }
+                shift_arg || { log.error "No terminal name specified after '-t|--term'"; help_menu; return 1; }
                 terminal_cmd="$1"
                 ;;
             -c|--class)
-                require_arg || { log.error "No class name specified after '-c|--class'"; help_menu; return 1; }
+                shift_arg || { log.error "No class name specified after '-c|--class'"; help_menu; return 1; }
                 term_class="$1"
                 ;;
             --|'-e'|--exec)
-                require_arg || { log.error "No command specified after '-e|--exec'"; return 1; }
+                shift_arg || { log.error "No command specified after '-e|--exec'"; return 1; }
                 exec_cmd="$*"
                 break
                 ;;
