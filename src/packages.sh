@@ -12,7 +12,7 @@ rice_pckgs=(
   #GTK Themes
   "nwg-look" "colloid-catppuccin-gtk-theme-git" "catppuccin-gtk-theme-macchiato"
 
-  ##QT Themes
+  #QT Themes
   "kvantum" "qt5ct-kde" "qt6ct-kde" "kvantum-qt5" "kvantum-theme-catppuccin-git"
 
   #Tools
@@ -42,6 +42,8 @@ pre_pckgs=(
 core_pckgs=(
 
   "qt5-wayland" "qt6-wayland"
+  
+  "ntfs-3g"
 
   "gnome-keyring"
 
@@ -166,8 +168,8 @@ user_pckgs=(
 
   "okular" "ebook-tools" "kdegraphics-mobipocket" # PDF viewer
 
-  "visual-studio-code-bin"                        # IDE (heavy)
-  "zed-preview-bin" "hyprls-git" "shellcheck-bin" # IDE, Text Editor
+  "visual-studio-code-bin"       # IDE (heavy)
+  "zed-preview-bin" "hyprls-git" "shellcheck-bin" "direnv" # IDE, Text Editor
   "python" "uv"
 
   "mpv" "mpv-mpris" "yt-dlp"
