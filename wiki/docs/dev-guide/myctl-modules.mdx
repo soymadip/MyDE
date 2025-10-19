@@ -61,7 +61,7 @@ Always include a comment block explaining your function's purpose and arguments.
 Now, edit the main `myctl` script to add the `hello` command.
 
 1.  **Add the main `case` entry:** Find the main `case "$1" in` block and add an entry for `hello`.
-2.  **Define the `help` subcommand:** Inside the `hello)` block, create a `case` for its own arguments. The first thing should always be the `help` option, which defines the `sub_cmds` array for the `help_menu`.
+2.  **Define the `help` subcommand:** Inside the `hello)` block, create a `case` for its own arguments. The first thing should always be the `help` option, which defines the `cmd_map` array for the `help_menu`.
 3.  **Implement the command logic:** Add a case that calls your new function. Use `import_lib` to load your script first.
 4.  **Handle invalid subcommands:** Add a default case to show the help menu if an invalid subcommand is used.
 
@@ -73,7 +73,7 @@ Here is the full code block to add to `myctl`:
         shift # $1 = arg2
         case "$1" in
             help)
-                sub_cmds=(
+                cmd_map=(
                     [cmd]="hello"
                     [world]="Greet the world."
                     [user]="Greet the current user."
