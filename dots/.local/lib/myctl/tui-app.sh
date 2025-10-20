@@ -64,13 +64,9 @@ open-tui() {
         shift
     done
 
-    # Extract the terminal name
-    read -r -a terminal_arr <<< "$terminal_cmd"
-    terminal_bin="${terminal_arr[0]}"
-
-    # Extract the command binary
-    read -r -a cmd_arr <<< "$exec_cmd"
-    cmd_bin="${cmd_arr[0]}"
+    # Extract the bin name
+    terminal_bin="${terminal_cmd%% *}"
+    cmd_bin="${exec_cmd%% *}"
 
     log.debug "Using terminal: $terminal_bin"
 
