@@ -8,7 +8,7 @@ MAX_MIC=${MAX_MIC:-153}
 #========================= Functions =========================#
 
 get-volume() {
-    local mic=false
+    local mic=false volume
     local pactl_cmd="get-sink-volume"
     local pactl_device="@DEFAULT_SINK@"
 
@@ -20,7 +20,15 @@ get-volume() {
             ;;
     esac
 
-    pactl "$pactl_cmd" "$pactl_device" | grep -oP '[0-9]+(?=%)' | head -n 1
+   volume="$( pactl "$pactl_cmd" "$pactl_device" \
+                  | grep -oP '\d+(\.\d+)?(?=%)' \
+                  | head -n1 \
+                  | awk '{ printf("%.0f", $0) }'
+            )"
+
+      [ -z "$volume" ] && log.error "Failed to get volume level." && return 1
+
+   echo "$volume"
 }
 
 
@@ -31,28 +39,19 @@ set-volume() {
 
     while [ "$#" -gt 0 ]; do
         case "$1" in
-            -m)
+            -m|--mic)
                 mic=true
                 ;;
             *)
-                case "$1" in
-                    ''|*[!0-9]*)
-                        symbol="${1:0:1}"
-                        case "$symbol" in
-                            +|-)
-                                direction="$symbol"
-                                change="${1:1}"
-                                ;;
-                            *)
-                                log.fatal "Invalid Volume direction: '$symbol'"
-                                return 1
-                                ;;
-                        esac
-                        ;;
-                    *)
-                        req_level="$1"
-                        ;;
-                esac
+                if [[ "$1" =~ ^[+-][0-9]+$ ]]; then
+                    direction="${1:0:1}"
+                    change="${1:1}"
+                elif [[ "$1" =~ ^[0-9]+$ ]]; then
+                    req_level="$1"
+                else
+                    log.error "Invalid volume argument: '$1'. Expected +<level>, -<level>, or <level>."
+                    return 1
+                fi
                 ;;
         esac
         shift
@@ -75,6 +74,12 @@ set-volume() {
 
     log.debug "1. Current Level: $current_level, Change: $change,  req_level: $req_level, Current Level: $current_level"
 
+    # Validate current level
+    ! [[ "$current_level" =~ ^[0-9]+$ ]] && {
+        log.error "Unable to parse current volume level: '$current_level'."
+        return 2
+    }
+
     # Determine requested level
     if [ "$direction" == "+" ]; then
         [ -z "$req_level" ] && req_level=$((current_level + change))
@@ -94,7 +99,10 @@ set-volume() {
 
     log.debug "Final: Current Level: $current_level, Change: $change,  req_level: $req_level, Current Level: $current_level"
 
-    pactl "$pactl_cmd" "$device" "${req_level}%"
+    pactl "$pactl_cmd" "$device" "${req_level}%" || {
+        log.error "Failed to Set volume via pactl"
+        return 3
+    }
 
 }
 
