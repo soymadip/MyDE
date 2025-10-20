@@ -11,11 +11,13 @@
 
 # ======================== Config ===========================
 
-LOG_LEVEL=1
 MYDE_DIR="$HOME/MyDE"
 LIB_DIR="$HOME/.local/lib/myctl"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
 KEYBINDS_FILE="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
+LOG_LEVEL=1
+MAX_VOLUME=150
+MAX_MIC=150
 
 #========================== Main Logic =========================
 
@@ -124,6 +126,32 @@ case "$1" in
                         ;;
                 esac
                 ;;
+            volume)
+                shift
+                case "$1" in
+                    help)
+                        cmd_map=(
+                            [cmd]="get volume"
+                            [usage]="myctl get volume [mic]"
+                            [mic]="get current microphone volume level."
+                        )
+                        help_menu
+                        ;;
+                    mic)
+                        shift
+                        import_lib "audio-utils"
+                        get-volume -m
+                        ;;
+                    "")
+                        import_lib "audio-utils"
+                        get-volume
+                        ;;
+                    *)
+                        invld_cmd "$1" && self get volume help
+                        exit 1
+                        ;;
+                esac
+                ;;
             ""|*)
                 invld_cmd "$1" && self get help
                 exit 1
@@ -167,6 +195,32 @@ case "$1" in
                         invld_cmd "$1" && self set theme help
                         exit 1
                         ;;
+                esac
+                ;;
+            volume)
+                shift
+                case "$1" in
+                    help)
+                        cmd_map=(
+                            [cmd]="set volume"
+                            [usage]="myctl set volume [mic] [+|-]<level>"
+                            [mic]="set microphone volume"
+                        )
+                        help_menu
+                        ;;
+                    mic)
+                        shift
+                        import_lib "audio-utils"
+                        set-volume -m "$1"
+                        ;;
+                    "")
+                      self set volume help
+                      exit 1
+                      ;;
+                    *)
+                      import_lib "audio-utils"
+                      set-volume "$1"
+                      ;;
                 esac
                 ;;
             ""|*)

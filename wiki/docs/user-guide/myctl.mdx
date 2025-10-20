@@ -111,6 +111,29 @@ Gets the current Qt/KDE theme name.
 </Tabs>
 
 ---
+
+### `get volume`
+
+Retrieves the current volume level for speakers or a microphone.
+
+<Tabs groupId="get-volume">
+<TabItem value="speaker" label="speaker">
+
+Gets the current speaker volume.
+
+Usage: `myctl get volume`
+
+</TabItem>
+<TabItem value="mic" label="mic">
+
+Gets the current microphone volume.
+
+Usage: `myctl get volume mic`
+
+</TabItem>
+</Tabs>
+
+---
 ---
 
 ## `set`
@@ -151,6 +174,38 @@ myctl set theme rofi "catppuccin-mocha"
 </Tabs>
 
 ---
+
+### `set volume`
+
+Sets the volume for speakers or a microphone. The level can be an absolute value (e.g., `50`), a relative increase (e.g., `+5`), or a relative decrease (e.g., `-5`).
+
+<Tabs groupId="set-volume">
+<TabItem value="speaker" label="speaker">
+
+Sets the speaker volume.
+
+Usage: `myctl set volume <level>`
+
+**Examples:**
+- Set volume to 75%: `myctl set volume 75`
+- Increase volume by 10%: `myctl set volume +10`
+- Decrease volume by 10%: `myctl set volume -10`
+
+</TabItem>
+<TabItem value="mic" label="mic">
+
+Sets the microphone volume.
+
+Usage: `myctl set volume mic <level>`
+
+**Examples:**
+- Set mic volume to 50%: `myctl set volume mic 50`
+- Increase mic volume by 5%: `myctl set volume mic +5`
+
+</TabItem>
+</Tabs>
+
+---
 ---
 
 ## `show`
@@ -172,6 +227,30 @@ Usage: `myctl show powermenu`
 Displays a searchable list of the keybindings defined in the MyDE documentation. This is a quick way to reference shortcuts without opening the full documentation.
 
 Usage: `myctl show keybinds`
+
+---
+
+### `show tui`
+
+Opens a terminal-based application in a new floating terminal window. This is useful for running quick tasks without interrupting your workflow.
+
+Usage: `myctl show tui [-t <task>] [-T <terminal>] [-c <class>] [-e <exec>]`
+
+**Arguments:**
+
+| Argument | Description |
+| :--- | :--- |
+| `-t`, `--task` | Command (task) to run inside the terminal. |
+| `-T`, `--term` | Terminal emulator to use (default: `alacritty`). |
+| `-c`, `--class` | Application class for the terminal window. |
+| `-e`, `--exec` | Command to run. |
+
+**Example:**
+
+Run `btop` in a new terminal window:
+```shell
+myctl show tui -t btop
+```
 
 ---
 ---
