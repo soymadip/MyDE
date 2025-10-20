@@ -15,7 +15,7 @@ MYDE_DIR="$HOME/MyDE"
 LIB_DIR="$HOME/.local/lib/myctl"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
 KEYBINDS_FILE="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
-LOG_LEVEL=1
+LOG_LEVEL=$([[ "$ENV" == DEV ]] && echo 0 || echo 1)
 MAX_VOLUME=150
 MAX_MIC=150
 

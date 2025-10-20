@@ -18,6 +18,9 @@
   "editor.autoIndentOnPaste": true,
   "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
   "terminal.integrated.confirmOnExit": "hasChildProcesses",
+  "terminal.integrated.env.linux": {
+    "ENV": "DEBUG",
+  },
   "telemetry.editStats.enabled": false,
   "telemetry.feedback.enabled": false,
   "telemetry.telemetryLevel": "off",

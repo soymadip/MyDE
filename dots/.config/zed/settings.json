@@ -129,7 +129,10 @@
   },
   // ====== TERMINAL ======
   "terminal": {
-    "font_family": "JetBrainsMono Nerd Font"
+    "font_family": "JetBrainsMono Nerd Font",
+    "env": {
+      "ENV": "DEV"
+    }
   },
   // ====== IMAGE VIEWER ======
   "image_viewer": {
