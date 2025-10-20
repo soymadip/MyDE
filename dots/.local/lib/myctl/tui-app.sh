@@ -24,9 +24,7 @@
 
 # Entrypoint expected by myctl: `open-tui`
 open-tui() {
-    local exec_cmd=""
-    local term_class=""
-    local terminal_bin=""
+    local exec_cmd term_class terminal_bin cmd_bin
     local terminal_cmd="${TERMINAL:-wezterm start}"
 
    [[ $# -eq 0 ]] && {
@@ -66,9 +64,13 @@ open-tui() {
         shift
     done
 
-    # Extract the binary name
+    # Extract the terminal name
     read -r -a terminal_arr <<< "$terminal_cmd"
     terminal_bin="${terminal_arr[0]}"
+
+    # Extract the command binary
+    read -r -a cmd_arr <<< "$exec_cmd"
+    cmd_bin="${cmd_arr[0]}"
 
     log.debug "Using terminal: $terminal_bin"
 
@@ -84,6 +86,9 @@ open-tui() {
         help_menu
         return 1
     fi
+
+    [[ -z "$term_class" ]] && term_class="$cmd_bin"
+    log.debug "Term class: $term_class"
 
     exec_cmd="${terminal_cmd} --class $term_class -e $exec_cmd"
     log.debug "Final command: $exec_cmd"
