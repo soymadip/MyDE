@@ -12,7 +12,7 @@
         "searchFiles": true
     },
     "theme": {
-        "name": "catppuccin_macchiato.json"
+        "name": "catppuccin-macchiato"
     },
     "window": {
         "csd": true,

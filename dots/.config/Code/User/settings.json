@@ -32,4 +32,5 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "terminal.integrated.shellIntegration.enabled": true,
+  "diffEditor.ignoreTrimWhitespace": false
 }

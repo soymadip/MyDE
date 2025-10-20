@@ -1,0 +1,9 @@
+Ctrl
+Esc
+HyprDE
+Hyprland
+Keybindings
+MyDE
+N/A
+Rofi
+powermenu

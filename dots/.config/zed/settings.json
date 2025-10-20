@@ -1,5 +1,6 @@
 {
   // ====== CORE EDITOR SETTINGS ======
+  "double_click_in_multibuffer": "open",
   "theme": "Catppuccin Macchiato (maroon)",
   "icon_theme": "Catppuccin Mocha",
   "vim_mode": true,
@@ -9,8 +10,7 @@
   "show_whitespaces": "boundary",
   "use_system_path_prompts": false,
   "use_system_prompts": false,
-  "load_direnv": "shell_hook",
-  "multi_cursor_modifier": "cmd_or_ctrl",
+  "load_direnv": "direct",
 
   // ====== FONTS & TYPOGRAPHY ======
   "ui_font_family": "Ubuntu Nerd Font Propo",
@@ -21,6 +21,7 @@
 
   // ====== UI LAYOUT & PANELS ======
   "project_panel": {
+    "hide_root": true,
     "dock": "right",
     "entry_spacing": "standard",
     "indent_size": 22
@@ -35,13 +36,17 @@
   "active_pane_modifiers": {
     "inactive_opacity": 0.9
   },
+  "gutter": {
+    "runnables": false,
+    "folds": false,
+    "min_line_number_digits": 0
+  },
 
   // ====== TABS & NAVIGATION ======
   "tabs": {
     "file_icons": true,
     "git_status": true,
-    "activate_on_close": "neighbour",
-    "show_diagnostics": "errors"
+    "activate_on_close": "neighbour"
   },
   "toolbar": {
     "breadcrumbs": true,
@@ -75,19 +80,19 @@
   "indent_guides": {
     "coloring": "indent_aware"
   },
+  // ====== AI ASSISTANT & AGENT ======
   "features": {
     "edit_prediction_provider": "copilot"
   },
-  // ====== AI ASSISTANT & AGENT ======
   "agent": {
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "gpt-5-mini"
     },
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5"
+      "model": "gpt-4o"
     },
     "play_sound_when_agent_done": true,
     "always_allow_tool_actions": true
@@ -108,7 +113,6 @@
     "lua": true,
     "marksman": true,
     "make": true,
-    // "mcp-server-github": true,
     "nix": true,
     "php": true,
     "scheme": true,
@@ -117,10 +121,11 @@
   },
   // ====== FILE TYPES & ASSOCIATIONS ======
   "file_types": {
-    "Hyprlang": ["**/hypr/**/*conf", "**/myde/**/*conf"],
     "CSS": ["**/rofi/**/*rasi"],
-    "Shell Script": ["**/uwsm/**"],
-    "ini": ["**mime**"]
+    "Hyprlang": ["**/hypr/**/*conf", "**/myde/**/*conf"],
+    "ini": ["**mime**"],
+    "Markdown": ["**/git/*commit*.txt"],
+    "Shell Script": ["**/uwsm/**"]
   },
   // ====== TERMINAL ======
   "terminal": {

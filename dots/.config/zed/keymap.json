@@ -21,18 +21,18 @@
   },
   //
   // Toggle Terminal -> SPACE + t
-  {
-    "context": "(Editor &&  vim_mode ==  normal)",
-    "bindings": {
-      "space t": "terminal_panel::Toggle"
-    }
-  },
-  {
-    "context": "Terminal",
-    "bindings": {
-      "space t": "terminal_panel::Toggle"
-    }
-  },
+  // {
+  //   "context": "(Editor &&  vim_mode ==  normal)",
+  //   "bindings": {
+  //     "space t": "terminal_panel::Toggle"
+  //   }
+  // },
+  // {
+  //   "context": "Terminal",
+  //   "bindings": {
+  //     "space t": "terminal_panel::Toggle"
+  //   }
+  //},
   //
   // Toggle file tree (Project tree) -> SPACE + e
   {
