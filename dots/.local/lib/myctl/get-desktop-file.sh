@@ -14,6 +14,7 @@ get-desktop-file() {
     # Local variables
     local cmd_name search_dirs pattern dir find_result desktop_file_name
     local output_path=true
+    local replacement_used=false orignal_cmd cmd_bin
 
     # Command replacement mapping
     #   Eg. zen.desktop has: Exec=zen-bin %U
@@ -63,19 +64,23 @@ get-desktop-file() {
         cmd_name=$(basename "$cmd_name")
     fi
 
-    # Check if command is valid
-    if ! command -v "$cmd_name" >/dev/null 2>&1; then
-        log.error "Command '$cmd_name' not found in PATH."
+    original_cmd="$cmd_name"
+    cmd_bin="${cmd_name%% *}"   # first token before any space
+
+    # Check if command binary is valid
+    if ! command -v "$cmd_bin" >/dev/null 2>&1; then
+        log.error "Command '$original_cmd' not found in PATH."
         return 1
     fi
 
-    # Handle command replacements
-    local original_cmd="$cmd_name"
-    local replacement_used=false
-    if [[ -n "${cmd_replacements[$cmd_name]}" ]]; then
-        cmd_name="${cmd_replacements[$cmd_name]}"
+    # Handle command replacements (use binary name as key)
+    if [[ -n "${cmd_replacements[$cmd_bin]}" ]]; then
+        cmd_bin="${cmd_replacements[$cmd_bin]}"
         replacement_used=true
     fi
+
+    # Use the resolved binary name for desktop-file pattern matching
+    cmd_name="$cmd_bin"
 
     # Construct regex pattern for Exec= line
     # Match command name anywhere in path (as final component)
