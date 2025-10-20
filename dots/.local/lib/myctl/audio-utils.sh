@@ -26,8 +26,8 @@ get-volume() {
 
 # Usage: set-volume [-m] [+\-]<level> | <exact_level>
 set-volume() {
-    local change mic=false current_volume requested_value max_limit
-    local device pactl_cmd
+    local change symbol direction req_level current_level new_level
+    local mic=false device pactl_cmd
 
     while [ "$#" -gt 0 ]; do
         case "$1" in
@@ -35,86 +35,67 @@ set-volume() {
                 mic=true
                 ;;
             *)
-                change="$1"
+                case "$1" in
+                    ''|*[!0-9]*)
+                        symbol="${1:0:1}"
+                        case "$symbol" in
+                            +|-)
+                                direction="$symbol"
+                                change="${1:1}"
+                                ;;
+                            *)
+                                log.fatal "Invalid Volume direction: '$symbol'"
+                                return 1
+                                ;;
+                        esac
+                        ;;
+                    *)
+                        req_level="$1"
+                        ;;
+                esac
                 ;;
         esac
         shift
     done
 
-    # Check for missing argument
-    if [ -z "$change" ]; then
-        log.error "Missing volume level."
-        return 1
-    fi
+    log.debug "0. Requested Level: $req_level, Change: $change, direction: $direction"
 
-    # 2. Determine Max Limit and Target Device
+    # Determine Max Limit and Target Device
     if "$mic"; then
         max_limit=$MAX_MIC
         device="@DEFAULT_SOURCE@"
         pactl_cmd="set-source-volume"
+        current_level=$(get-volume -m)
     else
         max_limit=$MAX_VOLUME
         device="@DEFAULT_SINK@"
         pactl_cmd="set-sink-volume"
+        current_level=$(get-volume)
     fi
 
-    # 3. Handle Exact Value Input ("75")
-    if [[ "$change" =~ ^[0-9]+$ ]]; then
-        requested_value=$change
+    log.debug "1. Current Level: $current_level, Change: $change,  req_level: $req_level, Current Level: $current_level"
 
-        # Check if the requested value exceeds the max limit
-        if (( requested_value > max_limit )); then
-            log.warn "Cannot set volume to ${requested_value}%. Max limit is ${max_limit}%." -n
-            change="${max_limit}%"
-        else
-            change="${requested_value}%"
-        fi
-
-        pactl "$pactl_cmd" "$device" "$change"
-        return 0
+    # Determine requested level
+    if [ "$direction" == "+" ]; then
+        [ -z "$req_level" ] && req_level=$((current_level + change))
+    else
+        [ -z "$req_level" ] && req_level=$((current_level - change))
     fi
 
-    # 4. Handle Relative Change Input ("+5%" or "-10")
-    if [[ "$change" =~ ^[+\-][0-9]+ ]]; then
-        local direction=${change:0:1}
-        local step=${change:1}
-        local potential_volume difference
+    log.debug "2. Current Level: $current_level, Change: $change,  req_level: $req_level, Current Level: $current_level"
 
-        # Get current volume only if increasing volume
-        if [[ "$direction" == "+" ]]; then
-
-            current_volume=$(get-volume ${mic:+-m})
-
-            # Calculate the wanted volume
-            potential_volume=$(( current_volume + step ))
-
-            # Check the limit
-            if (( potential_volume > max_limit )); then
-
-                # get the diff to max limit
-                difference=$(( max_limit - current_volume ))
-
-                if (( difference > 0 )); then
-                    change="+${difference}%"
-                    log.warn "Adjusted increase to ${difference}% to meet ${max_limit}% limit." >&2
-                else
-                    log.warn "Warning: Volume already at or above ${max_limit}%. Skipping increase." >&2
-                    return 0
-                fi
-            else
-                # If within limits, add %
-                change="${direction}${step}%"
-            fi
-        fi
-
-        pactl "$pactl_cmd" "$device" "$change"
-
-        return 0
+    # Clamp requested level to valid range [0, max_limit]
+    if (( req_level > max_limit )); then
+        log.warn "Max Volume limit: $max_limit"
+        req_level=$max_limit
+    elif (( req_level < 0 )); then
+        req_level=0
     fi
 
-    # Fallback for unrecognized input format
-    log.error "Unrecognized volume level format: '$change'. Expected: [+\-]<level> or <exact_level>" >&2
-    return 1
+    log.debug "Final: Current Level: $current_level, Change: $change,  req_level: $req_level, Current Level: $current_level"
+
+    pactl "$pactl_cmd" "$device" "${req_level}%"
+
 }
 
 
