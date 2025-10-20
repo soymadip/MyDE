@@ -9,7 +9,7 @@
 #
 
 export LANG=en_US.UTF-8
-export TERMINAL=wezterm
+export TERMINAL="$(sed -n 's/^\$terminal\s*=\s*//p' ~/MyDE/dots/.config/myde/myde.conf)"
 
 export EDITOR="$(command -v nvim &> /dev/null && echo nvim || echo nano)"
 export VISUAL="$(command -v zeditor &> /dev/null && echo zeditor || command -v codium &> /dev/null && echo codium || command -v code &> /dev/null && echo code || echo pluma)"
