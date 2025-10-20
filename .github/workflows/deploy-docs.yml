@@ -1,5 +1,9 @@
 name: Deploy to GitHub Pages
 
+concurrency:
+  group: deploy-docs-${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     paths:
