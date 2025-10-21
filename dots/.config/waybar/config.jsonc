@@ -125,6 +125,8 @@
     "node-type": "Audio/Source",
     "on-click": "pavucontrol-qt -t 4",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-scroll-up": "myctl set volume mic +1",
+    "on-scroll-down": "myctl set volume mic -1",
     "scroll-step": 5,
 
     "format": "<b></b>\u2005{volume}% ",
@@ -133,8 +135,10 @@
 
   "wireplumber#speaker": {
     "scroll-step": 2,
-    "on-click": "pavucontrol-qt -t 3",
+    "on-click": "myctl show tui -c wiremix -e wiremix -v output",
     "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "myctl set volume +1",
+    "on-scroll-down": "myctl set volume -1",
 
     "format": "{icon}\u2004{volume}%",
     "format-muted": "  muted",
