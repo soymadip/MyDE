@@ -3,7 +3,7 @@
 #========================= Configuration =========================#
 
 MAX_VOLUME=${MAX_VOLUME:-153}
-MAX_MIC=${MAX_MIC:-153}
+MAX_MIC=${MAX_MIC:-$MAX_VOLUME}
 
 #========================= Functions =========================#
 
@@ -26,7 +26,7 @@ get-volume() {
                   | awk '{ printf("%.0f", $0) }'
             )"
 
-      [ -z "$volume" ] && log.error "Failed to get volume level." && return 1
+   [ -z "$volume" ] && log.error "Failed to get volume level." && return 1
 
    echo "$volume"
 }
