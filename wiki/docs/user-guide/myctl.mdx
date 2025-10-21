@@ -115,17 +115,47 @@ Gets the current Qt/KDE theme name.
 
 ### `get volume`
 
-Retrieves the current volume level for speakers (sink).
+Retrieves the current volume level or mute status for speakers (sink).
+
+<Tabs groupId="get-volume">
+<TabItem value="level" label="level">
+
+Gets the current speaker volume.
 
 Usage: `myctl get volume`
+
+</TabItem>
+<TabItem value="mute" label="mute">
+
+Gets the current speaker mute status.
+
+Usage: `myctl get volume mute`
+
+</TabItem>
+</Tabs>
 
 ---
 
 ### `get mic`
 
-Retrieves the current microphone/source volume.
+Retrieves the current volume level or mute status for the microphone (source).
+
+<Tabs groupId="get-mic">
+<TabItem value="level" label="level">
+
+Gets the current microphone volume.
 
 Usage: `myctl get mic`
+
+</TabItem>
+<TabItem value="mute" label="mute">
+
+Gets the current microphone mute status.
+
+Usage: `myctl get mic mute`
+
+</TabItem>
+</Tabs>
 
 ---
 ---
@@ -171,28 +201,86 @@ myctl set theme rofi "catppuccin-mocha"
 
 ### `set volume`
 
-Sets the speaker (sink) volume. The level can be an absolute integer value (e.g., `50`), a relative increase (e.g., `+5`), or a relative decrease (e.g., `-5`).
+Modifies the speaker (sink) volume or mute status.
+
+<Tabs groupId="set-volume">
+<TabItem value="level" label="level">
+
+Sets the speaker volume. The level can be an absolute integer value (e.g., `50`), a relative increase (e.g., `+5`), or a relative decrease (e.g., `-5`).
 
 Usage: `myctl set volume <level>`
 
-Examples:
+**Examples:**
 - Set volume to 75%: `myctl set volume 75`
 - Increase volume by 10%: `myctl set volume +10`
 - Decrease volume by 10%: `myctl set volume -10`
+
+</TabItem>
+<TabItem value="mute" label="mute">
+
+Mutes the speaker.
+
+Usage: `myctl set volume mute`
+
+</TabItem>
+<TabItem value="unmute" label="unmute">
+
+Unmutes the speaker.
+
+Usage: `myctl set volume unmute`
+
+</TabItem>
+<TabItem value="toggle" label="toggle">
+
+Toggles the speaker mute status.
+
+Usage: `myctl set volume toggle`
+
+</TabItem>
+</Tabs>
 
 
 ---
 
 ### `set mic`
 
-Sets the microphone (source) volume. This is an explicit command separate from speaker volume.
+Modifies the microphone (source) volume or mute status.
+
+<Tabs groupId="set-mic">
+<TabItem value="level" label="level">
+
+Sets the microphone volume. The level can be an absolute integer value (e.g., `50`), a relative increase (e.g., `+5`), or a relative decrease (e.g., `-5`).
 
 Usage: `myctl set mic <level>`
 
-Examples:
+**Examples:**
 - Set mic volume to 50%: `myctl set mic 50`
 - Increase mic volume by 5%: `myctl set mic +5`
 - Decrease mic volume by 5%: `myctl set mic -5`
+
+</TabItem>
+<TabItem value="mute" label="mute">
+
+Mutes the microphone.
+
+Usage: `myctl set mic mute`
+
+</TabItem>
+<TabItem value="unmute" label="unmute">
+
+Unmutes the microphone.
+
+Usage: `myctl set mic unmute`
+
+</TabItem>
+<TabItem value="toggle" label="toggle">
+
+Toggles the microphone mute status.
+
+Usage: `myctl set mic toggle`
+
+</TabItem>
+</Tabs>
 
 
 ---
@@ -224,22 +312,27 @@ Usage: `myctl show keybinds`
 
 Opens a terminal-based application in a new floating terminal window. This is useful for running quick tasks without interrupting your workflow.
 
-Usage: `myctl show tui [-t <task>] [-T <terminal>] [-c <class>] [-e <exec>]`
+Usage: `myctl show tui [options] [command]`
 
 **Arguments:**
 
 | Argument | Description |
 | :--- | :--- |
-| `-t`, `--task` | Command (task) to run inside the terminal. |
-| `-T`, `--term` | Terminal emulator to use (default: `alacritty`). |
+| `-t`, `--term` | Terminal emulator to use (default: `wezterm start`). |
 | `-c`, `--class` | Application class for the terminal window. |
 | `-e`, `--exec` | Command to run. |
+| `command` | The command to run in the terminal. |
 
-**Example:**
+**Examples:**
 
 Run `btop` in a new terminal window:
 ```shell
-myctl show tui -t btop
+myctl show tui btop
+```
+
+Run `lazygit` in a `kitty` terminal with a specific class:
+```shell
+myctl show tui -t kitty -c lazygit lazygit
 ```
 
 ---

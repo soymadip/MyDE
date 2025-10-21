@@ -138,6 +138,10 @@ case "$1" in
                         )
                         help_menu
                         ;;
+                    mute)
+                        import_lib "audio-utils"
+                        get-mute
+                        ;;
                     "")
                         import_lib "audio-utils"
                         get-volume
@@ -158,6 +162,10 @@ case "$1" in
                             [note]="Get microphone/source volume"
                         )
                         help_menu
+                        ;;
+                    mute)
+                        import_lib "audio-utils"
+                        get-mute -m
                         ;;
                     "")
                         import_lib "audio-utils"
@@ -226,6 +234,18 @@ case "$1" in
                         )
                         help_menu
                         ;;
+                    mute)
+                      import_lib "audio-utils"
+                      set-mute
+                      ;;
+                    unmute)
+                      import_lib "audio-utils"
+                      set-mute -u
+                      ;;
+                    toggle)
+                      import_lib "audio-utils"
+                      set-mute -t
+                      ;;
                     "")
                       self set volume help
                       exit 1
@@ -246,6 +266,18 @@ case "$1" in
                         )
                         help_menu
                         ;;
+                    mute)
+                      import_lib "audio-utils"
+                      set-mute
+                      ;;
+                    unmute)
+                      import_lib "audio-utils"
+                      set-mute -m -u
+                      ;;
+                    toggle)
+                      import_lib "audio-utils"
+                      set-mute -m -t
+                      ;;
                     "")
                         self set mic help
                         exit 1
