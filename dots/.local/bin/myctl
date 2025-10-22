@@ -138,6 +138,10 @@ case "$1" in
                         )
                         help_menu
                         ;;
+                    mute)
+                        import_lib "audio-utils"
+                        get-mute
+                        ;;
                     "")
                         import_lib "audio-utils"
                         get-volume
@@ -158,6 +162,10 @@ case "$1" in
                             [note]="Get microphone/source volume"
                         )
                         help_menu
+                        ;;
+                    mute)
+                        import_lib "audio-utils"
+                        get-mute -m
                         ;;
                     "")
                         import_lib "audio-utils"

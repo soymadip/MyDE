@@ -30,6 +30,26 @@ get-volume() {
     echo "$volume"
 }
 
+# get-mute [-m|--mic]
+# Return: "true" if muted, else "false"
+get-mute() {
+    local mic=false status
+    local wpctl_device="@DEFAULT_AUDIO_SINK@"
+
+    case "$1" in
+        -m|--mic)
+            mic=true
+            wpctl_device="@DEFAULT_AUDIO_SOURCE@"
+            ;;
+    esac
+
+  status="$(wpctl get-volume $wpctl_device | grep -o 'MUTED')"
+
+  { [[ "$status" == "MUTED" ]] && echo "true"; } || {
+      echo "false"
+      return 1
+  }
+}
 
 # Usage: set-volume [-m|--mic] [+\-]<level> | <exact_level>
 set-volume() {
