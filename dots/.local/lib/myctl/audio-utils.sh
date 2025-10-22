@@ -54,7 +54,7 @@ get-mute() {
 # Usage: set-volume [-m|--mic] [+\-]<level> | <exact_level>
 set-volume() {
     local change symbol direction req_level current_level new_level
-    local mic=false device
+    local mic=false mic_flag device
 
     while [ "$#" -gt 0 ]; do
         case "$1" in
@@ -116,10 +116,15 @@ set-volume() {
 
     log.debug "Final: Current Level: $current_level, Change: $change,  req_level: $req_level, Current Level: $current_level"
 
-    wpctl set-volume "$device" "${req_level}%" || {
+    if ! wpctl set-volume "$device" "${req_level}%"; then
         log.error "Failed to Set volume via wpctl"
         return 3
-    }
+    else
+        if [ "$(get-volume)" != "$req_level" ]; then
+            log.error "Volume set verification failed. Expected: $req_level, Got: $(get-volume)"
+            return 4
+        fi
+    fi
 
 }
 
