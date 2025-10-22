@@ -100,7 +100,7 @@
 
   "network#status": {
     "tooltip": true,
-    "on-click": "nmgui || wezterm -e nmtui-connect",
+    "on-click": "nmgui || myctl show tui nmtui-connect",
     "max-length": 40,
     "interval": 30,
 
@@ -123,8 +123,8 @@
 
   "wireplumber#mic": {
     "node-type": "Audio/Source",
-    "on-click": "pavucontrol-qt -t 4",
-    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+    "on-click": "myctl show tui -c wiremix -e wiremix -v input",
+    "on-click-right": "myctl set mic toggle",
     "on-scroll-up": "myctl set volume mic +1",
     "on-scroll-down": "myctl set volume mic -1",
     "scroll-step": 5,
@@ -136,7 +136,8 @@
   "wireplumber#speaker": {
     "scroll-step": 2,
     "on-click": "myctl show tui -c wiremix -e wiremix -v output",
-    "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-middle": "myctl set volume toggle",
+    "on-click-right": "myctl set volume toggle",
     "on-scroll-up": "myctl set volume +1",
     "on-scroll-down": "myctl set volume -1",
 
