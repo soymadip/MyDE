@@ -116,6 +116,7 @@ set-volume() {
 
     # Determine Max Limit and Target Device
     if "$mic"; then
+        mic_flag="-m"
         max_limit=$MAX_MIC
         device="@DEFAULT_AUDIO_SOURCE@"
         current_level=$(get-volume -m)
@@ -156,7 +157,7 @@ set-volume() {
         log.error "Failed to Set volume via wpctl"
         return 3
     else
-        if [ "$(get-volume)" != "$req_level" ]; then
+        if [ "$(get-volume $mic_flag)" != "$req_level" ]; then
             log.error "Volume set verification failed. Expected: $req_level, Got: $(get-volume)"
             return 4
         fi
