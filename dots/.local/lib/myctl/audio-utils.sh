@@ -31,7 +31,7 @@ get-volume() {
 }
 
 
-# Usage: set-volume [-m] [+\-]<level> | <exact_level>
+# Usage: set-volume [-m|--mic] [+\-]<level> | <exact_level>
 set-volume() {
     local change symbol direction req_level current_level new_level
     local mic=false device

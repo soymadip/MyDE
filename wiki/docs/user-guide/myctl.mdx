@@ -28,7 +28,7 @@ myctl <command> <subcommand> [arguments...]
 Below is a list of available commands and their usage.
 
 
-## `get`
+## 1. get
 
 Retrieve info about the current system configuration.
 
@@ -105,6 +105,7 @@ Usage: `myctl get theme rofi`
 <TabItem value="qt" label="qt/kde">
 
 Gets the current Qt/KDE theme name.
+
 **Note:** This command is not yet implemented.
 
 </TabItem>
@@ -114,29 +115,22 @@ Gets the current Qt/KDE theme name.
 
 ### `get volume`
 
-Retrieves the current volume level for speakers or a microphone.
-
-<Tabs groupId="get-volume">
-<TabItem value="speaker" label="speaker">
-
-Gets the current speaker volume.
+Retrieves the current volume level for speakers (sink).
 
 Usage: `myctl get volume`
 
-</TabItem>
-<TabItem value="mic" label="mic">
+---
 
-Gets the current microphone volume.
+### `get mic`
 
-Usage: `myctl get volume mic`
+Retrieves the current microphone/source volume.
 
-</TabItem>
-</Tabs>
+Usage: `myctl get mic`
 
 ---
 ---
 
-## `set`
+## 2. set
 
 The `set` command modifies system configuration.
 
@@ -177,38 +171,34 @@ myctl set theme rofi "catppuccin-mocha"
 
 ### `set volume`
 
-Sets the volume for speakers or a microphone. The level can be an absolute value (e.g., `50`), a relative increase (e.g., `+5`), or a relative decrease (e.g., `-5`).
-
-<Tabs groupId="set-volume">
-<TabItem value="speaker" label="speaker">
-
-Sets the speaker volume.
+Sets the speaker (sink) volume. The level can be an absolute integer value (e.g., `50`), a relative increase (e.g., `+5`), or a relative decrease (e.g., `-5`).
 
 Usage: `myctl set volume <level>`
 
-**Examples:**
+Examples:
 - Set volume to 75%: `myctl set volume 75`
 - Increase volume by 10%: `myctl set volume +10`
 - Decrease volume by 10%: `myctl set volume -10`
 
-</TabItem>
-<TabItem value="mic" label="mic">
 
-Sets the microphone volume.
+---
 
-Usage: `myctl set volume mic <level>`
+### `set mic`
 
-**Examples:**
-- Set mic volume to 50%: `myctl set volume mic 50`
-- Increase mic volume by 5%: `myctl set volume mic +5`
+Sets the microphone (source) volume. This is an explicit command separate from speaker volume.
 
-</TabItem>
-</Tabs>
+Usage: `myctl set mic <level>`
+
+Examples:
+- Set mic volume to 50%: `myctl set mic 50`
+- Increase mic volume by 5%: `myctl set mic +5`
+- Decrease mic volume by 5%: `myctl set mic -5`
+
 
 ---
 ---
 
-## `show`
+## 3. show
 
 The `show` command displays various utility menus and dialogs, typically using Rofi.
 
@@ -255,7 +245,7 @@ myctl show tui -t btop
 ---
 ---
 
-## `reload`
+## 4. reload
 
 The `reload` command reloads MyDE services. Currently, it reloads the Hyprland configuration.
 

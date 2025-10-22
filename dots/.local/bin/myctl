@@ -59,6 +59,8 @@ case "$1" in
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
                     [theme]="Get current theme of MyDE or specific components"
+                    [volume]="Get speaker/sink volume"
+                    [mic]="Get microphone/source volume"
                 )
                 help_menu
                 ;;
@@ -132,15 +134,9 @@ case "$1" in
                     help)
                         cmd_map=(
                             [cmd]="get volume"
-                            [usage]="myctl get volume [mic]"
-                            [mic]="get current microphone volume level."
+                            [usage]="myctl get volume"
                         )
                         help_menu
-                        ;;
-                    mic)
-                        shift
-                        import_lib "audio-utils"
-                        get-volume -m
                         ;;
                     "")
                         import_lib "audio-utils"
@@ -148,6 +144,27 @@ case "$1" in
                         ;;
                     *)
                         invld_cmd "$1" && self get volume help
+                        exit 1
+                        ;;
+                esac
+                ;;
+            mic)
+                shift
+                case "$1" in
+                    help)
+                        cmd_map=(
+                            [cmd]="get mic"
+                            [usage]="myctl get mic"
+                            [note]="Get microphone/source volume"
+                        )
+                        help_menu
+                        ;;
+                    "")
+                        import_lib "audio-utils"
+                        get-volume -m
+                        ;;
+                    *)
+                        invld_cmd "$1" && self get mic help
                         exit 1
                         ;;
                 esac
@@ -167,6 +184,8 @@ case "$1" in
                 cmd_map=(
                     [cmd]="set"
                     [theme]="set theme for entire myde or specific components."
+                    [volume]="set speaker/sink volume or mute"
+                    [mic]="set microphone/source volume or mute"
                 )
                 help_menu
                 ;;
@@ -203,15 +222,9 @@ case "$1" in
                     help)
                         cmd_map=(
                             [cmd]="set volume"
-                            [usage]="myctl set volume [mic] [+|-]<level>"
-                            [mic]="set microphone volume"
+                            [usage]="myctl set volume [+|-]<level>"
                         )
                         help_menu
-                        ;;
-                    mic)
-                        shift
-                        import_lib "audio-utils"
-                        set-volume -m "$1"
                         ;;
                     "")
                       self set volume help
@@ -221,6 +234,26 @@ case "$1" in
                       import_lib "audio-utils"
                       set-volume "$1"
                       ;;
+                esac
+                ;;
+            mic)
+                shift
+                case "$1" in
+                    help)
+                        cmd_map=(
+                            [cmd]="set mic"
+                            [usage]="myctl set mic [+|-]<level>"
+                        )
+                        help_menu
+                        ;;
+                    "")
+                        self set mic help
+                        exit 1
+                        ;;
+                    *)
+                        import_lib "audio-utils"
+                        set-volume -m "$1"
+                        ;;
                 esac
                 ;;
             ""|*)
