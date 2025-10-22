@@ -41,10 +41,10 @@ case "$1" in
     help|'-h'|--help)
         cmd_map=(
             [cmd]="myctl"
-            [set]="Set configuration options (not yet implemented)"
-            [show]="Show various utility dialougs"
             [get]="Retrieve info about current system config."
             [reload]="Reload MyDE configuration"
+            [set]="Set configuration options (not yet implemented)"
+            [show]="Show various utility dialougs"
         )
         help_menu
         ;;
@@ -58,9 +58,9 @@ case "$1" in
                     [cmd]="get"
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
+                    [mic]="Get microphone/source volume"
                     [theme]="Get current theme of MyDE or specific components"
                     [volume]="Get speaker/sink volume"
-                    [mic]="Get microphone/source volume"
                 )
                 help_menu
                 ;;
@@ -128,9 +128,9 @@ case "$1" in
                 shift
                 cmd_map=(
                     [cmd]="get theme"
-                    [rofi]="get current rofi color theme."
                     [gtk]="get current gtk color theme."
                     [qt]="get current qt color theme. (not yet implemented)"
+                    [rofi]="get current rofi color theme."
                 )
                 case "$1" in
                     help)
@@ -191,9 +191,9 @@ case "$1" in
             help)
                 cmd_map=(
                     [cmd]="set"
+                    [mic]="set microphone/source volume or mute"
                     [theme]="set theme for entire myde or specific components."
                     [volume]="set speaker/sink volume or mute"
-                    [mic]="set microphone/source volume or mute"
                 )
                 help_menu
                 ;;
@@ -235,8 +235,8 @@ case "$1" in
                     help)
                         cmd_map=(
                             [cmd]="set theme"
-                            [rofi]="set rofi color theme."
                             [gtk]="set gtk color theme."
+                            [rofi]="set rofi color theme."
                         )
                         help_menu
                         ;;
@@ -320,9 +320,9 @@ case "$1" in
                 cmd_map=(
                     [cmd]="show tui"
                     [usage]="myctl show tui [-t <task>] [-T <terminal>] [-c <class>] [-e <exec>]"
-                    [-t, --term]="Terminal emulator to use (default: $TERMINAL)"
                     [-c, --class]="Application class for the terminal window"
                     [-e, --exec]="Command to run"
+                    [-t, --term]="Terminal emulator to use (default: $TERMINAL)"
                 )
                 import_lib "tui-app"
                 open-tui "$@"
