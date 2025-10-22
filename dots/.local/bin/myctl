@@ -288,8 +288,7 @@ case "$1" in
                 cmd_map=(
                     [cmd]="show tui"
                     [usage]="myctl show tui [-t <task>] [-T <terminal>] [-c <class>] [-e <exec>]"
-                    [-t, --task]="Command (task) to run inside the terminal"
-                    [-T, --term]="Terminal emulator to use (default: $TERMINAL)"
+                    [-t, --term]="Terminal emulator to use (default: $TERMINAL)"
                     [-c, --class]="Application class for the terminal window"
                     [-e, --exec]="Command to run"
                 )
