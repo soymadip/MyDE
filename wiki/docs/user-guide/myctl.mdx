@@ -312,7 +312,7 @@ Usage: `myctl show keybinds`
 
 Opens a terminal-based application in a new floating terminal window. This is useful for running quick tasks without interrupting your workflow.
 
-Usage: `myctl show tui [options] [command]`
+Usage: `myctl show tui [options] --|-e [command]`
 
 **Arguments:**
 
@@ -320,19 +320,23 @@ Usage: `myctl show tui [options] [command]`
 | :--- | :--- |
 | `-t`, `--term` | Terminal emulator to use (default: `wezterm start`). |
 | `-c`, `--class` | Application class for the terminal window. |
-| `-e`, `--exec` | Command to run. |
-| `command` | The command to run in the terminal. |
+| `-e`, `--exec` | The command to execute. When using this flag, it must be the last option. |
 
 **Examples:**
 
 Run `btop` in a new terminal window:
 ```shell
-myctl show tui btop
+myctl show tui -- btop
 ```
 
 Run `lazygit` in a `kitty` terminal with a specific class:
 ```shell
-myctl show tui -t kitty -c lazygit lazygit
+myctl show tui -t kitty -c lazygit -- lazygit
+```
+
+Run a complex command:
+```shell
+myctl show tui -t alacritty -- bash -c 'echo "Hello World"; read'
 ```
 
 ---

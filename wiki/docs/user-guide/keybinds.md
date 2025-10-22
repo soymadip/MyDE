@@ -21,7 +21,7 @@ Press `Super` + `/` to view this list anytime.
 | `Super` + `Q`   | Quit Active Window   |
 | `Super` + `X`   | Launch power menu    |
 | `Super` + `/`   | Launch keybinds hint |
-| `Super` + `Del` | Kill Hyprland        |
+| `Super` + `Del` | Logout               |
 
 ---
 
@@ -137,14 +137,17 @@ Press `Super` + `/` to view this list anytime.
 
 ## Audio & Media Controls
 
-| Keys            | Action                 |
-| :-------------- | :--------------------- |
-| `Volume Up`     | Increase system volume |
-| `Volume Down`   | Decrease system volume |
-| `Volume Mute`   | Toggle audio mute      |
-| `XF86AudioPlay` | Play/Pause media       |
-| `XF86AudioNext` | Next track             |
-| `XF86AudioPrev` | Previous track         |
+| Keys                    | Action                     |
+| :---------------------- | :------------------------- |
+| `Volume Up`             | Increase system volume     |
+| `Volume Down`           | Decrease system volume     |
+| `Volume Mute`           | Toggle audio mute          |
+| `Mic Mute`              | Toggle microphone mute     |
+| `Shift` + `Volume Up`   | Increase microphone volume |
+| `Shift` + `Volume Down` | Decrease microphone volume |
+| `XF86AudioPlay`         | Play/Pause media           |
+| `XF86AudioNext`         | Next track                 |
+| `XF86AudioPrev`         | Previous track             |
 
 ---
 
