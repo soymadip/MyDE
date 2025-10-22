@@ -51,6 +51,42 @@ get-mute() {
   }
 }
 
+# set-mute [-m|--mic] [-u] [-t]
+set-mute() {
+    local mic=false mic_flag action=1 cmd_str
+    local wpctl_device="@DEFAULT_AUDIO_SINK@"
+
+    while [ "$#" -gt 0 ]; do
+        case "$1" in
+            -m|--mic)
+                mic=true
+                mic_flag="-m"
+                wpctl_device="@DEFAULT_AUDIO_SOURCE@"
+                ;;
+            -u|--unmute)
+                action=0
+                ;;
+            -t|--toggle)
+                action="toggle"
+                ;;
+            *)
+                invld_cmd && help_menu
+                ;;
+        esac
+        shift
+    done
+
+    cmd_str="wpctl set-mute $wpctl_device $action" && log.debug "Final command: '$cmd_str'"
+
+    if eval "$cmd_str"; then
+        return 0
+    else
+        log.error "Failed to set mute via wpctl"
+        return 1
+    fi
+}
+
+
 # Usage: set-volume [-m|--mic] [+\-]<level> | <exact_level>
 set-volume() {
     local change symbol direction req_level current_level new_level
