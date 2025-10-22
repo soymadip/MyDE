@@ -130,7 +130,7 @@
     "scroll-step": 5,
 
     "format": "<b></b>\u2005{volume}% ",
-    "format-muted": "󰍭",
+    "format-muted": "󰍭\u2004muted ",
   },
 
   "wireplumber#speaker": {
@@ -141,7 +141,7 @@
     "on-scroll-down": "myctl set volume -1",
 
     "format": "{icon}\u2004{volume}%",
-    "format-muted": "  muted",
+    "format-muted": " \u2004muted",
     "format-bluetooth": " {volume}%",
     "format-icons": {
       "default": ["", "", " "],
