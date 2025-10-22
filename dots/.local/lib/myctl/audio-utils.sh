@@ -9,33 +9,31 @@ MAX_MIC=${MAX_MIC:-$MAX_VOLUME}
 
 get-volume() {
     local mic=false volume
-    local pactl_cmd="get-sink-volume"
-    local pactl_device="@DEFAULT_SINK@"
+    local wpctl_device="@DEFAULT_AUDIO_SINK@"
 
     case "$1" in
-        -m)
+        -m|--mic)
             mic=true
-            pactl_cmd="get-source-volume"
-            pactl_device="@DEFAULT_SOURCE@"
+            wpctl_device="@DEFAULT_AUDIO_SOURCE@"
             ;;
     esac
 
-   volume="$( pactl "$pactl_cmd" "$pactl_device" \
-                  | grep -oP '\d+(\.\d+)?(?=%)' \
-                  | head -n1 \
-                  | awk '{ printf("%.0f", $0) }'
-            )"
+    # Use wpctl to get the volume and convert the reported fractional value to percent
+    volume="$(
+        wpctl get-volume "$wpctl_device" \
+            | awk '{ printf("%d", $2 * 100) }'
+    )"
 
-   [ -z "$volume" ] && log.error "Failed to get volume level." && return 1
+    [ -z "$volume" ] && log.error "Failed to get volume level." && return 1
 
-   echo "$volume"
+    echo "$volume"
 }
 
 
 # Usage: set-volume [-m] [+\-]<level> | <exact_level>
 set-volume() {
     local change symbol direction req_level current_level new_level
-    local mic=false device pactl_cmd
+    local mic=false device
 
     while [ "$#" -gt 0 ]; do
         case "$1" in
@@ -62,13 +60,11 @@ set-volume() {
     # Determine Max Limit and Target Device
     if "$mic"; then
         max_limit=$MAX_MIC
-        device="@DEFAULT_SOURCE@"
-        pactl_cmd="set-source-volume"
+        device="@DEFAULT_AUDIO_SOURCE@"
         current_level=$(get-volume -m)
     else
         max_limit=$MAX_VOLUME
-        device="@DEFAULT_SINK@"
-        pactl_cmd="set-sink-volume"
+        device="@DEFAULT_AUDIO_SINK@"
         current_level=$(get-volume)
     fi
 
@@ -99,8 +95,8 @@ set-volume() {
 
     log.debug "Final: Current Level: $current_level, Change: $change,  req_level: $req_level, Current Level: $current_level"
 
-    pactl "$pactl_cmd" "$device" "${req_level}%" || {
-        log.error "Failed to Set volume via pactl"
+    wpctl set-volume "$device" "${req_level}%" || {
+        log.error "Failed to Set volume via wpctl"
         return 3
     }
 
