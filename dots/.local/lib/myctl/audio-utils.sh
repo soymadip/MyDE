@@ -19,9 +19,10 @@ get-volume() {
     esac
 
     # Use wpctl to get the volume and convert the reported fractional value to percent
+    # Add 0.5 before converting to int.
     volume="$(
         wpctl get-volume "$wpctl_device" \
-            | awk '{ printf("%d", $2 * 100) }'
+            | awk '{ printf("%d", ($2 * 100) + 0.5) }'
     )"
 
     [ -z "$volume" ] && log.error "Failed to get volume level." && return 1
