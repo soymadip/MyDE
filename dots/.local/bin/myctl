@@ -28,6 +28,7 @@ THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
 # Dictionaries for SubCommands
 declare -A cmd_map
 
+# shellcheck source=/dev/null
 source "$LIB_DIR"/_utils.sh
 
 
