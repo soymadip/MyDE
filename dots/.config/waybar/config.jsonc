@@ -125,8 +125,8 @@
     "node-type": "Audio/Source",
     "on-click": "myctl show tui -c wiremix -e wiremix -v input",
     "on-click-right": "myctl set mic toggle",
-    "on-scroll-up": "myctl set volume mic +1",
-    "on-scroll-down": "myctl set volume mic -1",
+    "on-scroll-up": "myctl set mic +1",
+    "on-scroll-down": "myctl set mic -1",
     "scroll-step": 5,
 
     "format": "<b></b>\u2005{volume}% ",
