@@ -181,7 +181,10 @@ const config = {
           position: "left",
           className: "_navbar-more-items",
           items: useEnabled([
-            { label: "Roadmap", to: "/roadmap" },
+            {
+              label: "Roadmap",
+              to: "https://github.com/users/soymadip/projects/8",
+            },
             {
               enable: true,
               value: {
