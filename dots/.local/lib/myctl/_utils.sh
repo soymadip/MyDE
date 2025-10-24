@@ -77,11 +77,10 @@ invld_cmd() {
     echo ""
 
     if [ "$unknown_cmd" == "" ]; then
-        echo "No command provided."
+        log.error "No command provided."
     else
-        echo "Unknown command: '$unknown_cmd'."
+        log.error "Unknown command: '$unknown_cmd'."
     fi
-
 }
 
 #---------------
@@ -99,11 +98,11 @@ help_menu() {
 
     echo ""
     if [ "$command" == "myctl" ]; then
-        echo "MyDE Controller - Control Various Functions of MyDE"
+        echo "MyCTL - Control Various Functions of MyDE"
         echo ""
         echo "Usage: ${cmd_map[usage]}"
     else
-        echo "MyDE Controller - '$command' command"
+        echo "MyCTL - '$command' command"
         echo ""
         echo "Usage: ${cmd_map[usage]}"
     fi
