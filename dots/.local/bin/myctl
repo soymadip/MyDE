@@ -13,6 +13,7 @@
 
 MYDE_DIR="$HOME/MyDE"
 LIB_DIR="$HOME/.local/lib/myctl"
+LOG_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/myde"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
 KEYBINDS_FILE="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
 LOG_LEVEL=$([[ "$ENV" == DEV ]] && echo 0 || echo 1)
@@ -27,6 +28,8 @@ THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
 
 # Dictionaries for SubCommands
 declare -A cmd_map
+
+mkdir -p "$LOG_DIR"
 
 # shellcheck source=/dev/null
 source "$LIB_DIR"/_utils.sh

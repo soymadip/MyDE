@@ -2,11 +2,20 @@
 
 # Show a wob-style on-screen display (OSD) bar for levels
 
+# =================== Configuration ====================#
+
+ WOB_MAX_LEVEL="${WOB_MAX_LEVEL:-200}"
+ WOB_INFO_FILE="${WOB_INFO_FILE:-$LOG_DIR/wob-pipe.info}"
+
+# =================== Functions ====================#
+
 # Check If wob daemon is running; if not, start it
 start-wob-daemon() {
     local wob_pipe="/tmp/${HYPRLAND_INSTANCE_SIGNATURE:-myde_$(date +%s)}.wob"
 
     log.debug "Wob pipe: '$wob_pipe'"
+
+    echo "$wob_pipe" > "$WOB_INFO_FILE"
 
     if [ -e "$wob_pipe" ] && [ ! -p "$wob_pipe" ]; then
         log.error "$wob_pipe exists but is not a FIFO pipe!"
@@ -30,6 +39,7 @@ start-wob-daemon() {
         return 1
     }
 }
+
 #---------------------------------------------------------------------------
 
 # if executed directly,
