@@ -190,15 +190,18 @@ _log() {
     # Check log level threshold
     [[ $level_num -lt $LOG_LEVEL ]] && return 0
 
-    if [[ -n "$custom_context" ]]; then
-        context="$custom_context"
-    else
-        if [[ -n "${cmd_map[cmd]}" ]]; then
-            context="${cmd_map[cmd]}"
+    # Determine context only if log level is debug
+    [[ "$LOG_LEVEL" -eq 0 ]] && {
+        if [[ -n "$custom_context" ]]; then
+            context="$custom_context"
         else
-            context="$(_log_detect_context)"
+            if [[ -n "${cmd_map[cmd]}" ]]; then
+                context="${cmd_map[cmd]}"
+            else
+                context="$(_log_detect_context)"
+            fi
         fi
-    fi
+    }
 
     # Format message
     formatted="$(_log_format "$level_name" "$context" "$message" "$color")"
