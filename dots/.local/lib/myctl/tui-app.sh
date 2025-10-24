@@ -12,6 +12,7 @@
 #   -t, --term     Terminal emulator
 #   -c, --class    Application class
 #   -p, --pin      Pin the tui window
+#   -f, --float    Float the tui window (when needed for pinning)
 #   -h, --help     Show this help message
 #
 # Usage examples:
@@ -22,6 +23,7 @@
 
 #--------------- Config ------------------#
 TUI_PIN_CMD="${TUI_PIN_CMD:-hyprctl dispatch pin active}"
+TUI_FLOAT_CMD="${TUI_FLOAT_CMD:-hyprctl dispatch setfloating}"
 TUI_PIN_FLOAT_NEEDED_MSG="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to be pinned}"
 
 #-------------- Functions ------------------#
@@ -55,6 +57,9 @@ open-tui() {
                 ;;
             -p|--pin)
                 pin_win=true
+                ;;
+            -f|--float)
+                float_win=true
                 ;;
             -h|--help|help)
                 help_menu
@@ -100,6 +105,22 @@ open-tui() {
     $exec_cmd >/dev/null 2>&1 & disown || {
         log.error "Failed to launch terminal command."
         return 1
+    }
+
+    sleep 0.5
+
+    $float_win && {
+        log.debug "float_cmd: $float_cmd class:$term_class"
+
+        float_result="$($float_cmd)" && log.debug "Float Cmd Output: '$float_result'"
+
+        if [[ "$float_result" == "ok" ]]; then
+            log.debug "Successfully floated window."
+        else
+            log.error "Failed to float window."
+            log.error "Reason: $float_result"
+            return 1
+        fi
     }
 
     $pin_win && {
