@@ -12,26 +12,28 @@
 #   -t, --term     Terminal emulator
 #   -c, --class    Application class
 #   -p, --pin      Pin the tui window
+#   -f, --float    Float the tui window (when needed for pinning)
 #   -h, --help     Show this help message
 #
 # Usage examples:
 #   open-tui htop
 #   open-tui "bash -c 'tmux new -A -s dev"
 #   open-tui -c MyClass -t alacritty -- bash -c 'tmux new -A -s dev'
-#   open-tui -c MyClass -t kitty -e htop ls
-#
+#   open-tui -c MyClass -t kitty -e htop
 
 #--------------- Config ------------------#
-TUI_PIN_CMD="${TUI_PIN_CMD:-hyprctl dispatch pin}"  # clsss:<classname> will be appended
+TUI_PIN_CMD="${TUI_PIN_CMD:-hyprctl dispatch pin active}"
+TUI_FLOAT_CMD="${TUI_FLOAT_CMD:-hyprctl dispatch setfloating}"
 TUI_PIN_FLOAT_NEEDED_MSG="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to be pinned}"
 
 #-------------- Functions ------------------#
 
 open-tui() {
-    local exec_cmd term_class terminal_bin cmd_bin
-    local terminal_cmd="${TERMINAL:-wezterm start}"
-    local pin_win=false pin_result pin_cmd="${TUI_PIN_CMD:-hyprctl dispatch pin}"
-    local pin_need_float_msg="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to be pinned}"
+    local exec_cmd cmd_bin \
+          terminal_cmd="${TERMINAL:-wezterm start}" terminal_bin term_class \
+          float_win=false  float_cmd="${TUI_FLOAT_CMD:-hyprctl dispatch setfloating}" float_result \
+          pin_win=false pin_result pin_cmd="${TUI_PIN_CMD:-hyprctl dispatch pin}" \
+          pin_need_float_msg="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to be pinned}"
 
    [[ $# -eq 0 ]] && {
        log.error "No arguments provided."
@@ -56,8 +58,11 @@ open-tui() {
             -p|--pin)
                 pin_win=true
                 ;;
+            -f|--float)
+                float_win=true
+                ;;
             -h|--help|help)
-                _help_menu
+                help_menu
                 ;;
             -*)
                 log.error "Unknown option: $1"
@@ -97,20 +102,39 @@ open-tui() {
     exec_cmd="${terminal_cmd} --class $term_class -e $exec_cmd"
     log.debug "Final command: $exec_cmd"
 
-    $exec_cmd >/dev/null 2>&1 & disown 2>/dev/null || true
+    $exec_cmd >/dev/null 2>&1 & disown || {
+        log.error "Failed to launch terminal command."
+        return 1
+    }
+
+    sleep 0.5
+
+    $float_win && {
+        log.debug "float_cmd: $float_cmd class:$term_class"
+
+        float_result="$($float_cmd)" && log.debug "Float Cmd Output: '$float_result'"
+
+        if [[ "$float_result" == "ok" ]]; then
+            log.debug "Successfully floated window."
+        else
+            log.error "Failed to float window."
+            log.error "Reason: $float_result"
+            return 1
+        fi
+    }
 
     $pin_win && {
-        sleep 0.5
-        log.debug "pin_cmd: $pin_cmd class:$term_class"
+        log.debug "pin_cmd: $pin_cmd"
 
-        pin_result="$($pin_cmd class:"$term_class")" && log.debug "Pin Cmd Output: '$pin_result'"
+        pin_result="$($pin_cmd)" && log.debug "Pin Cmd Output: '$pin_result'"
 
         if [[ "$pin_result" == "ok" ]]; then
             log.debug "Successfully pinned window with class '$term_class'."
         elif [[ "$pin_result" == "$pin_need_float_msg" ]]; then
             log.warn "Window '$term_class' needs to be floated to be pinned."
         else
-            log.error "Failed to pin window with class '$term_class'."
+            log.error "Failed to pin window."
+            log.error "Reason: $pin_result"
             return 1
         fi
     }
