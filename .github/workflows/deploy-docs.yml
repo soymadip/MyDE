@@ -7,7 +7,7 @@ concurrency:
 on:
   push:
     paths:
-      - ".github/workflows/**"
+      - ".github/workflows/deploy-docs.yml"
       - "wiki/**"
     branches:
       - main
