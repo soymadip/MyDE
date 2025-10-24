@@ -99,6 +99,31 @@ case "$1" in
                         ;;
                 esac
                 ;;
+            mic)
+                shift
+                case "$1" in
+                    help)
+                        cmd_map=(
+                            [cmd]="get mic"
+                            [usage]="myctl get mic"
+                            [note]="Get microphone/source volume"
+                        )
+                        help_menu
+                        ;;
+                    mute)
+                        import_lib "audio-utils"
+                        get-mute -m
+                        ;;
+                    "")
+                        import_lib "audio-utils"
+                        get-volume -m
+                        ;;
+                    *)
+                        invld_cmd "$1" && self get mic help
+                        exit 1
+                        ;;
+                esac
+                ;;
             theme)
                 shift
                 cmd_map=(
@@ -152,31 +177,6 @@ case "$1" in
                         ;;
                 esac
                 ;;
-            mic)
-                shift
-                case "$1" in
-                    help)
-                        cmd_map=(
-                            [cmd]="get mic"
-                            [usage]="myctl get mic"
-                            [note]="Get microphone/source volume"
-                        )
-                        help_menu
-                        ;;
-                    mute)
-                        import_lib "audio-utils"
-                        get-mute -m
-                        ;;
-                    "")
-                        import_lib "audio-utils"
-                        get-volume -m
-                        ;;
-                    *)
-                        invld_cmd "$1" && self get mic help
-                        exit 1
-                        ;;
-                esac
-                ;;
             ""|*)
                 invld_cmd "$1" && self get help
                 exit 1
@@ -196,6 +196,38 @@ case "$1" in
                     [mic]="set microphone/source volume or mute"
                 )
                 help_menu
+                ;;
+            mic)
+                shift
+                case "$1" in
+                    help)
+                        cmd_map=(
+                            [cmd]="set mic"
+                            [usage]="myctl set mic [+|-]<level>"
+                        )
+                        help_menu
+                        ;;
+                    mute)
+                      import_lib "audio-utils"
+                      set-mute
+                      ;;
+                    unmute)
+                      import_lib "audio-utils"
+                      set-mute -m -u
+                      ;;
+                    toggle)
+                      import_lib "audio-utils"
+                      set-mute -m -t
+                      ;;
+                    "")
+                        self set mic help
+                        exit 1
+                        ;;
+                    *)
+                        import_lib "audio-utils"
+                        set-volume -m "$1"
+                        ;;
+                esac
                 ;;
             theme)
                 shift # $1 = arg3
@@ -254,38 +286,6 @@ case "$1" in
                       import_lib "audio-utils"
                       set-volume "$1"
                       ;;
-                esac
-                ;;
-            mic)
-                shift
-                case "$1" in
-                    help)
-                        cmd_map=(
-                            [cmd]="set mic"
-                            [usage]="myctl set mic [+|-]<level>"
-                        )
-                        help_menu
-                        ;;
-                    mute)
-                      import_lib "audio-utils"
-                      set-mute
-                      ;;
-                    unmute)
-                      import_lib "audio-utils"
-                      set-mute -m -u
-                      ;;
-                    toggle)
-                      import_lib "audio-utils"
-                      set-mute -m -t
-                      ;;
-                    "")
-                        self set mic help
-                        exit 1
-                        ;;
-                    *)
-                        import_lib "audio-utils"
-                        set-volume -m "$1"
-                        ;;
                 esac
                 ;;
             ""|*)
