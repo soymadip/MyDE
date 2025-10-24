@@ -316,6 +316,29 @@ case "$1" in
         esac
         ;;
 
+    # =================== setup ====================
+    setup)
+        shift
+        cmd_map[cmd]="setup"
+        case "$1" in
+            help)
+                cmd_map=(
+                    [wob]="Setup wob osd background Server"
+                )
+                help_menu
+                ;;
+            wob-daemon)
+                cmd_map[cmd]="setup wob"
+                import_lib "wob-osd"
+                start-wob-daemon
+                ;;
+            ""|*)
+                invld_cmd "$1" && self setup help
+                exit 1
+                ;;
+        esac
+        ;;
+
     # ==================== show ====================
     show)
         shift
