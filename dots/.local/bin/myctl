@@ -184,6 +184,27 @@ case "$1" in
         esac
         ;;
 
+    # ==================== reload ====================
+    reload)
+        shift
+        case "$1" in
+            help)
+                cmd_map=(
+                    [cmd]="reload"
+                )
+                help_menu
+                ;;
+            "")
+                hyprctl reload > /dev/null
+                log.success "myde configuration reloaded."
+                ;;
+            *)
+                invld_cmd "$1" && self help
+                exit 1
+                ;;
+        esac
+        ;;
+
     # ==================== set ====================
     set)
         shift
@@ -351,27 +372,6 @@ case "$1" in
                 ;;
             ""|*)
                 invld_cmd "$1" && self show help
-                exit 1
-                ;;
-        esac
-        ;;
-
-    # ==================== reload ====================
-    reload)
-        shift
-        case "$1" in
-            help)
-                cmd_map=(
-                    [cmd]="reload"
-                )
-                help_menu
-                ;;
-            "")
-                hyprctl reload > /dev/null
-                log.success "myde configuration reloaded."
-                ;;
-            *)
-                invld_cmd "$1" && self help
                 exit 1
                 ;;
         esac
