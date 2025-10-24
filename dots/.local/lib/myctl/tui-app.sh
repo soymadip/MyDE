@@ -21,7 +21,7 @@
 #   open-tui -c MyClass -t kitty -e htop
 
 #--------------- Config ------------------#
-TUI_PIN_CMD="${TUI_PIN_CMD:-hyprctl dispatch pin}"  # clsss:<classname> will be appended
+TUI_PIN_CMD="${TUI_PIN_CMD:-hyprctl dispatch pin active}"
 TUI_PIN_FLOAT_NEEDED_MSG="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to be pinned}"
 
 #-------------- Functions ------------------#
@@ -97,20 +97,23 @@ open-tui() {
     exec_cmd="${terminal_cmd} --class $term_class -e $exec_cmd"
     log.debug "Final command: $exec_cmd"
 
-    $exec_cmd >/dev/null 2>&1 & disown 2>/dev/null || true
+    $exec_cmd >/dev/null 2>&1 & disown || {
+        log.error "Failed to launch terminal command."
+        return 1
+    }
 
     $pin_win && {
-        sleep 0.5
-        log.debug "pin_cmd: $pin_cmd class:$term_class"
+        log.debug "pin_cmd: $pin_cmd"
 
-        pin_result="$($pin_cmd class:"$term_class")" && log.debug "Pin Cmd Output: '$pin_result'"
+        pin_result="$($pin_cmd)" && log.debug "Pin Cmd Output: '$pin_result'"
 
         if [[ "$pin_result" == "ok" ]]; then
             log.debug "Successfully pinned window with class '$term_class'."
         elif [[ "$pin_result" == "$pin_need_float_msg" ]]; then
             log.warn "Window '$term_class' needs to be floated to be pinned."
         else
-            log.error "Failed to pin window with class '$term_class'."
+            log.error "Failed to pin window."
+            log.error "Reason: $pin_result"
             return 1
         fi
     }
