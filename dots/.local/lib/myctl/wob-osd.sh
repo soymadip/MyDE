@@ -17,7 +17,7 @@ start-wob-daemon() {
     fi
 
     # Check if the daemon is already running
-    pgrep -f "tail -f $wob_pipe.*wob" >/dev/null && {
+    pgrep -f "tail -f $wob_pipe" >/dev/null && {
         log.info "Wob daemon is already running."
         return 0
     }
@@ -25,13 +25,10 @@ start-wob-daemon() {
     # Launch the daemon
     log.debug "Starting wob daemon... "
 
-    if command -v uwsm >/dev/null; then
-        log.debug "Launching wob via uwsm"
-        uwsm app -- bash -c "tail -f $wob_pipe | wob & disown"
-    else
-        log.debug "Launching wob directly"
-        bash -c "tail -f $wob_pipe | wob & disown"
-    fi
+    tail -f "$wob_pipe" | wob & disown || {
+        log.error "Failed to start wob daemon."
+        return 1
+    }
 }
 #---------------------------------------------------------------------------
 
