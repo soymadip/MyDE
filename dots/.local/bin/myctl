@@ -107,7 +107,6 @@ case "$1" in
                         cmd_map=(
                             [cmd]="get mic"
                             [usage]="myctl get mic"
-                            [note]="Get microphone/source volume"
                         )
                         help_menu
                         ;;
@@ -303,8 +302,9 @@ case "$1" in
             help)
                 cmd_map=(
                     [cmd]="show"
-                    [keybinds]="show keybinds hint window."
-                    [powermenu]="show power menu window."
+                    [keybinds]="Show keybinds hint window."
+                    [powermenu]="Show power menu window."
+                    [wobar]="Show wob osd bar"
                 )
                 help_menu
                 ;;
@@ -327,6 +327,27 @@ case "$1" in
                 )
                 import_lib "tui-app"
                 open-tui "$@"
+                ;;
+            wobar)
+                shift
+                cmd_map=(
+                    [cmd]="show wobar"
+                    [usage]="myctl show wobar <level>"
+                )
+                case "$1" in
+                    help)
+                        help_menu
+                        exit 0
+                        ;;
+                    "")
+                        invld_cmd && self show wobbar help
+                        exit 1
+                        ;;
+                    *)
+                        import_lib "wob-osd"
+                        show-wob-osd "$1"
+                        ;;
+                esac
                 ;;
             ""|*)
                 invld_cmd "$1" && self show help
