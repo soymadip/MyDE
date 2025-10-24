@@ -5,7 +5,6 @@ import {
 } from "./src/utils/wikiInfo.js";
 import { metaTags } from "./src/config/metaTags.js";
 import { useEnabled } from "../wiki/src/utils/filterEnabledItems.js";
-import roadmap from "./roadmap.js";
 
 //========================= Config Vars =========================//
 
@@ -65,8 +64,6 @@ const config = {
       ],
       customLines: [],
     },
-
-    roadmap,
 
     features: [
       {
