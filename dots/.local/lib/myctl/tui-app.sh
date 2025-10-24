@@ -18,8 +18,7 @@
 #   open-tui htop
 #   open-tui "bash -c 'tmux new -A -s dev"
 #   open-tui -c MyClass -t alacritty -- bash -c 'tmux new -A -s dev'
-#   open-tui -c MyClass -t kitty -e htop ls
-#
+#   open-tui -c MyClass -t kitty -e htop
 
 #--------------- Config ------------------#
 TUI_PIN_CMD="${TUI_PIN_CMD:-hyprctl dispatch pin}"  # clsss:<classname> will be appended
@@ -28,10 +27,11 @@ TUI_PIN_FLOAT_NEEDED_MSG="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to
 #-------------- Functions ------------------#
 
 open-tui() {
-    local exec_cmd term_class terminal_bin cmd_bin
-    local terminal_cmd="${TERMINAL:-wezterm start}"
-    local pin_win=false pin_result pin_cmd="${TUI_PIN_CMD:-hyprctl dispatch pin}"
-    local pin_need_float_msg="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to be pinned}"
+    local exec_cmd cmd_bin \
+          terminal_cmd="${TERMINAL:-wezterm start}" terminal_bin term_class \
+          float_win=false  float_cmd="${TUI_FLOAT_CMD:-hyprctl dispatch setfloating}" float_result \
+          pin_win=false pin_result pin_cmd="${TUI_PIN_CMD:-hyprctl dispatch pin}" \
+          pin_need_float_msg="${TUI_PIN_FLOAT_NEEDED_MSG:-Window does not qualify to be pinned}"
 
    [[ $# -eq 0 ]] && {
        log.error "No arguments provided."
@@ -57,7 +57,7 @@ open-tui() {
                 pin_win=true
                 ;;
             -h|--help|help)
-                _help_menu
+                help_menu
                 ;;
             -*)
                 log.error "Unknown option: $1"
