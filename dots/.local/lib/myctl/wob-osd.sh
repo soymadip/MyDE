@@ -45,6 +45,47 @@ start-wob-daemon() {
 }
 
 
+# show-wobar <level>
+show-wobar() {
+    local level="$1" max_level=${WOB_INFO_FILE:-199} wob_pipe="" max_level="$WOB_MAX_LEVEL"
+
+    [ -z "$level" ] && {
+        log.fatal "No level specified for wob OSD."
+    }
+
+    ! [[ "$level" =~ ^[0-9]+$ ]] && {
+        log.fatal "Invalid level: '$level'. Must be a non-negative integer."
+    }
+
+    (( level > max_level )) && {
+        level=$max_level
+    }
+
+    if [ -f "$WOB_INFO_FILE" ]; then
+        wob_pipe=$(<"$WOB_INFO_FILE")
+    else
+        log.error "Wob info file not found at $WOB_INFO_FILE"
+
+        log.info "Starting wob daemon..."
+        start-wob-daemon || log.fatal "Failed to start wob daemon."
+        wob_pipe=$(<"$WOB_INFO_FILE")
+    fi
+
+    log.debug "wob_pipe: $wob_pipe"
+
+    [ "$wob_pipe" == "" ] && {
+        log.fatal "Wob pipe path is empty."
+    }
+
+    echo "$level" > "$wob_pipe" || {
+        log.error "Failed to write level to wob pipe at '$wob_pipe'."
+        return 1
+    }
+
+    log.debug "Wob pipe read from info file: '$wob_pipe'"
+
+}
+
 #---------------------------------------------------------------------------
 
 # if executed directly,
