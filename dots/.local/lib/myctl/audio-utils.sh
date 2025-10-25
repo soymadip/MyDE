@@ -163,6 +163,7 @@ set-volume() {
         fi
     fi
 
+    self show wobar "$req_level"
 }
 
 
