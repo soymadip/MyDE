@@ -13,6 +13,10 @@
 start-wob-daemon() {
     local wob_pipe="/tmp/${HYPRLAND_INSTANCE_SIGNATURE:-myde_$(date +%s)}.wob"
 
+    command -v wob >/dev/null 2>&1 || {
+        log.fatal "wob not found. Please install wob"
+    }
+
     log.debug "Wob pipe: '$wob_pipe'"
 
     echo "$wob_pipe" > "$WOB_INFO_FILE"
@@ -39,6 +43,7 @@ start-wob-daemon() {
         return 1
     }
 }
+
 
 #---------------------------------------------------------------------------
 
