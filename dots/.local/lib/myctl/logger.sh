@@ -257,6 +257,7 @@ log.error() {
 # Fatal level (4) - Fatal errors (auto-notifies)
 log.fatal() {
     _log 4 "FATAL" "$COLOR_FATAL" "$@"
+    exit 1
 }
 
 
