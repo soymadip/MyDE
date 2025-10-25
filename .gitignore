@@ -42,6 +42,8 @@ nohup.*
 #_____________ MyDE Dir _______________
 
 /.directory
+WARP.md
+GEMINI.md
 
 #______________ Wiki Dir ______________
 build/

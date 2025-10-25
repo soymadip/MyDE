@@ -1,5 +1,6 @@
 {
   // ====== CORE EDITOR SETTINGS ======
+  "autoscroll_on_clicks": true,
   "double_click_in_multibuffer": "open",
   "theme": "Catppuccin Macchiato (maroon)",
   "icon_theme": "Catppuccin Mocha",
