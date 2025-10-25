@@ -13,6 +13,7 @@
 
 MYDE_DIR="$HOME/MyDE"
 LIB_DIR="$HOME/.local/lib/myctl"
+LOG_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/myde"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
 KEYBINDS_FILE="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
 LOG_LEVEL=$([[ "$ENV" == DEV ]] && echo 0 || echo 1)
@@ -27,6 +28,8 @@ THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
 
 # Dictionaries for SubCommands
 declare -A cmd_map
+
+mkdir -p "$LOG_DIR"
 
 # shellcheck source=/dev/null
 source "$LIB_DIR"/_utils.sh
@@ -107,7 +110,6 @@ case "$1" in
                         cmd_map=(
                             [cmd]="get mic"
                             [usage]="myctl get mic"
-                            [note]="Get microphone/source volume"
                         )
                         help_menu
                         ;;
@@ -180,6 +182,27 @@ case "$1" in
                 ;;
             ""|*)
                 invld_cmd "$1" && self get help
+                exit 1
+                ;;
+        esac
+        ;;
+
+    # ==================== reload ====================
+    reload)
+        shift
+        case "$1" in
+            help)
+                cmd_map=(
+                    [cmd]="reload"
+                )
+                help_menu
+                ;;
+            "")
+                hyprctl reload > /dev/null
+                log.success "myde configuration reloaded."
+                ;;
+            *)
+                invld_cmd "$1" && self help
                 exit 1
                 ;;
         esac
@@ -296,6 +319,29 @@ case "$1" in
         esac
         ;;
 
+    # =================== setup ====================
+    setup)
+        shift
+        cmd_map[cmd]="setup"
+        case "$1" in
+            help)
+                cmd_map=(
+                    [wob]="Setup wob osd background Server"
+                )
+                help_menu
+                ;;
+            wob-daemon)
+                cmd_map[cmd]="setup wob"
+                import_lib "wob-osd"
+                start-wob-daemon
+                ;;
+            ""|*)
+                invld_cmd "$1" && self setup help
+                exit 1
+                ;;
+        esac
+        ;;
+
     # ==================== show ====================
     show)
         shift
@@ -303,8 +349,9 @@ case "$1" in
             help)
                 cmd_map=(
                     [cmd]="show"
-                    [keybinds]="show keybinds hint window."
-                    [powermenu]="show power menu window."
+                    [keybinds]="Show keybinds hint window."
+                    [powermenu]="Show power menu window."
+                    [wobar]="Show wob osd bar"
                 )
                 help_menu
                 ;;
@@ -328,29 +375,29 @@ case "$1" in
                 import_lib "tui-app"
                 open-tui "$@"
                 ;;
+            wobar)
+                shift
+                cmd_map=(
+                    [cmd]="show wobar"
+                    [usage]="myctl show wobar <level>"
+                )
+                case "$1" in
+                    help)
+                        help_menu
+                        exit 0
+                        ;;
+                    "")
+                        invld_cmd && self show wobbar help
+                        exit 1
+                        ;;
+                    *)
+                        import_lib "wob-osd"
+                        show-wobar "$1"
+                        ;;
+                esac
+                ;;
             ""|*)
                 invld_cmd "$1" && self show help
-                exit 1
-                ;;
-        esac
-        ;;
-
-    # ==================== reload ====================
-    reload)
-        shift
-        case "$1" in
-            help)
-                cmd_map=(
-                    [cmd]="reload"
-                )
-                help_menu
-                ;;
-            "")
-                hyprctl reload > /dev/null
-                log.success "myde configuration reloaded."
-                ;;
-            *)
-                invld_cmd "$1" && self help
                 exit 1
                 ;;
         esac
