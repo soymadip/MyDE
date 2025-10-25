@@ -200,11 +200,12 @@ dots/.config/nvim/.neoconf.json
 
 
 # OBS Studio
-dots/.config/obs-studio/basic/profiles/*/phld
-dots/.config/obs-studio/basic/scenes/*.json
-dots/.config/obs-studio/plugin_config
-dots/.config/obs-studio/profiler_data
-dots/.config/obs-studio/basic/scenes/Untitled.json.bak
+dots/.config/obs-studio/*
+!dots/.config/obs-studio/themes
+!dots/.config/obs-studio/global.ini
+!dots/.config/obs-studio/user.ini
+!dots/.config/obs-studio/basic/profiles/myde/basic.ini
+!dots/.config/obs-studio/basic/scenes/simple.json
 
 # Obsidian
 dots/.config/obsidian/*
@@ -261,7 +262,6 @@ dots/.local/bin/*
 !dots/.local/bin/kireisakura
 
 #------ Lib ------
-dots/.local/lib/myctl/.*
 
 #------ Share ------
 dots/.local/share/*

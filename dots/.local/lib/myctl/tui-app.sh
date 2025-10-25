@@ -102,6 +102,7 @@ open-tui() {
     $pin_win && {
         sleep 0.5
         log.debug "pin_cmd: $pin_cmd class:$term_class"
+
         pin_result="$($pin_cmd class:"$term_class")" && log.debug "Pin Cmd Output: '$pin_result'"
 
         if [[ "$pin_result" == "ok" ]]; then

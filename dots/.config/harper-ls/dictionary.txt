@@ -1,4 +1,5 @@
 Ctrl
+Docusaurus
 Esc
 HyprDE
 Hyprland
@@ -6,4 +7,6 @@ Keybindings
 MyDE
 N/A
 Rofi
+SDDM
 powermenu
+scanability
