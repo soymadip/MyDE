@@ -6,7 +6,6 @@ labels: "bug"
 projects: "soymadip/8"
 assignees: soymadip
 
-type: "Bug"
 body:
   - type: textarea
     attributes:
@@ -49,7 +48,7 @@ body:
         </details>
         -->
 
-  - type: checkbox
+  - type: checkboxes
     id: checks
     validations:
       required: true
