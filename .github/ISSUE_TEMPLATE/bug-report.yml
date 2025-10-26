@@ -1,0 +1,63 @@
+name: Bug Report
+description: Something is broken in MyDE.
+
+title: "[Bug] "
+labels: "bug"
+projects: "soymadip/8"
+assignees: soymadip
+
+type: "Bug"
+body:
+  - type: textarea
+    attributes:
+      label: Summary
+      description: Provide a one sentence summary and detailed reproduction steps
+      value: |
+        <!-- Begin your issue with a one sentence summary -->
+        ## SUMMARY_SENTENCE_HERE
+
+        ### Description
+        <!--  Describe with sufficient detail to reproduce from a clean Zed install.
+          - Explain the issue in detail.
+          - Issues with insufficient detail may be summarily closed.
+        -->
+
+        DESCRIPTION_HERE
+
+        ### Steps to reproduce:
+        1.
+        2.
+        3.
+        4.
+
+        ### **Expected Behavior**:
+
+
+        ### **Actual Behavior**:
+
+        <!-- Before Submitting, did you:
+          1. Include settings.json, keymap.json, .editorconfig if relevant?
+          2. Check your Zed.log for relevant errors? (please include!)
+          3. Click Preview to ensure everything looks right?
+          4. Hide videos, large images and logs in ``` inside collapsible blocks:
+
+        <details><summary>click to expand</summary>
+
+        ```json
+
+        ```
+        </details>
+        -->
+
+  - type: checkbox
+    id: checks
+    validations:
+      required: true
+    attributes:
+      options:
+        - label: I have checked that the command is not already available
+          required: true
+        - label: I have checked closed/opened issues
+          requred: true
+        - label: I have prviewed markdown
+          requred: true

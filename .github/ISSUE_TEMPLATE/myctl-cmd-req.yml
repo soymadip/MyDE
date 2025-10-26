@@ -1,0 +1,39 @@
+name: MyCTL Command Request
+description: Request a new MyCTL command/subcommand
+
+title: "[MyCTL] Add <your_command> command"
+labels: ["myctl", "feature request"]
+projects: "soymadip/8"
+assignees: soymadip
+
+body:
+  - type: markdown
+    id: body
+    validations:
+      required: true
+    attributes:
+      value: |
+        - **Desc**: <!-- what it does. eg. Take ScreenShot of selection/winow/screen -->
+
+        - **Usage**: <!-- full command `eg. myctl get snip [area|screen|active]` -->
+
+        - **subcommands**:
+          <!--
+            List of subcommands in any:
+            1. `area`: selection/area (defalut)
+            2. `screen`: active screen
+            3. `active`: active window
+          -->
+
+  - type: checkbox
+    id: checks
+    validations:
+      required: true
+    attributes:
+      options:
+        - label: I have checked that the command is not already available
+          required: true
+        - label: I have checked closed/opened issues
+          requred: true
+        - label: I have prviewed markdown
+          requred: true
