@@ -35,14 +35,14 @@ sys_pckgs=(
 
 pre_pckgs=(
   "zsh"
-  "xorg-xwayland"
-  "xorg-xhost"README.md
+  "xorg-xwayland" "xorg-xhost"
+  "uwsm" "app2unit-git"
 )
 
 core_pckgs=(
 
   "qt5-wayland" "qt6-wayland"
-  
+
   "ntfs-3g"
 
   "gnome-keyring"
