@@ -7,11 +7,10 @@ projects: "soymadip/8"
 assignees: soymadip
 
 body:
-  - type: markdown
+  - type: textarea
     id: body
-    validations:
-      required: true
     attributes:
+      label: Command Details
       value: |
         - **Desc**: <!-- what it does. eg. Take ScreenShot of selection/winow/screen -->
 
@@ -24,16 +23,17 @@ body:
             2. `screen`: active screen
             3. `active`: active window
           -->
+    validations:
+      required: true
 
   - type: checkboxes
     id: checks
-    validations:
-      required: true
     attributes:
+      label: Pre-submission Checks
       options:
         - label: I have checked that the command is not already available
           required: true
         - label: I have checked closed/opened issues
-          requred: true
-        - label: I have prviewed markdown
-          requred: true
+          required: true
+        - label: I have previewed markdown
+          required: true
