@@ -25,7 +25,7 @@ body:
             3. `active`: active window
           -->
 
-  - type: checkbox
+  - type: checkboxes
     id: checks
     validations:
       required: true
