@@ -8,6 +8,7 @@ assignees: soymadip
 
 body:
   - type: textarea
+    id: summary
     attributes:
       label: Summary
       description: Provide a one sentence summary and detailed reproduction steps
@@ -47,16 +48,17 @@ body:
         ```
         </details>
         -->
+    validations:
+      required: true
 
   - type: checkboxes
     id: checks
-    validations:
-      required: true
     attributes:
+      label: Pre-submission Checks
       options:
-        - label: I have checked that the command is not already available
+        - label: I have searched for existing bug reports
           required: true
         - label: I have checked closed/opened issues
-          requred: true
-        - label: I have prviewed markdown
-          requred: true
+          required: true
+        - label: I have previewed markdown
+          required: true
