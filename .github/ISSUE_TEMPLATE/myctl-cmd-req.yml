@@ -1,7 +1,7 @@
 name: MyCTL Command Request
 description: Request a new MyCTL command/subcommand
 
-title: "[MyCTL]: Add `<your command>` command"
+title: "[MyCTL] Add <your_command> command"
 labels: ["myctl", "feature request"]
 projects: "soymadip/8"
 assignees: soymadip
@@ -9,29 +9,11 @@ assignees: soymadip
 body:
   - type: markdown
     attributes:
-      value: "## Please fill in the details below to request a new MyCTL command/subcommand."
-
-  - type: textarea
-    id: description
-    attributes:
-      label: Description
-      description: What does this command do?
-      placeholder: eg. takes screenshot of window.
-
-  - type: input
-    id: command
-    attributes:
-      label: Command
-      description: The full command (e.g., myctl get snip [active|selection|monitor])
-      placeholder: myctl screenshot
-
-  - type: textarea
-    id: subcommands
-    attributes:
-      label: Subcommands
-      description: Any subcommands you suggest
-      placeholder: |
-        List subcommands, one per line. eg
-        1. `active` - takes ss of active window
-        2. `selection` - takes ss of selected area
-        3. `monitor` - takes ss of monitor
+      value: |
+        - **Command**: full command `eg. myctl get snip [area|screen|active]`
+        - **Desc**: what it does. eg. Take ScreenShot of selection/winow/screen
+        - **subcommands**:
+            List of subcommands:
+            1. `area`: selection/area (defalut)
+            2. `screen`: active screen
+            3. `active`: active window
