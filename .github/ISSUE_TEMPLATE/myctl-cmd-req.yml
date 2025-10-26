@@ -14,7 +14,6 @@ body:
   - type: textarea
     id: description
     attributes:
-      required: true
       label: Description
       description: What does this command do?
       placeholder: eg. takes screenshot of window.
@@ -22,7 +21,6 @@ body:
   - type: input
     id: command
     attributes:
-      required: true
       label: Command
       description: The full command (e.g., myctl get snip [active|selection|monitor])
       placeholder: myctl screenshot
@@ -30,7 +28,6 @@ body:
   - type: textarea
     id: subcommands
     attributes:
-      required: false
       label: Subcommands
       description: Any subcommands you suggest
       placeholder: |
