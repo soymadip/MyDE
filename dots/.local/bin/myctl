@@ -62,6 +62,7 @@ case "$1" in
                     [cmd]="get"
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
+                    [hconf]="Read any hyprlang config file"
                     [mic]="Get microphone/source volume"
                     [theme]="Get current theme of MyDE or specific components"
                     [volume]="Get speaker/sink volume"
@@ -78,12 +79,18 @@ case "$1" in
                 import_lib "get-desktop-file"
                 get-desktop-file -n "$1"
                 ;;
+            hconf)
+                shift
+                cmd_map[cmd]="get hconf"
+                import_lib "hyprlang-utils"
+                get-hconf "$1"
+                ;;
             cursor)
                 shift
+                cmd_map[cmd]="get cursor"
                 case "$1" in
                     help)
                         cmd_map=(
-                            [cmd]="get cursor"
                             [name]="get current cursor theme name."
                             [size]="get current cursor size."
                         )
@@ -105,10 +112,10 @@ case "$1" in
                 ;;
             mic)
                 shift
+                cmd_map[cmd]="get mic"
                 case "$1" in
                     help)
                         cmd_map=(
-                            [cmd]="get mic"
                             [usage]="myctl get mic"
                         )
                         help_menu
