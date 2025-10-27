@@ -2,7 +2,7 @@ name: MyCTL Command Request
 description: Request a new MyCTL command/subcommand
 
 title: "[MyCTL] Add <your_command> command"
-labels: ["myctl", "feature request"]
+labels: ["myctl", "need feature"]
 projects: "soymadip/8"
 assignees: soymadip
 

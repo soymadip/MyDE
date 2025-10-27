@@ -1,7 +1,7 @@
 name: Feature Request
 description: Suggest an idea or new functionality
 title: "[Feature] Add "
-labels: ["feature request", "enhancement"]
+labels: ["need feature"]
 projects: ["soymadip/8"]
 assignees:
   - soymadip
