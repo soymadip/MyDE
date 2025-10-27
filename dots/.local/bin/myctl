@@ -65,6 +65,7 @@ case "$1" in
                     [desktop-filename]="Get desktop file name of an application"
                     [hconf]="Get value of given key in a hyprlang conf file"
                     [mic]="Get microphone/source volume"
+                    [snip]="Get screenshot of selection/window/desktop"
                     [theme]="Get current theme of MyDE or specific components"
                     [volume]="Get speaker/sink volume"
                 )
@@ -131,6 +132,36 @@ case "$1" in
                         ;;
                     *)
                         invld_cmd "$1" && self get mic help
+                        exit 1
+                        ;;
+                esac
+                ;;
+            snip)
+                cmd_map[cmd]="get snip"
+                cmd_map[usage]="myctl get snip [area|screen|active]"
+                shift
+                case $1 in
+                    help)
+                        cmd_map=(
+                            [area]="Take Screenshot of area (default)"
+                            [active]="Take Screenshot of active window"
+                            [screen]="Take Screenshot of screen"
+                        )
+                        help_menu
+                        ;;
+                    active|screen)
+                        cmd_map[cmd]="get snip $1"
+                        cmd_map[usage]="myctl get snip $1"
+                        import_lib "snipping"
+                        snip "$1"
+                        ;;
+                    ""|area)
+                        cmd_map[cmd]="get snip area"
+                        import_lib "snipping"
+                        snip area
+                        ;;
+                    *)
+                        invld_cmd "$1" && self get snip help
                         exit 1
                         ;;
                 esac
