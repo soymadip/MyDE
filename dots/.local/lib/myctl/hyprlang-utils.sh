@@ -8,24 +8,19 @@
 # TODO:
 #       default file support
 #       default value support
-get-hconf() {
-    local key_name hypr_file raw_value final_value
+read-hconf() {
+    local key_name raw_value final_value \
+          hypr_file="${2:-$MYDE_CONF}"
 
     [[ -z "$1" ]] && {
-        log.error "Error: No key name provided." >&2
-        return 1
-    }
-
-    [[ -z "$2" ]] && {
-        log.error "Error: No file name provided." >&2
+        log.error "Error: No key name provided."
         return 1
     }
 
     key_name=$1
-    hypr_file="$2"
 
     [[ ! -f "$hypr_file" ]] && {
-        log.error "Error: Config file not found at $hypr_file" >&2
+        log.error "Error: Config file not found at $hypr_file"
         return 1
     }
 
@@ -38,7 +33,7 @@ get-hconf() {
     ' "$hypr_file" | xargs)
 
     [[ -z "$raw_value" ]] && {
-        log.error "Error: Key not found: $key_name" >&2
+        log.error "Error: Key not found: $key_name"
         return 1
     }
 

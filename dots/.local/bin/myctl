@@ -12,6 +12,7 @@
 # ======================== Config ===========================
 
 MYDE_DIR="$HOME/MyDE"
+MYDE_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/myde/myde.conf"
 LIB_DIR="$HOME/.local/lib/myctl"
 LOG_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/myde"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
@@ -62,7 +63,7 @@ case "$1" in
                     [cmd]="get"
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
-                    [hconf]="Read any hyprlang config file"
+                    [hconf]="Get value of given key in a hyprlang conf file"
                     [mic]="Get microphone/source volume"
                     [theme]="Get current theme of MyDE or specific components"
                     [volume]="Get speaker/sink volume"
@@ -83,7 +84,7 @@ case "$1" in
                 shift
                 cmd_map[cmd]="get hconf"
                 import_lib "hyprlang-utils"
-                get-hconf "$1"
+                read-hconf "$1"
                 ;;
             cursor)
                 shift
