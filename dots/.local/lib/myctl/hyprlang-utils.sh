@@ -1,5 +1,4 @@
 
-
 #==> myctl get hconf <key> [filename]
 #    defaults to: ~/.config/myde/myde.conf
 
