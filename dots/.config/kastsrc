@@ -22,4 +22,4 @@ allowMeteredStreaming=true
 mediabackend=Qt
 
 [UiSettings]
-ColorScheme=Catppuccin Macchiato Maroon
+ColorScheme=CatppuccinMacchiatoMaroon

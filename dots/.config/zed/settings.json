@@ -1,5 +1,8 @@
 {
   // ====== CORE EDITOR SETTINGS ======
+  "edit_predictions": {
+    "mode": "eager"
+  },
   "autoscroll_on_clicks": true,
   "double_click_in_multibuffer": "open",
   "theme": "Catppuccin Macchiato (maroon)",
@@ -83,7 +86,7 @@
   },
   // ====== AI ASSISTANT & AGENT ======
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "zed"
   },
   "agent": {
     "default_profile": "write",
