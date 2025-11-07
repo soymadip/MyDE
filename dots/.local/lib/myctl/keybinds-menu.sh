@@ -8,17 +8,17 @@
 #   Use <!-- SKIP_START --> & <!-- SKIP_END --> to skip sections in the keybinds.md
 #
 # FLAGS:
-#   -f, --file      Keybinds file path (default: ~/MyDE/doc/docs/config/keybinds.md)
-#   -p, --prompt    Prompt text        (default: "Keybinds Help")
-#   -t, --theme     Theme file path    (default: ~/.config/rofi/conf/keybinds-menu.rasi)
-#   -a, --awk       AWK script path    (default: ~/.local/lib/myde/awk/parse-keybinds.awk)
+#   -f, --file      Keybinds file path
+#   -p, --prompt    Prompt text
+#   -t, --theme     Theme file path
+#   -a, --awk       AWK script path
 #   -h, --help      Show this help message
 #
 
 show-keybinds-menu() {
     # Default values
-    local keybinds_file="$MYCTL_DIR/wiki/docs/keybinds.md"
-    local theme_file="$ROFI_CONF_DIR/conf/keybinds-menu.rasi"
+    local keybinds_file="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
+    local theme_file="$LIB_DIR/src/rofi/keybinds-menu.rasi"
     local awk_script_path="$LIB_DIR/src/parse-keybinds.awk"
     local prompt_text="Keybinds Help"
     local keybinds
@@ -71,6 +71,12 @@ show-keybinds-menu() {
     keybinds=$(awk -f "$awk_script_path" "$keybinds_file")
 
     # ================ Display Rofi ================
+
+    log.debug "Theme file:    $theme_file"
+    log.debug "Keybinds file: $keybinds_file"
+    log.debug "AWK script:    $awk_script_path"
+    log.debug "Prompt text:   $prompt_text"
+
     if [[ -n "$keybinds" ]]; then
         echo -e "$keybinds" | rofi \
             -dmenu \

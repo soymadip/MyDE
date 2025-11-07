@@ -15,7 +15,7 @@
 
 show-power-menu() {
     # Default values
-    local theme_file="$HOME/.config/rofi/conf/power-menu.rasi"
+    local theme_file="$LIB_DIR/src/rofi/power-menu.rasi"
     local prompt_text=""
     local uptime host
 
