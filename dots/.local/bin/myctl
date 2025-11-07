@@ -61,7 +61,7 @@ case "$1" in
                     [cmd]="get"
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
-                    [hconf]="Get value of given key in a hyprlang conf file"
+                    [conf]="Get value of given key in MyDE conf file"
                     [mic]="Get microphone/source volume"
                     [snip]="Get screenshot of selection/window/desktop"
                     [theme]="Get current theme of MyDE or specific components"
@@ -79,11 +79,10 @@ case "$1" in
                 import_lib "get-desktop-file"
                 get-desktop-file -n "$1"
                 ;;
-            hconf)
+            conf)
                 shift
-                cmd_map[cmd]="get hconf"
-                import_lib "hyprlang-utils"
-                read-hconf "$1"
+                cmd_map[cmd]="get conf"
+                read-conf "$1"
                 ;;
             cursor)
                 shift

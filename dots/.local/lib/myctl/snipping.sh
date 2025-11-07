@@ -4,9 +4,9 @@ import_lib "hyprlang-utils"
 
 #============= Configuration =============#
 
-SNIP_DEFAULT_MODE="$(read-hconf default_ss_mode)"
+SNIP_DEFAULT_MODE="$(read-conf default_ss_mode)"
 SNIP_CAPTURE_CMD="grimblast --freeze save"
-SNIP_FILE="$(read-hconf ss_save_path)/$(read-hconf ss_file_name).png"
+SNIP_FILE="$(read-conf ss_save_path)/$(read-conf ss_file_name).png"
 SNIP_EDITOR_CMD="satty --filename - --output-filename"
 
 #================ Functions ==============#
