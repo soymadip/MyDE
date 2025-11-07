@@ -127,9 +127,10 @@
   "file_types": {
     "CSS": ["**/rofi/**/*rasi"],
     "Hyprlang": ["**/hypr/**/*conf", "**/myde/**/*conf"],
-    "ini": ["**mime**"],
+    "ini": ["**mime**", "**/.directory"],
     "Markdown": ["**/git/*commit*.txt"],
-    "Shell Script": ["**/uwsm/**"]
+    "Shell Script": ["**/uwsm/**"],
+    "LOG": ["**/*.log", "**/*.logs"]
   },
   // ====== TERMINAL ======
   "terminal": {

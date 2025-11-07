@@ -30,7 +30,7 @@ THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
 # Dictionaries for SubCommands
 declare -A cmd_map
 
-mkdir -p "$LOG_DIR"
+! [ -d "$LOG_DIR" ] && mkdir -p "$LOG_DIR"
 
 # shellcheck source=/dev/null
 source "$LIB_DIR"/_utils.sh
