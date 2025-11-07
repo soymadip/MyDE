@@ -388,6 +388,7 @@ case "$1" in
                     [cmd]="show"
                     [keybinds]="Show keybinds hint window."
                     [power-menu]="Show power menu window."
+                    [wifi-menu]="Show wifi menu window."
                     [wobar]="Show wob osd bar"
                 )
                 help_menu
@@ -411,6 +412,9 @@ case "$1" in
                 )
                 import_lib "tui-app"
                 open-tui "$@"
+                ;;
+            'wifi-menu')
+                eval "$(self get hconf wifi_menu)"
                 ;;
             wobar)
                 shift

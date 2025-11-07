@@ -100,7 +100,7 @@
 
   "network#status": {
     "tooltip": true,
-    "on-click": "nmcli device wifi rescan && myctl show tui -p -c NetworkManager -- nmtui-connect",
+    "on-click": "myctl show wifi-menu",
     "max-length": 40,
     "interval": 30,
 
