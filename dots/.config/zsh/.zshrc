@@ -34,7 +34,11 @@ eval_fzf
 
 eval "$(zoxide init zsh --cmd cdz)"
 
-handlr set x-scheme-handler/terminal "$(myctl get desktop-filename $TERMINAL)" &> /dev/null
+[ -n "$TERMINAL" ] && {
+    term_desktop="$(myctl get desktop-filename "$TERMINAL")"
+    handlr set x-scheme-handler/terminal "$term_desktop" &> /dev/null
+    sed -i "s/^TerminalService=.*/TerminalService=$term_desktop/" ~/MyDE/dots/.config/kdeglobals
+}
 
 #_____________________________Plugins____________________________________
 # zinit light zsh-users/zsh-syntax-highlighting

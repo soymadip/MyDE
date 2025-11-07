@@ -121,6 +121,8 @@ ForegroundVisited=198, 160, 246
 [General]
 ColorScheme=CatppuccinMacchiatoMaroon
 ColorSchemeHash=9439d9199887cbfaf8a31dc99c7b02b71c2b2d89
+TerminalApplication=myctl show tui
+TerminalService=org.wezfurlong.wezterm.desktop
 
 [Icons]
 Theme=Papirus-Dark

@@ -1,3 +1,11 @@
+
+[General]
+ColorScheme=CatppuccinMacchiatoMaroon
+Name=Catppuccin Macchiato Maroon
+accentActiveTitlebar=false
+shadeSortColumn=true
+
+
 [ColorEffects:Disabled]
 Color=36, 39, 58
 ColorAmount=0.30000000000000004
@@ -122,14 +130,6 @@ ForegroundNeutral=238, 212, 159
 ForegroundNormal=202, 211, 245
 ForegroundPositive=166, 218, 149
 ForegroundVisited=198, 160, 246
-
-
-[General]
-ColorScheme=CatppuccinMacchiatoMaroon
-Name=Catppuccin Macchiato Maroon
-accentActiveTitlebar=false
-shadeSortColumn=true
-
 
 [KDE]
 contrast=4
