@@ -15,14 +15,13 @@ MYDE_DIR="$HOME/MyDE"
 MYDE_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/myde/myde.conf"
 LIB_DIR="$HOME/.local/lib/myctl"
 LOG_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/myde"
-ROFI_CONF_DIR="$HOME/.config/rofi/conf"
 LOG_LEVEL=$([[ "$ENV" == DEV ]] && echo 0 || echo 1)
 MAX_VOLUME=153
 MAX_MIC=$MAX_VOLUME
 
 #========================== Main Logic =========================
 
-export MYDE_DIR LIB_DIR ROFI_CONF_DIR KEYBINDS_FILE LOG_LEVEL THIS_PATH
+export MYDE_DIR LIB_DIR LOG_LEVEL THIS_PATH
 
 THIS_PATH="$(realpath "${BASH_SOURCE[0]}")"
 
