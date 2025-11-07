@@ -16,7 +16,6 @@ MYDE_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/myde/myde.conf"
 LIB_DIR="$HOME/.local/lib/myctl"
 LOG_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/myde"
 ROFI_CONF_DIR="$HOME/.config/rofi/conf"
-KEYBINDS_FILE="$MYDE_DIR/wiki/docs/user-guide/keybinds.md"
 LOG_LEVEL=$([[ "$ENV" == DEV ]] && echo 0 || echo 1)
 MAX_VOLUME=153
 MAX_MIC=$MAX_VOLUME
@@ -389,18 +388,18 @@ case "$1" in
                 cmd_map=(
                     [cmd]="show"
                     [keybinds]="Show keybinds hint window."
-                    [powermenu]="Show power menu window."
+                    [power-menu]="Show power menu window."
                     [wobar]="Show wob osd bar"
                 )
                 help_menu
                 ;;
             keybinds)
                 import_lib "keybinds-menu"
-                show-keybinds-menu -kf "$KEYBINDS_FILE" -t "$ROFI_CONF_DIR/keybinds-menu.rasi"
+                show-keybinds-menu
                 ;;
-            powermenu)
+            'power-menu')
                 import_lib "power-menu"
-                show-power-menu -t "$ROFI_CONF_DIR/power-menu.rasi"
+                show-power-menu
                 ;;
             tui)
                 shift
