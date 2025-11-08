@@ -413,7 +413,7 @@ case "$1" in
                 open-tui "$@"
                 ;;
             'wifi-menu')
-                eval "$(self get hconf wifi_menu)"
+                eval "$(self get conf wifi_menu)"
                 ;;
             wobar)
                 shift
