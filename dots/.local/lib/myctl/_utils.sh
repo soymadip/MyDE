@@ -9,7 +9,13 @@ if ! declare -f log.error >/dev/null 2>&1; then
     LOGGER_PATH="${LIB_DIR:-$HOME/.local/lib/myctl}/logger.sh"
 
     if [[ -f "$LOGGER_PATH" ]]; then
-        source "$LOGGER_PATH"
+        source "$LOGGER_PATH" && {
+
+            # Export all functions
+            while IFS= read -r func_name; do
+                [[ -n "$func_name" ]] && export -f "$func_name"
+            done < <(awk '/^[a-zA-Z_][a-zA-Z0-9_-]*\s*\(\)/ {sub(/\s*\(\).*/, ""); print}' "$LOGGER_PATH")
+        }
     else
         echo "FATAL: Cannot load logger from '$LOGGER_PATH'" >&2
         exit 1
@@ -79,7 +85,7 @@ EOF
     case "$mode" in
         list)
             [ ${#_IMPORTED_LIBS[@]} -eq 0 ] && {
-                echo "No libraries imported yet."
+                log.error "No libraries imported yet."
                 return 0
             }
             echo "Imported libraries:"
