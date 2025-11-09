@@ -90,7 +90,29 @@ EOF
             }
             echo "Imported libraries:"
             for lib_path in "${!_IMPORTED_LIBS[@]}"; do
-                echo "  $lib_path"
+
+                local display_name
+                local resolved_lib_dir=$(realpath "$LIB_DIR" 2>/dev/null || echo "$LIB_DIR")
+
+                # Check if it's in the standard lib directory (using resolved paths)
+                if [[ "$lib_path" == "$resolved_lib_dir"/* ]]; then
+                    # Extract just the filename, remove .sh extension if present
+                    display_name=$(basename "$lib_path" .sh)
+                elif [[ "$lib_path" == *"$LIB_DIR"* ]]; then
+                    # Handle relative lib paths
+                    display_name=$(basename "$lib_path" .sh)
+                else
+                    # For non-standard paths, show relative path if possible
+                    if [[ "$lib_path" == "$PWD"/* ]]; then
+                        # Show relative to current directory
+                        display_name="${lib_path#$PWD/}"
+                    else
+                        # Show the full path for absolute paths outside current dir
+                        display_name="$lib_path"
+                    fi
+                fi
+
+                echo "  $display_name"
             done
             return 0
             ;;
