@@ -252,6 +252,7 @@ case "$1" in
                 cmd_map=(
                     [cmd]="set"
                     [mic]="set microphone/source volume or mute"
+                    [terminal]="Set Default Terminal"
                     [theme]="set theme for entire myde or specific components."
                     [volume]="set speaker/sink volume or mute"
                 )
@@ -288,6 +289,13 @@ case "$1" in
                         set-volume -m "$1"
                         ;;
                 esac
+                ;;
+            terminal)
+                import_lib "get-desktop-file"
+                [ -n "$TERMINAL" ] || log.fatal "Terminal not set"
+                term_desktop="$(get-desktop-file -n "$TERMINAL")"
+                handlr set x-scheme-handler/terminal "$term_desktop" &> /dev/null
+                kwriteconfig6 --file "$HOME/.config/kdeglobals" --group General --key TerminalService "$term_desktop"
                 ;;
             theme)
                 shift # $1 = arg3
