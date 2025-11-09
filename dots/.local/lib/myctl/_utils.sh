@@ -148,6 +148,14 @@ EOF
 
                         source "$p" && {
 
+                            # Export all functions defined in library file
+                            while IFS= read -r func_name; do
+                                if [[ -n "$func_name" ]]; then
+
+                                    export -f "$func_name"
+                                fi
+                            done < <(awk '/^[a-zA-Z_][a-zA-Z0-9_-]*\s*\(\)/ {sub(/\s*\(\).*/, ""); print}' "$p")
+
                             _IMPORTED_LIBS["$resolved_path"]=1
                             found=true
                         }
