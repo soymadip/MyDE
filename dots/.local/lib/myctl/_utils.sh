@@ -28,31 +28,48 @@ self() {
 #---------------
 
 import_lib() {
-    local lib_file="$1"
-    local target_paths=()
+    local lib_files=("$@") target_paths=()
+    local lib_file found
 
-    [ -n "$lib_file" ] || {
-        log.error "No library file specified to import."
+    log.debug "Importing libraries: ${lib_files[*]}"
+
+    [ ${#lib_files[@]} -eq 0 ] && {
+        log.error "No library file(s) specified to import."
         exit 1
     }
 
-    if [[ "$lib_file" == */* || "$lib_file" == /* ]]; then
-        target_paths+=("$lib_file")
-        [[ "$lib_file" != *.sh ]] && target_paths+=("${lib_file}.sh")
-    else
-        target_paths+=("${LIB_DIR}/${lib_file}")
-        [[ "$lib_file" != *.sh ]] && target_paths+=("${LIB_DIR}/${lib_file}.sh")
-    fi
+    for lib_file in "${lib_files[@]}"; do
+        [ -z "$lib_file" ] && continue
 
-    for p in "${target_paths[@]}"; do
-        if [ -f "$p" ]; then
-            source "$p"
-            return 0
+        target_paths=()
+
+        if [[ "$lib_file" == */* || "$lib_file" == /* ]]; then
+            target_paths+=("$lib_file")
+            [[ "$lib_file" != *.sh ]] && target_paths+=("${lib_file}.sh")
+        else
+            target_paths+=("${LIB_DIR}/${lib_file}")
+            [[ "$lib_file" != *.sh ]] && target_paths+=("${LIB_DIR}/${lib_file}.sh")
+        fi
+
+        found=false
+
+        for path in "${target_paths[@]}"; do
+            if [ -f "$path" ]; then
+                if source "$path"; then
+                    found=true
+                else
+                    log.error "Library file '${lib_file}' failed to load at '$path'."
+                    exit 1
+                fi
+                break
+            fi
+        done
+
+        if [ "$found" = false ]; then
+            log.error "Library file '${lib_file}' not found."
+            exit 1
         fi
     done
-
-    log.error "Library file '${LIB_DIR}/${lib_file}' not found."
-    exit 1
 }
 
 #---------------
