@@ -27,49 +27,141 @@ self() {
 
 #---------------
 
+declare -A _IMPORTED_LIBS
+
 import_lib() {
-    local lib_files=("$@") target_paths=()
-    local lib_file found
+    local mode="import"
+    local lib_files=()
+    local target_paths=()
+    local lib_file
 
-    log.debug "Importing libraries: ${lib_files[*]}"
-
-    [ ${#lib_files[@]} -eq 0 ] && {
-        log.error "No library file(s) specified to import."
-        exit 1
-    }
-
-    for lib_file in "${lib_files[@]}"; do
-        [ -z "$lib_file" ] && continue
-
-        target_paths=()
-
-        if [[ "$lib_file" == */* || "$lib_file" == /* ]]; then
-            target_paths+=("$lib_file")
-            [[ "$lib_file" != *.sh ]] && target_paths+=("${lib_file}.sh")
-        else
-            target_paths+=("${LIB_DIR}/${lib_file}")
-            [[ "$lib_file" != *.sh ]] && target_paths+=("${LIB_DIR}/${lib_file}.sh")
-        fi
-
-        found=false
-
-        for path in "${target_paths[@]}"; do
-            if [ -f "$path" ]; then
-                if source "$path"; then
-                    found=true
-                else
-                    log.error "Library file '${lib_file}' failed to load at '$path'."
+    # Parse flags
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            --check|-c)
+                mode="check"
+                shift
+                [ -z "$1" ] && {
+                    log.error "No library file specified for --check."
                     exit 1
-                fi
-                break
-            fi
-        done
+                }
+                lib_files=("$1")
+                shift
+                ;;
+            --list|-l)
+                mode="list"
+                shift
+                ;;
+            --help|-h)
+                cat << 'EOF'
+                    import_lib - Import library files with tracking
 
-        if [ "$found" = false ]; then
-            log.error "Library file '${lib_file}' not found."
-            exit 1
-        fi
+                Usage:
+                    import_lib [library1] [library2]        Import one or more libraries
+                    import_lib --check|-c <library>         Check if library is imported
+                    import_lib --list|-l                    List all imported libraries
+                    import_lib --help|-h                    Show this help
+EOF
+                return 0
+                ;;
+            -*)
+                log.error "Unknown flag: $1"
+                exit 1
+                ;;
+            *)
+                lib_files+=("$1")
+                shift
+                ;;
+        esac
     done
+
+    # Handle different modes
+    case "$mode" in
+        list)
+            [ ${#_IMPORTED_LIBS[@]} -eq 0 ] && {
+                echo "No libraries imported yet."
+                return 0
+            }
+            echo "Imported libraries:"
+            for lib_path in "${!_IMPORTED_LIBS[@]}"; do
+                echo "  $lib_path"
+            done
+            return 0
+            ;;
+        check)
+            [ -z "${lib_files[0]}" ] && {
+                log.error "No library file specified to check."
+                return 1
+            }
+
+            lib_file="${lib_files[0]}"
+
+            if [[ "$lib_file" == */* || "$lib_file" == /* ]]; then
+                target_paths+=("$lib_file")
+                [[ "$lib_file" != *.sh ]] && target_paths+=("${lib_file}.sh")
+            else
+                target_paths+=("${LIB_DIR}/${lib_file}")
+                [[ "$lib_file" != *.sh ]] && target_paths+=("${LIB_DIR}/${lib_file}.sh")
+            fi
+
+            for p in "${target_paths[@]}"; do
+                if [ -f "$p" ]; then
+                    local resolved_path=$(realpath "$p")
+                    [[ -n "${_IMPORTED_LIBS[$resolved_path]:-}" ]] && return 0
+                    break
+                fi
+            done
+            return 1
+            ;;
+
+        import)
+            [ ${#lib_files[@]} -eq 0 ] && {
+                log.error "No library file(s) specified to import."
+                exit 1
+            }
+
+            for lib_file in "${lib_files[@]}"; do
+                [ -z "$lib_file" ] && continue
+
+                target_paths=()
+
+                if [[ "$lib_file" == */* || "$lib_file" == /* ]]; then
+                    target_paths+=("$lib_file")
+                    [[ "$lib_file" != *.sh ]] && target_paths+=("${lib_file}.sh")
+                else
+                    target_paths+=("${LIB_DIR}/${lib_file}")
+                    [[ "$lib_file" != *.sh ]] && target_paths+=("${LIB_DIR}/${lib_file}.sh")
+                fi
+
+                local found=false
+                local resolved_path=""
+
+                for p in "${target_paths[@]}"; do
+                    [ -f "$p" ] && {
+                        resolved_path=$(realpath "$p")
+
+                        # Check if already imported
+                        if [[ -n "${_IMPORTED_LIBS[$resolved_path]:-}" ]]; then
+                            found=true
+                            break
+                        fi
+
+                        source "$p" && {
+
+                            _IMPORTED_LIBS["$resolved_path"]=1
+                            found=true
+                        }
+                        break
+                    }
+                done
+
+                [ "$found" = false ] && {
+                    log.error "Library file '${lib_file}' not found."
+                    exit 1
+                }
+            done
+            ;;
+    esac
 }
 
 #---------------
