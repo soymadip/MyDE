@@ -91,8 +91,9 @@ show-keybinds-menu() {
 }
 
 
-# If executed directly Show Info
+#--------------- If executed directly ----------------------
+
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    echo "This is part of MyDE controller program lib."
+    echo "This is part of myctl lib."
     echo "Use 'myctl help' for more info."
 fi

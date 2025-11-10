@@ -185,3 +185,11 @@ set-gtk-font-size() {
     log.success "Font size updated." || \
     { log.error "Failed to set font size."; return 1; }
 }
+
+
+#--------------- If executed directly ----------------------
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "This is part of myctl lib."
+    echo "Use 'myctl help' for more info."
+fi

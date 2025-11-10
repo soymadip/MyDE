@@ -86,10 +86,11 @@ show-wobar() {
 
 }
 
-#---------------------------------------------------------------------------
 
-# if executed directly,
+
+#--------------- If executed directly ----------------------
+
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-  echo "this is part of myctl controller program lib."
-  echo "use 'myctl help' for more info."
+    echo "This is part of myctl lib."
+    echo "Use 'myctl help' for more info."
 fi

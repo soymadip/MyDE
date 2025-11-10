@@ -43,3 +43,11 @@ snip() {
         log.fatal "Failed to capture screenshot"
     fi
 }
+
+
+#--------------- If executed directly ----------------------
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "This is part of myctl lib."
+    echo "Use 'myctl help' for more info."
+fi

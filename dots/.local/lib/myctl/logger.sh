@@ -336,12 +336,11 @@ log.nyi() {
     log.warn "Not yet Implemented"
 }
 
-# ==================== Export Functions ====================
 
-# Export internal helper functions for subshell compatibility
-export -f _log_timestamp _log_detect_context _log_format _log_to_file _log_notify _log
 
-# Export all public functions for use in other scripts
-export -f log.debug log.info log.warn log.error log.fatal log.success
-export -f log.with_context log.usage log.set_level log.set_color
-export -f log.set_timestamp log.set_log_file log.nyi
+#--------------- If executed directly ----------------------
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    echo "This is part of myctl lib."
+    echo "Use 'myctl help' for more info."
+fi
