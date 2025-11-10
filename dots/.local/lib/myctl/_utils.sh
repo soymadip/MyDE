@@ -320,10 +320,11 @@ read-conf() {
     # Find the key & Extract Value
     raw_value=$(awk -F'=' -v key="$key_name" '
       $0 ~ key && /^\s*\$/ {
-        sub(/#.*/, "", $2) # Remove comments from the value
-        print $2           # Print the value
+        sub(/#.*/, "", $2)               # Remove comments from the value
+        gsub(/^[ \t]+|[ \t]+$/, "", $2)  # Trim leading/trailing whitespace
+        print $2                         # Print the trimmed value
       }
-    ' "$hypr_file" | xargs)
+    ' "$hypr_file")
 
     [[ -z "$raw_value" ]] && {
         log.error "Error: Key not found: $key_name"
