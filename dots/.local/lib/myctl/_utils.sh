@@ -3,29 +3,71 @@
 # Enable alias expansion in non-interactive mode
 shopt -s expand_aliases
 
-# Exit if logger cannot be loaded - it's a critical dependency
-if ! declare -f log.error >/dev/null 2>&1; then
+#--------------------
 
-    LOGGER_PATH="${LIB_DIR:-$HOME/.local/lib/myctl}/logger.sh"
+# extract_method_names <lib_file_path>
+extract_method_names() {
+    local file_path="$1"
+    local awk_script="${LIB_DIR}/src/extract-method-names.awk"
 
-    if [[ -f "$LOGGER_PATH" ]]; then
-        source "$LOGGER_PATH" && {
+    # Validate input
+    [[ -z "$file_path" ]] && {
+        echo "ERROR: No file path provided to extract_method_names" >&2
+        return 1
+    }
 
-            # Export all functions
-            while IFS= read -r func_name; do
-                [[ -n "$func_name" ]] && export -f "$func_name"
-            done < <(awk '/^[a-zA-Z_][a-zA-Z0-9_-]*\s*\(\)/ {sub(/\s*\(\).*/, ""); print}' "$LOGGER_PATH")
-        }
+    [[ ! -f "$file_path" ]] && {
+        echo "ERROR: File not found: $file_path" >&2
+        return 1
+    }
+
+    [[ ! -f "$awk_script" ]] && {
+        echo "ERROR: AWK script not found: $awk_script" >&2
+        return 1
+    }
+
+    # Extract function names using the AWK script
+    awk -f "$awk_script" "$file_path"
+}
+
+#-------------------
+
+# export_lib_methods <lib_file_path>
+export_lib_methods() {
+    local file_path="$1"
+
+    while IFS= read -r method_name; do
+        [ -n "$method_name" ] && \
+        export -f $method_name
+    done < <(extract_method_names "$file_path")
+}
+
+#--------------------
+
+for lib_name in logger import-lib; do
+
+    _LIB_PATH="${LIB_DIR}/${lib_name}.sh"
+
+    if [[ -f "$_LIB_PATH" ]]; then
+        if source "$_LIB_PATH"; then
+            export_lib_methods "$_LIB_PATH"
+            IMPORTED_LIBS["$(realpath "$_LIB_PATH")"]=1
+        else
+            echo "FATAL: Failed to source ${lib_name} from '$_LIB_PATH'" >&2
+            exit 1
+        fi
     else
-        echo "FATAL: Cannot load logger from '$LOGGER_PATH'" >&2
+        echo "FATAL: Cannot load ${lib_name} from '$_LIB_PATH'" >&2
         exit 1
     fi
-fi
+done
+
+#------------------
 
 # shellcheck disable=SC2142
 alias shift_arg='shift && [ -n "$1" ]'
 
-#---------------
+#------------------
 
 self() {
     "$THIS_PATH" "$@"
@@ -291,7 +333,6 @@ _print_help_cmds() {
 
     # print help at last
     printf "   %-$((max_len + 4))s %s\n" "help" "${arr[help]}"
-
 }
 
 #-----------------
