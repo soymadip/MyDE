@@ -435,7 +435,7 @@ case "$1" in
                         exit 0
                         ;;
                     "")
-                        invld_cmd && self show wobbar help
+                        invld_cmd && self show wobar help
                         exit 1
                         ;;
                     *)
