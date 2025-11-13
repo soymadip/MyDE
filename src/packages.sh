@@ -10,10 +10,10 @@ rice_pckgs=(
   "catppuccin-cursors-mocha"
 
   #GTK Themes
-  "nwg-look" "colloid-catppuccin-gtk-theme-git" "catppuccin-gtk-theme-macchiato"
+  "nwg-look" "colloid-catppuccin-gtk-theme-git"
 
   #QT Themes
-  "kvantum" "qt5ct-kde" "qt6ct-kde" "kvantum-qt5" "kvantum-theme-catppuccin-git"
+  "qt6ct-kde" "breeze"
 
   #Tools
   "fastfetch" "archlinux-tweak-tool-git"
@@ -42,6 +42,8 @@ pre_pckgs=(
 core_pckgs=(
 
   "qt5-wayland" "qt6-wayland"
+
+  "kconfig"
 
   "ntfs-3g"
 
@@ -159,7 +161,7 @@ hypr_pckgs=(
 
 user_pckgs=(
   "nmgui"
-  "blueman"
+  "bluez" "bluez-utils" "blueman"
   "vorta" "vorta-root"
 
   "vicinae-bin" "wl-clipboard"
@@ -168,8 +170,8 @@ user_pckgs=(
 
   "okular" "ebook-tools" "kdegraphics-mobipocket" # PDF viewer
 
-  "visual-studio-code-bin"       # IDE (heavy)
-  "zed-preview-bin" "hyprls-git" "shellcheck-bin" "direnv" # IDE, Text Editor
+  "visual-studio-code-bin"                                 # IDE (heavy)
+  "zed" "hyprls-git" "shellcheck-bin" "direnv" # IDE, Text Editor
   "python" "uv"
 
   "mpv" "mpv-mpris" "yt-dlp"

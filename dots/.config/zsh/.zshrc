@@ -37,7 +37,7 @@ eval "$(zoxide init zsh --cmd cdz)"
 [ -n "$TERMINAL" ] && {
     term_desktop="$(myctl get desktop-filename "$TERMINAL")"
     handlr set x-scheme-handler/terminal "$term_desktop" &> /dev/null
-    sed -i "s/^TerminalService=.*/TerminalService=$term_desktop/" ~/MyDE/dots/.config/kdeglobals
+    kwriteconfig6 --file "$HOME/.config/kdeglobals" --group General --key TerminalService "$term_desktop"
 }
 
 #_____________________________Plugins____________________________________

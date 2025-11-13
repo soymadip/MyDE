@@ -19,7 +19,7 @@
   // ====== FONTS & TYPOGRAPHY ======
   "ui_font_family": "Ubuntu Nerd Font Propo",
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_weight": 300,
+  "buffer_font_weight": 280,
   "buffer_line_height": "standard",
   "buffer_font_size": 14.5,
 
@@ -92,7 +92,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-5-mini"
+      "model": "claude-sonnet-4"
     },
     "inline_assistant_model": {
       "provider": "copilot_chat",
@@ -136,7 +136,7 @@
   "terminal": {
     "font_family": "JetBrainsMono Nerd Font",
     "env": {
-      "ENV": "DEV"
+      // "ENV": "DEV"
     }
   },
   // ====== IMAGE VIEWER ======

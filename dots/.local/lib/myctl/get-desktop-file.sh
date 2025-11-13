@@ -20,7 +20,7 @@ get-desktop-file() {
     #   Eg. zen.desktop has: Exec=zen-bin %U
     declare -A cmd_replacements=(
         ["zen-browser"]="zen-bin"
-        ["zeditor"]="zed-editor"
+        # ["zeditor"]="zed-editor"
     )
 
     # Search directories in priority order
