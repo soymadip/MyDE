@@ -28,7 +28,6 @@ local conf = {
 		top = 5,
 		bottom = 5,
 	},
-	window_background_opacity = 0.80,
 
 	---------------- font settings ---------------
 	font = wezterm.font("JetBrainsMono Nerd Font"),

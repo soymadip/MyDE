@@ -129,7 +129,7 @@ Theme=Papirus-Dark
 
 [KDE]
 LookAndFeelPackage=Catppuccin-Macchiato-Maroon
-widgetStyle=Breeze
+widgetStyle=qt6ct-style
 
 [KFileDialog Settings]
 Allow Expansion=true
