@@ -2,8 +2,8 @@
 
 # ==================== Configuration ====================
 
-# Default log level (0=debug, 1=info, 2=warn, 3=error, 4=fatal)
-LOG_LEVEL="${LOG_LEVEL:-1}"
+# Default log level (debug, info, warn, error, fatal)
+LOG_LEVEL="${LOG_LEVEL:-info}"
 
 # Enable/disable colored output
 LOG_COLOR="${LOG_COLOR:-true}"
@@ -20,6 +20,15 @@ LOG_NOTIFY="${LOG_NOTIFY:-false}"
 NOTIFY_BIN="$(command -v notify-send)"
 
 # ==================== Color Codes ====================
+
+case $LOG_LEVEL in
+    debug) LOG_LEVEL=0;;
+    info) LOG_LEVEL=1;;
+    warn) LOG_LEVEL=2;;
+    error) LOG_LEVEL=3;;
+    fatal) LOG_LEVEL=4;;
+    *) LOG_LEVEL=1;;
+esac
 
 if [[ "$LOG_COLOR" == "true" ]]; then
     COLOR_RESET='\033[0m'
@@ -226,37 +235,37 @@ _log() {
 
 # Debug level (0) - Detailed information for debugging
 log.debug() {
-    _log 0 "DEBUG" "$COLOR_DEBUG" "$@"
+    _log 0 "DEBUG" "$COLOR_DEBUG" "$*"
 }
 
 # Info level (1) - General informational messages
 log.info() {
-    _log 1 "INFO" "$COLOR_INFO" "$@"
+    _log 1 "INFO" "$COLOR_INFO" "$*"
 }
 
 # Success message (always shown, info level)
 log.success() {
-    _log 1 "SUCCESS" "$COLOR_INFO" "$@"
+    _log 1 "SUCCESS" "$COLOR_INFO" "$*"
 }
 
 # Show Usage message (info level)
 log.usage() {
-    _log 1 "USAGE" "$COLOR_INFO" "$@"
+    _log 1 "USAGE" "$COLOR_INFO" "$*"
 }
 
 # Warning level (2) - Warning messages
 log.warn() {
-    _log 2 "WARN" "$COLOR_WARN" "$@"
+    _log 2 "WARN" "$COLOR_WARN" "$*"
 }
 
 # Error level (3) - Error messages
 log.error() {
-    _log 3 "ERROR" "$COLOR_ERROR" "$@"
+    _log 3 "ERROR" "$COLOR_ERROR" "$*"
 }
 
 # Fatal level (4) - Fatal errors (auto-notifies)
 log.fatal() {
-    _log 4 "FATAL" "$COLOR_FATAL" "$@"
+    _log 4 "FATAL" "$COLOR_FATAL" "$*"
     exit 1
 }
 
