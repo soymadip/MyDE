@@ -17,9 +17,6 @@ selection-background = #CF8E99
 selection-foreground = #25283A
 split-divider-color  = #D88D95
 
-background-opacity = 0.75
-background-blur    = 10
-
 cursor-color = #D88D95
 
 mouse-hide-while-typing = true
