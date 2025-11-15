@@ -197,6 +197,9 @@ dots/.config/vlc/vlc-qt-interface.conf
 dots/.config/bunkus.org/mkvtoolnix-gui/*
 !dots/.config/bunkus.org/mkvtoolnix-gui/mkvtoolnix-gui.ini
 
+# myde
+dots/.config/myde/themes/*
+
 # Neovim
 dots/.config/nvim/.neoconf.json
 
@@ -260,6 +263,7 @@ dots/.config/zsh/*history*
 #------ Bin ------
 dots/.local/bin/*
 !dots/.local/bin/myctl
+!dots/.local/bin/mypm
 !dots/.local/bin/run-code
 !dots/.local/bin/kireisakura
 
