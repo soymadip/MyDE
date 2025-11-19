@@ -47,6 +47,7 @@ case "$1" in
         cmd_map=(
             [cmd]="myctl"
             [get]="Retrieve info about current system config."
+            [pkg]="Package Management utils"
             [reload]="Reload MyDE configuration"
             [set]="Set configuration options (not yet implemented)"
             [show]="Show various utility dialougs"
@@ -220,6 +221,52 @@ case "$1" in
                 ;;
             ""|*)
                 invld_cmd "$1" && self get help
+                exit 1
+                ;;
+        esac
+        ;;
+
+    #======================= pkg ====================
+    pkg)
+        cmd_map[cmd]="pkg"
+        shift
+        case "$1" in
+            help)
+                cmd_map=(
+                    [add]="Install a package(s)"
+                    [rm]="Remove a package(s)"
+                    [ignore]="Ignore a package(s) (ignore while updating)"
+                    [search]="Search for a package"
+                    [sync]="Sync all packages with db"
+                    [update]="Update package(s)"
+                )
+                help_menu
+                ;;
+            "")
+                invld_cmd && self pkg help
+                exit 1
+                ;;
+            add)
+               import_lib "pkg-utils"
+               shift
+               ;;
+            rm)
+               shift
+               ;;
+            ignore)
+               shift
+               ;;
+            search)
+               shift
+               ;;
+            sync)
+               shift
+               ;;
+            update)
+               shift
+               ;;
+            *)
+                invld_cmd "$1" && self help
                 exit 1
                 ;;
         esac
