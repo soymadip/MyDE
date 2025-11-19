@@ -64,6 +64,7 @@ case "$1" in
                     [cmd]="get"
                     [desktop-file]="Get desktop file path of an application"
                     [desktop-filename]="Get desktop file name of an application"
+                    [distro]="Get distro name/info"
                     [conf]="Get value of given key in MyDE conf file"
                     [mic]="Get microphone/source volume"
                     [snip]="Get screenshot of selection/window/desktop"
@@ -81,6 +82,44 @@ case "$1" in
                 shift
                 import_lib "get-desktop-file"
                 get-desktop-file -n "$1"
+                ;;
+            distro)
+                shift
+                import_lib "pkg-utils"
+                cmd_map[cmd]="get distro"
+                case "$1" in
+                    help)
+                        cmd_map=(
+                            [name]="get current distro name. (default)"
+                            [base]="get current distro base."
+                        )
+                        help_menu
+                        ;;
+                    ""|name)
+                        get-distro
+                        ;;
+                    base)
+                        shift
+                        cmd_map[cmd]="get distro base"
+                        case "$1" in
+                            help)
+                                cmd_map[cmd]="get distro base"
+                                cmd_map[\"\"]="Get base distro of current distro"
+                                cmd_map[\<distro_name\>]="Get base distro of specified distro"
+                                help_menu
+                                ;;
+                            "")
+                                get-distro-base
+                                ;;
+                            *)
+                                get-distro-base "$1"
+                        esac
+                        ;;
+                    *)
+                        invld_cmd "$1" && self "${cmd_map[cmd]}" help
+                        exit 1
+                        ;;
+                esac
                 ;;
             conf)
                 shift
