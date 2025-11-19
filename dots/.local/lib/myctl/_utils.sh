@@ -210,6 +210,29 @@ read-conf() {
     echo "$final_value"
 }
 
+#----------------
+
+has-cmd() {
+  local cmd_str cmd_bin
+
+  log.debug "Checking Command:  $cmd_str."
+
+  [[ "$#" -eq 0 ]] && {
+    log.error "No arguments provided."
+    return 2
+  }
+
+  cmd_str="$1" && cmd_bin="${cmd_str%% *}"   # first token before any space
+
+  if command -v "$cmd_bin" &>/dev/null; then
+      log.debug "$cmd_bin is available."
+      return 0
+  else
+      log.debug "$cmd_bin is not available."
+      return 1
+  fi
+}
+
 
 #--------------- If executed directly ----------------------
 
