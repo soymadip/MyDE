@@ -55,6 +55,8 @@
 BEGIN {
     # Initialize state variables
     pending_function = ""
+    brace_level = 0
+    pending_brace_level = 0
 }
 
 # Skip comment lines and empty lines
@@ -64,21 +66,29 @@ BEGIN {
 # Check for pending function from previous line
 pending_function != "" {
     if (/^[ \t]*\{/) {
-        # Found opening brace on next line, print the pending function
-        print pending_function
+        # Found opening brace on next line, print the pending function only if top-level
+        if (pending_brace_level == 0) {
+            print pending_function
+        }
+        brace_level++
     }
     # Reset pending function regardless
     pending_function = ""
+    pending_brace_level = 0
 }
 
 # Match function definitions with 'function' keyword and opening brace
 /^[ \t]*function[ \t]+[a-zA-Z_][a-zA-Z0-9_.-]*[ \t]*\{/ {
-    # Remove leading whitespace and 'function' keyword
-    gsub(/^[ \t]*function[ \t]+/, "")
-    # Remove trailing whitespace and opening brace and anything after it
-    gsub(/[ \t]*\{.*$/, "")
-    # Print the function name
-    print
+    # Only extract top-level functions
+    if (brace_level == 0) {
+        # Remove leading whitespace and 'function' keyword
+        gsub(/^[ \t]*function[ \t]+/, "")
+        # Remove trailing whitespace and opening brace and anything after it
+        gsub(/[ \t]*\{.*$/, "")
+        # Print the function name
+        print
+    }
+    brace_level++
     next
 }
 
@@ -90,17 +100,22 @@ pending_function != "" {
     gsub(/[ \t]*$/, "")
     # Store for next line check
     pending_function = $0
+    pending_brace_level = brace_level
     next
 }
 
 # Match function definitions with parentheses and opening brace on same line
 /^[ \t]*[a-zA-Z_][a-zA-Z0-9_.-]*\(\)[ \t]*\{/ {
-    # Remove leading whitespace
-    gsub(/^[ \t]*/, "")
-    # Extract function name by removing everything from () onwards
-    sub(/\(\).*/, "")
-    # Print the function name
-    print
+    # Only extract top-level functions
+    if (brace_level == 0) {
+        # Remove leading whitespace
+        gsub(/^[ \t]*/, "")
+        # Extract function name by removing everything from () onwards
+        sub(/\(\).*/, "")
+        # Print the function name
+        print
+    }
+    brace_level++
     next
 }
 
@@ -112,29 +127,50 @@ pending_function != "" {
     sub(/\(\)[ \t]*$/, "")
     # Store for next line check
     pending_function = $0
+    pending_brace_level = brace_level
     next
 }
 
 # Match one-liner function definitions with keyword
 /^[ \t]*function[ \t]+[a-zA-Z_][a-zA-Z0-9_.-]*[ \t]*\{.*\}/ {
-    # Remove leading whitespace and 'function' keyword
-    gsub(/^[ \t]*function[ \t]+/, "")
-    # Remove everything from opening brace onwards
-    gsub(/[ \t]*\{.*$/, "")
-    # Print the function name
-    print
+    # Only extract top-level functions
+    if (brace_level == 0) {
+        # Remove leading whitespace and 'function' keyword
+        gsub(/^[ \t]*function[ \t]+/, "")
+        # Remove everything from opening brace onwards
+        gsub(/[ \t]*\{.*$/, "")
+        # Print the function name
+        print
+    }
     next
 }
 
 # Match one-liner function definitions with parentheses
 /^[ \t]*[a-zA-Z_][a-zA-Z0-9_.-]*\(\)[ \t]*\{.*\}/ {
-    # Remove leading whitespace
-    gsub(/^[ \t]*/, "")
-    # Extract function name by removing everything from () onwards
-    sub(/\(\).*/, "")
-    # Print the function name
-    print
+    # Only extract top-level functions
+    if (brace_level == 0) {
+        # Remove leading whitespace
+        gsub(/^[ \t]*/, "")
+        # Extract function name by removing everything from () onwards
+        sub(/\(\).*/, "")
+        # Print the function name
+        print
+    }
     next
+}
+
+# Track opening and closing braces to maintain nesting level
+/\{/ {
+    # Count opening braces on this line
+    gsub(/[^{]/, "", $0)
+    brace_level += length($0)
+}
+
+/\}/ {
+    # Count closing braces on this line
+    gsub(/[^}]/, "", $0)
+    brace_level -= length($0)
+    if (brace_level < 0) brace_level = 0
 }
 
 END {
