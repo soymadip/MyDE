@@ -215,11 +215,12 @@ _log() {
     # Format message
     formatted="$(_log_format "$level_name" "$context" "$message" "$color")"
 
-    # Output to stderr for warnings and errors
-    if [[ $level_num -ge 2 ]]; then
-        echo -e "$formatted" >&2
-    else
+    # Level 1 (eg. INFO/SUCCESS): stdout (user-facing messages)
+    # Other levels (eg. DEBUG/WARN/ERROR/FATAL): stderr (diagnostic messages)
+    if [[ $level_num -eq 1 ]]; then
         echo -e "$formatted"
+    else
+        echo -e "$formatted" >&2
     fi
 
     # Write to log file
