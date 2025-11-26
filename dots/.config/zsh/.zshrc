@@ -35,9 +35,12 @@ eval_fzf
 eval "$(zoxide init zsh --cmd cdz)"
 
 [ -n "$TERMINAL" ] && {
-    term_desktop="$(myctl get desktop-filename "$TERMINAL")"
-    handlr set x-scheme-handler/terminal "$term_desktop" &> /dev/null
-    kwriteconfig6 --file "$HOME/.config/kdeglobals" --group General --key TerminalService "$term_desktop"
+    if term_desktop="$(myctl get desktop-filename "$TERMINAL")"; then
+      handlr set x-scheme-handler/terminal "$term_desktop" &> /dev/null
+      kwriteconfig6 --file "$HOME/.config/kdeglobals" --group General --key TerminalService "$term_desktop"
+    else
+      notify-send "Failed to get Terminal desktop-filename"
+    fi
 }
 
 #_____________________________Plugins____________________________________
