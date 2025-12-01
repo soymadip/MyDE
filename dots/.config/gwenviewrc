@@ -1,7 +1,11 @@
 MenuBar=Disabled
 
+[FullScreen]
+FullScreenModeActive=true
+
 [General]
 FullScreenBackground=FullScreenBackground::Image
+JPEGQuality=95
 LastUsedVersion=210800
 ShowHiddenFiles=true
 SideBarPage=operations
@@ -10,31 +14,30 @@ SideBarPage=operations
 MenuBar=Disabled
 
 [Recent Files]
-File1[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-07_17:40:05.png
-File10[$e]=$HOME/.local/share/Trash/files/rofi/previews/sponsor.png
-File2[$e]=$HOME/.cache/kioexec/krun/9351_0/cover.jpg
-File3[$e]=$HOME/Pictures/waybar.png
-File4[$e]=$HOME/Downloads/soymadip's Commits.png
-File5[$e]=$HOME/Downloads/483856107-7e80fd70-766a-47b3-9e3a-fc02508d83cb.png
-File6[$e]=$HOME/Downloads/waybar.png
-File7[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-28_20:37:46.png
-File8[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-10-02_08:55:31.png
-File9[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-10-02_08:56:09.png
-Name1[$e]=ScreenShot-25-09-07_17:40:05.png
-Name10[$e]=sponsor.png
-Name2[$e]=cover.jpg
-Name3[$e]=waybar.png
-Name4[$e]=soymadip's Commits.png
-Name5[$e]=483856107-7e80fd70-766a-47b3-9e3a-fc02508d83cb.png
-Name6[$e]=waybar.png
-Name7[$e]=ScreenShot-25-09-28_20:37:46.png
-Name8[$e]=ScreenShot-25-10-02_08:55:31.png
-Name9[$e]=ScreenShot-25-10-02_08:56:09.png
+File1[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Pictures/Screenshots/IMG_20251115_214204.jpg
+File10[$e]=$HOME/Downloads/theme-manager.png
+File2[$e]=$HOME/Screenshot_2025-11-17-08-40-45-51_e2d5b3f32b79de1d45acd1fad96fbb0f.jpg
+File3[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-13_21:18:29.png
+File4[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-22_14:18:20.png
+File5[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-22_14:18:48.png
+File6[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-23_22:56:11.png
+File7[$e]=$HOME/Git/for-juniors/App/public/gallery/2.jpeg
+File8[$e]=$HOME/Pictures/wallpapers/cherry-lava.jpg
+File9[$e]=$HOME/Downloads/myctl.png
+Name1[$e]=IMG_20251115_214204.jpg
+Name10[$e]=theme-manager.png
+Name2[$e]=Screenshot_2025-11-17-08-40-45-51_e2d5b3f32b79de1d45acd1fad96fbb0f.jpg
+Name3[$e]=ScreenShot-25-11-13_21:18:29.png
+Name4[$e]=ScreenShot-25-11-22_14:18:20.png
+Name5[$e]=ScreenShot-25-11-22_14:18:48.png
+Name6[$e]=ScreenShot-25-11-23_22:56:11.png
+Name7[$e]=2.jpeg
+Name8[$e]=cherry-lava.jpg
+Name9[$e]=myctl.png
 
 [SideBar]
 InformationSplitterSizes=236,239
-IsVisible ViewMode=true
-SideBarSplitterSizes=197,568
+SideBarSplitterSizes=204,755
 
 [ThumbnailView]
 WrapAfterLast=false

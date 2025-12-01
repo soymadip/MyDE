@@ -6,4 +6,4 @@
     border-radius: 6px;
 }
 
-@import "~/.config/rofi/colors/catppuccin-macchiato.rasi"
+@import "~/.config/rofi/themes/catppuccin-macchiato.rasi"

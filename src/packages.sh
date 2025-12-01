@@ -13,7 +13,7 @@ rice_pckgs=(
   "nwg-look" "colloid-catppuccin-gtk-theme-git"
 
   #QT Themes
-  "qt6ct-kde" "breeze"
+  "qt6ct-kde" "breeze" "breeze5"
 
   #Tools
   "fastfetch" "archlinux-tweak-tool-git"
@@ -204,6 +204,7 @@ user_pckgs=(
   "ventoy-bin"
   "qalculate-gtk"
   "betterbird-bin"
+  "font-manager"
 )
 
 opt_pckgs=(

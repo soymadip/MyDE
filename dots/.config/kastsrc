@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=Catppuccin Macchiato Maroon
+ColorScheme=Default
 articleFontUseSystem=false
 showTrayIcon=true
 trayIconType=Light
@@ -20,6 +20,3 @@ allowMeteredStreaming=true
 
 [Playback Settings]
 mediabackend=Qt
-
-[UiSettings]
-ColorScheme=CatppuccinMacchiatoMaroon
