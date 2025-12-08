@@ -3,7 +3,7 @@
   "position": "top",
   "gtk-layer-shell": true,
 
-  "margin-top": 4,
+  "margin-top": 1,
   "margin-bottom": 0,
 
   // ========== Modules ===========
