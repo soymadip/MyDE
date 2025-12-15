@@ -1,3 +1,4 @@
+-- wezterm.lua
 -- Pull in the wezterm API & hold wezterm config
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
@@ -29,11 +30,30 @@ local conf = {
 		bottom = 5,
 	},
 
-	---------------- font settings ---------------
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	------------- Font Settings --------------------
 	font_size = 11,
 
-	-------------  Tab bar --------------------
+	-- Regular Font
+	font = wezterm.font("JetBrainsMono Nerd Font"),
+
+	-- Specific variants for BOLD and ITALIC
+	font_rules = {
+		{
+			intensity = "Bold",
+			font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" }),
+		},
+		{
+			intensity = "Half",
+			font = wezterm.font("JetBrainsMono Nerd Font", { style = "Italic" }),
+		},
+		{
+			intensity = "Bold",
+			italic = true,
+			font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold", style = "Italic" }),
+		},
+	},
+
+	------------- Tab bar --------------------
 	enable_tab_bar = true,
 	use_fancy_tab_bar = false,
 	hide_tab_bar_if_only_one_tab = true,
