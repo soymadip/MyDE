@@ -10,6 +10,7 @@
 
   "modules-left": [
     "custom/power",
+    "custom/idle_inhibitor",
     "hyprland/workspaces",
     "hyprland/submap",
     "custom/music",
@@ -38,6 +39,15 @@
     "tooltip": false,
     "on-click": "sleep 0.2 && myctl show power-menu",
     "format": "⏻",
+  },
+
+  "custom/idle_inhibitor": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "myctl idle-inhibitor status -j",
+    "signal": 10,
+    "on-click": "myctl idle-inhibitor toggle",
+    "tooltip": true,
   },
 
   "hyprland/workspaces": {
@@ -79,7 +89,7 @@
 
   "tray": {
     "icon-size": 21,
-    "spacing": 10,
+    "spacing": 2,
   },
 
   "bluetooth": {

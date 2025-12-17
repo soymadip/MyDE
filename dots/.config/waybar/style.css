@@ -14,6 +14,7 @@
 #submap,
 #custom-power,
 #custom-music,
+#custom-idle_inhibitor,
 #tray,
 #bluetooth,
 #network.status,
@@ -25,11 +26,12 @@
 #custom-notification {
     background-color: @surface0;
     padding: 0.1rem 0.7rem;
-    /* margin: 1px 0; */
+    /*margin: 1px 0;*/
 }
 
 #custom-power {
-    margin: 0px 0.7rem;
+    margin: 0px 0.45rem;
+    margin-left: 0.2rem;
     padding-right: 12px;
     border-radius: 0.7rem;
     color: @red;
@@ -37,7 +39,7 @@
 
 #workspaces {
     border-radius: 0.7rem;
-    margin-right: 0.7rem;
+    margin-right: 0.45rem;
     background-color: @surface0;
 }
 
@@ -68,13 +70,28 @@
     border-radius: 0.7rem;
 }
 
+#custom-idle_inhibitor {
+    color: @peach;
+    border-radius: 0.7rem;
+    margin-right: 0.45rem;
+    padding-right: 0.9rem;
+}
+
+#custom-idle_inhibitor.deactivated {
+    color: @teal;
+}
+
+#custom-idle_inhibitor.errored {
+    color: @red;
+}
+
 #clock {
     color: @blue;
     border-radius: 0.7rem 0.7rem 0.7rem 0.7rem;
 }
 
 #tray {
-    margin-right: 0.7rem;
+    margin-right: 0.45rem;
     border-radius: 0.7rem;
 }
 
@@ -87,6 +104,7 @@
 #network.status {
     color: @teal;
     border-radius: 0px 0.7rem 0.7rem 0px;
+    margin-right: -0rem;
 }
 
 #wireplumber.mic {
@@ -98,7 +116,7 @@
 
 #wireplumber.speaker {
     color: @maroon;
-    margin-right: 0.7rem;
+    margin-right: 0.45rem;
     border-radius: 0px 0.7rem 0.7rem 0px;
 }
 
@@ -125,6 +143,7 @@
 #custom-notification {
     border-radius: 0.7rem;
     color: @yellow;
-    margin: 0px 0.7rem;
+    margin: 0px 0.45rem;
+    margin-right: 0.2rem;
     padding-right: 9px;
 }
