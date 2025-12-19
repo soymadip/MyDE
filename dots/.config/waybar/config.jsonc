@@ -36,9 +36,10 @@
   // ------------ Left Modules ------------------
 
   "custom/power": {
-    "tooltip": false,
     "on-click": "sleep 0.2 && myctl show power-menu",
     "format": "⏻",
+    "tooltip": true,
+    "tooltip-format": "Power Menu",
   },
 
   "custom/idle_inhibitor": {
@@ -180,6 +181,9 @@
       "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋"],
     },
+
+    "tooltip-format": "Discharging: {time} left",
+    "tooltip-format-charging": "Charging: {time}to full",
   },
 
   "custom/notification": {
