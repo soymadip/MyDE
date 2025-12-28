@@ -47,6 +47,8 @@ core_pckgs=(
 
   "ntfs-3g"
 
+  "gvfs" "gvfs-afc" "gvfs-goa" "gvfs-mtp" "gvfs-nfs" "gvfs-onedrive" "gvfs-smb" "gvfs-wsdd"
+
   "gnome-keyring"
 
   "rate-mirrors" "paru" "pacman-contrib" "pacseek" #tui for pacman
@@ -67,13 +69,11 @@ core_pckgs=(
   "power-profiles-daemon"
   "npm"
   "icu"
-  "gvfs"
   "yt-dlp"
   "rsync"
   "enchant"
   "hunspell-en_US"
-  "qt5-tools"
-  "gtk4"
+  "qt6-tools"
   "libdbusmenu-glib"
   "appmenu-gtk-module"
   "libappindicator-gtk3"
@@ -95,7 +95,7 @@ core_pckgs=(
 cli_pckgs=(
 
   # "kitty"
-  "wezterm-git"
+  "wezterm-git" "noto-fonts-emoji"
 
   "neovim" "luarocks"
 
@@ -148,7 +148,7 @@ hypr_pckgs=(
   "xdg-desktop-portal"
   "xdg-desktop-portal-gtk"
   "xdg-desktop-portal-hyprland"
-  "polkit-gnome"
+  "lxqt-policykit"
   "hyprpaper"
   "hyprlock"
   "hypridle"
@@ -170,7 +170,7 @@ user_pckgs=(
 
   "okular" "ebook-tools" "kdegraphics-mobipocket" # PDF viewer
 
-  "visual-studio-code-bin"                                 # IDE (heavy)
+  "visual-studio-code-bin"                     # IDE (heavy)
   "zed" "hyprls-git" "shellcheck-bin" "direnv" # IDE, Text Editor
   "python" "uv"
 
@@ -183,8 +183,7 @@ user_pckgs=(
 
   "keepassxc" "git-credential-keepassxc"
 
-  "ark" "unzip" "7zip" "tar" "unrar" "binutils" "arj"
-
+  "lxqt-archiver" "7zip" "tar" "unrar"
   "kasts" "vlc"
   "ktorrent"
 
