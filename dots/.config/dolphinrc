@@ -1,9 +1,10 @@
 MenuBar=Disabled
 
+[DetailsMode]
+RightPadding=18
+
 [General]
 AutoExpandFolders=true
-DynamicView=true
-GlobalViewProps=false
 ShowFullPath=true
 Version=202
 ViewPropsTimestamp=2025,11,22,12,48,38.868
@@ -16,7 +17,4 @@ Places Icons Static Size=22
 MenuBar=Disabled
 
 [PreviewSettings]
-Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,svgthumbnail,ffmpegthumbs,gsf-office
-
-[ViewPropertiesDialog]
-1920x1080 screen: Window-Maximized=true
+Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,glycin-heif,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,glycin-svg,svgthumbnail,ffmpegthumbs,gsf-office

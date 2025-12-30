@@ -1,0 +1,59 @@
+/**
+ * Cyberpunk Theme
+ * A futuristic neon-inspired theme with electric colors
+ * Perfect for a cyberpunk aesthetic
+ */
+
+* {
+  /* Cyberpunk Color Palette */
+  bg-black: #000b1e;
+  bg-dark: #0a1528;
+  bg-blue: #0f3460;
+  bg-cyan: #16213e;
+  neon-cyan: #0abdc6;
+  neon-blue: #091833;
+  neon-green: #00ff41;
+  neon-pink: #ff006e;
+  neon-purple: #8338ec;
+  neon-yellow: #ffbe0b;
+  neon-orange: #fb8500;
+  neon-red: #ff073a;
+  electric-blue: #7209b7;
+  matrix-green: #39ff14;
+  hot-pink: #ff10f0;
+  cyber-white: #e0e1dd;
+  dark-grey: #415a77;
+  light-grey: #778da9;
+
+
+  /* Basic color aliases */
+  red:            @neon-red;     /* Red color */
+  green:          @neon-green;   /* Green color */
+  blue:           @neon-blue;    /* Blue color */
+  yellow:         @neon-yellow;  /* Yellow color */
+  orange:         @neon-orange;  /* Orange color */
+  purple:         @neon-purple;  /* Purple color */
+  cyan:           @neon-cyan;    /* Cyan color */
+  white:          @cyber-white;  /* White color */
+  black:          @bg-black;     /* Black color */
+  gray:           @dark-grey;    /* Gray color */
+
+
+  /* Theme Variables */
+  transparent:    #00000000;     /* Transparent color */
+
+  background:     @bg-black;     /* Background Color */
+  background-alt: @bg-dark;      /* Alt Background Color */
+
+  foreground:     @neon-cyan;    /* Primary text - highest contrast */
+  foreground-alt: @cyber-white;  /* Secondary text */
+
+  active:         @neon-green;   /* Active Item */
+  active-alt:     @matrix-green; /* Alt Active Item */
+  disabled:       @dark-grey;    /* Disabled/inactive items */
+
+  urgent:         @neon-red;     /* Urgent Item */
+  success:        @neon-green;   /* Success Item */
+
+  separator:      @bg-blue;      /* Separator lines */
+}

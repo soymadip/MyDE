@@ -281,6 +281,8 @@ dots/.local/share/*
 !dots/.local/share/ss
 !dots/.local/share/templates
 !dots/.local/share/color-schemes
+!dots/.local/share/vicinae/themes
+!dots/.local/share/dolphin/bookmarks.xml
 
 # Qalculate
 !dots/.local/share/qalculate

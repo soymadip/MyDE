@@ -1,43 +1,44 @@
 MenuBar=Disabled
 
-[FullScreen]
-FullScreenModeActive=true
-
 [General]
 FullScreenBackground=FullScreenBackground::Image
 JPEGQuality=95
 LastUsedVersion=210800
 ShowHiddenFiles=true
-SideBarPage=operations
+
+[ImageView]
+AlphaBackgroundColor=52,57,84
+AlphaBackgroundMode=AbstractImageView::AlphaBackgroundSolid
+ThumbnailSplitterSizes=601,172
 
 [MainWindow]
 MenuBar=Disabled
 
 [Recent Files]
-File1[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Pictures/Screenshots/IMG_20251115_214204.jpg
-File10[$e]=$HOME/Downloads/theme-manager.png
-File2[$e]=$HOME/Screenshot_2025-11-17-08-40-45-51_e2d5b3f32b79de1d45acd1fad96fbb0f.jpg
-File3[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-13_21:18:29.png
-File4[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-22_14:18:20.png
-File5[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-22_14:18:48.png
-File6[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-11-23_22:56:11.png
-File7[$e]=$HOME/Git/for-juniors/App/public/gallery/2.jpeg
-File8[$e]=$HOME/Pictures/wallpapers/cherry-lava.jpg
-File9[$e]=$HOME/Downloads/myctl.png
-Name1[$e]=IMG_20251115_214204.jpg
-Name10[$e]=theme-manager.png
-Name2[$e]=Screenshot_2025-11-17-08-40-45-51_e2d5b3f32b79de1d45acd1fad96fbb0f.jpg
-Name3[$e]=ScreenShot-25-11-13_21:18:29.png
-Name4[$e]=ScreenShot-25-11-22_14:18:20.png
-Name5[$e]=ScreenShot-25-11-22_14:18:48.png
-Name6[$e]=ScreenShot-25-11-23_22:56:11.png
-Name7[$e]=2.jpeg
-Name8[$e]=cherry-lava.jpg
-Name9[$e]=myctl.png
+File1[$e]=$HOME/Git/MyTM/app/icons/icon.png
+File10[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-05_15:33:44.png
+File2[$e]=$HOME/Git/MyTM/app/icons/icon.svg
+File3[$e]=$HOME/Git/MyCTL/app/icons/icon.svg
+File4[$e]=/usr/share/icons/hicolor/512x512/apps/myctl.png
+File5[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/anime flowchart.png
+File6[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.jpg
+File7[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.png
+File8[$e]=$HOME/Downloads/theme-manager.png
+File9[$e]=$HOME/Git/MyCTL/app/icons/icon.png
+Name1[$e]=icon.png
+Name10[$e]=ScreenShot-25-09-05_15:33:44.png
+Name2[$e]=icon.svg
+Name3[$e]=icon.svg
+Name4[$e]=myctl.png
+Name5[$e]=anime flowchart.png
+Name6[$e]=cover.jpg
+Name7[$e]=cover.png
+Name8[$e]=theme-manager.png
+Name9[$e]=icon.png
 
 [SideBar]
-InformationSplitterSizes=236,239
-SideBarSplitterSizes=204,755
+InformationSplitterSizes=501,230
+SideBarSplitterSizes=204,705
 
 [ThumbnailView]
 WrapAfterLast=false

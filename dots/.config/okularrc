@@ -37,26 +37,26 @@ IconSize=16
 ShowTabWarning=true
 
 [Recent Files]
-File1[$e]=$HOME/MF/Study/OOPS using JAVA -Unit 1 & 2 Full Revision (EduTech).pdf
-File10[$e]=$HOME/Downloads/C Notes.pdf
-File2[$e]=$HOME/MF/Study/SE (assignment-4).pdf
-File3[$e]=$HOME/Downloads/Application_Details.pdf
-File4[$e]=$HOME/Downloads/story book.pdf
-File5[$e]=$HOME/Documents/Obsidian Vault/Welcome.md
-File6[$e]=$HOME/Downloads/Chapter 1/Chapter 1 Code.pdf
-File7[$e]=$HOME/Downloads/0dabe12c96ebe70b7b0ebc24c1261f18760e187ee7f1b19b02d7fac2dcc041a4_encrypt_signedFinal.pdf
-File8[$e]=$HOME/Downloads/Object Oriented Programming.pdf
-File9[$e]=$HOME/Downloads/pan apply.pdf
-Name1[$e]=OOPS using JAVA -Unit 1 & 2 Full Revision (EduTech).pdf
-Name10[$e]=C Notes.pdf
-Name2[$e]=SE (assignment-4).pdf
-Name3[$e]=Application_Details.pdf
-Name4[$e]=story book.pdf
-Name5[$e]=Welcome.md
-Name6[$e]=Chapter 1 Code.pdf
-Name7[$e]=0dabe12c96ebe70b7b0ebc24c1261f18760e187ee7f1b19b02d7fac2dcc041a4_encrypt_signedFinal.pdf
-Name8[$e]=Object Oriented Programming.pdf
-Name9[$e]=pan apply.pdf
+File1[$e]=$HOME/Downloads/pan apply.pdf
+File10[$e]=$HOME/Downloads/Chapter 1/Chapter 1 Notes.pdf
+File2[$e]=$HOME/Downloads/C Notes.pdf
+File3[$e]=$HOME/Git/MyThemes/README.md
+File4[$e]=$HOME/Downloads/freshers card.pdf
+File5[$e]=$HOME/Git/CozyPixels/Catppuccin/Fantasy & Mythology/C3A5CWindows5CTEMP5Ccatppuccinifier5Cmocha-hald8-6cdf712b-a9b0-032d-3d6a-251379d693c0_desktop-b010_ds_cloudstappanzee_gettyimages-1452386341_3840x2160.webp
+File6[$e]=$HOME/Git/MyRepoTemplate/README.md
+File7[$e]=$HOME/Git/MyTM/README.md
+File8[$e]=$HOME/Git/MyTM/app/icons/icon.ico
+File9[$e]=$HOME/Downloads/Utilization Certificate.pdf
+Name1[$e]=pan apply.pdf
+Name10[$e]=Chapter 1 Notes.pdf
+Name2[$e]=C Notes.pdf
+Name3[$e]=README.md
+Name4[$e]=freshers card.pdf
+Name5[$e]=C3A5CWindows5CTEMP5Ccatppuccinifier5Cmocha-hald8-6cdf712b-a9b0-032d-3d6a-251379d693c0_desktop-b010_ds_cloudstappanzee_gettyimages-1452386341_3840x2160.webp
+Name6[$e]=README.md
+Name7[$e]=README.md
+Name8[$e]=icon.ico
+Name9[$e]=Utilization Certificate.pdf
 
 [Toolbar annotationToolBar]
 IconSize=16

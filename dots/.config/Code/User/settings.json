@@ -36,5 +36,6 @@
   "workbench.startupEditor": "none",
   "terminal.integrated.shellIntegration.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
-  "git.openRepositoryInParentFolders": "always"
+  "git.openRepositoryInParentFolders": "always",
+  "editor.formatOnSave": true
 }

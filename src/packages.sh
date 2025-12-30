@@ -21,6 +21,7 @@ rice_pckgs=(
 
   #Plymouth Themes
   "plymouth" "plymouth-theme-colorful-loop-git" "plymouth-theme-cuts-alt-git"
+
 )
 
 nvidia_pckgs=(
@@ -168,6 +169,8 @@ user_pckgs=(
 
   # "thunar" "thunar-archive-plugin" "thunar-vcs-plugin" "thunar-volman" "tumbler" "gvfs-mtp"
 
+  "pcmanfm-qt" "lxqt-sudo"
+
   "okular" "ebook-tools" "kdegraphics-mobipocket" # PDF viewer
 
   "visual-studio-code-bin"                     # IDE (heavy)
@@ -187,8 +190,7 @@ user_pckgs=(
   "kasts" "vlc"
   "ktorrent"
 
-  "gwenview"
-  # "nomacs"
+  "nomacs" "qt6-imageformats" "kimageformats"
 
   "gnome-disk-utility"
   "rclone-browser"
@@ -204,6 +206,8 @@ user_pckgs=(
   "qalculate-gtk"
   "betterbird-bin"
   "font-manager"
+
+  "inkscape" "ttf-sil-abyssinica"
 )
 
 opt_pckgs=(

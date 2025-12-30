@@ -1,0 +1,59 @@
+/**
+ * OneDark Theme
+ * A dark theme inspired by Atom's One Dark syntax theme
+ * https://github.com/atom/atom/tree/master/packages/one-dark-syntax
+ */
+
+* {
+  /* OneDark Color Palette */
+  black: #1e2127;
+  bg0: #282c34;
+  bg1: #31353f;
+  bg2: #393f4a;
+  bg3: #3b3f4c;
+  bg-d: #21252b;
+  bg-blue: #73b8f1;
+  bg-yellow: #ebd09c;
+  fg: #abb2bf;
+  purple: #c678dd;
+  green: #98c379;
+  orange: #d19a66;
+  blue: #61afef;
+  yellow: #e5c07b;
+  cyan: #56b6c2;
+  red: #e06c75;
+  grey: #5c6370;
+  light-grey: #848b98;
+  dark-cyan: #2bbac5;
+  dark-red: #993939;
+  dark-yellow: #93691d;
+  dark-purple: #8a3fa0;
+  diff-add: #31392b;
+  diff-delete: #382b2c;
+  diff-change: #1c3448;
+  diff-text: #2c5372;
+
+
+  /* Basic color aliases */
+  white:          @fg;           /* White color */
+  gray:           @grey;         /* Gray color */
+
+
+  /* Theme Variables */
+  transparent:    #00000000;     /* Transparent color */
+
+  background:     @bg0;          /* Background Color */
+  background-alt: @bg1;          /* Alt Background Color */
+
+  foreground:     @fg;           /* Primary text - highest contrast */
+  foreground-alt: @light-grey;   /* Secondary text */
+
+  active:         @blue;         /* Active Item */
+  active-alt:     @cyan;         /* Alt Active Item */
+  disabled:       @grey;         /* Disabled/inactive items */
+
+  urgent:         @red;          /* Urgent Item */
+  success:        @green;        /* Success Item */
+
+  separator:      @bg2;          /* Separator lines */
+}

@@ -16,7 +16,7 @@ export AUTO_NOTIFY_EXPIRE_TIME=5000
 export AUTO_NOTIFY_IGNORE=("docker" "top" "htop" "btm" "nvim" "vim"
                             "nano" "man" "less" "more" "tig" "watch"
                             "git commit" "ssh" "lazygit" "cat" "bat"
-                            "batman" "lf" "yazi"
+                            "batman" "lf" "yazi" "lg"
 )
 
 
@@ -33,6 +33,7 @@ source "$ZDOTDIR/modules/Init.zsh" && import-mod --all
 eval_fzf
 
 eval "$(zoxide init zsh --cmd cdz)"
+eval "$(direnv hook zsh)"
 
 [ -n "$TERMINAL" ] && {
     if term_desktop="$(myctl get desktop-filename "$TERMINAL")"; then
@@ -68,6 +69,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'eza --almost-all --group-directories-first --color=always $realpath'
 eval "$(register-python-argcomplete pipx)"
+eval "$(register-python-argcomplete cz)"
 
 
 #_____________________________key-bindings_________________________________
@@ -118,7 +120,7 @@ alias lnr='ln_relative'
 alias papirus-folders='pprus_ch_fldr_clr'
 alias reboot='echo " reebooting......" && sleep 5 && reboot'
 alias sdmp='sudo rm -rf /opt/lampp/htdocs/sdmp && sudo cp ~/Documents/git/SDMP/  /opt/lampp/htdocs/sdmp '
-alias xampp='sudo /opt/lampp/lampp '
+# alias xampp='sudo /opt/lampp/lampp '
 # alias docker-compose='podman-compose'
 
 alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"

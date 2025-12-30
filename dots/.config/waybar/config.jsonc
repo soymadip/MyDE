@@ -116,14 +116,14 @@
     "interval": 30,
 
     // "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "format-wifi": "{icon}{essid}\u200A({signalStrength}%)",
+    "format-wifi": "{icon}{essid}",
     "format-ethernet": "  {ifname}",
     "format-linked": "󰛵 {ifname} (No IP)",
     "format-disconnected": "󰤮  Disconnected",
     "format-disabled": "󰤮  Off",
 
     "tooltip-format": "Interface: {ifname}\nIP: {ipaddr}\nGateway: {gwaddr}\nNetmask: {netmask}",
-    "tooltip-format-wifi": "Network: {essid}\nSignal: {signalStrength}%\nFrequency: {frequency}MHz\nIP: {ipaddr}\nGateway: {gwaddr}",
+    "tooltip-format-wifi": "Network: {essid}\nStrength: {signalStrength}%\nFrequency: {frequency}MHz\nIP: {ipaddr}\nGateway: {gwaddr}",
     "tooltip-format-ethernet": "Interface: {ifname}\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}",
     "tooltip-format-disconnected": "Network disconnected",
 

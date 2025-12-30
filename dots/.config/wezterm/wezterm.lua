@@ -55,7 +55,10 @@ local conf = {
 	font_size = 11,
 
 	-- Regular Font
-	font = wezterm.font("JetBrainsMono Nerd Font"),
+	font = wezterm.font_with_fallback({
+		"JetBrainsMono Nerd Font",
+		"Noto Color Emoji",
+	}),
 
 	-- Specific variants for BOLD and ITALIC
 	font_rules = {
@@ -64,7 +67,8 @@ local conf = {
 			font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" }),
 		},
 		{
-			intensity = "Half",
+			intensity = "Normal",
+			italic = true,
 			font = wezterm.font("JetBrainsMono Nerd Font", { style = "Italic" }),
 		},
 		{

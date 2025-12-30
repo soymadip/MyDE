@@ -10,7 +10,6 @@ autoFeedUpdateInterval=24
 autoQueue=false
 prioritizeStreaming=true
 refreshOnStartup=true
-toggleRemainingTime=true
 
 [Network]
 allowMeteredEpisodeDownloads=true

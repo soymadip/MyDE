@@ -1,0 +1,65 @@
+apps:
+  terminal: "wezterm start"
+  web_browser: "zen-browser"
+  app_launcher: "vicinae toggle"
+  app_drawer: "nwg-drawer"
+  file_manager: "dolphin"
+  tui_file_manager: "yazi"
+  clipboard_manager: "vicinae vicinae://extensions/vicinae/clipboard/history"
+  connected_device_id: "463d15e1081e448d9768004572c34efa"
+
+system:
+  wallpaper_util: "hyprpaper"
+  notify_daemon: "swaync"
+  status_bar: "waybar"
+  idle_monitor: "hypridle"
+  wifi_menu: "vicinae vicinae://extensions/dagimg-dot/wifi-commander/scan-wifi"
+  power_menu: "myctl show power-menu"
+  keybinds_menu: "myctl show keybinds"
+  tui_app: "myctl show tui"
+
+input:
+  natural_scroll: false
+  numlock_at_startup: true
+  follow_mouse: true
+
+screenshots:
+  default_mode: "area"
+  save_path: "~/Pictures/Screenshots"
+  file_name: "ScreenShot-$(date '+%y-%m-%d_%H:%M:%S')" # without extension
+
+appearance:
+  desktop_theme: "catppuccin-macchiato"
+  gtk_theme: "Colloid-Red-Dark-Catppuccin"
+  icon_theme: "Papirus-Dark"
+
+  enable_blur: true
+  window_opacity: 0.95
+  terminal_opacity: 0.84
+  full_opacity: "fullop|zed.Zed|zen|obsidian|mpv"
+
+  wallpaper_img: "~/Pictures/wallpapers/final-showdown.jpg"
+
+  accent:
+    main: "$maroon"
+    alpha: "$maroonAlpha"
+    alt: "$red"
+    alt_alpha: "$redAlpha"
+
+cursor:
+  size: 30
+  theme: "catppuccin-mocha-maroon-cursors"
+
+font:
+  name: "Ubuntu Nerd Font"
+  size: 10
+
+lock_screen:
+  background_img: "$wallpaper_img"
+  user_avatar: "~/Pictures/wallpapers/user.png"
+  theme: "simple"
+
+window:
+  animations:
+    enabled: true
+    style: "overshot"
