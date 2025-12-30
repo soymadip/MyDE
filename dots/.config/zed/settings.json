@@ -130,7 +130,7 @@
   // ====== FILE TYPES & ASSOCIATIONS ======
   "file_types": {
     "CSS": ["**/rofi/**/*rasi"],
-    "Hyprlang": ["**/hypr/**/*conf", "**/myde/**/*conf"],
+    "Hyprlang": ["**/hypr/**/*conf", "**/mydehq/**/*conf"],
     "ini": ["**mime**", "**/.directory", "**/**.colors", "**/kde*"],
     "Markdown": ["**/git/*commit*.txt"],
     "Shell Script": ["**/uwsm/**"],
