@@ -9,6 +9,11 @@
   <p><em>A beautiful, customized Linux Desktop Environment that just works<br> Featuring dynamic tiling, carefully curated utils</em></p>
 </div>
 
+
+> [!WARNING]
+> MyDE is under development, nothing is finalized yet.  
+
+
 <br>
 
 <h2 align="center">-----: ScreenShots :-----</h2>
