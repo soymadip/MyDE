@@ -1,3 +1,4 @@
+alias gt='git tag'
 alias ggpur='ggu'
 alias g='git'
 alias ga='git add'

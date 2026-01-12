@@ -37,26 +37,26 @@ IconSize=16
 ShowTabWarning=true
 
 [Recent Files]
-File1[$e]=$HOME/Downloads/pan apply.pdf
-File10[$e]=$HOME/Downloads/Chapter 1/Chapter 1 Notes.pdf
-File2[$e]=$HOME/Downloads/C Notes.pdf
-File3[$e]=$HOME/Git/MyThemes/README.md
-File4[$e]=$HOME/Downloads/freshers card.pdf
-File5[$e]=$HOME/Git/CozyPixels/Catppuccin/Fantasy & Mythology/C3A5CWindows5CTEMP5Ccatppuccinifier5Cmocha-hald8-6cdf712b-a9b0-032d-3d6a-251379d693c0_desktop-b010_ds_cloudstappanzee_gettyimages-1452386341_3840x2160.webp
-File6[$e]=$HOME/Git/MyRepoTemplate/README.md
-File7[$e]=$HOME/Git/MyTM/README.md
-File8[$e]=$HOME/Git/MyTM/app/icons/icon.ico
-File9[$e]=$HOME/Downloads/Utilization Certificate.pdf
-Name1[$e]=pan apply.pdf
-Name10[$e]=Chapter 1 Notes.pdf
-Name2[$e]=C Notes.pdf
-Name3[$e]=README.md
-Name4[$e]=freshers card.pdf
-Name5[$e]=C3A5CWindows5CTEMP5Ccatppuccinifier5Cmocha-hald8-6cdf712b-a9b0-032d-3d6a-251379d693c0_desktop-b010_ds_cloudstappanzee_gettyimages-1452386341_3840x2160.webp
-Name6[$e]=README.md
-Name7[$e]=README.md
-Name8[$e]=icon.ico
-Name9[$e]=Utilization Certificate.pdf
+File1[$e]=$HOME/Downloads/Chapter 1/Chapter 1 Notes.pdf
+File10[$e]=$HOME/Downloads/AyuGram Desktop/image_2026-01-11_11-55-26.png
+File2[$e]=$HOME/Downloads/Utilization Certificate.pdf
+File3[$e]=$HOME/Downloads/list-of-banking-outlets.pdf
+File4[$e]=$HOME/Downloads/Sayan Banik (D232409095) Automata.pdf
+File5[$e]=$HOME/Downloads/soumi-nternship.pdf
+File6[$e]=$HOME/Downloads/Theory Of Automata081225-1.pdf
+File7[$e]=$HOME/Downloads/Sayan Banik (D232409095) Automata-1.pdf
+File8[$e]=$HOME/Downloads/Sayan Banik (D232409095) Automata-2.pdf
+File9[$e]=$HOME/Downloads/Adobe Scan Jan 10, 2026.pdf
+Name1[$e]=Chapter 1 Notes.pdf
+Name10[$e]=image_2026-01-11_11-55-26.png
+Name2[$e]=Utilization Certificate.pdf
+Name3[$e]=list-of-banking-outlets.pdf
+Name4[$e]=Sayan Banik (D232409095) Automata.pdf
+Name5[$e]=soumi-nternship.pdf
+Name6[$e]=Theory Of Automata081225-1.pdf
+Name7[$e]=Sayan Banik (D232409095) Automata-1.pdf
+Name8[$e]=Sayan Banik (D232409095) Automata-2.pdf
+Name9[$e]=Adobe Scan Jan 10, 2026.pdf
 
 [Toolbar annotationToolBar]
 IconSize=16

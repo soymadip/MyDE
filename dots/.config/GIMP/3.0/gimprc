@@ -1,5 +1,5 @@
 # GIMP gimprc
-#
+# 
 # This is your personal gimprc file.  Any variable defined in this file takes
 # precedence over the value defined in the system-wide gimprc:
 # /etc/gimp/3.0/gimprc
@@ -7,7 +7,7 @@
 # Preferences dialog.
 
 (prev-language "English")
-(config-version "3.0.4")
+(config-version "3.0.6")
 (color-management
     (mode display)
     (display-profile-from-gdk yes)

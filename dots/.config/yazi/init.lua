@@ -59,113 +59,113 @@ e nd, 500, Header.LEFT) ]]
 --
 
 -- yatline
-require("yatline"):setup({
-	-- theme
-	section_separator = {
-		open = "",
-		close = "",
-	},
-	part_separator = {
-		open = "",
-		close = "",
-	},
-	inverse_separator = {
-		open = "",
-		close = "",
-	},
-
-	style_a = {
-		fg = macchiato.mantle,
-		bg_mode = {
-			normal = macchiato.maroon,
-			select = macchiato.mauve,
-			un_set = macchiato.red,
-		},
-	},
-	style_b = { bg = macchiato.surface0, fg = macchiato.text },
-	style_c = { bg = macchiato.mantle, fg = macchiato.text },
-
-	permissions_t_fg = macchiato.green,
-	permissions_r_fg = macchiato.yellow,
-	permissions_w_fg = macchiato.red,
-	permissions_x_fg = macchiato.sky,
-	permissions_s_fg = macchiato.lavender,
-
-	selected = { icon = "󰻭", fg = macchiato.yellow },
-	copied = { icon = "", fg = macchiato.green },
-	cut = { icon = "", fg = macchiato.red },
-
-	total = { icon = "", fg = macchiato.yellow },
-	succ = { icon = "", fg = macchiato.green },
-	fail = { icon = "", fg = macchiato.red },
-	found = { icon = "", fg = macchiato.blue },
-	processed = { icon = "", fg = macchiato.green },
-
-	-- yatline-githead
-	prefix_color = macchiato.subtext0,
-	branch_color = macchiato.sapphire,
-	commit_color = macchiato.mauve,
-	behind_color = macchiato.flamingo,
-	ahead_color = macchiato.lavender,
-	stashes_color = macchiato.pink,
-	state_color = macchiato.maroon,
-	staged_color = macchiato.yellow,
-	unstaged_color = macchiato.peach,
-	untracked_color = macchiato.teal,
-
-	-- Configuration
-	--- component_positions = { "status", "header", "tab" },
-	tab_use_inverse = false,
-	tab_width = 12,
-
-	show_background = false,
-
-	display_header_line = true,
-	display_status_line = true,
-
-	-- Header and Status Line config
-	header_line = {
-		left = {
-			section_a = {
-				{ type = "string", custom = false, name = "tab_path" },
-			},
-			section_b = {},
-			section_c = {},
-		},
-		right = {
-			section_a = {
-				{ type = "line", custom = false, name = "tabs", params = { "right" } },
-				-- { type = "string", custom = false, name = "date", params = { "%A, %d %B %Y" } },
-			},
-			section_c = {
-				-- { type = "string", custom = false, name = "date", params = { "%X" } },
-			},
-			section_b = {},
-		},
-	},
-
-	status_line = {
-		left = {
-			section_a = {
-				{ type = "string", custom = false, name = "tab_mode" },
-			},
-			section_b = {},
-			section_c = {
-				{ type = "coloreds", custom = false, name = "count" },
-				{ type = "string", custom = false, name = "hovered_size" },
-			},
-		},
-		right = {
-			section_a = {
-				{ type = "string", custom = false, name = "cursor_position" },
-			},
-			section_b = {
-				-- { type = "string", custom = false, name = "cursor_percentage" },
-			},
-			section_c = {
-				{ type = "string", custom = false, name = "hovered_file_extension", params = { true } },
-				{ type = "coloreds", custom = false, name = "permissions" },
-			},
-		},
-	},
-})
+-- require("yatline"):setup({
+-- 	-- theme
+-- 	section_separator = {
+-- 		open = "",
+-- 		close = "",
+-- 	},
+-- 	part_separator = {
+-- 		open = "",
+-- 		close = "",
+-- 	},
+-- 	inverse_separator = {
+-- 		open = "",
+-- 		close = "",
+-- 	},
+--
+-- 	style_a = {
+-- 		fg = macchiato.mantle,
+-- 		bg_mode = {
+-- 			normal = macchiato.maroon,
+-- 			select = macchiato.mauve,
+-- 			un_set = macchiato.red,
+-- 		},
+-- 	},
+-- 	style_b = { bg = macchiato.surface0, fg = macchiato.text },
+-- 	style_c = { bg = macchiato.mantle, fg = macchiato.text },
+--
+-- 	permissions_t_fg = macchiato.green,
+-- 	permissions_r_fg = macchiato.yellow,
+-- 	permissions_w_fg = macchiato.red,
+-- 	permissions_x_fg = macchiato.sky,
+-- 	permissions_s_fg = macchiato.lavender,
+--
+-- 	selected = { icon = "󰻭", fg = macchiato.yellow },
+-- 	copied = { icon = "", fg = macchiato.green },
+-- 	cut = { icon = "", fg = macchiato.red },
+--
+-- 	total = { icon = "", fg = macchiato.yellow },
+-- 	succ = { icon = "", fg = macchiato.green },
+-- 	fail = { icon = "", fg = macchiato.red },
+-- 	found = { icon = "", fg = macchiato.blue },
+-- 	processed = { icon = "", fg = macchiato.green },
+--
+-- 	-- yatline-githead
+-- 	prefix_color = macchiato.subtext0,
+-- 	branch_color = macchiato.sapphire,
+-- 	commit_color = macchiato.mauve,
+-- 	behind_color = macchiato.flamingo,
+-- 	ahead_color = macchiato.lavender,
+-- 	stashes_color = macchiato.pink,
+-- 	state_color = macchiato.maroon,
+-- 	staged_color = macchiato.yellow,
+-- 	unstaged_color = macchiato.peach,
+-- 	untracked_color = macchiato.teal,
+--
+-- 	-- Configuration
+-- 	--- component_positions = { "status", "header", "tab" },
+-- 	tab_use_inverse = false,
+-- 	tab_width = 12,
+--
+-- 	show_background = false,
+--
+-- 	display_header_line = true,
+-- 	display_status_line = true,
+--
+-- 	-- Header and Status Line config
+-- 	header_line = {
+-- 		left = {
+-- 			section_a = {
+-- 				{ type = "string", custom = false, name = "tab_path" },
+-- 			},
+-- 			section_b = {},
+-- 			section_c = {},
+-- 		},
+-- 		right = {
+-- 			section_a = {
+-- 				{ type = "line", custom = false, name = "tabs", params = { "right" } },
+-- 				-- { type = "string", custom = false, name = "date", params = { "%A, %d %B %Y" } },
+-- 			},
+-- 			section_c = {
+-- 				-- { type = "string", custom = false, name = "date", params = { "%X" } },
+-- 			},
+-- 			section_b = {},
+-- 		},
+-- 	},
+--
+-- 	status_line = {
+-- 		left = {
+-- 			section_a = {
+-- 				{ type = "string", custom = false, name = "tab_mode" },
+-- 			},
+-- 			section_b = {},
+-- 			section_c = {
+-- 				{ type = "coloreds", custom = false, name = "count" },
+-- 				{ type = "string", custom = false, name = "hovered_size" },
+-- 			},
+-- 		},
+-- 		right = {
+-- 			section_a = {
+-- 				{ type = "string", custom = false, name = "cursor_position" },
+-- 			},
+-- 			section_b = {
+-- 				-- { type = "string", custom = false, name = "cursor_percentage" },
+-- 			},
+-- 			section_c = {
+-- 				{ type = "string", custom = false, name = "hovered_file_extension", params = { true } },
+-- 				{ type = "coloreds", custom = false, name = "permissions" },
+-- 			},
+-- 		},
+-- 	},
+-- })

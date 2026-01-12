@@ -1,232 +1,232 @@
 pkgs=(
 
-    #==================== Ricing =====================
+  #==================== Ricing =====================
 
-   # Fonts
-   "ttf-bitstream-vera" "ttf-dejavu" "ttf-liberation" "ttf-meslo-nerd" "ttf-opensans" "aur/ttf-sil-abyssinica"
-   "ttf-jetbrains-mono-nerd" "ttf-ubuntu-nerd" "ttf-firacode-nerd" "ttf-noto-nerd" "cantarell-fonts"
-   "noto-fonts" "noto-fonts-extra" "noto-fonts-cjk" "noto-fonts-emoji"
+  # Fonts
+  "ttf-bitstream-vera" "ttf-dejavu" "ttf-liberation" "ttf-meslo-nerd" "ttf-opensans" "aur/ttf-sil-abyssinica"
+  "ttf-jetbrains-mono-nerd" "ttf-ubuntu-nerd" "ttf-firacode-nerd" "ttf-noto-nerd" "cantarell-fonts"
+  "noto-fonts" "noto-fonts-extra" "noto-fonts-cjk" "noto-fonts-emoji"
 
-   # Icon Themes
-   "papirus-icon-theme" "papirus-folders-catppuccin-git" "aur/catppuccin-gtk-theme-macchiato"
+  # Icon Themes
+  "papirus-icon-theme" "papirus-folders-catppuccin-git" "aur/catppuccin-gtk-theme-macchiato"
 
-   # Cursor Themes
-   "catppuccin-cursors-mocha"
+  # Cursor Themes
+  "catppuccin-cursors-mocha"
 
-   # GTK Theming
-   "nwg-look" "colloid-catppuccin-gtk-theme-git"
+  # GTK Theming
+  "nwg-look" "colloid-catppuccin-gtk-theme-git"
 
-   # QT Theming
-   "qt6ct-kde" "qt5ct" "breeze" "breeze5"
+  # QT Theming
+  "qt6ct-kde" "qt5ct" "breeze" "breeze5"
 
-   # Tools
-   "fastfetch" #"catnap" # fastfetch with small config
-   "font-manager"
-   "stow"
+  # Tools
+  "fastfetch" #"catnap" # fastfetch with small config
+  "font-manager"
+  "stow"
 
-   # Bar/drawer
-   "waybar" "nwg-drawer"
+  # Bar/drawer
+  "waybar" "nwg-drawer" "aur/privacy-dots"
 
-   # Plymouth Themes
-   "plymouth" "plymouth-theme-colorful-loop-git" "plymouth-theme-cuts-alt-git"
+  # Plymouth Themes
+  "plymouth" "plymouth-theme-colorful-loop-git" "plymouth-theme-cuts-alt-git"
 
+  #================ Drivers =========================
 
-   #================ Drivers =========================
+  # Intel
+  "intel-ucode" "libva-intel-driver" "vulkan-intel" "intel-media-driver"
+  "lib32-mesa" "lib32-vulkan-intel"
 
-   # Intel
-   "intel-ucode" "libva-intel-driver" "vulkan-intel" "intel-media-driver"
-   "lib32-mesa" "lib32-vulkan-intel"
+  # Nvidia
+  "nvidia-open-dkms" "libva-nvidia-driver" "nvidia-utils" "lib32-nvidia-utils"
+  "nvidia-settings" "nvidia-prime"
 
-   # Nvidia
-   "nvidia-open-dkms" "libva-nvidia-driver" "nvidia-utils" "lib32-nvidia-utils"
-   "nvidia-settings" "nvidia-prime"
+  # FileSystem
+  "ntfs-3g" "ntp"
 
-   # FileSystem
-   "ntfs-3g" "ntp"
+  # Printing
+  "cups" "bluez-cups" "print-manager"
 
-   # Printing
-   "cups" "bluez-cups" "print-manager"
+  # Drawing
+  "wacomtablet"
 
-   # Drawing
-   "wacomtablet"
+  #================== Core Utils ===================
 
+  # Backbone
+  "linux" "linux-headers" "linux-firmware"
+  "grub" "grub-hook" "os-prober"
 
-   #================== Core Utils ===================
+  "zsh" "sudo" "neovim" "tar"
+  "paru" "pacman-contrib"
 
-   # Backbone
-   "linux" "linux-headers" "linux-firmware"
-   "grub" "grub-hook" "os-prober"
+  # Display Servers
+  "wayland" "egl-wayland" "wev"
+  "xorg-xserver" "xorg-xwayland" "xwayland-satellite" "xorg-xhost"
+  "xf86-input-libinput" "xorg-xinput" "xsettingsd"
 
-   "zsh" "sudo" "neovim" "tar"
-   "paru" "pacman-contrib"
+  # systemd launchers
+  "aur/app2unit-git"
+  "dex" # dex -a -e Hyprland
 
-   # Display Servers
-   "wayland" "egl-wayland" "wev"
-   "xorg-xserver" "xorg-xwayland" "xorg-xhost"
-   "xf86-input-libinput" "xorg-xinput" "xsettingsd"
+  # BlueTooth
+  "bluez" "bluez-utils" "bluez-libs" "bluez-hid2hci" "blueman"
 
-   # systemd launchers
-   "uwsm" "aur/app2unit-git"
+  # Sound
+  "pipewire" "pipewire-pulse" "pamixer" "pipewire-alsa" "wireplumber" "wireless-regdb"
+  "alsa-plugins" "alsa-firmware" "alsa-utils"
+  "ethtool" "sof-firmware"
+  "libnotify" "swaync" "wob"
 
-   # BlueTooth
-   "bluez" "bluez-utils" "bluez-libs" "bluez-hid2hci" "blueman"
+  # Asus Hardware
+  "power-profiles-daemon" "asusctl" "supergfxctl" "rog-control-center"
 
-   # Sound
-   "pipewire" "pipewire-pulse" "pamixer" "pipewire-alsa" "wireplumber" "wireless-regdb"
-   "alsa-plugins" "alsa-firmware" "alsa-utils"
-   "ethtool" "sof-firmware"
-   "libnotify" "swaync" "wob"
+  # Xdg Desktop Portals
+  "xdg-desktop-portal" "aur/nautilus-dummy" "xdg-desktop-portal-gnome" "xdg-desktop-portal-gtk"
+  "libportal-gtk4" "libportal-qt6"
+  "xdg-user-dirs"
 
-   # Xdg Desktop Portals
-   "xdg-desktop-portal" "xdg-desktop-portal-gtk" "xdg-desktop-portal-hyprland"
-   "libportal-gtk4" "libportal-qt6"
-   "xdg-user-dirs"
+  # Flatpak
+  "flatpak" "flatseal"
 
-   # Flatpak
-   "flatpak" "flatseal"
+  # Brightness
+  "brightnessctl" "ddcutil" "ddcui"
 
-    # Brightness
-   "brightnessctl" "ddcutil" "ddcui"
+  # Network
+  "dhclient" "dnsmasq"
+  "iproute2" "iwd"
+  "networkmanager"
+  "curl" "wget"
+  "openbsd-netcat"
+  "nss-mdns"
 
-   # Network
-   "dhclient" "dnsmasq"
-   "iproute2" "iwd"
-   "networkmanager"
-   "curl" "wget"
-   "openbsd-netcat"
-   "nss-mdns"
+  # Filesystem
+  "e2fsprogs" "dosfstools" "exfatprogs"
+  "efibootmgr" "efitools" "gnome-keyring"
+  "gvfs" "gvfs-afc" "gvfs-goa" "gvfs-mtp" "gvfs-nfs" "gvfs-onedrive" "gvfs-smb" "gvfs-wsdd"
+  "nfs-utils" "nilfs-utils"
+  "sshfs" "openssh"
+  "libgsf" "trash-cli"
 
-   # Filesystem
-   "e2fsprogs" "dosfstools" "exfatprogs"
-   "efibootmgr" "efitools" "gnome-keyring"
-   "gvfs" "gvfs-afc" "gvfs-goa" "gvfs-mtp" "gvfs-nfs" "gvfs-onedrive" "gvfs-smb" "gvfs-wsdd"
-   "nfs-utils" "nilfs-utils"
-   "sshfs" "openssh"
-   "libgsf" "trash-cli"
+  # Media
+  "ffmpeg" "ffmpegthumbnailer" "ffmpegthumbs"
+  "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly"
+  "gst-libav" "gst-plugin-pipewire"
+  "libdvdcss" "libopenraw"
 
-   # Media
-   "ffmpeg" "ffmpegthumbnailer" "ffmpegthumbs"
-   "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly"
-   "gst-libav" "gst-plugin-pipewire"
-   "libdvdcss" "libopenraw"
+  # QT
+  "qt6-wayland" "layer-shell-qt"
 
-   # QT
-   "qt6-wayland" "layer-shell-qt"
+  # Policy Kit
+  "polkit" "mate-polkit" "rtkit"
 
-   # Policy Kit
-   "polkit" "lxqt-policykit" "rtkit"
+  # Power
+  "power-profiles-daemon" "asusctl" "rog-control-center"
 
-   # Power
-   "power-profiles-daemon" "asusctl" "rog-control-center"
+  # Appindicator
+  "libappindicator" "libayatana-appindicator"
+  "libdbusmenu-qt5" "libdbusmenu-gtk" "libdbusmenu-glib"
 
-   # Appindicator
-   "libappindicator" "libayatana-appindicator"
-   "libdbusmenu-qt5" "libdbusmenu-gtk" "libdbusmenu-glib"
+  # Misc
+  "base" "base-devel" "bc" "bind" "bridge-utils" "diffutils" "duff"
+  "inetutils" "which" "upower"
 
-   # Misc
-   "base" "base-devel" "bc" "bind" "bridge-utils" "diffutils" "duff"
-   "inetutils" "which" "upower"
+  # Accessibility
+  "orca"
 
-   # Accessibility
-   "orca"
+  #================== CLI-TUI Tools ===================
 
+  # Git
+  "git" "git-diff" "git-lfs"
+  "git-cliff" "lazygit" "github-cli"
 
-   #================== CLI-TUI Tools ===================
+  # Development
+  "direnv" "neovim" "go-yq" "yt-dlp"
+  "shellcheck-bin"
 
-   # Git
-   "git" "git-diff"  "git-lfs"
-   "git-cliff" "lazygit" "github-cli"
+  # Replacements
+  "bat" "bat-extras"
+  "eza" "wiremix"
+  "handlr-regex" "xdg-menu" "xdg-ninja" "archlinux-xdg-menu"
 
-   # Development
-   "direnv"  "neovim" "go-yq" "yt-dlp"
-   "shellcheck-bin"
+  # System Fetch tools
+  "fastfetch" "figlet"
 
-   # Replacements
-   "bat" "bat-extras"
-   "eza" "wiremix"
-   "handlr-regex" "xdg-menu" "xdg-ninja" "archlinux-xdg-menu"
+  # FileSystem
+  "yazi" "fzf" "ripgrep" "fd" "zoxide"
+  "hwdetect" "hwinfo"
 
-   # System Fetch tools
-   "fastfetch" "figlet"
+  # File Sync
+  "rsync" "syncthing"
 
-   # FileSystem
-   "yazi" "fzf" "ripgrep" "fd" "zoxide"
-   "hwdetect" "hwinfo"
+  # System Monitors
+  "btop" "bottom" "nvtop"
+  "resources"
 
-   # File Sync
-   "rsync" "syncthing"
+  # JavaScript
+  "nodejs" "npm" "bun-bin"
+  "nodejs-live-server"
 
-   # System Monitors
-   "btop" "bottom" "nvtop"
-   "resources"
+  # Python
+  "python" "python-pip" "uv"
+  "python-argcomplete"
 
-   # JavaScript
-   "nodejs" "npm" "bun-bin"
-   "nodejs-live-server"
+  # Docker
+  "distrobox" "docker" "docker-compose"
 
-   # Python
-   "python" "python-pip" "uv"
-   "python-argcomplete"
+  #=================== GUI Apps =========================
 
-   # Docker
-   "distrobox" "docker" "docker-compose"
+  # Password Manger
+  "keepassxc" "git-credential-keepassxc-bin"
 
-   #=================== GUI Apps =========================
+  # Development
+  "wezterm-git" "foot"
+  "zed" "visual-studio-code-bin"
+  "obsidian"
 
-   # Password Manger
-   "keepassxc" "aur/git-credential-keepassxc"
+  # launcher
+  "wl-clipboard" "vicinae-bin" "rofi"
 
-   # Development
-   "wezterm-git" "foot"
-   "zed-bin" "visual-studio-code-bin"
-   "obsidian"
+  # Browsers
+  "zen-browser-bin" "brave-bin"
 
-   # launcher
-   "wl-clipboard" "aur/vicinae-bin" "rofi"
+  # Filesystem
+  "btrfs-assistant" "btrfs-progs" "snapper"
+  "gparted" "jfsutils"
+  "baobab" "smartmontools"
+  "pcmanfm-qt" "lxqt-sudo"
+  "lxqt-archiver"
 
-   # Browsers
-   "zen-browser-bin" "brave-bin"
+  # Media
+  "obs-studio"
+  "grimblast-git" "satty"
+  "inkscape" "nomacs-git"
+  "pavucontrol-qt"
+  "mpv" "mpv-mpris2-bin" "mpd"
+  "mkvtoolnix-gui"
 
-   # Filesystem
-   "btrfs-assistant" "btrfs-progs" "snapper"
-   "gparted"  "jfsutils"
-   "baobab" "smartmontools"
-   "pcmanfm-qt" "lxqt-sudo"
-   "lxqt-archiver"
+  # DE Apps
+  "niri"
+  "swayidle" "gtklock" "swww"
 
-   # Media
-   "obs-studio"
-   "grimblast-git" "satty"
-   "inkscape" "nomacs-git"
-   "pavucontrol-qt"
-   "mpv" "mpvqt" "mpd"
-   "mkvtoolnix-gui"
+  "localsend"
 
-   # Hypr Apps
-   "hyprland" "hyprland-protocols"
-   "hyprpaper" "hypridle" "hyprlock" "hyprpicker" "hyprsunset"
+  # Backup
+  "vorta" "vorta-root"
+  "timeshift"
 
-   "localsend"
-
-   # Backup
-   "vorta" "aur/vorta-root"
-   "timeshift"
-
-   # Calculator
-   "qalculate-qt"
+  # Calculator
+  "qalculate-qt"
 )
 
-
 extra=(
-    "gdu"           # Disk Usage Analyzer tui
-    "calcurse"      # TUI Calander
-    "gimp"          # Image Editor
-    "gnome-boxes" "spice-gtk" "vde2" # Virtual Machine Manager
-    "gnome-disk-utility" # Disk Utility
-    "ktorrent"      # Torrent Client
-    "lazydocker"    # Docker GUI
-    "zenity"        # Dialog Utility
-    "vesktop"       # Discord client
-    "suprefile"     # File Manager tui
-    "rpm-tools"     # RPM tools
+  "gdu"                            # Disk Usage Analyzer tui
+  "calcurse"                       # TUI Calander
+  "gimp"                           # Image Editor
+  "gnome-boxes" "spice-gtk" "vde2" # Virtual Machine Manager
+  "gnome-disk-utility"             # Disk Utility
+  "ktorrent"                       # Torrent Client
+  "lazydocker"                     # Docker GUI
+  "zenity"                         # Dialog Utility
+  "vesktop"                        # Discord client
+  "suprefile"                      # File Manager tui
+  "rpm-tools"                      # RPM tools
 )

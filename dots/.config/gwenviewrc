@@ -5,6 +5,7 @@ FullScreenBackground=FullScreenBackground::Image
 JPEGQuality=95
 LastUsedVersion=210800
 ShowHiddenFiles=true
+SideBarPage=operations
 
 [ImageView]
 AlphaBackgroundColor=52,57,84
@@ -15,30 +16,30 @@ ThumbnailSplitterSizes=601,172
 MenuBar=Disabled
 
 [Recent Files]
-File1[$e]=$HOME/Git/MyTM/app/icons/icon.png
-File10[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-05_15:33:44.png
-File2[$e]=$HOME/Git/MyTM/app/icons/icon.svg
-File3[$e]=$HOME/Git/MyCTL/app/icons/icon.svg
-File4[$e]=/usr/share/icons/hicolor/512x512/apps/myctl.png
-File5[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/anime flowchart.png
-File6[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.jpg
-File7[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.png
-File8[$e]=$HOME/Downloads/theme-manager.png
-File9[$e]=$HOME/Git/MyCTL/app/icons/icon.png
-Name1[$e]=icon.png
-Name10[$e]=ScreenShot-25-09-05_15:33:44.png
+File1[$e]=$HOME/Git/MyTM/app/icons/icon.svg
+File10[$e]=$HOME/Downloads/mpmc exam.jpeg
+File2[$e]=$HOME/Git/MyCTL/app/icons/icon.svg
+File3[$e]=/usr/share/icons/hicolor/512x512/apps/myctl.png
+File4[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/anime flowchart.png
+File5[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.jpg
+File6[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.png
+File7[$e]=$HOME/Downloads/theme-manager.png
+File8[$e]=$HOME/Git/MyCTL/app/icons/icon.png
+File9[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-05_15:33:44.png
+Name1[$e]=icon.svg
+Name10[$e]=mpmc exam.jpeg
 Name2[$e]=icon.svg
-Name3[$e]=icon.svg
-Name4[$e]=myctl.png
-Name5[$e]=anime flowchart.png
-Name6[$e]=cover.jpg
-Name7[$e]=cover.png
-Name8[$e]=theme-manager.png
-Name9[$e]=icon.png
+Name3[$e]=myctl.png
+Name4[$e]=anime flowchart.png
+Name5[$e]=cover.jpg
+Name6[$e]=cover.png
+Name7[$e]=theme-manager.png
+Name8[$e]=icon.png
+Name9[$e]=ScreenShot-25-09-05_15:33:44.png
 
 [SideBar]
-InformationSplitterSizes=501,230
-SideBarSplitterSizes=204,705
+InformationSplitterSizes=312,143
+SideBarSplitterSizes=204,1443
 
 [ThumbnailView]
 WrapAfterLast=false

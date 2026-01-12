@@ -29,8 +29,7 @@
    },
    "favorites": [
       "applications:dev.zed.Zed",
-      "applications:org.keepassxc.KeePassXC",
-      "clipboard:history"
+      "applications:org.keepassxc.KeePassXC"
    ],
    "providers": {
       "@rithvikvibhu/store.vicinae.arch-packages": {
@@ -42,7 +41,11 @@
       },
       "applications": {
          "preferences": {
-            "launchPrefix": " app2unit -- "
+            "paths": [
+               "/home/soymadip/.local/share/applications",
+               "/var/lib/flatpak/exports/share/applications",
+               "/usr/share/applications"
+            ]
          }
       },
       "core": {

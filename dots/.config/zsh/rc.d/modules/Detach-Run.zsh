@@ -12,9 +12,5 @@
 # Start & detach Apps from terminal
 
 function dtch {
-    local cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}"
-    local cmd_name=$(basename "$1")
-
-    mkdir -p "$cache_dir"
-    nohup "$@" >"$cache_dir/nohup-${cmd_name}.out" 2>&1 &
+    "$@" & disown
 }

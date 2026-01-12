@@ -1,5 +1,19 @@
 {
   // ====== CORE EDITOR SETTINGS ======
+  "window_decorations": "server",
+  "tab_bar": {
+    "show_tab_bar_buttons": false,
+    "show": true
+  },
+  "close_on_file_delete": true,
+  "search": {
+    "include_ignored": true
+  },
+  "prettier": {
+    "allowed": true
+  },
+  "excerpt_context_lines": 4,
+  "restore_on_startup": "launchpad",
   "colorize_brackets": true,
   "collaboration_panel": {
     "button": true,
@@ -10,7 +24,16 @@
   },
   "autoscroll_on_clicks": true,
   "double_click_in_multibuffer": "open",
-  "theme": "Catppuccin Macchiato (maroon)",
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte (maroon)",
+    "dark": "Catppuccin Macchiato (maroon)"
+  },
+  "theme_overrides": {
+    "Catppuccin Macchiato (maroon)": {
+      "vim.normal.background": null,
+    },
+  },
   "icon_theme": "Catppuccin Mocha",
   "vim_mode": true,
   "auto_update": false,
@@ -29,16 +52,23 @@
 
   // ====== UI LAYOUT & PANELS ======
   "project_panel": {
+    "hide_hidden": false,
+    "indent_guides": {
+      "show": "never"
+    },
+    "show_diagnostics": "errors",
     "hide_root": true,
     "dock": "right",
     "entry_spacing": "standard",
-    "indent_size": 22,
+    "indent_size": 22.0,
   },
   "git_panel": {
+    "tree_view": true,
     "sort_by_path": true,
     "dock": "right",
   },
   "debugger": {
+    "button": true,
     "dock": "bottom",
   },
   "active_pane_modifiers": {
@@ -64,6 +94,10 @@
     "code_actions": true,
   },
   "title_bar": {
+    "show_menus": false,
+    "show_sign_in": true,
+    "show_project_items": true,
+    "show_branch_name": true,
     "show_branch_icon": true,
   },
   // ====== CODE EDITING FEATURES ======
@@ -73,7 +107,7 @@
     "show_type_hints": true,
     "show_parameter_hints": true,
     "show_other_hints": true,
-    "show_background": false,
+    "show_background": true,
     "edit_debounce_ms": 700,
     "scroll_debounce_ms": 50,
     "toggle_on_modifiers_press": {
@@ -86,6 +120,9 @@
   },
   "format_on_save": "on",
   "indent_guides": {
+    "line_width": 2,
+    "active_line_width": 2,
+    "background_coloring": "disabled",
     "coloring": "indent_aware",
   },
   // ====== AI ASSISTANT & AGENT ======
@@ -96,7 +133,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5",
+      "model": "claude-haiku-4.5",
     },
     "inline_assistant_model": {
       "provider": "copilot_chat",
@@ -107,24 +144,22 @@
   },
   // ====== EXTENSIONS ======
   "auto_install_extensions": {
-    "awk": true,
     "basher": true,
     "dockerfile": false,
+    "catppuccin-icons": true,
     "emmet": true,
     "env": true,
     "git-firefly": true,
     "harper": true,
     "html": true,
-    "hyprlang": true,
     "ini": true,
+    "kdl": true,
+    "kconfig": true,
     "log": true,
     "lua": true,
     "marksman": true,
     "make": true,
-    "nix": true,
-    "php": true,
     "scheme": true,
-    "sql": true,
     "toml": true,
   },
   // ====== FILE TYPES & ASSOCIATIONS ======
@@ -153,7 +188,7 @@
   },
   // ====== PRIVACY & TELEMETRY ======
   "telemetry": {
-    "diagnostics": false,
+    "diagnostics": true,
     "metrics": false,
   },
   // ====== LANGUAGE SERVERS =======

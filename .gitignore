@@ -147,14 +147,21 @@ dots/.config/ghb/*
 # gimp
 dots/.config/GIMP/**/backups
 dots/.config/GIMP/**/CrashLog
+dots/.config/GIMP/**/dockrc
+dots/.config/GIMP/**/devicerc
 dots/.config/GIMP/**/internal-data
 dots/.config/GIMP/**/fonts
+dots/.config/GIMP/**/gradients
 dots/.config/GIMP/**/action-history
 dots/.config/GIMP/**/sessionrc
 dots/.config/GIMP/**/unitrc
 dots/.config/GIMP/**/pluginrc
+dots/.config/GIMP/**/plug-in-settings
+dots/.config/GIMP/**/tool-options
 dots/.config/GIMP/**/parasiterc
-dots/.config/GIMP/**/dockrc
+dots/.config/GIMP/**/controllerrc
+dots/.config/GIMP/**/modifiersrc
+dots/.config/GIMP/**/templaterc
 
 # Github Copilot
 dots/.config/GitHub Desktop/*

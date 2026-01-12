@@ -4,7 +4,7 @@
 [core]
 	editor = nvim
 [init]
-	defaultBranch = main
+	defaultbranch = main
 [commit]
 	template = ~/.config/git/commit-message.txt
 	rebase=true
