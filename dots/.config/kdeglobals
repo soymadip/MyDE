@@ -129,6 +129,7 @@ Theme=Papirus-Dark
 
 [KDE]
 LookAndFeelPackage=Catppuccin-Macchiato-Maroon
+ShowDeleteCommand=true
 widgetStyle=qt6ct-style
 
 [KFileDialog Settings]
@@ -156,7 +157,7 @@ Dialog Size=600,480
 
 [PreviewSettings]
 EnableRemoteFolderThumbnail=false
-MaximumRemoteSize=0
+MaximumRemoteSize=12582912
 
 [WM]
 activeBackground=36,39,58

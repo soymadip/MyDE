@@ -1,0 +1,146 @@
+
+//------------------- Misc Windows --------------------
+
+window-rule {
+    match title=r#"(?i).*(float|blueman-manager|zenity|yad|nwg-look).*"#
+
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"float|floating"#
+
+    open-floating true
+}
+
+//----------------- Float setting windows --------------------
+window-rule {
+    match title=r#"(?i).*(settings|preferences|configuration|configure).*"#
+
+    open-floating true
+
+    default-column-width  { fixed 796; }
+    default-window-height { fixed 541; }
+}
+
+//--------------- Picture-in-Picture ---------------
+window-rule {
+    match title=r#"(?i).*(picture-in-picture|pip).*"#
+
+    open-floating true
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+
+    default-column-width  { fixed 541; }
+    default-window-height { fixed 305; }
+}
+
+//-------------------- Kasts -----------------------
+window-rule {
+    match app-id="org.kde.kasts"
+
+    open-floating true
+    default-column-width  { fixed 1146; }
+    default-window-height { fixed 770;  }
+}
+
+//------------- Block from screenRecord --------------
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screencast"
+}
+
+window-rule {
+    match app-id="mpv"
+    variable-refresh-rate true
+}
+
+//--------------- KeePassXC float ---------------
+window-rule {
+    match app-id=r#"org.keepassxc.KeePassXC"#
+
+    open-floating true
+    default-column-width  { fixed 1104; }
+    default-window-height { fixed 702;  }
+}
+
+// secondary windows
+window-rule {
+    match app-id="org.keepassxc.KeePassXC" title=r#"(?i).*(Unlock Database|\[Locked\]|About KeePassXC|Access Request).*"#
+
+    default-column-width  { fixed 700; }
+    default-window-height { fixed 371; }
+}
+
+//--------------- File Operation Dialog -------------------
+window-rule {
+    match app-id="(?i).*(xdg-desktop-portal).*"
+    match title="(?i).*(file operation|open file|open document|save file|save as|select a Folder|choose|upload|open|save|select|select recording directory|add folder|add dir|add file)(.*)"
+
+    open-floating true
+    default-column-width  { fixed 1036; }
+    default-window-height { fixed 638;  }
+}
+
+//-------------------- InkScape -------------------
+window-rule {
+    match app-id="org.inkscape.Inkscape|import_web_image.py" title="(?i).*(import).*"
+
+    open-floating true
+    default-column-width  { fixed 898; }
+    default-window-height { fixed 640; }
+}
+
+//-------------------- KDE Connect -------------------
+window-rule {
+    match app-id="(?i).*(kdeconnect).*"
+
+    open-floating true
+    default-column-width  { fixed 911; }
+    default-window-height { fixed 614; }
+}
+
+//----------------- Torrent Clients -------------------
+window-rule {
+    match app-id="(?i).*(ktorrent|transmission-qt)"
+
+    open-floating true
+    default-column-width  { fixed 1200; }
+    default-window-height { fixed 802;  }
+}
+
+//secondary windows
+window-rule {
+    match app-id="(?i).*(ktorrent|transmission-qt)" title="(?i).*(Details|Properties|open|select|magnet|torrent)"
+
+    default-column-width  { fixed 899; }
+    default-window-height { fixed 612;  }
+}
+
+//-------------------- Satty -------------------
+window-rule {
+    match app-id="(?i).*(com.gabm.satty)"
+
+    open-floating true
+    default-column-width  { fixed 967; }
+    default-window-height { fixed 549; }
+}
+
+//------------------- PcmanFM -------------------
+window-rule {
+    match app-id="pcmanfm" title="(?i).*(is inserted|choose an application).*"
+
+    open-floating true
+    default-column-width  { fixed 395; }
+    default-window-height { fixed 465; }
+}
+
+// Execute dialog
+window-rule {
+    match app-id="pcmanfm" title="(?i).*(Execute file).*"
+
+    open-floating true
+    default-column-width  { fixed 390; }
+    default-window-height { fixed 124; }
+}

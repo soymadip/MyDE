@@ -1,0 +1,15 @@
+
+// Sync Environment With Systemd
+spawn-sh-at-startup "dbus-update-activation-environment  --all --systemd"
+spawn-sh-at-startup "systemctl --user import-environment"
+
+spawn-at-startup    "app2unit" "nsticky"
+spawn-at-startup    "app2unit" "xsettingsd"
+spawn-at-startup    "app2unit" "waybar"
+spawn-at-startup    "app2unit" "swww-daemon"
+spawn-at-startup    "app2unit" "swaync"
+spawn-at-startup    "app2unit" "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1"
+spawn-at-startup    "app2unit" "vicinae" "server"
+spawn-at-startup    "app2unit" "pcmanfm-qt" "-d"
+spawn-sh-at-startup "sleep 5 && app2unit -- keepassxc --minimized"
+spawn-sh-at-startup "myctl setup wob-daemon"

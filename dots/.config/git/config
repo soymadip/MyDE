@@ -1,10 +1,10 @@
 [user]
 	email = soumadip@zohomail.in
-	name = soymadip
+	name = Soumadip Das
 [core]
 	editor = nvim
 [init]
-	defaultBranch = main
+	defaultbranch = main
 [commit]
 	template = ~/.config/git/commit-message.txt
 	rebase=true

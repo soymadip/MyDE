@@ -13,7 +13,7 @@ rice_pckgs=(
   "nwg-look" "colloid-catppuccin-gtk-theme-git"
 
   #QT Themes
-  "qt6ct-kde" "breeze"
+  "qt6ct-kde" "breeze" "breeze5"
 
   #Tools
   "fastfetch" "archlinux-tweak-tool-git"
@@ -21,6 +21,7 @@ rice_pckgs=(
 
   #Plymouth Themes
   "plymouth" "plymouth-theme-colorful-loop-git" "plymouth-theme-cuts-alt-git"
+
 )
 
 nvidia_pckgs=(
@@ -47,6 +48,8 @@ core_pckgs=(
 
   "ntfs-3g"
 
+  "gvfs" "gvfs-afc" "gvfs-goa" "gvfs-mtp" "gvfs-nfs" "gvfs-onedrive" "gvfs-smb" "gvfs-wsdd"
+
   "gnome-keyring"
 
   "rate-mirrors" "paru" "pacman-contrib" "pacseek" #tui for pacman
@@ -67,13 +70,11 @@ core_pckgs=(
   "power-profiles-daemon"
   "npm"
   "icu"
-  "gvfs"
   "yt-dlp"
   "rsync"
   "enchant"
   "hunspell-en_US"
-  "qt5-tools"
-  "gtk4"
+  "qt6-tools"
   "libdbusmenu-glib"
   "appmenu-gtk-module"
   "libappindicator-gtk3"
@@ -95,7 +96,7 @@ core_pckgs=(
 cli_pckgs=(
 
   # "kitty"
-  "wezterm-git"
+  "wezterm-git" "noto-fonts-emoji"
 
   "neovim" "luarocks"
 
@@ -148,7 +149,7 @@ hypr_pckgs=(
   "xdg-desktop-portal"
   "xdg-desktop-portal-gtk"
   "xdg-desktop-portal-hyprland"
-  "polkit-gnome"
+  "lxqt-policykit"
   "hyprpaper"
   "hyprlock"
   "hypridle"
@@ -168,9 +169,11 @@ user_pckgs=(
 
   # "thunar" "thunar-archive-plugin" "thunar-vcs-plugin" "thunar-volman" "tumbler" "gvfs-mtp"
 
+  "pcmanfm-qt" "lxqt-sudo"
+
   "okular" "ebook-tools" "kdegraphics-mobipocket" # PDF viewer
 
-  "visual-studio-code-bin"                                 # IDE (heavy)
+  "visual-studio-code-bin"                     # IDE (heavy)
   "zed" "hyprls-git" "shellcheck-bin" "direnv" # IDE, Text Editor
   "python" "uv"
 
@@ -183,13 +186,11 @@ user_pckgs=(
 
   "keepassxc" "git-credential-keepassxc"
 
-  "ark" "unzip" "7zip" "tar" "unrar" "binutils" "arj"
-
+  "lxqt-archiver" "7zip" "tar" "unrar"
   "kasts" "vlc"
   "ktorrent"
 
-  "gwenview"
-  # "nomacs"
+  "nomacs" "qt6-imageformats" "kimageformats"
 
   "gnome-disk-utility"
   "rclone-browser"
@@ -204,6 +205,9 @@ user_pckgs=(
   "ventoy-bin"
   "qalculate-gtk"
   "betterbird-bin"
+  "font-manager"
+
+  "inkscape" "ttf-sil-abyssinica"
 )
 
 opt_pckgs=(

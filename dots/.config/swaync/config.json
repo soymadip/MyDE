@@ -1,0 +1,33 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "fit-to-screen": false,
+  "layer-shell-cover-screen": true,
+  "layer-shell": true,
+  "layer": "overlay",
+  "hide-on-clear": true,
+  "notification-inline-replies": true,
+  "timeout-critical": 16,
+  "widgets": [
+    "inhibitors",
+    "dnd",
+    "notifications"
+  ],
+  "script-fail-notify": true,
+  "scripts": {
+    "play-low": {
+      "exec": "~/.config/swaync/play-sound.sh 0.2 message",
+      "urgency": "Low",
+      "run-on": "receive"
+    },
+    "play-normal": {
+      "exec": "~/.config/swaync/play-sound.sh 0.55 bell",
+      "urgency": "Normal",
+      "run-on": "receive"
+    },
+    "play-warning": {
+      "exec": "~/.config/swaync/play-sound.sh 2.0 dialog-warning",
+      "urgency": "Critical",
+      "run-on": "receive"
+    }
+  }
+}

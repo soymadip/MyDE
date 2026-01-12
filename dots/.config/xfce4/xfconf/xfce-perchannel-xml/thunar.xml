@@ -12,7 +12,7 @@
   <property name="misc-single-click" type="bool" value="false"/>
   <property name="misc-directory-specific-settings" type="bool" value="true"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_100_PERCENT"/>
-  <property name="last-details-view-column-widths" type="string" value="50,124,129,121,86,208,73,111,894,50,109,72,50,327"/>
+  <property name="last-details-view-column-widths" type="string" value="50,124,121,121,86,208,73,111,1241,50,109,68,50,312"/>
   <property name="misc-thumbnail-draw-frames" type="bool" value="false"/>
   <property name="misc-text-beside-icons" type="bool" value="false"/>
   <property name="misc-change-window-icon" type="bool" value="true"/>

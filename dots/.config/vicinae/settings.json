@@ -1,0 +1,69 @@
+// This configuration is merged with the default vicinae configuration file, which you can obtain by running the `vicinae config default` command.
+// Every item defined in this file takes precedence over the values defined in the default config or any other imported file.
+//
+// You can make manual edits to this file, however you should keep in mind that this file may be written to by vicinae when a configuration change is made through the GUI.
+// When that happens, any custom comments or formatting will be lost.
+//
+// If you want to maintain a configuration file with your own comments and formatting, you should create a separate file and add it to the 'imports' array.
+//
+// Learn more about configuration at https://docs.vicinae.com/config
+
+{
+   "close_on_focus_loss": true,
+   "consider_preedit": false,
+   "pop_to_root_on_close": true,
+   "search_files_in_root": false,
+   "font": {
+      "normal": {
+         "size": 10.5
+      }
+   },
+   "theme": {
+      "dark": {
+         "name": "catppuccin-macchiato",
+         "icon_theme": "Papirus-Dark"
+      }
+   },
+   "launcher_window": {
+      "opacity": 0.9
+   },
+   "favorites": [
+      "applications:dev.zed.Zed",
+      "applications:org.keepassxc.KeePassXC"
+   ],
+   "providers": {
+      "@rithvikvibhu/store.vicinae.arch-packages": {
+         "entrypoints": {
+            "search-arch-packages": {
+               "alias": "arch"
+            }
+         }
+      },
+      "applications": {
+         "preferences": {
+            "paths": [
+               "/home/soymadip/.local/share/applications",
+               "/var/lib/flatpak/exports/share/applications",
+               "/usr/share/applications"
+            ]
+         }
+      },
+      "core": {
+         "entrypoints": {
+            "search-emojis": {
+               "alias": "emj"
+            },
+            "settings": {
+               "alias": "vsettings"
+            }
+         }
+      },
+      "system": {
+         "entrypoints": {
+            "run": {
+               "alias": "term"
+            }
+         }
+      }
+   }
+}

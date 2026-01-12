@@ -2,39 +2,44 @@ MenuBar=Disabled
 
 [General]
 FullScreenBackground=FullScreenBackground::Image
+JPEGQuality=95
 LastUsedVersion=210800
 ShowHiddenFiles=true
 SideBarPage=operations
+
+[ImageView]
+AlphaBackgroundColor=52,57,84
+AlphaBackgroundMode=AbstractImageView::AlphaBackgroundSolid
+ThumbnailSplitterSizes=601,172
 
 [MainWindow]
 MenuBar=Disabled
 
 [Recent Files]
-File1[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-07_17:40:05.png
-File10[$e]=$HOME/.local/share/Trash/files/rofi/previews/sponsor.png
-File2[$e]=$HOME/.cache/kioexec/krun/9351_0/cover.jpg
-File3[$e]=$HOME/Pictures/waybar.png
-File4[$e]=$HOME/Downloads/soymadip's Commits.png
-File5[$e]=$HOME/Downloads/483856107-7e80fd70-766a-47b3-9e3a-fc02508d83cb.png
-File6[$e]=$HOME/Downloads/waybar.png
-File7[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-28_20:37:46.png
-File8[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-10-02_08:55:31.png
-File9[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-10-02_08:56:09.png
-Name1[$e]=ScreenShot-25-09-07_17:40:05.png
-Name10[$e]=sponsor.png
-Name2[$e]=cover.jpg
-Name3[$e]=waybar.png
-Name4[$e]=soymadip's Commits.png
-Name5[$e]=483856107-7e80fd70-766a-47b3-9e3a-fc02508d83cb.png
-Name6[$e]=waybar.png
-Name7[$e]=ScreenShot-25-09-28_20:37:46.png
-Name8[$e]=ScreenShot-25-10-02_08:55:31.png
-Name9[$e]=ScreenShot-25-10-02_08:56:09.png
+File1[$e]=$HOME/Git/MyTM/app/icons/icon.svg
+File10[$e]=$HOME/Downloads/mpmc exam.jpeg
+File2[$e]=$HOME/Git/MyCTL/app/icons/icon.svg
+File3[$e]=/usr/share/icons/hicolor/512x512/apps/myctl.png
+File4[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/anime flowchart.png
+File5[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.jpg
+File6[$e]=/run/user/1000/463d15e1081e448d9768004572c34efa/storage/emulated/0/Aniyomi/localanime/Bleach/cover.png
+File7[$e]=$HOME/Downloads/theme-manager.png
+File8[$e]=$HOME/Git/MyCTL/app/icons/icon.png
+File9[$e]=$HOME/Pictures/Screenshots/ScreenShot-25-09-05_15:33:44.png
+Name1[$e]=icon.svg
+Name10[$e]=mpmc exam.jpeg
+Name2[$e]=icon.svg
+Name3[$e]=myctl.png
+Name4[$e]=anime flowchart.png
+Name5[$e]=cover.jpg
+Name6[$e]=cover.png
+Name7[$e]=theme-manager.png
+Name8[$e]=icon.png
+Name9[$e]=ScreenShot-25-09-05_15:33:44.png
 
 [SideBar]
-InformationSplitterSizes=236,239
-IsVisible ViewMode=true
-SideBarSplitterSizes=197,568
+InformationSplitterSizes=312,143
+SideBarSplitterSizes=204,1443
 
 [ThumbnailView]
 WrapAfterLast=false

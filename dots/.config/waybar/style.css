@@ -14,6 +14,7 @@
 #submap,
 #custom-power,
 #custom-music,
+#custom-idle_inhibitor,
 #tray,
 #bluetooth,
 #network.status,
@@ -24,94 +25,111 @@
 #wireplumber.speaker,
 #custom-notification {
     background-color: @surface0;
-    padding: 0.5rem 0.7rem;
-    /* margin: 1px 0; */
+    padding: 0.1rem 0.7rem;
+    /*margin: 1px 0;*/
 }
 
 #custom-power {
-    margin: 0px 0.87rem;
+    margin: 0px 0.45rem;
+    margin-left: 0.2rem;
     padding-right: 12px;
-    border-radius: 0.87rem;
+    border-radius: 0.7rem;
     color: @red;
 }
 
 #workspaces {
-    border-radius: 0.87rem;
-    margin-right: 0.87rem;
+    border-radius: 0.7rem;
+    margin-right: 0.45rem;
     background-color: @surface0;
 }
 
 #workspaces button {
     color: @lavender;
-    border-radius: 0.87rem;
+    border-radius: 0.7rem;
     padding: 0.3rem 0rem;
 }
 
 #workspaces button.active {
     color: @maroon;
-    border-radius: 0.87rem;
+    border-radius: 0.7rem;
 }
 
 #workspaces button:hover {
     color: @sapphire;
-    border-radius: 0.87rem;
+    border-radius: 0.7rem;
 }
 
 #submap {
     color: @red;
     background-color: @crust;
-    border-radius: 0.87rem;
+    border-radius: 0.7rem;
 }
 
 #custom-music {
     color: @mauve;
-    border-radius: 0.87rem;
+    border-radius: 0.7rem;
+}
+
+#custom-idle_inhibitor {
+    color: @peach;
+    border-radius: 0.7rem;
+    margin-right: 0.45rem;
+    padding-right: 0.9rem;
+}
+
+#custom-idle_inhibitor.deactivated {
+    color: @teal;
+}
+
+#custom-idle_inhibitor.errored {
+    color: @red;
 }
 
 #clock {
     color: @blue;
-    border-radius: 0.87rem 0.87rem 0.87rem 0.87rem;
+    border-radius: 0.7rem 0.7rem 0.7rem 0.7rem;
 }
 
 #tray {
-    margin-right: 0.87rem;
-    border-radius: 0.87rem;
+    margin-right: 0.45rem;
+    border-radius: 0.7rem;
 }
 
 #bluetooth {
     color: @lavender;
-    border-radius: 0.87rem 0px 0px 0.87rem;
+    border-radius: 0.7rem 0px 0px 0.7rem;
     margin-right: -0.5rem;
 }
 
 #network.status {
     color: @teal;
-    border-radius: 0px 0.87rem 0.87rem 0px;
+    border-radius: 0px 0.7rem 0.7rem 0px;
+    margin-right: -0rem;
 }
 
 #wireplumber.mic {
     color: @maroon;
-    border-radius: 0.87rem 0px 0px 0.87rem;
-    margin-left: 0.87rem;
+    border-radius: 0.7rem 0px 0px 0.7rem;
+    margin-left: 0.7rem;
     margin-right: -1.1rem;
 }
 
 #wireplumber.speaker {
     color: @maroon;
-    margin-right: 0.87rem;
-    border-radius: 0px 0.87rem 0.87rem 0px;
+    margin-right: 0.45rem;
+    border-radius: 0px 0.7rem 0.7rem 0px;
 }
 
 #backlight {
     color: @yellow;
     border-radius: 0;
     margin-right: -0.68rem;
-    border-radius: 0.87rem 0px 0px 0.87rem;
+    border-radius: 0.7rem 0px 0px 0.7rem;
 }
 
 #battery {
     color: @green;
-    border-radius: 0px 0.87rem 0.87rem 0px;
+    border-radius: 0px 0.7rem 0.7rem 0px;
 }
 
 #battery.charging {
@@ -123,8 +141,9 @@
 }
 
 #custom-notification {
-    border-radius: 0.87rem;
+    border-radius: 0.7rem;
     color: @yellow;
-    margin: 0px 0.87rem;
+    margin: 0px 0.45rem;
+    margin-right: 0.2rem;
     padding-right: 9px;
 }

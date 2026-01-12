@@ -1,11 +1,39 @@
 {
   // ====== CORE EDITOR SETTINGS ======
+  "window_decorations": "server",
+  "tab_bar": {
+    "show_tab_bar_buttons": false,
+    "show": true
+  },
+  "close_on_file_delete": true,
+  "search": {
+    "include_ignored": true
+  },
+  "prettier": {
+    "allowed": true
+  },
+  "excerpt_context_lines": 4,
+  "restore_on_startup": "launchpad",
+  "colorize_brackets": true,
+  "collaboration_panel": {
+    "button": true,
+  },
+  "agent_ui_font_size": 15.0,
   "edit_predictions": {
-    "mode": "eager"
+    "mode": "eager",
   },
   "autoscroll_on_clicks": true,
   "double_click_in_multibuffer": "open",
-  "theme": "Catppuccin Macchiato (maroon)",
+  "theme": {
+    "mode": "system",
+    "light": "Catppuccin Latte (maroon)",
+    "dark": "Catppuccin Macchiato (maroon)"
+  },
+  "theme_overrides": {
+    "Catppuccin Macchiato (maroon)": {
+      "vim.normal.background": null,
+    },
+  },
   "icon_theme": "Catppuccin Mocha",
   "vim_mode": true,
   "auto_update": false,
@@ -14,53 +42,63 @@
   "show_whitespaces": "boundary",
   "use_system_path_prompts": false,
   "use_system_prompts": false,
-  "load_direnv": "direct",
 
   // ====== FONTS & TYPOGRAPHY ======
   "ui_font_family": "Ubuntu Nerd Font Propo",
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "buffer_font_weight": 280,
+  "buffer_font_weight": 299,
   "buffer_line_height": "standard",
   "buffer_font_size": 14.5,
 
   // ====== UI LAYOUT & PANELS ======
   "project_panel": {
+    "hide_hidden": false,
+    "indent_guides": {
+      "show": "never"
+    },
+    "show_diagnostics": "errors",
     "hide_root": true,
     "dock": "right",
     "entry_spacing": "standard",
-    "indent_size": 22
+    "indent_size": 22.0,
   },
   "git_panel": {
+    "tree_view": true,
     "sort_by_path": true,
-    "dock": "right"
+    "dock": "right",
   },
   "debugger": {
-    "dock": "bottom"
+    "button": true,
+    "dock": "bottom",
   },
   "active_pane_modifiers": {
-    "inactive_opacity": 0.9
+    "inactive_opacity": 0.9,
   },
   "gutter": {
     "runnables": false,
     "folds": false,
-    "min_line_number_digits": 0
+    "min_line_number_digits": 0,
   },
 
   // ====== TABS & NAVIGATION ======
   "tabs": {
     "file_icons": true,
     "git_status": true,
-    "activate_on_close": "neighbour"
+    "activate_on_close": "neighbour",
   },
   "toolbar": {
     "breadcrumbs": true,
     "quick_actions": true,
     "selections_menu": true,
     "agent_review": true,
-    "code_actions": true
+    "code_actions": true,
   },
   "title_bar": {
-    "show_branch_icon": true
+    "show_menus": false,
+    "show_sign_in": true,
+    "show_project_items": true,
+    "show_branch_name": true,
+    "show_branch_icon": true,
   },
   // ====== CODE EDITING FEATURES ======
   "inlay_hints": {
@@ -69,7 +107,7 @@
     "show_type_hints": true,
     "show_parameter_hints": true,
     "show_other_hints": true,
-    "show_background": false,
+    "show_background": true,
     "edit_debounce_ms": 700,
     "scroll_debounce_ms": 50,
     "toggle_on_modifiers_press": {
@@ -77,88 +115,107 @@
       "alt": false,
       "shift": false,
       "platform": false,
-      "function": false
-    }
+      "function": false,
+    },
   },
   "format_on_save": "on",
   "indent_guides": {
-    "coloring": "indent_aware"
+    "line_width": 2,
+    "active_line_width": 2,
+    "background_coloring": "disabled",
+    "coloring": "indent_aware",
   },
   // ====== AI ASSISTANT & AGENT ======
   "features": {
-    "edit_prediction_provider": "zed"
+    "edit_prediction_provider": "zed",
   },
   "agent": {
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "claude-haiku-4.5",
     },
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "model": "gpt-5-mini",
     },
     "play_sound_when_agent_done": true,
-    "always_allow_tool_actions": true
+    "always_allow_tool_actions": true,
   },
   // ====== EXTENSIONS ======
   "auto_install_extensions": {
-    "awk": true,
     "basher": true,
     "dockerfile": false,
+    "catppuccin-icons": true,
     "emmet": true,
     "env": true,
     "git-firefly": true,
     "harper": true,
     "html": true,
-    "hyprlang": true,
     "ini": true,
+    "kdl": true,
+    "kconfig": true,
     "log": true,
     "lua": true,
     "marksman": true,
     "make": true,
-    "nix": true,
-    "php": true,
     "scheme": true,
-    "sql": true,
-    "toml": true
+    "toml": true,
   },
   // ====== FILE TYPES & ASSOCIATIONS ======
   "file_types": {
     "CSS": ["**/rofi/**/*rasi"],
-    "Hyprlang": ["**/hypr/**/*conf", "**/myde/**/*conf"],
-    "ini": ["**mime**", "**/.directory"],
+    "Hyprlang": ["**/hypr/**/*conf", "**/mydehq/**/*conf"],
+    "ini": ["**mime**", "**/.directory", "**/**.colors", "**/kde*"],
     "Markdown": ["**/git/*commit*.txt"],
     "Shell Script": ["**/uwsm/**"],
-    "LOG": ["**/*.log", "**/*.logs"]
+    "LOG": ["**/*.log", "**/*.logs"],
   },
   // ====== TERMINAL ======
   "terminal": {
+    "working_directory": "current_project_directory",
+    "toolbar": {
+      "breadcrumbs": false,
+    },
     "font_family": "JetBrainsMono Nerd Font",
     "env": {
       // "ENV": "DEV"
-    }
+    },
   },
   // ====== IMAGE VIEWER ======
   "image_viewer": {
-    "unit": "decimal"
+    "unit": "decimal",
   },
   // ====== PRIVACY & TELEMETRY ======
   "telemetry": {
-    "diagnostics": false,
-    "metrics": false
+    "diagnostics": true,
+    "metrics": false,
   },
   // ====== LANGUAGE SERVERS =======
   "lsp": {
     "clangd": {
       "binary": {
         // "arguments": ["--experimental-modules-support"]
-      }
-    }
+      },
+    },
   },
   "languages": {
+    "JSON": {
+      "colorize_brackets": true,
+    },
     "Markdown": {
-      "remove_trailing_whitespace_on_save": false
-    }
-  }
+      "remove_trailing_whitespace_on_save": false,
+    },
+  },
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "available_models": [
+        {
+          "name": "deepseek-r1:1.5b",
+          "max_tokens": 8192,
+        },
+      ],
+    },
+  },
 }

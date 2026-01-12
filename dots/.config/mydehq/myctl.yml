@@ -1,0 +1,27 @@
+lib-dir:
+  - "/usr/lib/myctl"
+  - "$HOME/.local/lib/myctl"
+
+mytm: # Plugin ID
+  repos:
+    official:
+      url: "https://raw.githubusercontent.com/mydehq/MyThemes/refs/heads/repo/index.json"
+
+    mirror:
+      url: "https://mirror.example.com/mydehq/MyThemes/index.yml"
+
+    localRepo:
+      url: "~/.local/repo/index.yml"
+      disable: true
+
+  themes:
+    catppuccin-macchiato:
+      repo: official
+      ver: 1.0.0
+
+    dracula:
+      repo: mirror
+      ver: latest
+
+    nord:
+      repo: localRepo

@@ -35,5 +35,10 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.startupEditor": "none",
   "terminal.integrated.shellIntegration.enabled": true,
-  "diffEditor.ignoreTrimWhitespace": false
+  "diffEditor.ignoreTrimWhitespace": false,
+  "git.openRepositoryInParentFolders": "always",
+  "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  }
 }

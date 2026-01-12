@@ -1,12 +1,13 @@
 MenuBar=Disabled
 
+[DetailsMode]
+RightPadding=18
+
 [General]
 AutoExpandFolders=true
-DynamicView=true
-GlobalViewProps=false
 ShowFullPath=true
 Version=202
-ViewPropsTimestamp=2025,8,21,0,35,3.296
+ViewPropsTimestamp=2025,11,22,12,48,38.868
 
 [KFileDialog Settings]
 Places Icons Auto-resize=false
@@ -16,4 +17,4 @@ Places Icons Static Size=22
 MenuBar=Disabled
 
 [PreviewSettings]
-Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,librsvg,svgthumbnail,ffmpegthumbs,gsf-office
+Plugins=ffmpegthumbnailer,appimagethumbnail,audiothumbnail,glycin-heif,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,glycin-svg,svgthumbnail,ffmpegthumbs,gsf-office

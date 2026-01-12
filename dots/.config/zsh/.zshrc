@@ -4,83 +4,165 @@
 #    _ / /\__ \ | | | | | (__
 #   (_)___|___/_| |_|_|  \___|
 #
-# The Zsh Shell Configuration File
+# Variables & Configuration for Interactive shell (eg, Terminal Emulators)
+#
 
 
-# ------------------ Environment Vars (zsh specific) ----------------
+#=========================== Configuration =============================
 
-## Shell agonastic variables are in `.config/uwsm/env*`
+# Zsh Specific
+export ZSH_HISTORY_LIMIT=200000
+export ZSH_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zsh/zinit"
 
-export AUTO_NOTIFY_EXPIRE_TIME=5000
+## vi mode
+export VI_MODE_ESCAPE_BIND=jj
 
-export AUTO_NOTIFY_IGNORE=("docker" "top" "htop" "btm" "nvim" "vim"
-                            "nano" "man" "less" "more" "tig" "watch"
-                            "git commit" "ssh" "lazygit" "cat" "bat"
-                            "batman" "lf" "yazi"
+## "ice-options | plugin-name"
+typeset -a ZSH_PLUGINS=(
+    "depth=1 | romkatv/powerlevel10k"
+    "depth=1 | jeffreytse/zsh-vi-mode"
+
+    "zdharma-continuum/fast-syntax-highlighting"
+    "zsh-users/zsh-completions"
+    "zsh-users/zsh-autosuggestions"
+    "Aloxaf/fzf-tab"
 )
 
+typeset -a ZSH_SNIPPETS=(
+    "OMZP::command-not-found"
+    "OMZP::archlinux"
+)
 
-# ------------------------ Pre Commands -----------------------------
+# System summary config
+export SYS_FETCH_CONF="${XDG_CONFIG_HOME:-${HOME}/.config}/fastfetch/small.jsonc"
 
-fastfetch -c ~/.config/fastfetch/small.jsonc
+# Starship Config Location
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
+export STARSHIP_CACHE="$XDG_CACHE_HOME/starship/starship.log"
 
+# Auto Notify plugin
+export AUTO_NOTIFY_EXPIRE_TIME=3000
+export AUTO_NOTIFY_IGNORE=(
+                            "docker" "top" "htop" "btm" "nvim" "vim"
+                            "nano" "man" "less" "more" "tig" "watch"
+                            "git commit" "ssh" "lazygit" "cat" "bat"
+                            "batman" "lf" "yazi" "lg"
+)
 
-
-#_______________________Shell Integrations_____________________________
-
-source "$ZDOTDIR/modules/Init.zsh" && import-mod --all
-
-eval_fzf
-
-eval "$(zoxide init zsh --cmd cdz)"
-
-[ -n "$TERMINAL" ] && {
-    term_desktop="$(myctl get desktop-filename "$TERMINAL")"
-    handlr set x-scheme-handler/terminal "$term_desktop" &> /dev/null
-    kwriteconfig6 --file "$HOME/.config/kdeglobals" --group General --key TerminalService "$term_desktop"
-}
-
-#_____________________________Plugins____________________________________
-# zinit light zsh-users/zsh-syntax-highlighting
-zinit light zdharma-continuum/fast-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-command -v notify-send &> /dev/null && zinit light MichaelAquilina/zsh-auto-notify
-zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-#zinit load atuinsh/atuin
+# FZF
+export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore --exclude .git'
+export FZF_DEFAULT_OPTS='--multi '
 
 
-#________________Snippets________________
-zinit snippet OMZP::command-not-found
-zinit snippet OMZP::archlinux
+#================================================================================
 
 
-#______________Plugins Options____________
+# ---------------------- System summary -----------------------
 
-# Load completions
-autoload -Uz compinit && compinit
+fastfetch -c "$SYS_FETCH_CONF"
+# catnap
+
+
+#-------------------------- Powerlevel 10k -------------------------
+
+# instant prompt
+if [[ -r "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${xdg_cache_home:-$home/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source "$ZDOTDIR/.p10k.zsh"
+
+
+#------------------- CompInit ------------------
+
+[[ ! -d "$ZSH_CACHE" ]] && mkdir -p "$ZSH_CACHE"
+
+autoload -Uz compinit
+compinit -d "$ZSH_CACHE/compdump"
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'eza --almost-all --group-directories-first --color=always $realpath'
+
+#-------------------- Source FZF ---------------------------
+
+if command -v fzf &> /dev/null; then
+
+    _fzf_ver=$(fzf --version | cut -d' ' -f1)
+
+    # Check if >= 0.48.0 using sort -V
+    if [[ $(echo "$_fzf_ver 0.48.0" | tr " " "\n" | sort -V | head -n1) = "0.48.0" ]]; then
+        source <(fzf --zsh)
+    else
+        # Legacy fallback
+        [[ -f /usr/share/fzf/shell/key-bindings.zsh ]] && source /usr/share/fzf/shell/key-bindings.zsh
+        [[ -f /usr/share/fzf/shell/completion.zsh ]]   && source /usr/share/fzf/shell/completion.zsh
+    fi
+
+    unset _fzf_ver
+fi
+
+
+#------------------ Plugins -----------------------
+
+if [ ! -d "$ZINIT_HOME" ]; then
+   echo -e "Installing zinit in ${ZINIT_HOME}" >&2
+   mkdir -p "$(dirname $ZINIT_HOME)"
+   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+   echo "Done" >&2
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+if command -v notify-send &> /dev/null; then
+    ZSH_PLUGINS+=("MichaelAquilina/zsh-auto-notify")
+fi
+
+for entry in "${ZSH_PLUGINS[@]}"; do
+    if [[ "$entry" == *"|"* ]]; then
+
+        __ice_params="${entry%|*}"
+        __repo="${entry#*|}"
+
+        zinit ice "${=__ice_params}"
+        zinit light "${__repo## }"
+    else
+        # Standard load
+        zinit light "$entry"
+    fi
+done
+
+for snippet in "${ZSH_SNIPPETS[@]}"; do
+    zinit snippet "$snippet"
+done
+
+
+#-------------------- Intigrations ------------------------
+
+eval "$(zoxide init zsh --cmd cdz)"
+eval "$(direnv hook zsh)"
 eval "$(register-python-argcomplete pipx)"
+eval "$(register-python-argcomplete cz)"
+eval "$(niri completions zsh)"
 
 
-#_____________________________key-bindings_________________________________
+#------------------- key-bindings ------------------------
+
 export KEYTIMEOUT=1
 bindkey -v
 bindkey -v '^L' autosuggest-accept
 bindkey -v '^p' history-search-backward
 bindkey -v '^n' history-search-forward
-#bindkey -M viins '^j' fzf-history-widget
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jj
+# bindkey -M viins '^j' fzf-history-widget
+ZVM_VI_INSERT_ESCAPE_BINDKEY="$VI_MODE_ESCAPE_BIND"
 
 
-#_______________________________History____________________________________
-HISTSIZE=100000
-HISTFILE=${ZDOTDIR}/.history.zsh
-SAVEHIST=$HISTSIZE
+#--------------------- History -------------------------
+
+SAVEHIST=$ZSH_HISTORY_LIMIT
+HISTFILE=$ZSH_CACHE/history
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -92,7 +174,26 @@ setopt correct
 setopt INTERACTIVE_COMMENTS
 
 
-#____________________________Aliases_______________________________________
+#--------------------- Modules -------------------------
+
+for mod_file in "$ZDOTDIR/rc.d/modules"/*.zsh; do
+    if [ -f "$mod_file" ]; then
+        source "$mod_file"
+    else
+        echo "Failed to source module file: $(basename "$mod_file")" >&2
+    fi
+done
+
+
+#--------------------- Aliases -------------------------
+
+for aliasf in "$ZDOTDIR/rc.d/"*; do
+    if [ -f "$aliasf" ] && [ -r "$aliasf" ]; then
+        source "$aliasf"
+    fi
+done
+
+# Misc
 alias :q='exit'
 alias open="handlr open"
 alias sudo='sudo ' # expand aliases with sudo
@@ -110,29 +211,11 @@ alias snv='sudoedit'
 alias chhostname="hostnamectl set-hostname"
 alias cat='bat'
 alias man='batman'
-alias fzf='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 alias lnr='ln_relative'
 alias papirus-folders='pprus_ch_fldr_clr'
-alias reboot='echo " reebooting......" && sleep 5 && reboot'
+alias reboot='echo " reebooting......" && sleep 2 && systemctl reboot'
+alias nctl='niri msg '
 alias sdmp='sudo rm -rf /opt/lampp/htdocs/sdmp && sudo cp ~/Documents/git/SDMP/  /opt/lampp/htdocs/sdmp '
-alias xampp='sudo /opt/lampp/lampp '
+# alias xampp='sudo /opt/lampp/lampp '
 # alias docker-compose='podman-compose'
-
 alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
-
-# git
-alias ghc="github_clone"
-alias gc="git clone"
-alias gb="git branch"
-alias ga="git add"
-alias gm="git merge"
-alias gp="git push"
-alias gcm="git commit -m"
-alias gco="git checkout"
-alias gcob="git checkout -b"
-alias gcs="git commit -S -m"
-alias gd="git difftool"
-alias gpr="gh pr create"
-alias gr="git rebase -i"
-alias gs="git status -sb"
-alias gt="git tag"

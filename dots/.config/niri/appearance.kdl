@@ -1,0 +1,82 @@
+
+prefer-no-csd
+overview { backdrop-color "#1c2036"; }
+hotkey-overlay { skip-at-startup; }
+
+recent-windows {
+    highlight {
+        padding 25
+        corner-radius 10
+    }
+}
+
+cursor {
+    xcursor-theme "catppuccin-mocha-maroon-cursors"
+    xcursor-size 30
+}
+
+window-rule {
+    geometry-corner-radius 7
+    clip-to-geometry true
+
+    open-maximized-to-edges false  // fix windows opening in wierd borderless max mode
+}
+
+window-rule {
+    opacity 0.93
+    draw-border-with-background false
+
+    exclude app-id="brave-browser|firefox|zen|inkscape|mpv"
+}
+
+// Terminals with more transparency
+window-rule {
+    match app-id="gnome-terminal|konsole|wezterm|alacritty|kitty|urxvt|st|foot"
+    opacity 0.76
+}
+
+layout {
+    gaps 4
+
+    center-focused-column "never"
+    always-center-single-column
+
+    // Toggle wth Mod+R
+    preset-column-widths {
+        proportion 0.75
+        proportion 0.35
+    }
+
+    // Default width of the new windows.
+    default-column-width { proportion 0.8; }
+
+    focus-ring { off; }
+
+    border {
+        on
+        width 2
+
+        active-color   "#ee99a0"
+        inactive-color "#494D64"
+        urgent-color   "#9b0000"
+    }
+
+    // Drop shadows for windows.
+    shadow {
+        on
+        color "#0007"
+        draw-behind-window true
+        spread 2
+        softness 12
+        offset x=0 y=0
+    }
+}
+
+
+animations {
+    // Uncomment to turn off all animations.
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 0.9
+}

@@ -3,16 +3,18 @@
 (GimpDeviceInfo "Core Pointer"
     (icon-name "gimp-cursor")
     (name "Core Pointer")
-    (tool-options "GimpPaintOptions"
-        (tool "gimp-paintbrush-tool")
+    (tool-options "GimpPencilOptions"
+        (tool "gimp-pencil-tool")
+        (foreground
+            (color "R'G'B'A double" 32 "\0\0\0\240\327\211\357\77\0\0\0\0\344\237\265\77\0\0\0\300\326J\315\77\0\0\0\0\0\0\360\77" 0))
         (background
             (color "R'G'B'A float" 16 "\1\0\200\77\1\0\200\77\1\0\200\77\0\0\200\77" 0))
         (brush "2. Hardness 050")
         (dynamics "Pressure Size")
         (pattern "Pine")
-        (gradient "FG to BG (RGB)")
+        (gradient "Abstract 2")
         (palette "Color History")
-        (brush-size 51)
+        (brush-size 7)
         (brush-hardness 0.5))
     (use-fg-bg yes)
     (use-opacity-paint-mode no)

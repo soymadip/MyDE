@@ -1,6 +1,6 @@
-main.advanced_view true
+main.advanced_view false
 main.audio_codec opus
-main.audio_input device:Default output
+main.audio_input device:Built-in Audio Analog Stereo
 main.av1_amd_bug_warning_shown false
 main.change_video_resolution false
 main.codec hevc_10bit
@@ -38,8 +38,8 @@ replay.save_recording_hotkey 0 0
 replay.start_stop_recording_hotkey 0 0
 replay.time 30
 streaming.custom.container flv
-streaming.custom.url
+streaming.custom.url 
 streaming.service twitch
 streaming.start_stop_recording_hotkey 0 0
-streaming.twitch.key
-streaming.youtube.key
+streaming.twitch.key 
+streaming.youtube.key 
