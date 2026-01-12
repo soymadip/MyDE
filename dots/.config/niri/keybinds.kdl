@@ -177,7 +177,7 @@ binds {
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-    
+
     Mod+TouchpadScrollDown { spawn-sh "myctl set volume +5"; }
     Mod+TouchpadScrollUp   { spawn-sh "myctl set volume -5"; }
 
@@ -275,7 +275,8 @@ binds {
     Mod+T   { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    Print { screenshot; }
+    Print hotkey-overlay-title="Screenshot" { spawn-sh r#"tmp=$(mktemp --suffix=.png); grim -g "$(slurp)" "$tmp" && satty -f "$tmp" -o ~/Pictures/Screenshots/$(date +%F_%H-%M-%S).png"#; }
+
     Ctrl+Print { screenshot-screen; }
     Alt+Print  { screenshot-window; }
 
