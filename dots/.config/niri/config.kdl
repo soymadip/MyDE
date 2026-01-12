@@ -1,0 +1,48 @@
+//  _   _ _      _
+// | \ | (_)_ __(_)
+// |  \| | | '__| |
+// | |\  | | |  | |
+// |_| \_|_|_|  |_|
+//
+// Niri WM Configuration
+
+
+// Include configs
+include "environment.kdl"
+include "autostart.kdl"
+include "keybinds.kdl"
+include "windowrules.kdl"
+include "appearance.kdl"
+
+
+input {
+    keyboard {
+        numlock
+    }
+
+    touchpad {
+        // off
+        tap
+        natural-scroll
+        dwt
+        // dwtp
+        // drag false
+        // drag-lock
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "two-finger"
+        // disabled-on-external-mouse
+    }
+
+    mouse {
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
